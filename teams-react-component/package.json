@@ -1,0 +1,17 @@
+{
+  "name": "teams-react-component",
+  "version": "0.0.1",
+  "main": "./dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc -w"
+  },
+  "author": "TFM (Team Flying Monkeys)",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/react": "^16.0.5",
+    "react": "^15.6.1",
+    "teams-styles-core": "file:../teams-styles-core"
+  },
+  "types": "./dist"
+}
