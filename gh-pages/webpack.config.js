@@ -17,6 +17,9 @@ module.exports = {
       }
     ],
   },
+  resolve: {
+    extensions: ['.ts', '.tsx', '.js', '.jsx'],
+  },
   plugins: [
     new CleanWebpackPlugin(['dist']),
     new HtmlWebpackPlugin({
@@ -28,5 +31,6 @@ module.exports = {
   devServer: {
     contentBase: './dist',
     hot: true,
+    port: 3000,
   },
 };
