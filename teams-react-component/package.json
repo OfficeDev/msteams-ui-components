@@ -11,7 +11,9 @@
   "devDependencies": {
     "@types/react": "^16.0.5",
     "react": "^15.6.1",
-    "teams-styles-core": "file:../teams-styles-core"
+    "teams-styles-core": "file:../teams-styles-core",
+    "tslint": "^5.7.0",
+    "typescript": "^2.5.2"
   },
   "types": "./dist"
 }
