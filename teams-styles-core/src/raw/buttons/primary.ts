@@ -1,17 +1,25 @@
 import { CSSProperties } from 'react';
-import { defaultButton } from './button';
+import { Config } from '../config/index';
+import * as baseButton from './base';
 
 const appBrand = '#5558af';
 const appWhite = '#fff';
 
-export const primary: {} = {
-  ...defaultButton,
-  background: appBrand,
-  outlineColor: 'yellow',
-  outlineStyle: 'none',
-  color: appWhite,
-} as CSSProperties;
+export function normal(config: Config): {} {
+  const result: CSSProperties = {
+    ...baseButton.normal(config),
+    background: appBrand,
+    outlineColor: 'yellow',
+    outlineStyle: 'none',
+    color: appWhite,
+  };
+  return result;
+}
 
-export const primaryHover: {} = {
-  color: 'blue',
-} as CSSProperties;
+export function hover(config: Config): {} {
+  const result: CSSProperties = {
+    ...baseButton.hover(config),
+    color: 'blue',
+  };
+  return result;
+}

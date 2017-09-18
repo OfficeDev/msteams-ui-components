@@ -1,6 +1,8 @@
 import * as React from 'react';
-import { primary } from 'teams-styles-core';
+import { getConfig, primary } from 'teams-styles-core';
+
+const config = getConfig(10);
 
 export const TButton: React.StatelessComponent = () => (
-  <button className={`${primary}`}>a button</button>
+  <button className={`${primary(config)}`}>a button</button>
 );
