@@ -1,17 +1,15 @@
 import { CSSProperties } from 'react';
+import * as colors from '../colors';
 import { Config } from '../config/index';
 import * as baseButton from './base';
-
-const appBrand = '#5558af';
-const appWhite = '#fff';
 
 export function normal(config: Config): {} {
   const result: CSSProperties = {
     ...baseButton.normal(config),
-    background: appBrand,
+    background: colors.brand00,
     outlineColor: 'yellow',
     outlineStyle: 'none',
-    color: appWhite,
+    color: colors.white,
   };
   return result;
 }
@@ -19,7 +17,7 @@ export function normal(config: Config): {} {
 export function hover(config: Config): {} {
   const result: CSSProperties = {
     ...baseButton.hover(config),
-    color: 'blue',
+    backgroundColor: colors.brand04,
   };
   return result;
 }

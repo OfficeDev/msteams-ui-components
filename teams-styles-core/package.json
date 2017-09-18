@@ -15,6 +15,7 @@
   },
   "types": "./dist",
   "dependencies": {
+    "csx": "^8.5.0",
     "typestyle": "^1.4.1"
   }
 }
