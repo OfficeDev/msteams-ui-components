@@ -1,9 +1,20 @@
 {
   "name": "teams-styles-core",
   "version": "0.0.1",
+  "main": "./dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc",
+    "build:watch": "tsc -w"
   },
   "author": "TFM (Team Flying Monkeys)",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@types/react": "^16.0.5",
+    "tslint": "^5.7.0",
+    "typescript": "^2.5.2"
+  },
+  "types": "./dist",
+  "dependencies": {
+    "typestyle": "^1.4.1"
+  }
 }

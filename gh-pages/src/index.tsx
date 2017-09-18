@@ -4,8 +4,10 @@ import { TButton } from 'teams-react-component';
 
 render(
   <div>
-    hello
-    <TButton />
+    <div>
+      <h4>Buttons</h4>
+      <TButton />
+    </div>
   </div>,
   document.getElementById('root')
 );

@@ -9,7 +9,8 @@
   "dependencies": {
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
-    "teams-react-component": "file:../teams-react-component"
+    "teams-react-component": "file:../teams-react-component",
+    "typestyle": "^1.4.1"
   },
   "devDependencies": {
     "@types/react": "^16.0.5",
