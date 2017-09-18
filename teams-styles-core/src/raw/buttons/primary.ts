@@ -11,3 +11,7 @@ export const primary: {} = {
   outlineStyle: 'none',
   color: appWhite,
 } as CSSProperties;
+
+export const primaryHover: {} = {
+  color: 'blue',
+} as CSSProperties;

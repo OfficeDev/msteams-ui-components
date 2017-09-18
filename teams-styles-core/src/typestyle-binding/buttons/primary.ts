@@ -1,10 +1,8 @@
 import { style } from 'typestyle';
-import { primary as primaryStyle } from '../../raw/buttons/primary';
+import * as primaryRaw from '../../raw/buttons/primary';
 
-export const primary = style(primaryStyle, {
+export const primary = style(primaryRaw.primary, {
   $nest: {
-    '&:hover': {
-      color: 'blue',
-    },
+    '&:hover': primaryRaw.primaryHover,
   },
 });
