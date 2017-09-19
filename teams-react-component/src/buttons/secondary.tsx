@@ -1,14 +1,14 @@
 import * as React from 'react';
-import { getConfig, secondary } from 'teams-styles-core';
+import { getContext, secondary } from 'teams-styles-core';
 
-const config = getConfig(10);
+const c = getContext();
 
 export interface SecondaryButtonProps {
   disabled?: boolean;
 }
 
 export const SecondaryButton: React.StatelessComponent<SecondaryButtonProps> = (props) => (
-  <button type="button" className={`${secondary(config)}`} disabled={props.disabled}>a button</button>
+  <button type="button" className={`${secondary(c)}`} disabled={props.disabled}>a button</button>
 );
 
 SecondaryButton.propTypes = {
