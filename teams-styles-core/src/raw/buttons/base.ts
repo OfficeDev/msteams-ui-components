@@ -1,10 +1,10 @@
 import { CSSProperties } from 'react';
-import { Config } from '../config/index';
+import { Context } from '../context';
 
 const appSmallBorderRadius = 0.3;
 
-export function normal(config: Config): CSSProperties {
-  const { rem } = config;
+export function normal(context: Context): CSSProperties {
+  const { rem } = context;
   return {
     height: rem(3.2),
     minWidth: rem(3.2),
@@ -18,21 +18,23 @@ export function normal(config: Config): CSSProperties {
   };
 }
 
-export function hover(config: Config): CSSProperties {
+export function hover(context: Context): CSSProperties {
   return {
     cursor: 'pointer',
   };
 }
 
-export function active(config: Config): CSSProperties {
+export function active(context: Context): CSSProperties {
   return {};
 }
 
-export function disabled(config: Config): CSSProperties {
-  return {};
+export function disabled(context: Context): CSSProperties {
+  return {
+    cursor: 'not-allowed',
+  };
 }
 
-export function focus(config: Config): CSSProperties {
+export function focus(context: Context): CSSProperties {
   return {
     outline: 'none',
   };

@@ -1,50 +1,50 @@
 import { CSSProperties } from 'react';
 import * as colors from '../colors';
-import { Config } from '../config/index';
+import { Context } from '../context';
 import * as baseButton from './base';
 
-export function normal(config: Config): {} {
+export function normal(c: Context): {} {
   const result: CSSProperties = {
-    ...baseButton.normal(config),
-    background: colors.brand00,
-    color: colors.white,
+    ...baseButton.normal(c),
+    backgroundColor: c.colors.primaryButton.normalBg,
+    color: c.colors.primaryButton.normal,
   };
   return result;
 }
 
-export function hover(config: Config): {} {
+export function hover(c: Context): {} {
   const result: CSSProperties = {
-    ...baseButton.hover(config),
-    backgroundColor: colors.brand04,
+    ...baseButton.hover(c),
+    backgroundColor: c.colors.primaryButton.hoverBg,
   };
   return result;
 }
 
-export function active(config: Config): {} {
+export function active(c: Context): {} {
   const result: CSSProperties = {
-    ...baseButton.active(config),
-    backgroundColor: '#454B92',
+    ...baseButton.active(c),
+    backgroundColor: c.colors.primaryButton.activeBg,
   };
   return result;
 }
 
-export function disabled(config: Config): {} {
+export function disabled(c: Context): {} {
   return {
-    ...baseButton.disabled(config),
-    backgroundColor: colors.gray10,
-    color: colors.gray04,
+    ...baseButton.disabled(c),
+    backgroundColor: c.colors.primaryButton.disabledBg,
+    color: c.colors.primaryButton.disabled,
   };
 }
 
-export function focus(config: Config): {} {
+export function focus(c: Context): {} {
   return {
-    ...baseButton.focus(config),
-    color: colors.white,
+    ...baseButton.focus(c),
+    color: c.colors.primaryButton.focus,
   };
 }
 
-export function focusAfter(config: Config): {} {
-  const { rem } = config;
+export function focusAfter(c: Context): {} {
+  const { rem } = c;
   return {
     content: "''",
     position: 'absolute',
@@ -52,6 +52,6 @@ export function focusAfter(config: Config): {} {
     bottom: '1px',
     left: '1px',
     right: '1px',
-    border: `${rem(0.2)} solid ${colors.white}`,
+    border: `${rem(0.2)} solid ${c.colors.primaryButton.focusOutline}`,
   };
 }
