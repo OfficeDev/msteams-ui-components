@@ -10,3 +10,7 @@ export interface PrimaryButtonProps {
 export const PrimaryButton: React.StatelessComponent<PrimaryButtonProps> = (props) => (
   <button type="button" className={`${primary(config)}`} disabled={props.disabled}>a button</button>
 );
+
+PrimaryButton.propTypes = {
+  disabled: React.PropTypes.bool,
+};
