@@ -10,3 +10,7 @@ export interface SecondaryButtonProps {
 export const SecondaryButton: React.StatelessComponent<SecondaryButtonProps> = (props) => (
   <button type="button" className={`${secondary(config)}`} disabled={props.disabled}>a button</button>
 );
+
+SecondaryButton.propTypes = {
+  disabled: React.PropTypes.bool,
+};
