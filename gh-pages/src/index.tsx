@@ -47,9 +47,11 @@ class GHPages extends React.Component<{}, GHPagesState> {
           <label htmlFor="basePx">1rem = </label>
           <input
             id="basePx"
-            style={{ width: '40px', textAlign: 'right' }}
+            type="range"
+            min="1"
+            max="50"
             value={basePx}
-            onChange={(event) => this.onBasePxChange(event.target.value)} />px
+            onChange={(event) => this.onBasePxChange(event.target.value)} /> {basePx}px
         <br />
           <input
             type="radio"
