@@ -1,13 +1,18 @@
 import { CSSProperties } from 'react';
 import { Context } from '../context';
 
+const width = 6;
+const height = 3.2;
+const ballSize = 2.5;
+const ballDeltaX = 0.3;
+
 export function label(c: Context): {} {
   const { rem } = c;
   const result: CSSProperties = {
     position: 'relative',
     display: 'inline-block',
-    width: rem(6),
-    height: rem(3.4),
+    width: rem(width),
+    height: rem(height),
   };
   return result;
 }
@@ -23,13 +28,16 @@ export function slider(c: Context): {} {
   const result: CSSProperties = {
     position: 'absolute',
     cursor: 'pointer',
+    border: 0,
     top: 0,
     left: 0,
     right: 0,
     bottom: 0,
-    backgroundColor: '#EEF1F5',
+    width: '100%',
+    height: '100%',
+    backgroundColor: c.colors.toggle.offBg,
     transition: '0.4s',
-    borderRadius: rem(3.4),
+    borderRadius: rem(height),
     outline: 'none',
   };
   return result;
@@ -44,15 +52,31 @@ export function sliderFocus(c: Context): {} {
     bottom: rem(-0.1),
     left: rem(-0.1),
     right: rem(-0.1),
-    borderRadius: rem(3.4),
-    border: `${rem(0.2)} solid #5558AF`,
+    borderRadius: rem(height),
+    border: `${rem(0.2)} solid ${c.colors.toggle.focus}`,
+  };
+  return result;
+}
+
+export function sliderBefore(c: Context): {} {
+  const { rem } = c;
+  const result: CSSProperties = {
+    position: 'absolute',
+    content: '""',
+    height: rem(ballSize),
+    width: rem(ballSize),
+    left: rem(ballDeltaX),
+    top: rem((height - ballSize) / 2),
+    backgroundColor: c.colors.toggle.offBall,
+    transition: '0.4s',
+    borderRadius: '50%',
   };
   return result;
 }
 
 export function sliderChecked(c: Context): {} {
   const result: CSSProperties = {
-    backgroundColor: '#7FBA00',
+    backgroundColor: c.colors.toggle.onBg,
   };
   return Object.assign({}, slider(c), result);
 }
@@ -62,27 +86,12 @@ export function sliderFocusChecked(c: Context): {} {
   return Object.assign({}, sliderFocus(c), result);
 }
 
-export function sliderBefore(c: Context): {} {
-  const { rem } = c;
-  const result: CSSProperties = {
-    position: 'absolute',
-    content: '""',
-    height: rem(2.6),
-    width: rem(2.6),
-    left: rem(0.4),
-    bottom: rem(0.4),
-    backgroundColor: '#4E586A',
-    transition: '0.4s',
-    borderRadius: '50%',
-  };
-  return result;
-}
-
 export function sliderBeforeChecked(c: Context): {} {
   const { rem } = c;
+  const delta = width - ballDeltaX * 2 - ballSize;
   const result: CSSProperties = {
-    backgroundColor: 'white',
-    transform: `translateX(${rem(2.6)})`,
+    backgroundColor: c.colors.toggle.onBall,
+    transform: `translateX(${rem(delta)})`,
   };
   return Object.assign({}, sliderBefore(c), result);
 }

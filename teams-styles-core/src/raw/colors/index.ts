@@ -51,6 +51,13 @@ export interface Colors {
       outline?: string;
     }
   };
+  toggle: {
+    offBg: string;
+    offBall: string;
+    onBg: string;
+    onBall: string;
+    focus: string;
+  };
 }
 
 export function getDefaultThemeColors(): Colors {
@@ -88,6 +95,13 @@ export function getDefaultThemeColors(): Colors {
         text: colors.white,
         outline: colors.brand00DarkTheme,
       },
+    },
+    toggle: {
+      offBg: '#eef1f5',
+      offBall: '#4e586a',
+      onBg: '#7fba00',
+      onBall: colors.white,
+      focus: '#5558af',
     },
   };
 }
@@ -128,6 +142,13 @@ export function getDarkThemeColors(): Colors {
         border: colors.brand04DarkTheme,
       },
     },
+    toggle: {
+      offBg: '#2B2B30',
+      offBall: '#3A3A3F',
+      onBg: '#88BC2B',
+      onBall: colors.white,
+      focus: '#9196E4',
+    },
   };
 }
 
@@ -163,6 +184,13 @@ export function getHighContrastThemeColors(): Colors {
         text: colors.white,
         border: colors.brand04,
       },
+    },
+    toggle: {
+      offBg: '#eef1f5',
+      offBall: '#4e586a',
+      onBg: '#7fba00',
+      onBall: colors.white,
+      focus: '#5558af',
     },
   };
 }
