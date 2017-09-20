@@ -1,3 +1,4 @@
+import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import { getTheme, Theme } from 'teams-styles-core';
 import * as Colors from 'teams-styles-core';
@@ -10,8 +11,8 @@ interface TeamsControlContext {
 }
 
 const staticTypes = {
-  theme: React.PropTypes.object,
-  subscribe: React.PropTypes.func,
+  theme: PropTypes.object,
+  subscribe: PropTypes.func,
 };
 
 export interface TeamsComponentProps {

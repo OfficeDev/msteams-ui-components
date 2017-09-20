@@ -10,50 +10,74 @@ const mountPoint = 'root';
 normalize();
 setupPage(`#${mountPoint}`);
 
-function renderPage(basePx: number, theme: ThemeType) {
-  function onBasePxChange(newBasePx: string) {
-    renderPage(parseInt(newBasePx, 10), theme);
-  }
-
-  function onThemeChange(newTheme: ThemeType) {
-    renderPage(basePx, newTheme);
-  }
-
-  render(
-    <TeamsComponentContext basePx={basePx} theme={theme} >
-      <Panel>
-        <label htmlFor="basePx">1rem = </label>
-        <input
-          id="basePx"
-          style={{width: '40px', textAlign: 'right'}}
-          value={basePx}
-          onChange={(event) => onBasePxChange(event.target.value)} />px
-        <br/>
-        <input
-          type="radio"
-          name="theme"
-          onChange={(event) => onThemeChange(ThemeType.Default)}
-          checked={theme === ThemeType.Default}/>
-        <label>Default </label>
-        <br/>
-        <input
-          type="radio"
-          name="theme"
-          onChange={(event) => onThemeChange(ThemeType.Dark)}
-          checked={theme === ThemeType.Dark}/>
-        <label>Dark </label>
-        <br/>
-        <input
-          type="radio"
-          name="theme"
-          onChange={(event) => onThemeChange(ThemeType.HighContrast)}
-          checked={theme === ThemeType.HighContrast}/>
-        <label>Contrast </label>
-        <ButtonSection />
-      </Panel>
-    </TeamsComponentContext>,
-    document.getElementById(mountPoint)
-  );
+interface GHPagesState {
+  basePx: number;
+  theme: ThemeType;
 }
 
-renderPage(16, ThemeType.Default);
+class GHPages extends React.Component<{}, GHPagesState> {
+  constructor() {
+    super();
+    this.state = {
+      basePx: 16,
+      theme: ThemeType.Default,
+    };
+  }
+
+  onBasePxChange(newBasePx: string) {
+    this.setState({
+      basePx: parseInt(newBasePx, 10),
+      theme: this.state.theme,
+    });
+  }
+
+  onThemeChange(newTheme: ThemeType) {
+    this.setState({
+      basePx: this.state.basePx,
+      theme: newTheme,
+    });
+  }
+
+  render() {
+    const { basePx, theme } = this.state;
+
+    return (
+      <TeamsComponentContext basePx={basePx} theme={theme} >
+        <Panel style={{ width: '100%', height: '100%', padding: '5px 30px' }}>
+          <label htmlFor="basePx">1rem = </label>
+          <input
+            id="basePx"
+            style={{ width: '40px', textAlign: 'right' }}
+            value={basePx}
+            onChange={(event) => this.onBasePxChange(event.target.value)} />px
+        <br />
+          <input
+            type="radio"
+            name="theme"
+            onChange={(event) => this.onThemeChange(ThemeType.Default)}
+            checked={theme === ThemeType.Default} />
+          <label>Default </label>
+          <br />
+          <input
+            type="radio"
+            name="theme"
+            onChange={(event) => this.onThemeChange(ThemeType.Dark)}
+            checked={theme === ThemeType.Dark} />
+          <label>Dark </label>
+          <br />
+          <input
+            type="radio"
+            name="theme"
+            onChange={(event) => this.onThemeChange(ThemeType.HighContrast)}
+            checked={theme === ThemeType.HighContrast} />
+          <label>Contrast </label>
+          <ButtonSection />
+        </Panel>
+      </TeamsComponentContext>
+    );
+  }
+}
+render(
+  <GHPages />,
+  document.getElementById(mountPoint)
+);
