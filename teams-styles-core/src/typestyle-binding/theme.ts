@@ -1,4 +1,4 @@
-import { panel, primaryButton, secondaryButton } from '../index';
+import { panel, primaryButton, secondaryButton, toggles } from '../index';
 import { Colors, getDefaultThemeColors } from '../raw/colors';
 import { getContext } from '../raw/context';
 import { ThemeConfig } from '../raw/theme-config';
@@ -8,6 +8,12 @@ export interface Theme {
   buttons: {
     primary: string;
     secondary: string;
+  };
+  toggles: {
+    label: string;
+    input: string;
+    slider: string;
+    sliderChecked: string;
   };
 }
 
@@ -24,6 +30,12 @@ export function getTheme(config?: ThemeConfig): Theme {
     buttons: {
       primary: primaryButton(context),
       secondary: secondaryButton(context),
+    },
+    toggles: {
+      label: toggles.label(context),
+      input: toggles.input(context),
+      slider: toggles.slider(context),
+      sliderChecked: toggles.sliderChecked(context),
     },
   };
 }
