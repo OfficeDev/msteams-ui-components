@@ -5,6 +5,7 @@ import { Panel, TeamsComponentContext, ThemeType } from 'teams-react-component';
 import { cssRule } from 'typestyle';
 import { ButtonSection } from './button-section';
 import { TogglesSection } from './toggles-section';
+import { CheckboxSection } from './checkbox-section';
 
 const mountPoint = 'root';
 
@@ -73,9 +74,10 @@ class GHPages extends React.Component<{}, GHPagesState> {
             name="theme"
             onChange={(event) => this.onThemeChange(ThemeType.HighContrast)}
             checked={theme === ThemeType.HighContrast} />
-          <label>Contrast </label>
+          <label>High Contrast </label>
           <ButtonSection />
           <TogglesSection />
+          <CheckboxSection />
         </Panel>
       </TeamsComponentContext>
     );

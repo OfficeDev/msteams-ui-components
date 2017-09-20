@@ -16,5 +16,8 @@
     "tslint": "^5.7.0",
     "typescript": "^2.5.2"
   },
-  "types": "./dist"
+  "types": "./dist",
+  "dependencies": {
+    "prop-types": "^15.5.10"
+  }
 }

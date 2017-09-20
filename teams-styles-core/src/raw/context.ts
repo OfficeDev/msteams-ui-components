@@ -8,7 +8,7 @@ export interface Context {
 
 export function getContext(config: ThemeConfig): Context {
   return {
-    rem: (n: number) => `${n * 10 / config.basePx!}rem`,
+    rem: (n: number) => `${n * 10.0 / config.basePx!}rem`,
     colors: config.colors!,
   };
 }

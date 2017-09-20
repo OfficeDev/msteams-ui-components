@@ -1,7 +1,10 @@
-import { panel, primaryButton, secondaryButton, toggles } from '../index';
 import { Colors, getDefaultThemeColors } from '../raw/colors';
 import { getContext } from '../raw/context';
 import { ThemeConfig } from '../raw/theme-config';
+import { primaryButton, secondaryButton } from './buttons';
+import { box, checkboxLabel, checkedBox } from './checkboxes';
+import { panel } from './panels';
+import { toggles } from './toggles';
 
 export interface Theme {
   panel: string;
@@ -14,6 +17,11 @@ export interface Theme {
     input: string;
     slider: string;
     sliderChecked: string;
+  };
+  checkbox: {
+    box: string;
+    checkedBox: string;
+    label: string;
   };
 }
 
@@ -36,6 +44,11 @@ export function getTheme(config?: ThemeConfig): Theme {
       input: toggles.input(context),
       slider: toggles.slider(context),
       sliderChecked: toggles.sliderChecked(context),
+    },
+    checkbox: {
+      box: box(context),
+      checkedBox: checkedBox(context),
+      label: checkboxLabel(context),
     },
   };
 }
