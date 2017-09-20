@@ -9,7 +9,7 @@ export interface PrimaryButtonProps {
 
 const PrimaryButtonView: React.StatelessComponent<PrimaryButtonProps & InjectedTeamsProps> =
   (props) => (
-    <button type="button" className={props.theme.buttons.primary} disabled={props.disabled}>a button</button>
+    <button type="button" className={props.theme.buttons.primary} disabled={props.disabled}>{props.children}</button>
   );
 
 export const PrimaryButton = connectTeamsComponent(PrimaryButtonView);
