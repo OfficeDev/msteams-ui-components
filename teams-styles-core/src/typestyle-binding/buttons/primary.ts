@@ -1,15 +1,15 @@
 import { style } from 'typestyle';
+import { Context } from '../../index';
 import * as primaryRaw from '../../raw/buttons/primary';
-import { Config } from '../../raw/config/index';
 
-export function primary(config: Config) {
-  const result = style(primaryRaw.normal(config), {
+export function primary(c: Context) {
+  const result = style(primaryRaw.normal(c), {
     $nest: {
-      '&:hover': primaryRaw.hover(config),
-      '&:active': primaryRaw.active(config),
-      '&:disabled': primaryRaw.disabled(config),
-      '&:focus': primaryRaw.focus(config),
-      '&:focus:after': primaryRaw.focusAfter(config),
+      '&:hover': primaryRaw.hover(c),
+      '&:active': primaryRaw.active(c),
+      '&:disabled': primaryRaw.disabled(c),
+      '&:focus': primaryRaw.focus(c),
+      '&:focus:after': primaryRaw.focusAfter(c),
     },
   });
   return result;
