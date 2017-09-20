@@ -1,20 +1,14 @@
-import { Colors, getDefaultColors } from './colors/index';
-import { Config } from './config';
+import { Colors, getDefaultThemeColors } from './colors/index';
+import { ThemeConfig } from './theme-config';
 
 export interface Context {
   rem: (n: number) => string;
   colors: Colors;
 }
 
-const defaultConfig: Config = {
-  yourBasePx: 16,
-  colors: getDefaultColors(),
-};
-
-export function getContext(config?: Config): Context {
-  const c = Object.assign({}, defaultConfig, config);
+export function getContext(config: ThemeConfig): Context {
   return {
-    rem: (n: number) => `${n * 10 / c.yourBasePx!}rem`,
-    colors: c.colors!,
+    rem: (n: number) => `${n * 10 / config.basePx!}rem`,
+    colors: config.colors!,
   };
 }

@@ -1,20 +1,20 @@
 import { CSSProperties } from 'react';
 import * as colors from '../colors';
-import { Config } from '../config/index';
+import { Context } from '../context';
 import * as baseButton from './base';
 
-export function normal(config: Config): {} {
+export function normal(context: Context): {} {
   const result: CSSProperties = {
-    ...baseButton.normal(config),
+    ...baseButton.normal(context),
     borderColor: colors.gray06,
     color: colors.black,
   };
   return result;
 }
 
-export function hover(config: Config): {} {
+export function hover(context: Context): {} {
   const result: CSSProperties = {
-    ...baseButton.hover(config),
+    ...baseButton.hover(context),
     backgroundColor: colors.gray06,
     color: colors.black,
     borderColor: 'transparent',
@@ -22,34 +22,34 @@ export function hover(config: Config): {} {
   return result;
 }
 
-export function active(config: Config): {} {
+export function active(context: Context): {} {
   const result: CSSProperties = {
-    ...baseButton.active(config),
+    ...baseButton.active(context),
     backgroundColor: '#858C98',
   };
   return result;
 }
 
-export function disabled(config: Config): {} {
+export function disabled(context: Context): {} {
   return {
-    ...baseButton.disabled(config),
+    ...baseButton.disabled(context),
     backgroundColor: 'transparent',
     color: colors.gray04,
     borderColor: colors.gray12,
   };
 }
 
-export function focus(config: Config): {} {
+export function focus(context: Context): {} {
   return {
-    ...baseButton.focus(config),
+    ...baseButton.focus(context),
     backgroundColor: colors.gray06,
     color: colors.black,
     borderColor: colors.transparent,
   };
 }
 
-export function focusAfter(config: Config): {} {
-  const { rem } = config;
+export function focusAfter(context: Context): {} {
+  const { rem } = context;
   return {
     content: "''",
     position: 'absolute',

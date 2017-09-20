@@ -7,7 +7,7 @@ export function normal(c: Context): {} {
   const result: CSSProperties = {
     ...baseButton.normal(c),
     backgroundColor: c.colors.primaryButton.normalBg,
-    color: c.colors.primaryButton.normal,
+    color: c.colors.primaryButton.textColor,
   };
   return result;
 }

@@ -1,9 +1,8 @@
 import * as React from 'react';
 import { PrimaryButton, SecondaryButton } from 'teams-react-component';
-import { container } from './styles';
 
 export const ButtonSection: React.StatelessComponent = () => (
-  <div className={`${container}`}>
+  <div>
     <h1>Buttons</h1>
     <h2>Primary</h2>
     <PrimaryButton />

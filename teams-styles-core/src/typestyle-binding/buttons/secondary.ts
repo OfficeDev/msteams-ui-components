@@ -1,8 +1,8 @@
 import { style } from 'typestyle';
-import { Context } from '../../index';
 import * as secondaryRaw from '../../raw/buttons/secondary';
+import { Context } from '../../raw/context';
 
-export function secondary(c: Context) {
+export function secondaryButton(c: Context) {
   const result = style(secondaryRaw.normal(c), {
     $nest: {
       '&:hover': secondaryRaw.hover(c),
