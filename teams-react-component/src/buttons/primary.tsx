@@ -1,12 +1,15 @@
 import * as React from 'react';
 import { Theme } from '../../../teams-styles-core/dist/index';
+import { InjectedTeamsProps } from '../index';
 import { connectTeamsComponent } from '../teams-context/teams-component-context';
 
 export interface PrimaryButtonProps {
   disabled?: boolean;
 }
 
-export const PrimaryButton: React.StatelessComponent<PrimaryButtonProps> =
-  connectTeamsComponent((props: any) => (
+const PrimaryButtonView: React.StatelessComponent<PrimaryButtonProps & InjectedTeamsProps> =
+  (props) => (
     <button type="button" className={props.theme.buttons.primary} disabled={props.disabled}>a button</button>
-  ));
+  );
+
+export const PrimaryButton = connectTeamsComponent(PrimaryButtonView);

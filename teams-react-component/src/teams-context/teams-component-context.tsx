@@ -46,7 +46,7 @@ export class TeamsComponentContext extends React.Component<TeamsComponentProps, 
   }
 
   render() {
-    return <div>{this.props.children}</div>;
+    return React.Children.only(this.props.children);
   }
 
   protected getChildContext(): any {
@@ -80,8 +80,15 @@ export class TeamsComponentContext extends React.Component<TeamsComponentProps, 
   }
 }
 
-export function connectTeamsComponent(ChildComp: any): any {
-  class ConnectedTeamsComponent extends React.Component {
+export interface InjectedTeamsProps {
+  theme: Theme;
+}
+
+export function connectTeamsComponent<TChildProps>(
+  ChildComp: React.ComponentClass<TChildProps & InjectedTeamsProps>
+    | React.StatelessComponent<TChildProps & InjectedTeamsProps>
+): React.ComponentClass<TChildProps> {
+  class ConnectedTeamsComponent extends React.Component<TChildProps> {
     static contextTypes = staticTypes;
     private unsubscribe: Unsubscribe;
 
@@ -94,7 +101,16 @@ export function connectTeamsComponent(ChildComp: any): any {
     }
 
     render() {
-      return <ChildComp theme={this.context.theme} {...this.props} />;
+      const theme: {
+        readonly theme: Theme
+      } = {
+          theme: this.context.theme,
+        };
+      const props: Readonly<TChildProps & { theme: Theme }> = {
+        ...theme,
+        ...(this.props as any),
+      };
+      return <ChildComp {...props} />;
     }
   }
   return ConnectedTeamsComponent;

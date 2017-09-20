@@ -1,11 +1,13 @@
 import * as React from 'react';
 import { Theme } from '../../../teams-styles-core/dist/index';
-import { connectTeamsComponent } from '../teams-context';
+import { connectTeamsComponent, InjectedTeamsProps } from '../teams-context';
 
-export const Panel: React.StatelessComponent<any> =
-  connectTeamsComponent((props: any) => {
+const PanelView: React.StatelessComponent<any & InjectedTeamsProps> =
+  (props) => {
     const { theme, ...rest } = props;
     return (
-      <div className={props.theme.panel} {...rest}>{props.children}</div>
+      <div className={theme.panel} {...rest}>{props.children}</div>
     );
-  });
+  };
+
+export const Panel = connectTeamsComponent(PanelView);
