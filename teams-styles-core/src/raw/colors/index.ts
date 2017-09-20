@@ -17,7 +17,7 @@ export interface Colors {
 
 export function getDefaultThemeColors(): Colors {
   return {
-    background: colors.gray10,
+    background: colors.white,
     primaryButton: {
       textColor: colors.white,
       normalBg: colors.brand00,

@@ -4,6 +4,7 @@ import { render } from 'react-dom';
 import { Panel, TeamsComponentContext, ThemeType } from 'teams-react-component';
 import { cssRule } from 'typestyle';
 import { ButtonSection } from './button-section';
+import { TogglesSection } from './toggles-section';
 
 const mountPoint = 'root';
 
@@ -74,6 +75,7 @@ class GHPages extends React.Component<{}, GHPagesState> {
             checked={theme === ThemeType.HighContrast} />
           <label>Contrast </label>
           <ButtonSection />
+          <TogglesSection />
         </Panel>
       </TeamsComponentContext>
     );
