@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { getTheme, Theme } from 'teams-styles-core/dist';
-import * as Colors from '../../../teams-styles-core/dist/raw/colors';
+import { getTheme, Theme } from 'teams-styles-core';
+import * as Colors from 'teams-styles-core';
 import uniqueId from '../utils/uniqueId';
 import { ThemeType } from './theme-type';
 
