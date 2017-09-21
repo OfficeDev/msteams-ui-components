@@ -16,7 +16,7 @@ export interface CheckboxGroupState {
 
 export class CheckboxGroup extends React.Component<CheckboxGroupProps, CheckboxGroupState> {
   static childContextTypes = {
-    onChange: PropTypes.func,
+    onChecked: PropTypes.func,
     values: PropTypes.array,
   };
 
@@ -51,7 +51,7 @@ export class CheckboxGroup extends React.Component<CheckboxGroupProps, CheckboxG
 
   protected getChildContext() {
     return {
-      onChange: this.props.onChange ? this.handleChange : null,
+      onChecked: this.props.onChange ? this.handleChange : null,
       values: this.props.values,
     };
   }

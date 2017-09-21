@@ -5,19 +5,9 @@ import * as Colors from 'teams-styles-core';
 import uniqueId from '../utils/uniqueId';
 import { ThemeType } from './theme-type';
 
-interface TeamsControlContext {
-  subscribe: (notify: Notify) => Unsubscribe;
-  theme: Theme;
-}
-
-const staticTypes = {
-  theme: PropTypes.object,
-  subscribe: PropTypes.func,
-};
-
 export interface TeamsComponentProps {
   theme: ThemeType;
-  basePx: number;
+  fontSize: number;
 }
 
 interface Notify {
@@ -28,7 +18,17 @@ interface Unsubscribe {
   (): void;
 }
 
-export class TeamsComponentContext extends React.Component<TeamsComponentProps, {}> {
+interface TeamsControlContext {
+  subscribe: (notify: Notify) => Unsubscribe;
+  theme: Theme;
+}
+
+const staticTypes = {
+  theme: PropTypes.object,
+  subscribe: PropTypes.func,
+};
+
+export class TeamsComponentContext extends React.Component<TeamsComponentProps> {
   static childContextTypes = staticTypes;
 
   private subscribers: { [id: string]: Notify };
@@ -40,7 +40,7 @@ export class TeamsComponentContext extends React.Component<TeamsComponentProps, 
   }
 
   componentWillReceiveProps(nextProps: TeamsComponentProps) {
-    if (nextProps.basePx !== this.props.basePx || nextProps.theme !== this.props.theme) {
+    if (nextProps.fontSize !== this.props.fontSize || nextProps.theme !== this.props.theme) {
       Object.keys(this.subscribers).forEach((key) => this.subscribers[key]());
     }
   }
@@ -64,11 +64,8 @@ export class TeamsComponentContext extends React.Component<TeamsComponentProps, 
     }
 
     const context: TeamsControlContext = {
-      subscribe: this.subscribe.bind(this),
-      theme: getTheme({
-        basePx: this.props.basePx,
-        colors,
-      }),
+      subscribe: this.subscribe,
+      theme: getTheme({basePx: this.props.fontSize, colors}),
     };
     return context;
   }
@@ -81,7 +78,7 @@ export class TeamsComponentContext extends React.Component<TeamsComponentProps, 
 }
 
 export interface InjectedTeamsProps {
-  theme: Theme;
+  readonly theme: Theme;
 }
 
 export function connectTeamsComponent<TChildProps>(
@@ -101,14 +98,9 @@ export function connectTeamsComponent<TChildProps>(
     }
 
     render() {
-      const theme: {
-        readonly theme: Theme
-      } = {
-          theme: this.context.theme,
-        };
-      const props: Readonly<TChildProps & { theme: Theme }> = {
-        ...theme,
-        ...(this.props as any),
+      const props: Readonly<TChildProps> & Readonly<InjectedTeamsProps> = {
+        ...this.props as any,
+        theme: this.context.theme,
       };
       return <ChildComp {...props} />;
     }
