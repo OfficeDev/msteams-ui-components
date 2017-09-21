@@ -17,17 +17,10 @@ const ToggleInternal: React.StatelessComponent<ToggleProps & InjectedTeamsProps>
   return (
     <label
       className={toggle.label}
-      onClick={onToggle}
-
     >
       <input type="checkbox" className={toggle.input} />
-      <span
-        onKeyDown={(e) => {
-          if (e.key === 'Enter' || e.key === ' ') {
-            onToggle(e);
-          }
-        }}
-        tabIndex={0}
+      <button
+        onClick={onToggle}
         className={sliderClass}
       />
     </label>
