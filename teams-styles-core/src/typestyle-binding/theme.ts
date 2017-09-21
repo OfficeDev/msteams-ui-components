@@ -1,6 +1,7 @@
 import { Colors, getDefaultThemeColors } from '../raw/colors';
 import { getContext } from '../raw/context';
 import { ThemeConfig } from '../raw/theme-config';
+import { anchor } from './anchor';
 import { primaryButton, secondaryButton } from './buttons';
 import { checked, label as checkboxLabel, unchecked } from './checkboxes';
 import { panel } from './panels';
@@ -23,6 +24,7 @@ export interface Theme {
     unchecked: string;
     label: string;
   };
+  anchor: string;
 }
 
 const defaultConfig: ThemeConfig = {
@@ -50,5 +52,6 @@ export function getTheme(config?: ThemeConfig): Theme {
       unchecked: unchecked(context),
       label: checkboxLabel(context),
     },
+    anchor: anchor(context),
   };
 }

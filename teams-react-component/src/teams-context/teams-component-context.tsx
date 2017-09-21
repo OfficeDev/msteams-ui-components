@@ -8,6 +8,7 @@ import { ThemeType } from './theme-type';
 export interface TeamsComponentProps {
   theme: ThemeType;
   fontSize: number;
+  children: React.ReactChild;
 }
 
 interface Notify {
@@ -30,6 +31,9 @@ const staticTypes = {
 
 export class TeamsComponentContext extends React.Component<TeamsComponentProps> {
   static childContextTypes = staticTypes;
+  static propTypes = {
+    children: PropTypes.element.isRequired,
+  };
 
   private subscribers: { [id: string]: Notify };
 
@@ -65,7 +69,7 @@ export class TeamsComponentContext extends React.Component<TeamsComponentProps> 
 
     const context: TeamsControlContext = {
       subscribe: this.subscribe,
-      theme: getTheme({basePx: this.props.fontSize, colors}),
+      theme: getTheme({ basePx: this.props.fontSize, colors }),
     };
     return context;
   }
