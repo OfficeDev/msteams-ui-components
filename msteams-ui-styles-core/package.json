@@ -1,12 +1,19 @@
 {
-  "name": "teams-styles-core",
+  "name": "msteams-ui-styles-core",
   "version": "0.0.1",
   "main": "./dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OfficeDev/MicrosoftTeamsWebStyling.git"
+  },
+  "bugs": {
+    "url": "https://github.com/OfficeDev/MicrosoftTeamsWebStyling/issues"
+  },
   "scripts": {
     "build": "gulp",
     "build:watch": "gulp watch"
   },
-  "author": "TFM (Team Flying Monkeys)",
+  "author": "Microsoft Corporation",
   "license": "MIT",
   "devDependencies": {
     "@types/react": "^16.0.5",
