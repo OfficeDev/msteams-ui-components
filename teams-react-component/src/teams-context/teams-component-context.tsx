@@ -65,7 +65,7 @@ export class TeamsComponentContext extends React.Component<TeamsComponentProps> 
 
     const context: TeamsControlContext = {
       subscribe: this.subscribe,
-      theme: getTheme({basePx: this.props.fontSize, colors}),
+      theme: getTheme({ basePx: this.props.fontSize, colors }),
     };
     return context;
   }

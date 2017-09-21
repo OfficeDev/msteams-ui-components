@@ -5,6 +5,7 @@ import { Panel, TeamsComponentContext, ThemeType } from 'teams-react-component';
 import { cssRule } from 'typestyle';
 import { ButtonSection } from './button-section';
 import { CheckboxSection } from './checkbox-section';
+import { InputSection } from './input-section';
 import { TogglesSection } from './toggles-section';
 
 const mountPoint = 'root';
@@ -64,6 +65,7 @@ class GHPages extends React.Component<{}, GHPagesState> {
           <ButtonSection />
           <TogglesSection />
           <CheckboxSection />
+          <InputSection />
         </Panel>
       </TeamsComponentContext>
     );
