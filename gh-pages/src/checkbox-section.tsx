@@ -65,7 +65,7 @@ export class CheckboxSection extends React.Component<{}, CheckboxSectionState> {
       },
       group: {
         checkboxGroup: {
-          values: undefined,
+          values: [],
           onChecked: (values: any[]) => {
             const checkboxGroup = { ...this.state.group.checkboxGroup, values };
             const group = { ...this.state.group, checkboxGroup };

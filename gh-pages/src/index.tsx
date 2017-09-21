@@ -1,5 +1,6 @@
 import { normalize, setupPage } from 'csstips';
 import { Panel, TeamsComponentContext, ThemeType } from 'msteams-ui-components-react';
+import { Radiobutton, RadiobuttonGroup } from 'msteams-ui-components-react';
 import * as React from 'react';
 import { render } from 'react-dom';
 import { cssRule } from 'typestyle';
@@ -7,6 +8,7 @@ import { ButtonSection } from './button-section';
 import { CheckboxSection } from './checkbox-section';
 import { InputSection } from './input-section';
 import { LinkSection } from './link-section';
+import { RadiobuttonSection } from './radiobutton-section';
 import { TogglesSection } from './toggles-section';
 
 const mountPoint = 'root';
@@ -22,6 +24,8 @@ interface GHPagesState {
 class GHPages extends React.Component<{}, GHPagesState> {
   constructor() {
     super();
+    this.onThemeChange = this.onThemeChange.bind(this);
+    this.onFontSizeChange = this.onFontSizeChange.bind(this);
     this.state = {
       fontSize: this.pageFontSize(),
       theme: ThemeType.Default,
@@ -41,39 +45,25 @@ class GHPages extends React.Component<{}, GHPagesState> {
             min="1"
             max="50"
             value={fontSize}
-            onChange={(event) => this.onBasePxChange(event.target.value)} /> {fontSize}px
+            onChange={(event) => this.onFontSizeChange(event.target.value)} /> {fontSize}px
         <br />
-          <input
-            type="radio"
-            name="theme"
-            onChange={(event) => this.onThemeChange(ThemeType.Default)}
-            checked={theme === ThemeType.Default} />
-          <label>Default </label>
-          <br />
-          <input
-            type="radio"
-            name="theme"
-            onChange={(event) => this.onThemeChange(ThemeType.Dark)}
-            checked={theme === ThemeType.Dark} />
-          <label>Dark </label>
-          <br />
-          <input
-            type="radio"
-            name="theme"
-            onChange={(event) => this.onThemeChange(ThemeType.HighContrast)}
-            checked={theme === ThemeType.HighContrast} />
-          <label>High Contrast </label>
+          <RadiobuttonGroup onSelected={this.onThemeChange} value={theme}>
+            <Radiobutton label="Default" value={ThemeType.Default} />
+            <Radiobutton label="Dark" value={ThemeType.Dark} />
+            <Radiobutton label="High Contrast" value={ThemeType.HighContrast} />
+          </RadiobuttonGroup>
           <ButtonSection />
           <TogglesSection />
           <CheckboxSection />
           <LinkSection />
           <InputSection />
+          <RadiobuttonSection />
         </Panel>
       </TeamsComponentContext>
     );
   }
 
-  private onBasePxChange(newFontSize: string) {
+  private onFontSizeChange(newFontSize: string) {
     this.setState({
       fontSize: parseInt(newFontSize, 10),
       theme: this.state.theme,

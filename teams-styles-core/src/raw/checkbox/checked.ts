@@ -25,13 +25,13 @@ export function hover(c: Context): {} {
   };
 }
 
-export function after(c: Context): {} {
+export function before(c: Context): {} {
   return {
     content: '"✓"',
     color: c.colors.checkbox.normal.text,
     position: 'absolute',
-    fontSize: c.rem(1.4),
+    fontSize: c.rem(1.8),
     top: `-${c.rem(0.1)}`,
-    left: c.rem(0.2),
+    left: c.rem(0.1),
   };
 }
