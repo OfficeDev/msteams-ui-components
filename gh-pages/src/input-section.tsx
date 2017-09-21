@@ -1,5 +1,5 @@
+import { Input } from 'msteams-ui-components-react';
 import * as React from 'react';
-import { Input } from 'teams-react-component';
 
 export const InputSection: React.StatelessComponent = () => (
   <div>

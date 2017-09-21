@@ -1,7 +1,7 @@
 import { normalize, setupPage } from 'csstips';
+import { Panel, TeamsComponentContext, ThemeType } from 'msteams-ui-components-react';
 import * as React from 'react';
 import { render } from 'react-dom';
-import { Panel, TeamsComponentContext, ThemeType } from 'teams-react-component';
 import { cssRule } from 'typestyle';
 import { ButtonSection } from './button-section';
 import { CheckboxSection } from './checkbox-section';

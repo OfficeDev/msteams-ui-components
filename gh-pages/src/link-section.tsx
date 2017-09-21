@@ -1,5 +1,5 @@
+import { Anchor } from 'msteams-ui-components-react';
 import * as React from 'react';
-import { Anchor } from 'teams-react-component';
 
 export const LinkSection: React.StatelessComponent = () => (
   <div>

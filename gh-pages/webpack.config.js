@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const webpack = require('webpack');
 
-module.exports = {
+const defaultConfig = {
   entry: './src/index.tsx',
   output: {
     filename: 'bundle.[hash].js',
@@ -13,7 +13,8 @@ module.exports = {
     rules: [
       {
         test: /\.tsx?$/,
-        use: ['ts-loader'],
+        use: ['babel-loader', 'ts-loader'],
+        exclude: /node_moduels/,
       }
     ],
   },
@@ -33,4 +34,12 @@ module.exports = {
     hot: true,
     port: 3000,
   },
+};
+
+module.exports = function (env) {
+  env = env || {};
+  const isProd = !!env.prod;
+  return Object.assign({}, defaultConfig, {
+    devtool: isProd ? 'source-map' : 'inline-source-map',
+  });
 };

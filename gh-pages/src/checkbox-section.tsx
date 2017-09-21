@@ -1,5 +1,5 @@
+import { Checkbox, CheckboxGroup } from 'msteams-ui-components-react';
 import * as React from 'react';
-import { Checkbox, CheckboxGroup } from 'teams-react-component';
 
 export interface CheckboxSectionState {
   alone: {
@@ -7,19 +7,19 @@ export interface CheckboxSectionState {
       value: any;
       label: string;
       checked: boolean;
-      onChecked: {(checked: boolean, value: any): void};
+      onChecked: { (checked: boolean, value: any): void };
     };
     checkbox2: {
       value: any;
       label: string;
       checked: boolean;
-      onChecked: {(checked: boolean, value: any): void};
+      onChecked: { (checked: boolean, value: any): void };
     };
   };
   group: {
     checkboxGroup: {
-      values: any[]|undefined;
-      onChecked: {(values: any[]): void};
+      values: any[] | undefined;
+      onChecked: { (values: any[]): void };
     };
     checkbox1: {
       value: any;
@@ -45,9 +45,9 @@ export class CheckboxSection extends React.Component<{}, CheckboxSectionState> {
           label: 'Checkbox 1',
           checked: false,
           onChecked: (checked: boolean, value: any) => {
-            const checkbox1 = {...this.state.alone.checkbox1, checked};
-            const alone = {...this.state.alone, checkbox1};
-            const state = {...this.state, alone};
+            const checkbox1 = { ...this.state.alone.checkbox1, checked };
+            const alone = { ...this.state.alone, checkbox1 };
+            const state = { ...this.state, alone };
             this.setState(state);
           },
         },
@@ -56,9 +56,9 @@ export class CheckboxSection extends React.Component<{}, CheckboxSectionState> {
           label: 'Checkbox 2',
           checked: false,
           onChecked: (checked: boolean, value: any) => {
-            const checkbox2 = {...this.state.alone.checkbox2, checked};
-            const alone = {...this.state.alone, checkbox2};
-            const state = {...this.state, alone};
+            const checkbox2 = { ...this.state.alone.checkbox2, checked };
+            const alone = { ...this.state.alone, checkbox2 };
+            const state = { ...this.state, alone };
             this.setState(state);
           },
         },
@@ -67,9 +67,9 @@ export class CheckboxSection extends React.Component<{}, CheckboxSectionState> {
         checkboxGroup: {
           values: undefined,
           onChecked: (values: any[]) => {
-            const checkboxGroup = {...this.state.group.checkboxGroup, values};
-            const group = {...this.state.group, checkboxGroup};
-            const state = {...this.state, group};
+            const checkboxGroup = { ...this.state.group.checkboxGroup, values };
+            const group = { ...this.state.group, checkboxGroup };
+            const state = { ...this.state, group };
             this.setState(state);
           },
         },

@@ -2,21 +2,25 @@
   "name": "gh-pages",
   "version": "0.0.1",
   "scripts": {
-    "dev": "linklocal -r && webpack-dev-server"
+    "dev": "linklocal -r && webpack-dev-server",
+    "build": "webpack --env.prod -p"
   },
   "author": "TFM (Team Flying Monkeys)",
   "license": "MIT",
   "dependencies": {
     "csstips": "^0.2.2",
     "csx": "^8.5.0",
+    "msteams-ui-components-react": "file:../msteams-ui-components-react",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
-    "teams-react-component": "file:../teams-react-component",
     "typestyle": "^1.4.1"
   },
   "devDependencies": {
     "@types/react": "^16.0.5",
     "@types/react-dom": "^15.5.4",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.0",
     "clean-webpack-plugin": "^0.1.16",
     "html-webpack-plugin": "^2.30.1",
     "linklocal": "^2.8.1",
