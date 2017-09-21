@@ -32,6 +32,6 @@ export function before(c: Context): {} {
     position: 'absolute',
     fontSize: c.rem(1.8),
     top: `-${c.rem(0.1)}`,
-    left: c.rem(0.2),
+    left: c.rem(0.1),
   };
 }

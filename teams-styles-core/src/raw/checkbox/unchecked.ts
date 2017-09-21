@@ -14,7 +14,7 @@ export function normal(c: Context): {} {
     width: c.rem(2),
     height: c.rem(2),
     margin: c.rem(0.6),
-    border: `${c.rem(0.1)} solid`,
+    border: `${c.rem(0.2)} solid`,
     borderColor: c.colors.checkbox.normal.border,
     backgroundColor: c.colors.checkbox.normal.background,
   };
