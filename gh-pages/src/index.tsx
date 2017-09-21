@@ -86,7 +86,7 @@ class GHPages extends React.Component<{}, GHPagesState> {
   }
 
   private pageFontSize(): number {
-    let fontSize = window.getComputedStyle(document.body).getPropertyValue('font-size');
+    let fontSize = window.getComputedStyle(document.getElementsByTagName('html')[0]).getPropertyValue('font-size');
     fontSize = fontSize.replace('px', '');
     let size = parseInt(fontSize, 10);
     if (!size) {
