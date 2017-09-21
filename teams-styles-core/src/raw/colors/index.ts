@@ -51,6 +51,44 @@ export interface Colors {
       outline?: string;
     }
   };
+  radiobutton: {
+    normal: {
+      text: string;
+      background: string;
+      border: string;
+      outline: string;
+    },
+    selected?: {
+      text?: string;
+      background?: string;
+      border?: string;
+      outline?: string;
+    },
+    active?: {
+      text?: string;
+      background?: string;
+      border?: string;
+      outline?: string;
+    },
+    hover?: {
+      text?: string;
+      background?: string;
+      border?: string;
+      outline?: string;
+    },
+    disabled?: {
+      text?: string;
+      background?: string;
+      border?: string;
+      outline?: string;
+    }
+    focus?: {
+      text?: string;
+      background?: string;
+      border?: string;
+      outline?: string;
+    }
+  };
   toggle: {
     offBg: string;
     offBall: string;
@@ -89,6 +127,29 @@ export function getDefaultThemeColors(): Colors {
         outline: colors.transparent,
       },
       checked: {
+        background: colors.brand00,
+        border: colors.transparent,
+      },
+      hover: {
+        background: colors.gray12,
+      },
+      disabled: {
+        text: colors.gray04,
+        background: colors.gray10,
+      },
+      focus: {
+        text: colors.white,
+        outline: colors.brand00DarkTheme,
+      },
+    },
+    radiobutton: {
+      normal: {
+        text: colors.white,
+        background: colors.white,
+        border: colors.gray03,
+        outline: colors.transparent,
+      },
+      selected: {
         background: colors.brand00,
         border: colors.transparent,
       },
@@ -158,6 +219,29 @@ export function getDarkThemeColors(): Colors {
         border: colors.brand04DarkTheme,
       },
     },
+    radiobutton: {
+      normal: {
+        text: colors.black,
+        background: colors.black,
+        border: colors.gray03DarkTheme,
+        outline: colors.transparent,
+      },
+      selected: {
+        background: colors.brand00DarkTheme,
+        border: colors.transparent,
+      },
+      hover: {
+        background: colors.gray08DarkTheme,
+      },
+      disabled: {
+        text: colors.gray04DarkTheme,
+        background: colors.gray10DarkTheme,
+      },
+      focus: {
+        text: colors.black,
+        border: colors.brand04DarkTheme,
+      },
+    },
     toggle: {
       offBg: '#2B2B30',
       offBall: '#3A3A3F',
@@ -207,6 +291,29 @@ export function getHighContrastThemeColors(): Colors {
       focus: {
         text: colors.white,
         border: colors.brand04,
+      },
+    },
+    radiobutton: {
+      normal: {
+        text: colors.white,
+        background: colors.white,
+        border: colors.gray03,
+        outline: colors.transparent,
+      },
+      selected: {
+        background: colors.brand00,
+        border: colors.transparent,
+      },
+      hover: {
+        background: colors.gray12,
+      },
+      disabled: {
+        text: colors.gray04,
+        background: colors.gray10,
+      },
+      focus: {
+        text: colors.white,
+        outline: colors.brand00DarkTheme,
       },
     },
     toggle: {

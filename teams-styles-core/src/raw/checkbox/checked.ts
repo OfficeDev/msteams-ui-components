@@ -25,7 +25,7 @@ export function hover(c: Context): {} {
   };
 }
 
-export function after(c: Context): {} {
+export function before(c: Context): {} {
   return {
     content: '"✓"',
     color: c.colors.checkbox.normal.text,

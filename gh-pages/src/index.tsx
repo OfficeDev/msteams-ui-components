@@ -6,6 +6,7 @@ import { cssRule } from 'typestyle';
 import { ButtonSection } from './button-section';
 import { CheckboxSection } from './checkbox-section';
 import { LinkSection } from './link-section';
+import { RadiobuttonSection } from './radiobutton-section';
 import { TogglesSection } from './toggles-section';
 
 const mountPoint = 'root';
@@ -66,6 +67,7 @@ class GHPages extends React.Component<{}, GHPagesState> {
           <TogglesSection />
           <CheckboxSection />
           <LinkSection />
+          <RadiobuttonSection />
         </Panel>
       </TeamsComponentContext>
     );
