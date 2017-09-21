@@ -10,8 +10,8 @@
     "url": "https://github.com/OfficeDev/MicrosoftTeamsWebStyling/issues"
   },
   "scripts": {
-    "build": "gulp",
-    "build:watch": "gulp watch"
+    "build": "linklocal && gulp",
+    "build:watch": "linklocal && gulp watch"
   },
   "author": {
     "name": "Microsoft Corporation"
@@ -26,10 +26,11 @@
     "gulp-babel": "^7.0.0",
     "gulp-filter": "^5.0.1",
     "gulp-typescript": "^3.2.2",
+    "linklocal": "^2.8.1",
     "react": "^15.6.1",
-    "teams-styles-core": "file:../teams-styles-core",
     "tslint": "^5.7.0",
     "typescript": "^2.5.2",
+    "teams-styles-core": "file:../teams-styles-core",
     "typestyle": "^1.4.1"
   },
   "types": "./dist",
