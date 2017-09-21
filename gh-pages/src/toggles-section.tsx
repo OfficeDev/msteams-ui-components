@@ -1,5 +1,5 @@
+import { Toggle } from 'msteams-ui-components-react';
 import * as React from 'react';
-import { Toggle } from 'teams-react-component';
 
 interface TogglesSectionState {
   checked: boolean;

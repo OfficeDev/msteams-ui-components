@@ -1,5 +1,5 @@
+import { PrimaryButton, SecondaryButton } from 'msteams-ui-components-react';
 import * as React from 'react';
-import { PrimaryButton, SecondaryButton } from 'teams-react-component';
 
 export const ButtonSection: React.StatelessComponent = () => (
   <div>

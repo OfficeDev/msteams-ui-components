@@ -1,5 +1,5 @@
+import { Radiobutton, RadiobuttonGroup } from 'msteams-ui-components-react';
 import * as React from 'react';
-import { Radiobutton, RadiobuttonGroup } from 'teams-react-component';
 
 export interface RadiobuttonSectionState {
   alone: {
@@ -7,19 +7,19 @@ export interface RadiobuttonSectionState {
       value: any;
       label: string;
       selected: boolean;
-      onSelected: {(selected: boolean, value: any): void};
+      onSelected: { (selected: boolean, value: any): void };
     };
     radiobutton2: {
       value: any;
       label: string;
       selected: boolean;
-      onSelected: {(selected: boolean, value: any): void};
+      onSelected: { (selected: boolean, value: any): void };
     };
   };
   group: {
     radiobuttonGroup: {
-      value: any|undefined;
-      onSelected: {(value: any): void};
+      value: any | undefined;
+      onSelected: { (value: any): void };
     };
     radiobutton1: {
       value: any;
@@ -45,9 +45,9 @@ export class RadiobuttonSection extends React.Component<{}, RadiobuttonSectionSt
           label: 'Radiobutton 1',
           selected: false,
           onSelected: (selected: boolean, value: any) => {
-            const radiobutton1 = {...this.state.alone.radiobutton1, selected};
-            const alone = {...this.state.alone, radiobutton1};
-            const state = {...this.state, alone};
+            const radiobutton1 = { ...this.state.alone.radiobutton1, selected };
+            const alone = { ...this.state.alone, radiobutton1 };
+            const state = { ...this.state, alone };
             this.setState(state);
           },
         },
@@ -56,9 +56,9 @@ export class RadiobuttonSection extends React.Component<{}, RadiobuttonSectionSt
           label: 'Radiobutton 2',
           selected: false,
           onSelected: (selected: boolean, value: any) => {
-            const radiobutton2 = {...this.state.alone.radiobutton2, selected};
-            const alone = {...this.state.alone, radiobutton2};
-            const state = {...this.state, alone};
+            const radiobutton2 = { ...this.state.alone.radiobutton2, selected };
+            const alone = { ...this.state.alone, radiobutton2 };
+            const state = { ...this.state, alone };
             this.setState(state);
           },
         },
@@ -67,9 +67,9 @@ export class RadiobuttonSection extends React.Component<{}, RadiobuttonSectionSt
         radiobuttonGroup: {
           value: 1,
           onSelected: (value: any) => {
-            const radiobuttonGroup = {...this.state.group.radiobuttonGroup, value};
-            const group = {...this.state.group, radiobuttonGroup};
-            const state = {...this.state, group};
+            const radiobuttonGroup = { ...this.state.group.radiobuttonGroup, value };
+            const group = { ...this.state.group, radiobuttonGroup };
+            const state = { ...this.state, group };
             this.setState(state);
           },
         },

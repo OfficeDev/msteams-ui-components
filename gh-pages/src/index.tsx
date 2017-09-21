@@ -1,11 +1,12 @@
 import { normalize, setupPage } from 'csstips';
+import { Panel, TeamsComponentContext, ThemeType } from 'msteams-ui-components-react';
+import { Radiobutton, RadiobuttonGroup } from 'msteams-ui-components-react';
 import * as React from 'react';
 import { render } from 'react-dom';
-import { Panel, TeamsComponentContext, ThemeType } from 'teams-react-component';
-import { Radiobutton, RadiobuttonGroup } from 'teams-react-component';
 import { cssRule } from 'typestyle';
 import { ButtonSection } from './button-section';
 import { CheckboxSection } from './checkbox-section';
+import { InputSection } from './input-section';
 import { LinkSection } from './link-section';
 import { RadiobuttonSection } from './radiobutton-section';
 import { TogglesSection } from './toggles-section';
@@ -47,14 +48,15 @@ class GHPages extends React.Component<{}, GHPagesState> {
             onChange={(event) => this.onFontSizeChange(event.target.value)} /> {fontSize}px
         <br />
           <RadiobuttonGroup onSelected={this.onThemeChange} value={theme}>
-            <Radiobutton label="Default" value={ThemeType.Default}/>
-            <Radiobutton label="Dark" value={ThemeType.Dark}/>
-            <Radiobutton label="High Contrast" value={ThemeType.HighContrast}/>
+            <Radiobutton label="Default" value={ThemeType.Default} />
+            <Radiobutton label="Dark" value={ThemeType.Dark} />
+            <Radiobutton label="High Contrast" value={ThemeType.HighContrast} />
           </RadiobuttonGroup>
           <ButtonSection />
           <TogglesSection />
           <CheckboxSection />
           <LinkSection />
+          <InputSection />
           <RadiobuttonSection />
         </Panel>
       </TeamsComponentContext>

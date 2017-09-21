@@ -3,19 +3,24 @@
   "version": "0.0.1",
   "main": "./dist/index.js",
   "scripts": {
-    "build": "tsc",
-    "build:watch": "tsc -w"
+    "build": "gulp",
+    "build:watch": "gulp watch"
   },
   "author": "TFM (Team Flying Monkeys)",
   "license": "MIT",
   "devDependencies": {
     "@types/react": "^16.0.5",
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.0",
+    "csx": "^8.5.0",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^7.0.0",
+    "gulp-filter": "^5.0.1",
+    "gulp-typescript": "^3.2.2",
     "tslint": "^5.7.0",
-    "typescript": "^2.5.2"
+    "typescript": "^2.5.2",
+    "typestyle": "^1.4.1"
   },
   "types": "./dist",
-  "dependencies": {
-    "csx": "^8.5.0",
-    "typestyle": "^1.4.1"
-  }
+  "dependencies": {}
 }
