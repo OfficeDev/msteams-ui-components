@@ -1,12 +1,21 @@
 {
-  "name": "msteams-react-ui-components",
+  "name": "msteams-ui-components-react",
   "version": "0.1.0",
   "main": "./dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OfficeDev/MicrosoftTeamsWebStyling.git"
+  },
+  "bugs": {
+    "url": "https://github.com/OfficeDev/MicrosoftTeamsWebStyling/issues"
+  },
   "scripts": {
     "build": "tsc",
     "build:watch": "tsc -w"
   },
-  "author": "TFM (Team Flying Monkeys)",
+  "author": {
+    "name": "Microsoft Corporation"
+  },
   "license": "MIT",
   "devDependencies": {
     "@types/prop-types": "^15.5.1",
