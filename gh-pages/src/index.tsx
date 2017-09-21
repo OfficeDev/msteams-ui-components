@@ -5,6 +5,7 @@ import { Panel, TeamsComponentContext, ThemeType } from 'teams-react-component';
 import { cssRule } from 'typestyle';
 import { ButtonSection } from './button-section';
 import { CheckboxSection } from './checkbox-section';
+import { LinkSection } from './link-section';
 import { TogglesSection } from './toggles-section';
 
 const mountPoint = 'root';
@@ -31,7 +32,7 @@ class GHPages extends React.Component<{}, GHPagesState> {
 
     return (
       <TeamsComponentContext fontSize={fontSize} theme={theme} >
-        <Panel style={{ width: '100%', height: '100%', padding: '5px 30px' }}>
+        <Panel style={{ minHeight: '100%', padding: '5px 30px 30px 50px', margin: '0' }}>
           <label htmlFor="baseFontSize">1rem = </label>
           <input
             id="baseFontSize"
@@ -64,6 +65,7 @@ class GHPages extends React.Component<{}, GHPagesState> {
           <ButtonSection />
           <TogglesSection />
           <CheckboxSection />
+          <LinkSection />
         </Panel>
       </TeamsComponentContext>
     );
