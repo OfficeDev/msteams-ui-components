@@ -3,64 +3,35 @@ import * as colors from '../colors';
 import { Context } from '../context';
 
 export function normal(c: Context): {} {
+  if (!c.colors.checkbox.checked) {
+    return {};
+  }
+
   return {
-    position: 'relative',
-    ['-webkit-user-select']: 'none',
-    ['-moz-user-select']: 'none',
-    ['-ms-user-select']: 'none',
-    userSelect: 'none',
-    display: 'inline-block',
-    cursor: 'pointer',
-    width: c.rem(1.6),
-    height: c.rem(1.6),
-    margin: c.rem(1.6),
-    border: `${c.rem(0.1)} solid`,
-    borderColor: c.colors.checkbox.normal.border,
-    backgroundColor: c.colors.checkbox.normal.background,
+    borderColor: c.colors.checkbox.checked.border,
+    backgroundColor: c.colors.checkbox.checked.background,
+    outline: c.colors.checkbox.checked.outline,
   };
 }
 
 export function hover(c: Context): {} {
-  if (!c.colors.checkbox.hover) {
+  if (!c.colors.checkbox.checked) {
     return {};
   }
 
   return {
-    backgroundColor: c.colors.checkbox.hover.background,
-    borderColor: c.colors.checkbox.hover.border,
+    borderColor: c.colors.checkbox.checked.border,
+    backgroundColor: c.colors.checkbox.checked.background,
   };
 }
 
-export function active(c: Context): {} {
-  if (!c.colors.checkbox.active) {
-    return {};
-  }
-
+export function after(c: Context): {} {
   return {
-    backgroundColor: c.colors.checkbox.active.background,
-    borderColor: c.colors.checkbox.active.border,
-  };
-}
-
-export function disabled(c: Context): {} {
-  if (!c.colors.checkbox.disabled) {
-    return {};
-  }
-
-  return {
-    backgroundColor: c.colors.checkbox.disabled.background,
-    borderColor: c.colors.checkbox.disabled.border,
-  };
-}
-
-export function focus(c: Context): {} {
-  if (!c.colors.checkbox.focus) {
-    return {};
-  }
-
-  return {
-    backgroundColor: c.colors.checkbox.focus.background,
-    borderColor: c.colors.checkbox.focus.border,
-    outline: `${c.rem(0.2)} solid ${c.colors.checkbox.focus.outline}`,
+    content: '"✓"',
+    color: c.colors.checkbox.normal.text,
+    position: 'absolute',
+    fontSize: c.rem(1.4),
+    top: `-${c.rem(0.1)}`,
+    left: c.rem(0.2),
   };
 }

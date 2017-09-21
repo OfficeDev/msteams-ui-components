@@ -53,6 +53,7 @@ class CheckboxInner extends React.Component<CheckboxProps & InjectedTeamsProps, 
     }
 
     const divProps = {...this.props};
+    delete divProps.theme;
     delete divProps.onChecked;
     delete divProps.value;
     delete divProps.checked;
@@ -92,4 +93,4 @@ class CheckboxInner extends React.Component<CheckboxProps & InjectedTeamsProps, 
   }
 }
 
-export const Checkbox = connectTeamsComponent<CheckboxProps>(CheckboxInner);
+export const Checkbox = connectTeamsComponent(CheckboxInner);
