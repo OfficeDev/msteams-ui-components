@@ -18,9 +18,8 @@ export interface CheckboxSectionState {
   };
   group: {
     checkboxGroup: {
-      legend: string;
-      values: any[];
-      onChange: {(values: any[]): void};
+      values: any[]|undefined;
+      onChecked: {(values: any[]): void};
     };
     checkbox1: {
       value: any;
@@ -66,9 +65,8 @@ export class CheckboxSection extends React.Component<{}, CheckboxSectionState> {
       },
       group: {
         checkboxGroup: {
-          legend: 'Group',
-          values: [],
-          onChange: (values: any[]) => {
+          values: undefined,
+          onChecked: (values: any[]) => {
             const checkboxGroup = {...this.state.group.checkboxGroup, values};
             const group = {...this.state.group, checkboxGroup};
             const state = {...this.state, group};
