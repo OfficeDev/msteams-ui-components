@@ -10,7 +10,7 @@ export function normal(c: Context): {} {
   return {
     borderColor: c.colors.radiobutton.selected.border,
     backgroundColor: c.colors.radiobutton.selected.background,
-    boxShadow: `0 0 0 ${c.rem(0.2)} ${c.colors.radiobutton.selected.outline}`,
+    boxShadow: `0 0 0 ${c.rem(0.4)} ${c.colors.radiobutton.selected.outline}`,
     outline: 'none',
   };
 }

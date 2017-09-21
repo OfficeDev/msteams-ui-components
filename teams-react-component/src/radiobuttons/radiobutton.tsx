@@ -66,6 +66,7 @@ class RadiobuttonInner extends React.Component<RadiobuttonProps & InjectedTeamsP
           id={this.state.id}
           type="radio"
           value={this.props.value}
+          onChange={() => null}
           checked={selected}
           hidden />
         <button
@@ -78,7 +79,7 @@ class RadiobuttonInner extends React.Component<RadiobuttonProps & InjectedTeamsP
   }
 
   private selected(props: RadiobuttonProps, context: RadiobuttonContext): boolean {
-    if (context.value) {
+    if (context.value != null) {
       return context.value === props.value;
     }
     return props.selected || false;

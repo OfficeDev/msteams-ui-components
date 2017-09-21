@@ -11,10 +11,10 @@ export function normal(c: Context): {} {
     userSelect: 'none',
     display: 'inline-block',
     cursor: 'pointer',
-    width: c.rem(1.6),
-    height: c.rem(1.6),
-    margin: c.rem(1.6),
-    border: `${c.rem(0.1)} solid`,
+    width: c.rem(2),
+    height: c.rem(2),
+    margin: c.rem(0.6),
+    border: `${c.rem(0.2)} solid`,
     borderRadius: '100%',
     borderColor: c.colors.checkbox.normal.border,
     backgroundColor: c.colors.checkbox.normal.background,
@@ -64,7 +64,7 @@ export function focus(c: Context): {} {
   const props: CSSProperties = {
     backgroundColor: c.colors.checkbox.focus.background,
     borderColor: c.colors.checkbox.focus.border,
-    boxShadow: `0 0 0 ${c.rem(0.2)} ${c.colors.checkbox.focus.outline}`,
+    boxShadow: `0 0 0 ${c.rem(0.4)} ${c.colors.checkbox.focus.outline}`,
     outline: 'none',
   };
 

@@ -66,6 +66,7 @@ class CheckboxInner extends React.Component<CheckboxProps & InjectedTeamsProps, 
           type="checkbox"
           value={this.props.value}
           checked={checked}
+          onChange={() => null}
           hidden />
         <button
           onClick={() => this.handleCheck(!checked)}
