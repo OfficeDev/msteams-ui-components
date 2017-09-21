@@ -5,17 +5,17 @@ import { Context } from '../../raw/context';
 import * as labelRaw from '../../raw/labels/label';
 
 export function unchecked(c: Context) {
-  const result = style(checkedRaw.normal(c), {
+  const result = style(uncheckedRaw.normal(c), {
     $nest: {
-      '&:hover': checkedRaw.hover(c),
-      '&:active': checkedRaw.active(c),
-      '&:disabled': checkedRaw.disabled(c),
-      '&:focus': checkedRaw.focus(c),
+      '&:hover': uncheckedRaw.hover(c),
+      '&:active': uncheckedRaw.active(c),
+      '&:disabled': uncheckedRaw.disabled(c),
+      '&:focus': uncheckedRaw.focus(c),
       '&-checked': {
-        ...uncheckedRaw.normal(c),
+        ...checkedRaw.normal(c),
         $nest: {
-          '&:hover': uncheckedRaw.hover(c),
-          '&::after': uncheckedRaw.after(c),
+          '&:hover': checkedRaw.hover(c),
+          '&::after': checkedRaw.after(c),
         },
       },
     },
