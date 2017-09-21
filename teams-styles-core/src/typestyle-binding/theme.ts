@@ -3,8 +3,9 @@ import { getContext } from '../raw/context';
 import { ThemeConfig } from '../raw/theme-config';
 import { anchor } from './anchor';
 import { primaryButton, secondaryButton } from './buttons';
-import { checked, label as checkboxLabel, unchecked } from './checkboxes';
+import checkbox from './checkbox';
 import { panel } from './panels';
+import radiobutton from './radiobutton';
 import { toggles } from './toggles';
 
 export interface Theme {
@@ -25,6 +26,11 @@ export interface Theme {
     label: string;
   };
   anchor: string;
+  radiobutton: {
+    selected: string;
+    unselected: string;
+    label: string;
+  };
 }
 
 const defaultConfig: ThemeConfig = {
@@ -48,9 +54,14 @@ export function getTheme(config?: ThemeConfig): Theme {
       sliderChecked: toggles.sliderChecked(context),
     },
     checkbox: {
-      checked: checked(context),
-      unchecked: unchecked(context),
-      label: checkboxLabel(context),
+      checked: checkbox.checked(context),
+      unchecked: checkbox.unchecked(context),
+      label: checkbox.label(context),
+    },
+    radiobutton: {
+      selected: radiobutton.selected(context),
+      unselected: radiobutton.unselected(context),
+      label: radiobutton.label(context),
     },
     anchor: anchor(context),
   };

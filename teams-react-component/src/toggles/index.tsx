@@ -9,10 +9,7 @@ export interface ToggleProps {
 const ToggleInternal: React.StatelessComponent<ToggleProps & InjectedTeamsProps> = (props) => {
   const toggle = props.theme.toggles;
   const sliderClass = props.value ? toggle.sliderChecked : toggle.slider;
-  const onToggle = (e: React.SyntheticEvent<any>) => {
-    e.preventDefault();
-    props.onChange(!props.value);
-  };
+  const onToggle = () => props.onChange(!props.value);
 
   return (
     <label
