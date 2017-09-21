@@ -7,13 +7,13 @@ export interface CheckboxSectionState {
       value: any;
       label: string;
       checked: boolean;
-      onChange: {(checked: boolean, value: any): void};
+      onChecked: {(checked: boolean, value: any): void};
     };
     checkbox2: {
       value: any;
       label: string;
       checked: boolean;
-      onChange: {(checked: boolean, value: any): void};
+      onChecked: {(checked: boolean, value: any): void};
     };
   };
   group: {
@@ -45,7 +45,7 @@ export class CheckboxSection extends React.Component<{}, CheckboxSectionState> {
           value: 1,
           label: 'Checkbox 1',
           checked: false,
-          onChange: (checked: boolean, value: any) => {
+          onChecked: (checked: boolean, value: any) => {
             const checkbox1 = {...this.state.alone.checkbox1, checked};
             const alone = {...this.state.alone, checkbox1};
             const state = {...this.state, alone};
@@ -56,7 +56,7 @@ export class CheckboxSection extends React.Component<{}, CheckboxSectionState> {
           value: 1,
           label: 'Checkbox 2',
           checked: false,
-          onChange: (checked: boolean, value: any) => {
+          onChecked: (checked: boolean, value: any) => {
             const checkbox2 = {...this.state.alone.checkbox2, checked};
             const alone = {...this.state.alone, checkbox2};
             const state = {...this.state, alone};

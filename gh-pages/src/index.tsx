@@ -4,8 +4,8 @@ import { render } from 'react-dom';
 import { Panel, TeamsComponentContext, ThemeType } from 'teams-react-component';
 import { cssRule } from 'typestyle';
 import { ButtonSection } from './button-section';
-import { TogglesSection } from './toggles-section';
 import { CheckboxSection } from './checkbox-section';
+import { TogglesSection } from './toggles-section';
 
 const mountPoint = 'root';
 
@@ -13,7 +13,7 @@ normalize();
 setupPage(`#${mountPoint}`);
 
 interface GHPagesState {
-  basePx: number;
+  fontSize: number;
   theme: ThemeType;
 }
 
@@ -21,39 +21,25 @@ class GHPages extends React.Component<{}, GHPagesState> {
   constructor() {
     super();
     this.state = {
-      basePx: 16,
+      fontSize: this.pageFontSize(),
       theme: ThemeType.Default,
     };
   }
 
-  onBasePxChange(newBasePx: string) {
-    this.setState({
-      basePx: parseInt(newBasePx, 10),
-      theme: this.state.theme,
-    });
-  }
-
-  onThemeChange(newTheme: ThemeType) {
-    this.setState({
-      basePx: this.state.basePx,
-      theme: newTheme,
-    });
-  }
-
   render() {
-    const { basePx, theme } = this.state;
+    const { fontSize, theme } = this.state;
 
     return (
-      <TeamsComponentContext basePx={basePx} theme={theme} >
+      <TeamsComponentContext fontSize={fontSize} theme={theme} >
         <Panel style={{ width: '100%', height: '100%', padding: '5px 30px' }}>
-          <label htmlFor="basePx">1rem = </label>
+          <label htmlFor="baseFontSize">1rem = </label>
           <input
-            id="basePx"
+            id="baseFontSize"
             type="range"
             min="1"
             max="50"
-            value={basePx}
-            onChange={(event) => this.onBasePxChange(event.target.value)} /> {basePx}px
+            value={fontSize}
+            onChange={(event) => this.onBasePxChange(event.target.value)} /> {fontSize}px
         <br />
           <input
             type="radio"
@@ -81,6 +67,30 @@ class GHPages extends React.Component<{}, GHPagesState> {
         </Panel>
       </TeamsComponentContext>
     );
+  }
+
+  private onBasePxChange(newFontSize: string) {
+    this.setState({
+      fontSize: parseInt(newFontSize, 10),
+      theme: this.state.theme,
+    });
+  }
+
+  private onThemeChange(newTheme: ThemeType) {
+    this.setState({
+      fontSize: this.state.fontSize,
+      theme: newTheme,
+    });
+  }
+
+  private pageFontSize(): number {
+    let fontSize = window.getComputedStyle(document.body).getPropertyValue('font-size');
+    fontSize = fontSize.replace('px', '');
+    let size = parseInt(fontSize, 10);
+    if (!size) {
+      size = 16;
+    }
+    return size;
   }
 }
 render(
