@@ -1,3 +1,4 @@
+[![Build Status](https://semaphoreci.com/api/v1/projects/7a5e7ea7-e496-4be2-90a4-bdc46ab0bb5d/1532935/badge.svg)](https://semaphoreci.com/jialic-89/msteams-ui-components)
 
 # Contributing
 
