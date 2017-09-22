@@ -2,8 +2,11 @@
   "name": "gh-pages",
   "version": "0.0.1",
   "scripts": {
+    "precommit": "npm run lint",
+    "prepush": "npm run build",
     "dev": "linklocal -r && webpack-dev-server",
-    "build": "linklocal -r && webpack --env.prod -p"
+    "build": "linklocal -r && webpack --env.prod -p",
+    "lint": "tslint --project tsconfig.json"
   },
   "author": "TFM (Team Flying Monkeys)",
   "license": "MIT",
@@ -23,6 +26,7 @@
     "babel-preset-env": "^1.6.0",
     "clean-webpack-plugin": "^0.1.16",
     "html-webpack-plugin": "^2.30.1",
+    "husky": "^0.14.3",
     "linklocal": "^2.8.1",
     "ts-loader": "^2.3.7",
     "tslint": "^5.7.0",
