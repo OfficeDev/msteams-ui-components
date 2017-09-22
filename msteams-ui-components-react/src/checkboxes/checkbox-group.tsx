@@ -1,7 +1,6 @@
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import add from '../utils/add';
-import remove from '../utils/remove';
 
 export interface CheckboxGroupProps
   extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
