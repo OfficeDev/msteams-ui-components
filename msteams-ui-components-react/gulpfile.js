@@ -7,7 +7,7 @@ const gulpTsLint = require('gulp-tslint');
 
 const src = ['src/**/*.{ts,tsx}'];
 
-gulp.task('default', ['lint'], () => {
+gulp.task('default', () => {
   return createBuildTask();
 });
 

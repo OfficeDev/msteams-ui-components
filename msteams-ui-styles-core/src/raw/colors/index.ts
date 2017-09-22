@@ -6,6 +6,7 @@ export interface ColorPalate {
     black: string;
     white: string;
     bar: string;
+    gray01: string;
     gray02: string;
     gray03: string;
     gray04: string;
@@ -33,6 +34,7 @@ export interface ColorPalate {
     gray06: string;
     gray08: string;
     gray10: string;
+    gray11: string;
     gray12: string;
     brand00Light: string;
     brand00: string;
@@ -72,6 +74,7 @@ export const Colors: ColorPalate = {
     black: '#16233A',
     white: '#FFFFFF',
     bar: '#29384F',
+    gray01: '#4e586a',
     gray02: '#525C6D',
     gray03: '#6A7281',
     gray04: '#858C98',
@@ -99,6 +102,7 @@ export const Colors: ColorPalate = {
     gray06: '#77777B',
     gray08: '#49494D',
     gray10: '#404045',
+    gray11: '#3A3A3F',
     gray12: '#36363B',
     brand00Light: '#5558AF',
     brand00: '#9FA4FE',
