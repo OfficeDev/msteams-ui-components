@@ -1,7 +1,7 @@
 import { style } from 'typestyle';
 import { Context } from '../../raw/context';
-import * as panelRaw from '../../raw/panels/panel';
+import { panel as panelRaw } from '../../raw/panels';
 
 export function panel(c: Context) {
-  return style(panelRaw.normal(c));
+  return style(panelRaw(c).normal);
 }

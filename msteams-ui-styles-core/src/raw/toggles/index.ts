@@ -5,7 +5,7 @@ const width = 6;
 const height = 3.2;
 const ballSize = 2.5;
 const ballDeltaX = 0.3;
-
+/*
 export function label(c: Context): {} {
   const { rem } = c;
   const result: CSSProperties = {
@@ -35,7 +35,7 @@ export function slider(c: Context): {} {
     bottom: 0,
     width: '100%',
     height: '100%',
-    backgroundColor: c.colors.toggle.offBg,
+    backgroundColor: '#eef1f5',
     transition: '0.4s',
     borderRadius: rem(height),
     outline: 'none',
@@ -53,7 +53,7 @@ export function sliderFocus(c: Context): {} {
     left: rem(-0.1),
     right: rem(-0.1),
     borderRadius: rem(height),
-    border: `${rem(0.2)} solid ${c.colors.toggle.focus}`,
+    border: `${rem(0.2)} solid ${c.colors.focus}`,
   };
   return result;
 }
@@ -67,7 +67,7 @@ export function sliderBefore(c: Context): {} {
     width: rem(ballSize),
     left: rem(ballDeltaX),
     top: rem((height - ballSize) / 2),
-    backgroundColor: c.colors.toggle.offBall,
+    backgroundColor: '#4e586a',
     transition: '0.4s',
     borderRadius: '50%',
   };
@@ -76,7 +76,7 @@ export function sliderBefore(c: Context): {} {
 
 export function sliderChecked(c: Context): {} {
   const result: CSSProperties = {
-    backgroundColor: c.colors.toggle.onBg,
+    backgroundColor: '#7fba00',
   };
   return Object.assign({}, slider(c), result);
 }
@@ -90,8 +90,9 @@ export function sliderBeforeChecked(c: Context): {} {
   const { rem } = c;
   const delta = width - ballDeltaX * 2 - ballSize;
   const result: CSSProperties = {
-    backgroundColor: c.colors.toggle.onBall,
+    backgroundColor: c.colors.secondary,
     transform: `translateX(${rem(delta)})`,
   };
   return Object.assign({}, sliderBefore(c), result);
 }
+*/
