@@ -10,9 +10,7 @@
     ],
     "member-access": [
       true,
-      "no-public",
-      "check-accessor",
-      "check-constructor"
+      "no-public"
     ],
     "semicolon": [
       true,

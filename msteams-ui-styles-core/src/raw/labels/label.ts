@@ -1,5 +1,4 @@
 import { CSSProperties } from 'react';
-import * as colors from '../colors';
 import { Context } from '../context';
 
 export function normal(c: Context): {} {

@@ -1,4 +1,4 @@
-import { Colors, getDefaultThemeColors } from '../raw/colors';
+import { getDefaultThemeColors } from '../raw/colors';
 import { getContext } from '../raw/context';
 import { ThemeConfig } from '../raw/theme-config';
 import { anchor } from './anchor';

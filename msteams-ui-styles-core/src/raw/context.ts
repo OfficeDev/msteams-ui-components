@@ -1,4 +1,4 @@
-import { Colors, getDefaultThemeColors } from './colors/index';
+import { Colors } from './colors/index';
 import { ThemeConfig } from './theme-config';
 
 export interface Context {
