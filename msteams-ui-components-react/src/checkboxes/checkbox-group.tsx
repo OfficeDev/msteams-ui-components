@@ -1,9 +1,7 @@
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-import { CSSProperties } from 'react';
 import add from '../utils/add';
 import remove from '../utils/remove';
-import uniqueId from '../utils/uniqueId';
 
 export interface CheckboxGroupProps
   extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
@@ -28,7 +26,7 @@ export class CheckboxGroup extends React.Component<CheckboxGroupProps> {
   }
 
   render() {
-    const divProps = {...this.props};
+    const divProps = { ...this.props };
     delete divProps.onChecked;
     delete divProps.values;
 
@@ -37,6 +35,7 @@ export class CheckboxGroup extends React.Component<CheckboxGroupProps> {
     );
   }
 
+  // tslint:disable-next-line:no-unused-variable
   private getChildContext() {
     return {
       onChecked: this.handleChange,

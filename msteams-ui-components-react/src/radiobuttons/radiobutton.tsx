@@ -1,6 +1,5 @@
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-import { CSSProperties } from 'react';
 import { connectTeamsComponent, InjectedTeamsProps } from '../index';
 import uniqueId from '../utils/uniqueId';
 
