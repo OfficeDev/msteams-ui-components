@@ -1,10 +1,10 @@
-import { CSSProperties } from 'react';
-import { Context } from '../context';
+// import { CSSProperties } from 'react';
+// import { Context } from '../context';
 
-const width = 6;
-const height = 3.2;
-const ballSize = 2.5;
-const ballDeltaX = 0.3;
+// const width = 6;
+// const height = 3.2;
+// const ballSize = 2.5;
+// const ballDeltaX = 0.3;
 /*
 export function label(c: Context): {} {
   const { rem } = c;

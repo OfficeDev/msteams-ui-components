@@ -1,6 +1,6 @@
-import { style } from 'typestyle';
-import { Context } from '../../raw/context';
-import * as toggleRaw from '../../raw/toggles';
+// import { style } from 'typestyle';
+// import { Context } from '../../raw/context';
+// import * as toggleRaw from '../../raw/toggles';
 /*
 function label(c: Context) {
   return style(toggleRaw.label(c));

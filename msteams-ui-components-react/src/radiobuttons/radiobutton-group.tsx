@@ -1,9 +1,5 @@
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-import { CSSProperties } from 'react';
-import add from '../utils/add';
-import remove from '../utils/remove';
-import uniqueId from '../utils/uniqueId';
 
 export interface RadiobuttonGroupProps
   extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
@@ -28,7 +24,7 @@ export class RadiobuttonGroup extends React.Component<RadiobuttonGroupProps> {
   }
 
   render() {
-    const divProps = {...this.props};
+    const divProps = { ...this.props };
     delete divProps.onSelected;
     delete divProps.value;
 
@@ -37,6 +33,7 @@ export class RadiobuttonGroup extends React.Component<RadiobuttonGroupProps> {
     );
   }
 
+  // tslint:disable-next-line:no-unused-variable
   private getChildContext() {
     return {
       onSelected: this.handleChange,

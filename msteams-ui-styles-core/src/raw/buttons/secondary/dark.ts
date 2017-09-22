@@ -1,4 +1,3 @@
-import { CSSProperties } from 'react';
 import { Context } from '../../context';
 import { baseButton } from '../base';
 import { ButtonStyles } from '../button-styles';
@@ -39,7 +38,7 @@ export function Dark(c: Context): ButtonStyles {
       bottom: '1px',
       left: '1px',
       right: '1px',
-      border: `${c.rem(0.2)} solid ${c.colors.black }`,
+      border: `${c.rem(0.2)} solid ${c.colors.black}`,
     },
   };
 }

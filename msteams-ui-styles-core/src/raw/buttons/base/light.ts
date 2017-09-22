@@ -1,4 +1,3 @@
-import { CSSProperties } from 'react';
 import { Context } from '../../context';
 import { ButtonStyles } from '../button-styles';
 

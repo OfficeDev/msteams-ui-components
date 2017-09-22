@@ -1,7 +1,5 @@
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-import { CSSProperties } from 'react';
-import { Theme } from 'msteams-ui-styles-core';
 import { connectTeamsComponent, InjectedTeamsProps } from '../index';
 import uniqueId from '../utils/uniqueId';
 
@@ -37,7 +35,7 @@ class CheckboxInner extends React.Component<CheckboxProps & InjectedTeamsProps, 
   constructor(props: CheckboxProps & InjectedTeamsProps, context: any) {
     super(props, context);
     this.handleCheck = this.handleCheck.bind(this);
-    this.state = {id: uniqueId('ts-cb-')};
+    this.state = { id: uniqueId('ts-cb-') };
   }
 
   render() {
@@ -52,7 +50,7 @@ class CheckboxInner extends React.Component<CheckboxProps & InjectedTeamsProps, 
       labelClassName = this.props.theme.checkbox.label;
     }
 
-    const divProps = {...this.props};
+    const divProps = { ...this.props };
     delete divProps.theme;
     delete divProps.onChecked;
     delete divProps.value;

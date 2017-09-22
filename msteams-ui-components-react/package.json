@@ -11,7 +11,8 @@
   },
   "scripts": {
     "build": "linklocal && gulp",
-    "build:watch": "linklocal && gulp watch"
+    "build:watch": "linklocal && gulp watch",
+    "lint": "gulp lint"
   },
   "author": {
     "name": "Microsoft Corporation"
@@ -25,12 +26,13 @@
     "gulp": "^3.9.1",
     "gulp-babel": "^7.0.0",
     "gulp-filter": "^5.0.1",
+    "gulp-tslint": "^8.1.2",
     "gulp-typescript": "^3.2.2",
     "linklocal": "^2.8.1",
+    "msteams-ui-styles-core": "file:../msteams-ui-styles-core",
     "react": "^15.6.1",
     "tslint": "^5.7.0",
     "typescript": "^2.5.2",
-    "msteams-ui-styles-core": "file:../msteams-ui-styles-core",
     "typestyle": "^1.4.1"
   },
   "types": "./dist",

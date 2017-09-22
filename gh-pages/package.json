@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "linklocal -r && webpack-dev-server",
-    "build": "linklocal -r && webpack --env.prod -p"
+    "build": "linklocal -r && webpack --env.prod -p",
+    "lint": "tslint --project tsconfig.json"
   },
   "author": "TFM (Team Flying Monkeys)",
   "license": "MIT",

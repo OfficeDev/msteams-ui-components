@@ -3,7 +3,6 @@ import { Panel, TeamsComponentContext, ThemeStyle } from 'msteams-ui-components-
 import { Radiobutton, RadiobuttonGroup } from 'msteams-ui-components-react';
 import * as React from 'react';
 import { render } from 'react-dom';
-import { cssRule } from 'typestyle';
 import { ButtonSection } from './button-section';
 import { CheckboxSection } from './checkbox-section';
 import { InputSection } from './input-section';
