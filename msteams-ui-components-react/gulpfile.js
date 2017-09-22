@@ -8,14 +8,7 @@ const gulpTsLint = require('gulp-tslint');
 const src = ['src/**/*.{ts,tsx}'];
 
 gulp.task('default', ['lint'], () => {
-  const tsProject = ts.createProject('./tsconfig.json');
-  const f = filter(['**', '!**/*.d.ts'], { restore: true });
-  gulp.src(src)
-    .pipe(tsProject())
-    .pipe(f)
-    .pipe(babel())
-    .pipe(f.restore)
-    .pipe(gulp.dest('dist'));
+  return createBuildTask();
 });
 
 gulp.task('lint', () => {
@@ -25,8 +18,26 @@ gulp.task('lint', () => {
     .pipe(gulpTsLint.report());
 });
 
-
 gulp.task('watch', ['default'], () => {
   gulp.watch(src, ['default']);
 });
 
+gulp.task('build-crash-on-error', ['lint'], () => {
+  return createBuildTask(true);
+});
+
+function createBuildTask(crashOnError) {
+  const tsProject = ts.createProject('./tsconfig.json');
+  const f = filter(['**', '!**/*.d.ts'], { restore: true });
+  return gulp.src(src)
+    .pipe(tsProject())
+    .once('error', function () {
+      if (crashOnError) {
+        this.once('finish', () => process.exit(1));
+      }
+    })
+    .pipe(f)
+    .pipe(babel())
+    .pipe(f.restore)
+    .pipe(gulp.dest('dist'));
+}
