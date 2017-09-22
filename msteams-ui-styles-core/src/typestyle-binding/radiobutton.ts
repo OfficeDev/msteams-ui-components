@@ -1,20 +1,22 @@
 import { style } from 'typestyle';
 import { Context } from '../raw/context';
-import * as labelRaw from '../raw/labels/label';
-import * as selectedRaw from '../raw/radiobutton/selected';
-import * as unselectedRaw from '../raw/radiobutton/unselected';
+import { label as labelRaw } from '../raw/labels';
+import { selected as selectedRaw } from '../raw/radiobutton/selected';
+import { unselected as unselectedRaw } from '../raw/radiobutton/unselected';
 
 function unselected(c: Context) {
-  const result = style(unselectedRaw.normal(c), {
+  const styles = unselectedRaw(c);
+  const checkedStyles = selectedRaw(c);
+  const result = style(styles.normal, {
     $nest: {
-      '&:hover': unselectedRaw.hover(c),
-      '&:active': unselectedRaw.active(c),
-      '&:disabled': unselectedRaw.disabled(c),
-      '&:focus': unselectedRaw.focus(c),
+      '&:hover': styles.hover,
+      '&:active': styles.active,
+      '&:disabled': styles.disabled,
+      '&:focus': styles.focus,
       '&-selected': {
-        ...selectedRaw.normal(c),
+        ...checkedStyles.normal,
         $nest: {
-          '&:hover': selectedRaw.hover(c),
+          '&:hover': checkedStyles.hover,
         },
       },
     },
@@ -28,7 +30,7 @@ function selected(c: Context) {
 }
 
 function label(c: Context) {
-  return style(labelRaw.normal(c));
+  return style(labelRaw(c).normal);
 }
 
 export default {

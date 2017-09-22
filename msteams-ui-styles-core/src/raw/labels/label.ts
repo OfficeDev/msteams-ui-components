@@ -1,9 +1,9 @@
 import { CSSProperties } from 'react';
-import * as colors from '../colors';
 import { Context } from '../context';
 
 export function normal(c: Context): {} {
   const result: CSSProperties = {
+    color: c.colors.light.black,
   };
   return result;
 }

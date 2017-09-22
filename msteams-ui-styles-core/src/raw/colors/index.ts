@@ -1,335 +1,131 @@
-export * from './constants';
-import * as colors from './constants';
-
-export interface Colors {
-  background: string;
-  primaryButton: {
-    textColor: string;
-    normalBg: string;
-    hoverBg: string;
-    activeBg: string;
-    disabled: string;
-    disabledBg: string;
-    focus: string;
-    focusOutline: string;
+export interface ColorPalate {
+  transparent: string;
+  black: string;
+  white: string;
+  light: {
+    black: string;
+    white: string;
+    bar: string;
+    gray02: string;
+    gray03: string;
+    gray04: string;
+    gray06: string;
+    gray08: string;
+    gray10: string;
+    gray12: string;
+    brand00Dark: string;
+    brand00: string;
+    brand04: string;
+    brand06: string;
+    brand08: string;
+    red: string;
+    magenta: string;
+    yellow: string;
+    green: string;
   };
-  checkbox: {
-    normal: {
-      text: string;
-      background: string;
-      border: string;
-      outline: string;
-    },
-    checked?: {
-      text?: string;
-      background?: string;
-      border?: string;
-      outline?: string;
-    },
-    active?: {
-      text?: string;
-      background?: string;
-      border?: string;
-      outline?: string;
-    },
-    hover?: {
-      text?: string;
-      background?: string;
-      border?: string;
-      outline?: string;
-    },
-    disabled?: {
-      text?: string;
-      background?: string;
-      border?: string;
-      outline?: string;
-    }
-    focus?: {
-      text?: string;
-      background?: string;
-      border?: string;
-      outline?: string;
-    }
+  dark: {
+    black: string;
+    white: string;
+    bar: string;
+    gray02: string;
+    gray03: string;
+    gray04: string;
+    gray06: string;
+    gray08: string;
+    gray10: string;
+    gray12: string;
+    brand00Light: string;
+    brand00: string;
+    brand04: string;
+    brand06: string;
+    brand08: string;
+    red: string;
+    magenta: string;
+    yellow: string;
+    green: string;
   };
-  radiobutton: {
-    normal: {
-      text: string;
-      background: string;
-      border: string;
-      outline: string;
-    },
-    selected?: {
-      text?: string;
-      background?: string;
-      border?: string;
-      outline?: string;
-    },
-    active?: {
-      text?: string;
-      background?: string;
-      border?: string;
-      outline?: string;
-    },
-    hover?: {
-      text?: string;
-      background?: string;
-      border?: string;
-      outline?: string;
-    },
-    disabled?: {
-      text?: string;
-      background?: string;
-      border?: string;
-      outline?: string;
-    }
-    focus?: {
-      text?: string;
-      background?: string;
-      border?: string;
-      outline?: string;
-    }
+  highContrast: {
+    black: string;
+    yellow: string;
+    green: string;
   };
-  toggle: {
-    offBg: string;
-    offBall: string;
-    onBg: string;
-    onBall: string;
-    focus: string;
-  };
-  anchor: {
-    normal: string;
-    hover: string;
-    down: string;
-    disabled: string;
-    focus: string;
-    visited: string;
+  avatars: {
+    avatar1: string;
+    avatar2: string;
+    avatar3: string;
+    avatar4: string;
+    avatar5: string;
+    avatar6: string;
+    avatar7: string;
+    avatar8: string;
+    avatar9: string;
+    avatar10: string;
+    avatar11: string;
   };
 }
 
-export function getDefaultThemeColors(): Colors {
-  return {
-    background: colors.white,
-    primaryButton: {
-      textColor: colors.white,
-      normalBg: colors.brand00,
-      hoverBg: colors.brand04,
-      activeBg: '#454b92',
-      disabled: colors.gray04,
-      disabledBg: colors.gray10,
-      focus: colors.white,
-      focusOutline: colors.white,
-    },
-    checkbox: {
-      normal: {
-        text: colors.white,
-        background: colors.white,
-        border: colors.gray03,
-        outline: colors.transparent,
-      },
-      checked: {
-        background: colors.brand00,
-        border: colors.transparent,
-      },
-      hover: {
-        background: colors.gray12,
-      },
-      disabled: {
-        text: colors.gray04,
-        background: colors.gray10,
-      },
-      focus: {
-        text: colors.white,
-        outline: colors.brand00DarkTheme,
-      },
-    },
-    radiobutton: {
-      normal: {
-        text: colors.white,
-        background: colors.white,
-        border: colors.gray03,
-        outline: colors.transparent,
-      },
-      selected: {
-        background: colors.brand00,
-        border: colors.transparent,
-      },
-      hover: {
-        background: colors.gray12,
-      },
-      disabled: {
-        text: colors.gray04,
-        background: colors.gray10,
-      },
-      focus: {
-        text: colors.white,
-        outline: colors.brand00DarkTheme,
-      },
-    },
-    toggle: {
-      offBg: '#eef1f5',
-      offBall: '#4e586a',
-      onBg: '#7fba00',
-      onBall: colors.white,
-      focus: '#5558af',
-    },
-    anchor: {
-      normal: '#5558AF',
-      hover: '#5558AF',
-      down: '#4D52A1',
-      disabled: '#C4C8CD',
-      focus: '#5558AF',
-      visited: '#8284C4',
-    },
-  };
-}
-
-export function getDarkThemeColors(): Colors {
-  return {
-    background: colors.gray10DarkTheme,
-    primaryButton: {
-      textColor: colors.black,
-      normalBg: colors.brand00DarkTheme,
-      hoverBg: colors.brand04DarkTheme,
-      activeBg: '#454b92',
-      disabled: colors.gray04DarkTheme,
-      disabledBg: colors.gray10DarkTheme,
-      focus: colors.white,
-      focusOutline: colors.white,
-    },
-    checkbox: {
-      normal: {
-        text: colors.black,
-        background: colors.black,
-        border: colors.gray03DarkTheme,
-        outline: colors.transparent,
-      },
-      checked: {
-        background: colors.brand00DarkTheme,
-        border: colors.transparent,
-      },
-      hover: {
-        background: colors.gray08DarkTheme,
-      },
-      disabled: {
-        text: colors.gray04DarkTheme,
-        background: colors.gray10DarkTheme,
-      },
-      focus: {
-        text: colors.black,
-        border: colors.brand04DarkTheme,
-      },
-    },
-    radiobutton: {
-      normal: {
-        text: colors.black,
-        background: colors.black,
-        border: colors.gray03DarkTheme,
-        outline: colors.transparent,
-      },
-      selected: {
-        background: colors.brand00DarkTheme,
-        border: colors.transparent,
-      },
-      hover: {
-        background: colors.gray08DarkTheme,
-      },
-      disabled: {
-        text: colors.gray04DarkTheme,
-        background: colors.gray10DarkTheme,
-      },
-      focus: {
-        text: colors.black,
-        border: colors.brand04DarkTheme,
-      },
-    },
-    toggle: {
-      offBg: '#2B2B30',
-      offBall: '#3A3A3F',
-      onBg: '#88BC2B',
-      onBall: colors.white,
-      focus: '#9196E4',
-    },
-    anchor: {
-      normal: '#9FA4FE',
-      hover: '#9FA4FE',
-      down: '#AAAFFE',
-      disabled: '#6E6E72',
-      focus: '#9FA4FE',
-      visited: '#9DA2C8',
-    },
-  };
-}
-
-export function getHighContrastThemeColors(): Colors {
-  return {
-    background: colors.black,
-    primaryButton: {
-      textColor: colors.white,
-      normalBg: colors.brand00,
-      hoverBg: colors.brand04,
-      activeBg: '#454b92',
-      disabled: colors.gray04,
-      disabledBg: colors.gray10,
-      focus: colors.white,
-      focusOutline: colors.white,
-    },
-    checkbox: {
-      normal: {
-        text: colors.white,
-        background: colors.white,
-        border: colors.gray03,
-        outline: colors.transparent,
-      },
-      checked: {
-        background: colors.brand00,
-        border: colors.transparent,
-      },
-      disabled: {
-        text: colors.gray04,
-        background: colors.gray10,
-      },
-      focus: {
-        text: colors.white,
-        border: colors.brand04,
-      },
-    },
-    radiobutton: {
-      normal: {
-        text: colors.white,
-        background: colors.white,
-        border: colors.gray03,
-        outline: colors.transparent,
-      },
-      selected: {
-        background: colors.brand00,
-        border: colors.transparent,
-      },
-      hover: {
-        background: colors.gray12,
-      },
-      disabled: {
-        text: colors.gray04,
-        background: colors.gray10,
-      },
-      focus: {
-        text: colors.white,
-        outline: colors.brand00DarkTheme,
-      },
-    },
-    toggle: {
-      offBg: '#eef1f5',
-      offBall: '#4e586a',
-      onBg: '#7fba00',
-      onBall: colors.white,
-      focus: '#5558af',
-    },
-    anchor: {
-      normal: '#5558AF',
-      hover: '#5558AF',
-      down: '#4D52A1',
-      disabled: '#C4C8CD',
-      focus: '#5558AF',
-      visited: '#8284C4',
-    },
-  };
-}
+export const Colors: ColorPalate = {
+  transparent: 'transparent',
+  black: '#000000',
+  white: '#FFFFFF',
+  light: {
+    black: '#16233A',
+    white: '#FFFFFF',
+    bar: '#29384F',
+    gray02: '#525C6D',
+    gray03: '#6A7281',
+    gray04: '#858C98',
+    gray06: '#ABB0B8',
+    gray08: '#DEE0E3',
+    gray10: '#EEF1F5 ',
+    gray12: '#F3F4F5',
+    brand00Dark: '#9FA4FE',
+    brand00: '#5558AF',
+    brand04: '#484B95',
+    brand06: '#404283',
+    brand08: '#2B2C58',
+    red: '#C50E2E',
+    magenta: '#E3008C',
+    yellow: '#FCD116',
+    green: '#7FBA00',
+  },
+  dark: {
+    black: '#2B2B30',
+    white: '#FFFFFF',
+    bar: '#222226',
+    gray02: '#C8C8C9',
+    gray03: '#B3B3B4',
+    gray04: '#9A9A9C',
+    gray06: '#77777B',
+    gray08: '#49494D',
+    gray10: '#404045',
+    gray12: '#36363B',
+    brand00Light: '#5558AF',
+    brand00: '#9FA4FE',
+    brand04: '#878BD8',
+    brand06: '#777BBF',
+    brand08: '#50527F',
+    red: '#ED1B3E',
+    magenta: '#F236B8',
+    yellow: '#FBC940',
+    green: '#88BC2B',
+  },
+  highContrast: {
+    black: '#000000',
+    yellow: '#FFFF01',
+    green: '#3FF23F',
+  },
+  avatars: {
+    avatar1: '#B3DBF2',
+    avatar2: '#A7CFE8',
+    avatar3: '#64A2CC',
+    avatar4: '#62CCDD',
+    avatar5: '#92E0EA',
+    avatar6: '#ABDDD3',
+    avatar7: '#D8E27D',
+    avatar8: '#F7B189',
+    avatar9: '#EF6950',
+    avatar10: '#E6808A',
+    avatar11: '#EE9889',
+  },
+};

@@ -1,5 +1,5 @@
 import { normalize, setupPage } from 'csstips';
-import { Panel, TeamsComponentContext, ThemeType } from 'msteams-ui-components-react';
+import { Panel, TeamsComponentContext, ThemeStyle } from 'msteams-ui-components-react';
 import { Radiobutton, RadiobuttonGroup } from 'msteams-ui-components-react';
 import * as React from 'react';
 import { render } from 'react-dom';
@@ -18,7 +18,7 @@ setupPage(`#${mountPoint}`);
 
 interface GHPagesState {
   fontSize: number;
-  theme: ThemeType;
+  theme: ThemeStyle;
 }
 
 class GHPages extends React.Component<{}, GHPagesState> {
@@ -28,7 +28,7 @@ class GHPages extends React.Component<{}, GHPagesState> {
     this.onFontSizeChange = this.onFontSizeChange.bind(this);
     this.state = {
       fontSize: this.pageFontSize(),
-      theme: ThemeType.Default,
+      theme: ThemeStyle.Light,
     };
   }
 
@@ -48,9 +48,9 @@ class GHPages extends React.Component<{}, GHPagesState> {
             onChange={(event) => this.onFontSizeChange(event.target.value)} /> {fontSize}px
         <br />
           <RadiobuttonGroup onSelected={this.onThemeChange} value={theme}>
-            <Radiobutton label="Default" value={ThemeType.Default} />
-            <Radiobutton label="Dark" value={ThemeType.Dark} />
-            <Radiobutton label="High Contrast" value={ThemeType.HighContrast} />
+            <Radiobutton label="Light" value={ThemeStyle.Light} />
+            <Radiobutton label="Dark" value={ThemeStyle.Dark} />
+            <Radiobutton label="High Contrast" value={ThemeStyle.HighContrast} />
           </RadiobuttonGroup>
           <ButtonSection />
           <TogglesSection />
@@ -70,7 +70,7 @@ class GHPages extends React.Component<{}, GHPagesState> {
     });
   }
 
-  private onThemeChange(newTheme: ThemeType) {
+  private onThemeChange(newTheme: ThemeStyle) {
     this.setState({
       fontSize: this.state.fontSize,
       theme: newTheme,

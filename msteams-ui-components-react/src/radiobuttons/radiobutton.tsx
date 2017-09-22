@@ -1,7 +1,7 @@
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import { CSSProperties } from 'react';
-import { Theme } from 'teams-styles-core';
+import { Theme } from 'msteams-ui-styles-core';
 import { connectTeamsComponent, InjectedTeamsProps } from '../index';
 import uniqueId from '../utils/uniqueId';
 
