@@ -30,7 +30,7 @@
     "react": "^15.6.1",
     "tslint": "^5.7.0",
     "typescript": "^2.5.2",
-    "teams-styles-core": "file:../teams-styles-core",
+    "msteams-ui-styles-core": "file:../msteams-ui-styles-core",
     "typestyle": "^1.4.1"
   },
   "types": "./dist",

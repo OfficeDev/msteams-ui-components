@@ -1,7 +1,6 @@
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import { CSSProperties } from 'react';
-import { Theme } from 'teams-styles-core';
 import { connectTeamsComponent, InjectedTeamsProps } from '../index';
 import uniqueId from '../utils/uniqueId';
 
@@ -38,7 +37,7 @@ class RadiobuttonInner extends React.Component<RadiobuttonProps & InjectedTeamsP
   constructor(props: RadiobuttonProps & InjectedTeamsProps, context: any) {
     super(props, context);
     this.handleSelect = this.handleSelect.bind(this);
-    this.state = {id: uniqueId('ts-rb-')};
+    this.state = { id: uniqueId('ts-rb-') };
   }
 
   render() {
@@ -53,7 +52,7 @@ class RadiobuttonInner extends React.Component<RadiobuttonProps & InjectedTeamsP
       labelClassName = this.props.theme.checkbox.label;
     }
 
-    const divProps = {...this.props};
+    const divProps = { ...this.props };
     delete divProps.theme;
     delete divProps.onSelected;
     delete divProps.value;

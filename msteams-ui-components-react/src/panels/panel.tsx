@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Theme } from 'teams-styles-core';
 import { connectTeamsComponent, InjectedTeamsProps } from '../teams-context';
 
 const PanelView: React.StatelessComponent<any & InjectedTeamsProps> =

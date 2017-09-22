@@ -1,7 +1,7 @@
+import { getTheme, Theme } from 'msteams-ui-styles-core';
+import * as Colors from 'msteams-ui-styles-core';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-import { getTheme, Theme } from 'teams-styles-core';
-import * as Colors from 'teams-styles-core';
 import uniqueId from '../utils/uniqueId';
 import { ThemeType } from './theme-type';
 
