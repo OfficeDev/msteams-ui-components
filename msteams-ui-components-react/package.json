@@ -10,8 +10,6 @@
     "url": "https://github.com/OfficeDev/MicrosoftTeamsWebStyling/issues"
   },
   "scripts": {
-    "precommit": "gulp lint",
-    "prepush": "gulp",
     "build": "linklocal && gulp",
     "build:watch": "linklocal && gulp watch",
     "lint": "gulp lint"
@@ -30,7 +28,6 @@
     "gulp-filter": "^5.0.1",
     "gulp-tslint": "^8.1.2",
     "gulp-typescript": "^3.2.2",
-    "husky": "^0.14.3",
     "linklocal": "^2.8.1",
     "msteams-ui-styles-core": "file:../msteams-ui-styles-core",
     "react": "^15.6.1",

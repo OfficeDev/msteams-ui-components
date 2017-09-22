@@ -10,8 +10,6 @@
     "url": "https://github.com/OfficeDev/MicrosoftTeamsWebStyling/issues"
   },
   "scripts": {
-    "precommit": "gulp lint",
-    "prepush": "gulp",
     "build": "gulp",
     "build:watch": "gulp watch",
     "lint": "gulp lint"
@@ -28,7 +26,6 @@
     "gulp-filter": "^5.0.1",
     "gulp-tslint": "^8.1.2",
     "gulp-typescript": "^3.2.2",
-    "husky": "^0.14.3",
     "tslint": "^5.7.0",
     "typescript": "^2.5.2",
     "typestyle": "^1.4.1"
