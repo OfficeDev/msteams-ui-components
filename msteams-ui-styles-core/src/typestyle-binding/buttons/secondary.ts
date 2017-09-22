@@ -1,16 +1,16 @@
 import { style } from 'typestyle';
-import * as secondaryRaw from '../../raw/buttons/secondary';
+import { secondary as secondaryRaw } from '../../raw/buttons/secondary';
 import { Context } from '../../raw/context';
 
 export function secondaryButton(c: Context) {
-  const result = style(secondaryRaw.normal(c), {
+  const styles = secondaryRaw(c);
+  return style(styles.normal, {
     $nest: {
-      '&:hover': secondaryRaw.hover(c),
-      '&:active': secondaryRaw.active(c),
-      '&:disabled': secondaryRaw.disabled(c),
-      '&:focus': secondaryRaw.focus(c),
-      '&:focus:after': secondaryRaw.focusAfter(c),
+      '&:hover:enabled': styles.hover,
+      '&:active': styles.active,
+      '&:disabled': styles.disabled,
+      '&:focus': styles.focus,
+      '&:focus:after': styles.focusAfter,
     },
   });
-  return result;
 }

@@ -1,12 +1,12 @@
-import { getDefaultThemeColors } from '../raw/colors';
+import { Colors } from '../raw/colors';
 import { getContext } from '../raw/context';
-import { ThemeConfig } from '../raw/theme-config';
+import { ThemeConfig, ThemeStyle } from '../raw/theme-config';
 import { anchor } from './anchor';
 import { primaryButton, secondaryButton } from './buttons';
 import checkbox from './checkbox';
 import { panel } from './panels';
 import radiobutton from './radiobutton';
-import { toggles } from './toggles';
+// import { toggles } from './toggles';
 
 export interface Theme {
   panel: string;
@@ -34,8 +34,9 @@ export interface Theme {
 }
 
 const defaultConfig: ThemeConfig = {
-  basePx: 16,
-  colors: getDefaultThemeColors(),
+  baseFontSize: 16,
+  style: ThemeStyle.Dark,
+  colors: Colors,
 };
 
 export function getTheme(config?: ThemeConfig): Theme {
@@ -48,10 +49,10 @@ export function getTheme(config?: ThemeConfig): Theme {
       secondary: secondaryButton(context),
     },
     toggles: {
-      label: toggles.label(context),
-      input: toggles.input(context),
-      slider: toggles.slider(context),
-      sliderChecked: toggles.sliderChecked(context),
+      label: '', // toggles.label(context),
+      input: '', // toggles.input(context),
+      slider: '', // toggles.slider(context),
+      sliderChecked: '', // toggles.sliderChecked(context),
     },
     checkbox: {
       checked: checkbox.checked(context),

@@ -1,21 +1,23 @@
 import { style } from 'typestyle';
-import * as checkedRaw from '../raw/checkbox/checked';
-import * as uncheckedRaw from '../raw/checkbox/unchecked';
+import { checked as checkedRaw } from '../raw/checkbox/checked';
+import { unchecked as uncheckedRaw } from '../raw/checkbox/unchecked';
 import { Context } from '../raw/context';
-import * as labelRaw from '../raw/labels/label';
+import { label as labelRaw } from '../raw/labels';
 
 function unchecked(c: Context) {
-  const result = style(uncheckedRaw.normal(c), {
+  const styles = uncheckedRaw(c);
+  const checkedStyles = checkedRaw(c);
+  const result = style(styles.normal, {
     $nest: {
-      '&:hover': uncheckedRaw.hover(c),
-      '&:active': uncheckedRaw.active(c),
-      '&:disabled': uncheckedRaw.disabled(c),
-      '&:focus': uncheckedRaw.focus(c),
+      '&:hover': styles.hover,
+      '&:active': styles.active,
+      '&:disabled': styles.disabled,
+      '&:focus': styles.focus,
       '&-checked': {
-        ...checkedRaw.normal(c),
+        ...checkedStyles.normal,
         $nest: {
-          '&:hover': checkedRaw.hover(c),
-          '&::before': checkedRaw.before(c),
+          '&:hover': checkedStyles.hover,
+          '&::before': checkedStyles.before,
         },
       },
     },
@@ -29,7 +31,7 @@ function checked(c: Context) {
 }
 
 function label(c: Context) {
-  return style(labelRaw.normal(c));
+  return style(labelRaw(c).normal);
 }
 
 export default {

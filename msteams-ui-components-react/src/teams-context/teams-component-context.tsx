@@ -1,12 +1,10 @@
-import { getTheme, Theme } from 'msteams-ui-styles-core';
-import * as Colors from 'msteams-ui-styles-core';
+import { Colors, getTheme, Theme, ThemeStyle } from 'msteams-ui-styles-core';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import uniqueId from '../utils/uniqueId';
-import { ThemeType } from './theme-type';
 
 export interface TeamsComponentProps {
-  theme: ThemeType;
+  theme: ThemeStyle;
   fontSize: number;
   children: React.ReactChild;
 }
@@ -54,22 +52,9 @@ export class TeamsComponentContext extends React.Component<TeamsComponentProps> 
   }
 
   protected getChildContext(): any {
-    let colors: Colors.Colors;
-    switch (this.props.theme) {
-      case ThemeType.Dark:
-        colors = Colors.getDarkThemeColors();
-        break;
-      case ThemeType.HighContrast:
-        colors = Colors.getHighContrastThemeColors();
-        break;
-      case ThemeType.Default:
-      default:
-        colors = Colors.getDefaultThemeColors();
-    }
-
     const context: TeamsControlContext = {
       subscribe: this.subscribe,
-      theme: getTheme({ basePx: this.props.fontSize, colors }),
+      theme: getTheme({ baseFontSize: this.props.fontSize, colors: Colors, style: this.props.theme }),
     };
     return context;
   }
@@ -111,3 +96,7 @@ export function connectTeamsComponent<TChildProps>(
   }
   return ConnectedTeamsComponent;
 }
+
+export {
+  ThemeStyle
+};

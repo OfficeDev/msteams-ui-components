@@ -16,20 +16,20 @@
   },
   "author": "Microsoft Corporation",
   "license": "MIT",
+  "types": "./dist",  
   "devDependencies": {
     "@types/react": "^16.0.5",
     "babel-core": "^6.26.0",
     "babel-preset-env": "^1.6.0",
-    "csx": "^8.5.0",
     "gulp": "^3.9.1",
     "gulp-babel": "^7.0.0",
     "gulp-filter": "^5.0.1",
     "gulp-tslint": "^8.1.2",
     "gulp-typescript": "^3.2.2",
     "tslint": "^5.7.0",
-    "typescript": "^2.5.2",
-    "typestyle": "^1.4.1"
+    "typescript": "^2.5.2"
   },
-  "types": "./dist",
-  "dependencies": {}
+  "dependencies": {
+    "typestyle": "^1.4.1"
+  }
 }
