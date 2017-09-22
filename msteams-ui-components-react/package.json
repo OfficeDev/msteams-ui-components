@@ -12,6 +12,7 @@
   "scripts": {
     "build": "linklocal && gulp",
     "build:watch": "linklocal && gulp watch",
+    "build:crash": "gulp build-crash-on-error",
     "lint": "gulp lint"
   },
   "author": {

@@ -12,11 +12,12 @@
   "scripts": {
     "build": "gulp",
     "build:watch": "gulp watch",
+    "build:crash": "gulp build-crash-on-error",
     "lint": "gulp lint"
   },
   "author": "Microsoft Corporation",
   "license": "MIT",
-  "types": "./dist",  
+  "types": "./dist",
   "devDependencies": {
     "@types/react": "^16.0.5",
     "babel-core": "^6.26.0",
