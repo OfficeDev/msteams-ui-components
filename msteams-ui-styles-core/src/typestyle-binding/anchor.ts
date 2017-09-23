@@ -1,6 +1,6 @@
 import { style } from 'typestyle';
-import { anchor as anchorRaw } from '../../raw/anchor';
-import { Context } from '../../raw/context';
+import { anchor as anchorRaw } from '../raw/anchor';
+import { Context } from '../raw/context';
 
 export function anchor(c: Context) {
   const styles = anchorRaw(c);
@@ -15,3 +15,5 @@ export function anchor(c: Context) {
     },
   });
 }
+
+export default anchor;

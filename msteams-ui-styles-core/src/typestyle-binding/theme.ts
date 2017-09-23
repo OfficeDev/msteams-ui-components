@@ -1,10 +1,10 @@
 import { Colors } from '../raw/colors';
 import { getContext } from '../raw/context';
 import { ThemeConfig, ThemeStyle } from '../raw/theme-config';
-import { anchor } from './anchor';
-import { primaryButton, secondaryButton } from './buttons';
+import anchor from './anchor';
+import button from './buttons';
 import checkbox from './checkbox';
-import { panel } from './panels';
+import panel from './panel';
 import radiobutton from './radiobutton';
 import toggle from './toggle';
 
@@ -45,8 +45,8 @@ export function getTheme(config?: ThemeConfig): Theme {
   return {
     panel: panel(context),
     buttons: {
-      primary: primaryButton(context),
-      secondary: secondaryButton(context),
+      primary: button.primary(context),
+      secondary: button.secondary(context),
     },
     toggle: {
       label: toggle.label(context),
