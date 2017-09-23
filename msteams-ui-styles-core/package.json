@@ -11,7 +11,7 @@
     "url": "https://github.com/OfficeDev/msteams-ui-components/issues"
   },
   "scripts": {
-    "prepublish": "npm run clean && npm run build",
+    "prepare": "npm run clean && npm run build",
     "clean": "gulp clean",
     "build": "gulp",
     "build:watch": "gulp watch",

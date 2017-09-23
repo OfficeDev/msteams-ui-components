@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { classes } from 'typestyle';
 import { connectTeamsComponent, InjectedTeamsProps } from '../index';
+import classes from '../utils/classes';
 
 export interface AnchorProps
   extends React.DetailedHTMLProps<React.AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement> { }

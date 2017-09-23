@@ -1,7 +1,8 @@
 {
   "name": "msteams-ui-components-react",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/OfficeDev/msteams-ui-components.git"
@@ -10,8 +11,10 @@
     "url": "https://github.com/OfficeDev/msteams-ui-components/issues"
   },
   "scripts": {
-    "build": "linklocal && gulp",
-    "build:watch": "linklocal && gulp watch",
+    "prepare": "npm run clean && npm run build",
+    "clean": "gulp clean",
+    "build": "gulp",
+    "build:watch": "gulp watch",
     "build:crash": "gulp build-crash-on-error",
     "lint": "gulp lint"
   },
@@ -24,20 +27,18 @@
     "@types/react": "^16.0.5",
     "babel-core": "^6.26.0",
     "babel-preset-env": "^1.6.0",
+    "del": "^3.0.0",
     "gulp": "^3.9.1",
     "gulp-babel": "^7.0.0",
     "gulp-filter": "^5.0.1",
     "gulp-tslint": "^8.1.2",
     "gulp-typescript": "^3.2.2",
-    "linklocal": "^2.8.1",
-    "msteams-ui-styles-core": "file:../msteams-ui-styles-core",
     "react": "^15.6.1",
     "tslint": "^5.7.0",
-    "typescript": "^2.5.2",
-    "typestyle": "^1.4.1"
+    "typescript": "^2.5.2"
   },
-  "types": "./dist",
   "dependencies": {
+    "msteams-ui-styles-core": "^0.1.2",
     "prop-types": "^15.5.10"
   }
 }
