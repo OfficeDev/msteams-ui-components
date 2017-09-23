@@ -67,7 +67,7 @@ class RadiobuttonInner extends React.Component<RadiobuttonProps & InjectedTeamsP
           onChange={() => null}
           checked={selected}
           hidden />
-        <span
+        <button
           onClick={() => this.handleSelect()}
           className={boxClassName} />
         {this.props.label ? <label htmlFor={this.state.id} className={labelClassName}>{this.props.label}</label> : null}
