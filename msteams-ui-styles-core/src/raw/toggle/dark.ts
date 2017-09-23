@@ -2,7 +2,7 @@ import { Context } from '../context';
 import { base } from './base';
 import { ToggleStyles } from './toggle-styles';
 
-export function dark(c: Context): ToggleStyles {
+export function Dark(c: Context): ToggleStyles {
   return base(c, {
     sliderBackground: c.colors.dark.black,
     sliderBall: c.colors.dark.gray11,

@@ -4,10 +4,10 @@
   "main": "./dist/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/OfficeDev/MicrosoftTeamsWebStyling.git"
+    "url": "https://github.com/OfficeDev/msteams-ui-components.git"
   },
   "bugs": {
-    "url": "https://github.com/OfficeDev/MicrosoftTeamsWebStyling/issues"
+    "url": "https://github.com/OfficeDev/msteams-ui-components/issues"
   },
   "scripts": {
     "build": "linklocal && gulp",

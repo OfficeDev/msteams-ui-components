@@ -2,7 +2,7 @@ import { Context } from '../context';
 import { base } from './base';
 import { ToggleStyles } from './toggle-styles';
 
-export function highContrast(c: Context): ToggleStyles {
+export function HighContrast(c: Context): ToggleStyles {
   return base(c, {
     sliderBackground: c.colors.white,
     sliderBall: c.colors.highContrast.yellow,

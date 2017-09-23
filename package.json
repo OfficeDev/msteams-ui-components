@@ -7,12 +7,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/OfficeDev/MicrosoftTeamsWebStyling.git"
+    "url": "https://github.com/OfficeDev/msteams-ui-components.git"
   },
-  "author": "TFM (Team Flying Monkeys)",
-  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/OfficeDev/MicrosoftTeamsWebStyling/issues"
+    "url": "https://github.com/OfficeDev/msteams-ui-components/issues"
   },
-  "homepage": "https://github.com/OfficeDev/MicrosoftTeamsWebStyling#readme"
+  "author": {
+    "name": "Microsoft Corporation"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/OfficeDev/msteams-ui-components#readme"
 }
