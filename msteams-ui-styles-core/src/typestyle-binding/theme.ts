@@ -4,6 +4,7 @@ import { ThemeConfig, ThemeStyle } from '../raw/theme-config';
 import { anchor } from './anchor';
 import { primaryButton, secondaryButton } from './buttons';
 import checkbox from './checkbox';
+import input from './input';
 import { panel } from './panels';
 import radiobutton from './radiobutton';
 // import { toggles } from './toggles';
@@ -30,6 +31,11 @@ export interface Theme {
     selected: string;
     unselected: string;
     label: string;
+  };
+  input: {
+    label: string;
+    input: string;
+    inputUnderline: string;
   };
 }
 
@@ -65,5 +71,10 @@ export function getTheme(config?: ThemeConfig): Theme {
       label: radiobutton.label(context),
     },
     anchor: anchor(context),
+    input: {
+      input: input.input(context),
+      label: input.label(context),
+      inputUnderline: input.inputUnderline(context),
+    },
   };
 }

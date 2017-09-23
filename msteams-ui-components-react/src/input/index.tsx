@@ -8,7 +8,10 @@ export interface InputProps extends
 const InputInternal: React.StatelessComponent<InputProps & InjectedTeamsProps> = (props) => {
   const { theme, className, ...rest } = props;
   return (
-    <input className={classes(className)} {...rest} />
+    <div className={theme.input.label}>
+      <input className={classes(theme.input.input, className)} {...rest} />
+      <span className={theme.input.inputUnderline} />
+    </div>
   );
 };
 
