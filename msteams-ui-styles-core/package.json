@@ -1,7 +1,8 @@
 {
   "name": "msteams-ui-styles-core",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/OfficeDev/msteams-ui-components.git"
@@ -10,6 +11,8 @@
     "url": "https://github.com/OfficeDev/msteams-ui-components/issues"
   },
   "scripts": {
+    "prepublish": "npm run clean && npm run build",
+    "clean": "gulp clean",
     "build": "gulp",
     "build:watch": "gulp watch",
     "build:crash": "gulp build-crash-on-error",
@@ -19,11 +22,11 @@
     "name": "Microsoft Corporation"
   },
   "license": "MIT",
-  "types": "./dist",
   "devDependencies": {
     "@types/react": "^16.0.5",
     "babel-core": "^6.26.0",
     "babel-preset-env": "^1.6.0",
+    "del": "^3.0.0",
     "gulp": "^3.9.1",
     "gulp-babel": "^7.0.0",
     "gulp-filter": "^5.0.1",
