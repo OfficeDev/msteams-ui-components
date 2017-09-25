@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { classes } from 'typestyle';
 import { connectTeamsComponent, InjectedTeamsProps } from '../index';
 
 export interface InputProps extends
@@ -8,7 +7,10 @@ export interface InputProps extends
 const InputInternal: React.StatelessComponent<InputProps & InjectedTeamsProps> = (props) => {
   const { theme, className, ...rest } = props;
   return (
-    <input className={classes(className)} {...rest} />
+    <div className={theme.input.container}>
+      <input className={[theme.input.input, className].join(' ')} {...rest} />
+      <span className={theme.input.underline} />
+    </div>
   );
 };
 
