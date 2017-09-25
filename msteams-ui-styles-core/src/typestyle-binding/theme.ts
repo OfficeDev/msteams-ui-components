@@ -4,7 +4,7 @@ import { ThemeConfig, ThemeStyle } from '../raw/theme-config';
 import anchor from './anchor';
 import button from './buttons';
 import checkbox from './checkbox';
-import input from './input';
+import { input } from './input';
 import panel from './panel';
 import radiobutton from './radiobutton';
 import toggle from './toggle';
@@ -33,9 +33,9 @@ export interface Theme {
     label: string;
   };
   input: {
-    label: string;
+    container: string;
+    underline: string;
     input: string;
-    inputUnderline: string;
   };
 }
 
@@ -48,6 +48,7 @@ const defaultConfig: ThemeConfig = {
 export function getTheme(config?: ThemeConfig): Theme {
   const realConfig = Object.assign({}, defaultConfig, config);
   const context = getContext(realConfig);
+  const inputClasses = input(context);
   return {
     panel: panel(context),
     buttons: {
@@ -72,9 +73,9 @@ export function getTheme(config?: ThemeConfig): Theme {
     },
     anchor: anchor(context),
     input: {
-      input: input.input(context),
-      label: input.label(context),
-      inputUnderline: input.inputUnderline(context),
+      input: inputClasses.input,
+      container: inputClasses.container,
+      underline: inputClasses.underline,
     },
   };
 }

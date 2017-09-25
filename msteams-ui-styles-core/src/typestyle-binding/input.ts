@@ -2,28 +2,16 @@ import { style } from 'typestyle';
 import { Context } from '../raw/context';
 import { input as inputRaw } from '../raw/input';
 
-function label(c: Context) {
+export function input(c: Context) {
   const raw = inputRaw(c);
-  return style(raw.label);
+  const inputClass = style(raw.normal);
+  return {
+    container: style(raw.label),
+    input: inputClass,
+    underline: style(raw.underline, {
+      $nest: {
+        [`.${inputClass}:focus + &`]: raw.focusUnderline,
+      },
+    }),
+  };
 }
-
-function input(c: Context) {
-  const raw = inputRaw(c);
-  return style(raw.normal);
-}
-
-function inputUnderline(c: Context) {
-  const raw = inputRaw(c);
-  const inputClass = input(c);
-  return style(raw.underline, {
-    $nest: {
-      [`.${inputClass}:focus + &`]: raw.focusUnderline,
-    },
-  });
-}
-
-export default {
-  label,
-  input,
-  inputUnderline,
-};
