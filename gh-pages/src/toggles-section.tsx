@@ -24,7 +24,7 @@ export class TogglesSection extends React.Component<{}, TogglesSectionState> {
     return (
       <div>
         <h1>Toggles</h1>
-        <Toggle value={this.state.checked} onChange={this.toggle} />
+        <Toggle checked={this.state.checked} onChange={this.toggle} />
       </div>
     );
   }

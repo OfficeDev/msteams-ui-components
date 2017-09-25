@@ -2,25 +2,23 @@ import * as React from 'react';
 import { connectTeamsComponent, InjectedTeamsProps } from '../index';
 
 export interface ToggleProps {
-  value: boolean;
+  checked: boolean;
   onChange: (checked: boolean) => void;
 }
 
 const ToggleInternal: React.StatelessComponent<ToggleProps & InjectedTeamsProps> = (props) => {
   const toggle = props.theme.toggle;
-  const sliderClass = props.value ? toggle.sliderChecked : toggle.slider;
-  const onToggle = () => props.onChange(!props.value);
 
   return (
-    <label
-      className={toggle.label}
+    <div
+      className={toggle.container}
     >
-      <input type="checkbox" className={toggle.input} />
+      <input type="checkbox" className={toggle.input} checked={props.checked} />
       <button
-        onClick={onToggle}
-        className={sliderClass}
+        onClick={() => props.onChange(!props.checked)}
+        className={toggle.slider}
       />
-    </label>
+    </div>
   );
 };
 
