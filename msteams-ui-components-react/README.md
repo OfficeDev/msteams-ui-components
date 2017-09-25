@@ -1,4 +1,6 @@
-[![Build Status](https://semaphoreci.com/api/v1/projects/7a5e7ea7-e496-4be2-90a4-bdc46ab0bb5d/1532935/badge.svg)](https://semaphoreci.com/jialic-89/msteams-ui-components)
+# Microsoft Teams UI Components - React
+
+This library provides React components styled according to the [Microsoft Teams](https://products.office.com/en-US/microsoft-teams/group-chat-software) design guidelines found [here](http://msteamsdesignguidelines.azurewebsites.net/).
 
 # Contributing
 
