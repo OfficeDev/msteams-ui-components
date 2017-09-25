@@ -4,6 +4,6 @@ import * as React from 'react';
 export const InputSection: React.StatelessComponent = () => (
   <div>
     <h1>Input</h1>
-    <Input />
+    <Input placeholder="Type in something" />
   </div>
 );
