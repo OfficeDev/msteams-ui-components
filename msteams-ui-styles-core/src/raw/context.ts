@@ -1,33 +1,16 @@
-import { ThemeStyle } from '../index';
 import { ColorPalate } from './colors';
 import { ThemeConfig } from './theme-config';
 
 export interface Context {
   rem: (n: number) => string;
-  style: <T1, T2, T3>(styles: {
-    light: T1,
-    dark: T2,
-    highContrast: T3,
-  }) => T1 | T2 | T3;
+  style: <T>(styles: { [key: number]: T }) => T;
   colors: ColorPalate;
 }
 
 export function getContext(config: ThemeConfig): Context {
   return {
     rem: (n: number) => `${n * 10.0 / config.baseFontSize}rem`,
-    style: <T1, T2, T3>(styles: {
-      light: T1,
-      dark: T2,
-      highContrast: T3,
-    }) => {
-      if (config.style === ThemeStyle.HighContrast) {
-        return styles.highContrast;
-      } else if (config.style === ThemeStyle.Dark) {
-        return styles.dark;
-      } else {
-        return styles.light;
-      }
-    },
+    style: <T>(styles: { [key: number]: T }) => styles[config.style],
     colors: config.colors!,
   };
 }
