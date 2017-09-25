@@ -23,7 +23,7 @@ export function base(c: Context): InputStyles {
     },
     underline: {
       display: 'block',
-      height: rem(0.1),
+      height: rem(0.2),
       position: 'absolute',
       backgroundColor: 'red',
       left: rem(-20),
