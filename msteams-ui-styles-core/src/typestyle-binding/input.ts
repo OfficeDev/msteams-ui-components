@@ -15,9 +15,9 @@ function input(c: Context) {
 function inputUnderline(c: Context) {
   const raw = inputRaw(c);
   const inputClass = input(c);
-  return style({
+  return style(raw.underline, {
     $nest: {
-      [`${input}:focus + ::after`]: raw.focusUnderline,
+      [`.${inputClass}:focus + &`]: raw.focusUnderline,
     },
   });
 }

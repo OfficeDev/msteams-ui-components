@@ -9,6 +9,7 @@ export function base(c: Context): InputStyles {
       padding: 0,
       margin: 0,
       display: 'inline-block',
+      overflow: 'hidden',
     },
     normal: {
       height: rem(3.2),
@@ -18,16 +19,20 @@ export function base(c: Context): InputStyles {
       backgroundColor: '#EEF1F5',
       padding: `${rem(0.8)} ${rem(1.2)}`,
       margin: 0,
+      outline: 'none',
+    },
+    underline: {
+      display: 'block',
+      height: rem(0.1),
+      position: 'absolute',
+      backgroundColor: 'red',
+      left: rem(-20),
+      bottom: rem(0.1),
+      width: rem(20),
+      transition: 'all 0.3s ease-in-out',
     },
     focusUnderline: {
-      // content: '"ok"',
-      display: 'inline-block',
-      width: rem(20),
-      height: rem(0.1),
-      backgroundColor: 'red',
-      position: 'absolute',
       left: 0,
-      bottom: rem(0.1),
     },
   };
 }
