@@ -6,7 +6,7 @@ export function input(c: Context) {
   const raw = inputRaw(c);
   const inputClass = style(raw.normal);
   return {
-    container: style(raw.label),
+    container: style(raw.container),
     input: inputClass,
     underline: style(raw.underline, {
       $nest: {

@@ -4,7 +4,7 @@ import { InputStyles } from './input-styles';
 export function base(c: Context): InputStyles {
   const { rem } = c;
   return {
-    label: {
+    container: {
       position: 'relative',
       padding: 0,
       margin: 0,
