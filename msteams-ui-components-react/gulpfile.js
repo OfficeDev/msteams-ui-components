@@ -4,12 +4,17 @@ const babel = require('gulp-babel');
 const filter = require('gulp-filter');
 const tslint = require('tslint');
 const gulpTsLint = require('gulp-tslint');
+const del = require('del');
 
 const src = ['src/**/*.{ts,tsx}'];
 
 gulp.task('default', () => {
   return createBuildTask();
 });
+
+gulp.task('clean', () => {
+  del(['dist']);
+}); 
 
 gulp.task('lint', () => {
   const program = tslint.Linter.createProgram('./tsconfig.json');

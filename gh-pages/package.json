@@ -6,7 +6,9 @@
     "build": "linklocal -r && webpack --env.prod -p",
     "lint": "tslint --project tsconfig.json"
   },
-  "author": "TFM (Team Flying Monkeys)",
+  "author": {
+    "name": "Microsoft Corporation"
+  },
   "license": "MIT",
   "dependencies": {
     "csstips": "^0.2.2",

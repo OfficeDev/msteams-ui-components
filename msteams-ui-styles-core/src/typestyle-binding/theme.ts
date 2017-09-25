@@ -1,13 +1,13 @@
 import { Colors } from '../raw/colors';
 import { getContext } from '../raw/context';
 import { ThemeConfig, ThemeStyle } from '../raw/theme-config';
-import { anchor } from './anchor';
-import { primaryButton, secondaryButton } from './buttons';
+import anchor from './anchor';
+import button from './buttons';
 import checkbox from './checkbox';
 import input from './input';
-import { panel } from './panels';
+import panel from './panel';
 import radiobutton from './radiobutton';
-// import { toggles } from './toggles';
+import toggle from './toggle';
 
 export interface Theme {
   panel: string;
@@ -15,7 +15,7 @@ export interface Theme {
     primary: string;
     secondary: string;
   };
-  toggles: {
+  toggle: {
     label: string;
     input: string;
     slider: string;
@@ -51,14 +51,14 @@ export function getTheme(config?: ThemeConfig): Theme {
   return {
     panel: panel(context),
     buttons: {
-      primary: primaryButton(context),
-      secondary: secondaryButton(context),
+      primary: button.primary(context),
+      secondary: button.secondary(context),
     },
-    toggles: {
-      label: '', // toggles.label(context),
-      input: '', // toggles.input(context),
-      slider: '', // toggles.slider(context),
-      sliderChecked: '', // toggles.sliderChecked(context),
+    toggle: {
+      label: toggle.label(context),
+      input: toggle.input(context),
+      slider: toggle.slider(context),
+      sliderChecked: toggle.sliderChecked(context),
     },
     checkbox: {
       checked: checkbox.checked(context),
