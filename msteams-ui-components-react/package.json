@@ -14,7 +14,7 @@
     "prepublishOnly": "npm run clean && npm run build",
     "clean": "gulp clean",
     "build": "gulp",
-    "build:watch": "linklocal && gulp watch",
+    "build:watch": "gulp watch",
     "build:crash": "gulp build-crash-on-error",
     "lint": "gulp lint"
   },
@@ -40,7 +40,7 @@
     "typescript": "^2.5.2"
   },
   "dependencies": {
-    "msteams-ui-styles-core": "file:../msteams-ui-styles-core",
+    "msteams-ui-styles-core": "^0.1.4",
     "prop-types": "^15.5.10"
   },
   "peerDependencies": {
