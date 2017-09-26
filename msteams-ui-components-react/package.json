@@ -16,7 +16,9 @@
     "build": "gulp",
     "build:watch": "gulp watch",
     "build:crash": "gulp build-crash-on-error",
-    "lint": "gulp lint"
+    "lint": "gulp lint",
+    "link:self": "npm link",
+    "link:deps": "npm link msteams-ui-styles-core"
   },
   "author": {
     "name": "Microsoft Corporation"
