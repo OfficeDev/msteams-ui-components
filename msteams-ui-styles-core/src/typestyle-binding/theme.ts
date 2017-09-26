@@ -49,6 +49,8 @@ export interface Theme {
     tbody: string;
     tr: string;
     td: string;
+    thead: string;
+    th: string;
   };
 }
 
@@ -103,6 +105,8 @@ export function getTheme(config?: ThemeConfig): Theme {
       tr: tableClasses.tr,
       td: tableClasses.td,
       tbody: tableClasses.tbody,
+      thead: tableClasses.thead,
+      th: tableClasses.th,
     },
   };
 }
