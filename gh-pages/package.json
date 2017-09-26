@@ -15,7 +15,6 @@
     "csx": "^8.5.0",
     "msteams-ui-components-react": "file:../msteams-ui-components-react",
     "msteams-ui-styles-core": "file:../msteams-ui-styles-core",
-    "office-ui-fabric-react": "^4.50.2",
     "prop-types": "^15.6.0",
     "react": "^15.6.2",
     "react-bootstrap": "^0.31.3",
