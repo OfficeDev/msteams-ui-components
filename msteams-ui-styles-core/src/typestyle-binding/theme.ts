@@ -8,8 +8,8 @@ import { input } from './input';
 import panel from './panel';
 import radiobutton from './radiobutton';
 import { tab } from './tab';
-import { toggle } from './toggle';
 import { table } from './table';
+import { toggle } from './toggle';
 
 export interface Theme {
   panel: string;
