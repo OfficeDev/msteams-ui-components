@@ -2,9 +2,10 @@
   "name": "gh-pages",
   "version": "0.0.1",
   "scripts": {
-    "dev": "linklocal -r && webpack-dev-server",
-    "build": "linklocal -r && webpack --env.prod -p",
-    "lint": "tslint --project tsconfig.json"
+    "dev": "webpack-dev-server",
+    "build": "webpack --env.prod -p",
+    "lint": "tslint --project tsconfig.json",
+    "link:deps": "npm link msteams-ui-styles-core && npm link msteams-ui-components-react"
   },
   "author": {
     "name": "Microsoft Corporation"
@@ -13,8 +14,8 @@
   "dependencies": {
     "csstips": "^0.2.2",
     "csx": "^8.5.0",
-    "msteams-ui-components-react": "file:../msteams-ui-components-react",
-    "msteams-ui-styles-core": "file:../msteams-ui-styles-core",
+    "msteams-ui-components-react": "^0.1.7",
+    "msteams-ui-styles-core": "^0.1.4",
     "prop-types": "^15.6.0",
     "react": "^15.6.2",
     "react-bootstrap": "^0.31.3",
