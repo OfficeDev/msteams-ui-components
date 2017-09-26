@@ -1,6 +1,6 @@
 import { normalize, setupPage } from 'csstips';
-import { Panel, TeamsComponentContext, ThemeStyle } from 'msteams-ui-components-react';
 import { Radiobutton, RadiobuttonGroup } from 'msteams-ui-components-react';
+import { Panel, TeamsComponentContext, ThemeStyle } from 'msteams-ui-components-react';
 import * as React from 'react';
 import { render } from 'react-dom';
 import { ButtonSection } from './button-section';
@@ -8,6 +8,7 @@ import { CheckboxSection } from './checkbox-section';
 import { InputSection } from './input-section';
 import { LinkSection } from './link-section';
 import { RadiobuttonSection } from './radiobutton-section';
+import { TabSection } from './tab-section';
 import { TogglesSection } from './toggles-section';
 
 const mountPoint = 'root';
@@ -57,6 +58,7 @@ class GHPages extends React.Component<{}, GHPagesState> {
           <LinkSection />
           <InputSection />
           <RadiobuttonSection />
+          <TabSection />
         </Panel>
       </TeamsComponentContext>
     );

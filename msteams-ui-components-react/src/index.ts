@@ -6,3 +6,4 @@ export * from './checkboxes';
 export * from './anchor';
 export * from './input';
 export * from './radiobuttons';
+export * from './tab';
