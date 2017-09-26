@@ -14,8 +14,9 @@ const defaultConfig = {
       {
         test: /\.tsx?$/,
         use: ['babel-loader', 'ts-loader'],
-        exclude: /node_moduels/,
-      }
+        exclude: /node_modules/,
+      },
+      {test: /\.example.jsx$/, use: 'raw-loader'}      
     ],
   },
   resolve: {
