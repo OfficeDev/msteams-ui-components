@@ -3,8 +3,10 @@ import * as React from 'react';
 import { connectTeamsComponent, InjectedTeamsProps } from '../index';
 import { TabContext, TabContextType } from './index';
 
-export interface TabProps {
+export interface TabProps
+  extends React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
   tabId: string;
+  onTabSelect: () => void;
 }
 
 export const TabPropTypes = {
@@ -19,7 +21,7 @@ class TabInternal extends React.Component<InjectedTeamsProps & TabProps, {}> {
   context: TabContext;
 
   render() {
-    const { theme, tabId, ...rest } = this.props;
+    const { theme, tabId, onTabSelect, ...rest } = this.props;
 
     const classes = [theme.tab.normal];
     if (this.context.isSelected(tabId)) {
@@ -28,7 +30,7 @@ class TabInternal extends React.Component<InjectedTeamsProps & TabProps, {}> {
 
     return (
       <button
-        onClick={() => this.context.onSelect(tabId)}
+        onClick={onTabSelect}
         className={classes.join(' ')}
         {...rest}
       >

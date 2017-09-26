@@ -8,15 +8,22 @@ interface TabSectionState {
 export class TabSection extends React.Component<{}, TabSectionState> {
   constructor() {
     super();
-    this.selectTab = this.selectTab.bind(this);
+    this.selectTabA = this.selectTabA.bind(this);
+    this.selectTabB = this.selectTabB.bind(this);
     this.state = {
       selectedTab: 'a',
     };
   }
 
-  selectTab(tabId: string) {
+  selectTabA() {
     this.setState({
-      selectedTab: tabId,
+      selectedTab: 'a',
+    });
+  }
+
+  selectTabB() {
+    this.setState({
+      selectedTab: 'b',
     });
   }
 
@@ -24,9 +31,9 @@ export class TabSection extends React.Component<{}, TabSectionState> {
     return (
       <div>
         <h1>Tab</h1>
-        <TabGroup selectedTabId={this.state.selectedTab} onTabSelect={this.selectTab}>
-          <Tab tabId="a">a tab</Tab>
-          <Tab tabId="b">another tab</Tab>
+        <TabGroup selectedTabId={this.state.selectedTab}>
+          <Tab tabId="a" onTabSelect={this.selectTabA}>a tab</Tab>
+          <Tab tabId="b" onTabSelect={this.selectTabB}>another tab</Tab>
         </TabGroup>
       </div>
     );
