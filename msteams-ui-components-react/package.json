@@ -1,6 +1,6 @@
 {
   "name": "msteams-ui-components-react",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "repository": {
@@ -42,5 +42,8 @@
   "dependencies": {
     "msteams-ui-styles-core": "file:../msteams-ui-styles-core",
     "prop-types": "^15.5.10"
+  },
+  "peerDependencies": {
+    "@types/prop-types": "^15.5.1"
   }
 }
