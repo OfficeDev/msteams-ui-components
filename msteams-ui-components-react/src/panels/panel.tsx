@@ -1,12 +1,16 @@
 import * as React from 'react';
 import { connectTeamsComponent, InjectedTeamsProps } from '../teams-context';
+import classes from '../utils/classes';
 
-const PanelView: React.StatelessComponent<any & InjectedTeamsProps> =
+export interface PanelProps
+  extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> { }
+
+const PanelView: React.StatelessComponent<PanelProps & InjectedTeamsProps> =
   (props) => {
-    const { theme, ...rest } = props;
+    const { theme, className, ...rest } = props;
     return (
-      <div className={theme.panel} {...rest}>{props.children}</div>
+      <div className={classes(theme.panel, className)} {...rest}>{props.children}</div>
     );
   };
 
-export const Panel = connectTeamsComponent(PanelView);
+export const Panel = connectTeamsComponent<PanelProps>(PanelView);
