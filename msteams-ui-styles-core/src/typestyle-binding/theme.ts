@@ -8,6 +8,7 @@ import { input } from './input';
 import panel from './panel';
 import radiobutton from './radiobutton';
 import { toggle } from './toggle';
+import { tab } from './tab';
 
 export interface Theme {
   panel: string;
@@ -36,6 +37,11 @@ export interface Theme {
     underline: string;
     input: string;
   };
+  tab: {
+    container: string;
+    normal: string;
+    active: string;
+  };
 }
 
 const defaultConfig: ThemeConfig = {
@@ -49,6 +55,7 @@ export function getTheme(config?: ThemeConfig): Theme {
   const context = getContext(realConfig);
   const inputClasses = input(context);
   const toggleClasses = toggle(context);
+  const tabClasses = tab(context);
   return {
     panel: panel(context),
     buttons: {
@@ -75,6 +82,11 @@ export function getTheme(config?: ThemeConfig): Theme {
       input: inputClasses.input,
       container: inputClasses.container,
       underline: inputClasses.underline,
+    },
+    tab: {
+      container: tabClasses.container,
+      normal: tabClasses.normal,
+      active: tabClasses.active,
     },
   };
 }
