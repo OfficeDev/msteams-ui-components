@@ -1,4 +1,4 @@
-class TabSection extends React.Component {
+class TabExample extends React.Component {
   constructor() {
     super();
     this.selectTabA = this.selectTabA.bind(this);
