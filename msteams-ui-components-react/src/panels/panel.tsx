@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { classes } from 'typestyle';
 import { connectTeamsComponent, InjectedTeamsProps } from '../teams-context';
 
 export interface PanelProps
@@ -8,7 +9,7 @@ const PanelView: React.StatelessComponent<PanelProps & InjectedTeamsProps> =
   (props) => {
     const { theme, className, ...rest } = props;
     return (
-      <div className={[theme.panel, className].join(' ')} {...rest}>{props.children}</div>
+      <div className={classes(theme.panel, className)} {...rest}>{props.children}</div>
     );
   };
 
