@@ -16,7 +16,8 @@
     "build": "gulp",
     "build:watch": "gulp watch",
     "build:crash": "gulp build-crash-on-error",
-    "lint": "gulp lint"
+    "lint": "gulp lint",
+    "link:self": "npm link"
   },
   "author": {
     "name": "Microsoft Corporation"
