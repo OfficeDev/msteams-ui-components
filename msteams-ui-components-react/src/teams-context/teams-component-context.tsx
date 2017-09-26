@@ -25,6 +25,7 @@ interface TeamsControlContext {
 const staticTypes = {
   theme: PropTypes.object,
   subscribe: PropTypes.func,
+  style: PropTypes.number,
 };
 
 export class TeamsComponentContext extends React.Component<TeamsComponentProps> {
