@@ -2,39 +2,20 @@ import { style } from 'typestyle';
 import { Context } from '../raw/context';
 import { toggle as toggleRaw } from '../raw/toggle';
 
-function label(c: Context) {
-  const styles = toggleRaw(c);
-  return style(styles.label);
+export function toggle(c: Context) {
+  const raw = toggleRaw(c);
+  const inputClass = style(raw.input);
+  return {
+    container: style(raw.label),
+    input: inputClass,
+    slider: style(raw.sliderBackground, {
+      $nest: {
+        '&:before': raw.sliderBall,
+        '&:focus:after': raw.sliderFocus,
+        [`.${inputClass}:checked + &`]: raw.sliderBackgroundChecked,
+        [`.${inputClass}:checked + &:before`]: raw.sliderBallChecked,
+        [`.${inputClass}:checked + &:focus:after`]: raw.sliderFocusChecked,
+      },
+    }),
+  };
 }
-
-function input(c: Context) {
-  const styles = toggleRaw(c);
-  return style(styles.input);
-}
-
-function slider(c: Context) {
-  const styles = toggleRaw(c);
-  return style(styles.sliderBackground, {
-    $nest: {
-      '&:before': styles.sliderBall,
-      '&:focus:after': styles.sliderFocus,
-    },
-  });
-}
-
-function sliderChecked(c: Context) {
-  const styles = toggleRaw(c);
-  return style(styles.sliderBackgroundChecked, {
-    $nest: {
-      '&:before': styles.sliderBallChecked,
-      '&:focus:after': styles.sliderFocusChecked,
-    },
-  });
-}
-
-export default {
-  label,
-  input,
-  slider,
-  sliderChecked,
-};

@@ -8,7 +8,7 @@ import { input } from './input';
 import panel from './panel';
 import radiobutton from './radiobutton';
 import { tab } from './tab';
-import toggle from './toggle';
+import { toggle } from './toggle';
 
 export interface Theme {
   panel: string;
@@ -17,10 +17,9 @@ export interface Theme {
     secondary: string;
   };
   toggle: {
-    label: string;
+    container: string;
     input: string;
     slider: string;
-    sliderChecked: string;
   };
   checkbox: {
     checked: string;
@@ -55,6 +54,7 @@ export function getTheme(config?: ThemeConfig): Theme {
   const realConfig = Object.assign({}, defaultConfig, config);
   const context = getContext(realConfig);
   const inputClasses = input(context);
+  const toggleClasses = toggle(context);
   const tabClasses = tab(context);
   return {
     panel: panel(context),
@@ -63,10 +63,9 @@ export function getTheme(config?: ThemeConfig): Theme {
       secondary: button.secondary(context),
     },
     toggle: {
-      label: toggle.label(context),
-      input: toggle.input(context),
-      slider: toggle.slider(context),
-      sliderChecked: toggle.sliderChecked(context),
+      container: toggleClasses.container,
+      input: toggleClasses.input,
+      slider: toggleClasses.slider,
     },
     checkbox: {
       checked: checkbox.checked(context),
