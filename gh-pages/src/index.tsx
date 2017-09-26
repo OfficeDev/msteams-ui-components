@@ -1,6 +1,6 @@
 import { normalize, setupPage } from 'csstips';
-import { Radiobutton, RadiobuttonGroup } from 'msteams-ui-components-react';
 import { Panel, TeamsComponentContext, ThemeStyle } from 'msteams-ui-components-react';
+import { Radiobutton, RadiobuttonGroup } from 'msteams-ui-components-react';
 import * as React from 'react';
 import { Grid, Row } from 'react-bootstrap';
 import { render } from 'react-dom';
