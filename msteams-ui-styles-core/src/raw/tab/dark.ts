@@ -6,5 +6,6 @@ export function dark(c: Context): TabStyles {
   return base(c, {
     text: c.colors.white,
     underline: c.colors.dark.brand00,
+    containerUnderline: c.colors.dark.white,
   });
 }
