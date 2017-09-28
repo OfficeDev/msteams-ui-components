@@ -10,6 +10,7 @@ import * as LinkSection from '../examples/link.example.jsx';
 import * as RadiobuttonSection from '../examples/radiobutton.example.jsx';
 import * as TabSection from '../examples/tab.example.jsx';
 import * as TableSection from '../examples/table.example.jsx';
+import * as TextAreaSection from '../examples/textarea.example.jsx';
 import * as TogglesSection from '../examples/toggle.example.jsx';
 import { PreviewSection } from './preview-section';
 
@@ -67,6 +68,9 @@ export class Content extends React.Component<ContentProps, ContentState> {
             } />
             <Route path="/tables" render={() =>
               <PreviewSection code={TableSection.toString()} />
+            } />
+            <Route path="/textareas" render={() =>
+              <PreviewSection code={TextAreaSection.toString()} />
             } />
           </Switch>
         </TeamsComponentContext>
