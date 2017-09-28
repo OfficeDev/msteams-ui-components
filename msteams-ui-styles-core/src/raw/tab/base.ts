@@ -24,6 +24,7 @@ export function base(c: Context, tabColors: TabColors): TabStyles {
     },
     active: {
       borderBottomColor: tabColors.underline,
+      color: tabColors.textActive,
     },
   };
 }
