@@ -4,17 +4,23 @@ import { ThemeConfig, ThemeStyle } from '../raw/theme-config';
 import anchor from './anchor';
 import button from './buttons';
 import checkbox from './checkbox';
-import { dropdown } from './dropdown';
-import { input } from './input';
+import dropdown from './dropdown';
+import input from './input';
 import panel from './panel';
 import radiobutton from './radiobutton';
-import { tab } from './tab';
-import { table } from './table';
-import { textarea } from './textarea';
-import { toggle } from './toggle';
+import surface from './surface';
+import tab from './tab';
+import table from './table';
+import textarea from './textarea';
+import title from './title';
+import toggle from './toggle';
 
 export interface Theme {
   panel: string;
+  surface: string;
+  typography: {
+    title: string;
+  };
   buttons: {
     primary: string;
     secondary: string;
@@ -86,6 +92,10 @@ export function getTheme(config?: ThemeConfig): Theme {
 
   return {
     panel: panel(context),
+    surface: surface(context),
+    typography: {
+      title: title(context),
+    },
     buttons: {
       primary: button.primary(context),
       secondary: button.secondary(context),

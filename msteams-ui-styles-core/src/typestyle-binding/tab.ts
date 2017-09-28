@@ -19,3 +19,5 @@ export function tab(c: Context) {
     }),
   };
 }
+
+export default tab;

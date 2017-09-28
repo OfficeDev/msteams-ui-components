@@ -15,3 +15,5 @@ export function input(c: Context) {
     }),
   };
 }
+
+export default input;

@@ -1,10 +1,7 @@
 import { Context } from '../context';
+import { base } from './base';
 import { PanelStyles } from './panel-styles';
 
 export function HighContrast(c: Context): PanelStyles {
-  return {
-    normal: {
-      backgroundColor: c.colors.black,
-    },
-  };
+  return base(c, { background: c.colors.black });
 }

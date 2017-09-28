@@ -1,5 +1,6 @@
 import { Context } from '../context';
-import { TabColors, TabStyles } from './tab-styles';
+import { TabColors } from './tab-colors';
+import { TabStyles } from './tab-styles';
 
 export function base(c: Context, tabColors: TabColors): TabStyles {
   const { rem } = c;

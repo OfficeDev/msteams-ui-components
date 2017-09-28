@@ -10,3 +10,5 @@ export * from './tab';
 export * from './table';
 export * from './textarea';
 export * from './dropdown';
+export * from './surface';
+export * from './typography';
