@@ -9,6 +9,7 @@ import panel from './panel';
 import radiobutton from './radiobutton';
 import { tab } from './tab';
 import { table } from './table';
+import { textarea } from './textarea';
 import { toggle } from './toggle';
 
 export interface Theme {
@@ -51,6 +52,11 @@ export interface Theme {
     thead: string;
     th: string;
   };
+  textarea: {
+    textarea: string;
+    underline: string;
+    container: string;
+  };
 }
 
 const defaultConfig: ThemeConfig = {
@@ -66,6 +72,7 @@ export function getTheme(config?: ThemeConfig): Theme {
   const toggleClasses = toggle(context);
   const tabClasses = tab(context);
   const tableClasses = table(context);
+  const textareaClasses = textarea(context);
 
   return {
     panel: panel(context),
@@ -106,6 +113,11 @@ export function getTheme(config?: ThemeConfig): Theme {
       tbody: tableClasses.tbody,
       thead: tableClasses.thead,
       th: tableClasses.th,
+    },
+    textarea: {
+      textarea: textareaClasses.textarea,
+      container: textareaClasses.container,
+      underline: textareaClasses.underline,
     },
   };
 }
