@@ -8,12 +8,12 @@ export function base(c: Context, inputColors: InputColors): InputStyles {
       position: 'relative',
       padding: 0,
       margin: 0,
-      display: 'inline-block',
+      display: 'block',
       overflow: 'hidden',
     },
     normal: {
       height: rem(3.2),
-      width: rem(20),
+      width: '100%',
       borderRadius: rem(0.3),
       border: 0,
       backgroundColor: inputColors.background,
@@ -26,13 +26,15 @@ export function base(c: Context, inputColors: InputColors): InputStyles {
       height: rem(0.2),
       position: 'absolute',
       backgroundColor: inputColors.underline,
-      left: rem(-20),
       bottom: rem(0.1),
-      width: rem(20),
-      transition: 'all 0.3s ease-in-out',
+      width: '100%',
+      transform: 'scaleX(0)',
+      transformOrigin: 'left',
     },
     focusUnderline: {
+      transition: 'all 0.5s ease-in-out',
       left: 0,
+      transform: 'scaleX(1)',
     },
   };
 }

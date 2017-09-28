@@ -31,10 +31,11 @@ export function base(c: Context, colors: TextAreaColors): TextAreaStyles {
       transform: 'scaleX(0)',
       left: 0,
       bottom: rem(0.2),
+      transformOrigin: 'left',
     },
     focusUnderline: {
       transform: 'scaleX(1)',
-      transition: 'all 0.3s ease-in-out',
+      transition: 'all 0.5s ease-in-out',
     },
   };
 }
