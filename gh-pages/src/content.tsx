@@ -5,6 +5,7 @@ import { Grid, Nav, NavItem } from 'react-bootstrap';
 import { Route, Switch } from 'react-router';
 import * as ButtonSection from '../examples/button.example.jsx';
 import * as CheckboxSection from '../examples/checkbox.example.jsx';
+import * as DropdownSection from '../examples/dropdown.example.jsx';
 import * as InputSection from '../examples/input.example.jsx';
 import * as LinkSection from '../examples/link.example.jsx';
 import * as RadiobuttonSection from '../examples/radiobutton.example.jsx';
@@ -71,6 +72,9 @@ export class Content extends React.Component<ContentProps, ContentState> {
             } />
             <Route path="/textareas" render={() =>
               <PreviewSection code={TextAreaSection.toString()} />
+            } />
+            <Route path="/dropdowns" render={() =>
+              <PreviewSection code={DropdownSection.toString()} />
             } />
           </Switch>
         </TeamsComponentContext>

@@ -4,6 +4,7 @@ import { ThemeConfig, ThemeStyle } from '../raw/theme-config';
 import anchor from './anchor';
 import button from './buttons';
 import checkbox from './checkbox';
+import { dropdown } from './dropdown';
 import { input } from './input';
 import panel from './panel';
 import radiobutton from './radiobutton';
@@ -57,6 +58,14 @@ export interface Theme {
     underline: string;
     container: string;
   };
+  dropdown: {
+    container: string;
+    mainButton: string;
+    item: string;
+    itemContainer: string;
+    itemContainerRight: string;
+    showItems: string;
+  };
 }
 
 const defaultConfig: ThemeConfig = {
@@ -73,6 +82,7 @@ export function getTheme(config?: ThemeConfig): Theme {
   const tabClasses = tab(context);
   const tableClasses = table(context);
   const textareaClasses = textarea(context);
+  const dropdownClasses = dropdown(context);
 
   return {
     panel: panel(context),
@@ -118,6 +128,14 @@ export function getTheme(config?: ThemeConfig): Theme {
       textarea: textareaClasses.textarea,
       container: textareaClasses.container,
       underline: textareaClasses.underline,
+    },
+    dropdown: {
+      container: dropdownClasses.container,
+      mainButton: dropdownClasses.mainButton,
+      item: dropdownClasses.item,
+      itemContainerRight: dropdownClasses.itemContainerRight,
+      showItems: dropdownClasses.showItems,
+      itemContainer: dropdownClasses.itemContainer,
     },
   };
 }
