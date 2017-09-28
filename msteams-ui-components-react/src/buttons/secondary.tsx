@@ -1,17 +1,17 @@
 import * as React from 'react';
 import { InjectedTeamsProps } from '../index';
 import { connectTeamsComponent } from '../teams-context';
+import classes from '../utils/classes';
 
-export interface SecondaryButtonProps {
+export interface SecondaryButtonProps
+  extends React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
   disabled?: boolean;
 }
 
 const SecondaryButtonView: React.StatelessComponent<SecondaryButtonProps & InjectedTeamsProps> = (props) => {
-  const className = props.theme ? props.theme.buttons.secondary : undefined;
-  const innerProps = {...props, className};
-  delete innerProps.theme;
+  const { theme, className, ...rest } = props;
 
-  return <button type="button" {...innerProps}>{props.children}</button>;
+  return <button className={classes(theme.buttons.secondary, className)} {...rest}>{props.children}</button>;
 };
 
 export const SecondaryButton = connectTeamsComponent(SecondaryButtonView);
