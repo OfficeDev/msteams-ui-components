@@ -9,7 +9,7 @@ export function highContrast(c: Context): DropdownStyles {
     item: c.colors.white,
     itemBg: c.colors.black,
     itemContainerBg: c.colors.highContrast.yellow,
-    itemHover: c.colors.highContrast.white,
+    itemHover: c.colors.white,
     itemHoverBg: c.colors.highContrast.green,
   });
 }
