@@ -18,3 +18,5 @@ export function table(c: Context) {
     th: style(raw.th),
   };
 }
+
+export default table;

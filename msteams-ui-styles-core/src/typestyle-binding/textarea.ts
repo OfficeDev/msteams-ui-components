@@ -15,3 +15,5 @@ export function textarea(c: Context) {
     }),
   };
 }
+
+export default textarea;

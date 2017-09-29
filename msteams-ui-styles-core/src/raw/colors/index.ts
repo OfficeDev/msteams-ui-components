@@ -2,6 +2,7 @@ export interface ColorPalate {
   transparent: string;
   black: string;
   white: string;
+  gray: string;
   light: {
     black: string;
     white: string;
@@ -70,6 +71,7 @@ export const Colors: ColorPalate = {
   transparent: 'transparent',
   black: '#000000',
   white: '#FFFFFF',
+  gray: '#F0F2F4',
   light: {
     black: '#16233A',
     white: '#FFFFFF',
