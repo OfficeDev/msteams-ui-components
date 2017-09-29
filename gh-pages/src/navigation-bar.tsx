@@ -39,6 +39,9 @@ export const NavigationBar: React.StatelessComponent<NavigationBarProps> =
         <LinkContainer to="/textareas">
           <NavItem>TextArea</NavItem>
         </LinkContainer>
+        <LinkContainer to="/dropdowns">
+          <NavItem>Dropdown</NavItem>
+        </LinkContainer>
       </Nav>
     </Navbar>;
   };
