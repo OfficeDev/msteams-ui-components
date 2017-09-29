@@ -32,3 +32,5 @@ export function dropdown(c: Context) {
     }),
   };
 }
+
+export default dropdown;

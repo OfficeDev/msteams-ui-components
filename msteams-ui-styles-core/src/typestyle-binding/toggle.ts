@@ -19,3 +19,5 @@ export function toggle(c: Context) {
     }),
   };
 }
+
+export default toggle;
