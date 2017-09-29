@@ -10,8 +10,8 @@ class ToggleExample extends React.Component {
   }
 
   render() {
-    return <Panel style={{ padding: '10px' }}>
+    return <Surface style={{ padding: '10px' }}>
       <Toggle checked={this.state.toggle} onChange={this.onToggle} />
-    </Panel>;
+    </Surface>;
   }
 }

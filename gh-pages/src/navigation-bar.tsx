@@ -12,6 +12,9 @@ export const NavigationBar: React.StatelessComponent<NavigationBarProps> =
         <Navbar.Brand>MSTeams UI Components</Navbar.Brand>
       </Navbar.Header>
       <Nav>
+        <LinkContainer to="/typography">
+          <NavItem>Typography</NavItem>
+        </LinkContainer>
         <LinkContainer to="/buttons">
           <NavItem>Buttons</NavItem>
         </LinkContainer>

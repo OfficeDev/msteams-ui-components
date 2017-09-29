@@ -13,6 +13,7 @@ import * as TabSection from '../examples/tab.example.jsx';
 import * as TableSection from '../examples/table.example.jsx';
 import * as TextAreaSection from '../examples/textarea.example.jsx';
 import * as TogglesSection from '../examples/toggle.example.jsx';
+import * as TypographySection from '../examples/typography.example.jsx';
 import { PreviewSection } from './preview-section';
 
 export interface ContentProps {
@@ -46,6 +47,9 @@ export class Content extends React.Component<ContentProps, ContentState> {
         </Nav>
         <TeamsComponentContext fontSize={this.state.fontSize} theme={this.state.theme}>
           <Switch>
+            <Route path="/typography" render={() =>
+              <PreviewSection code={TypographySection.toString()} />
+            } />
             <Route path="/buttons" render={() =>
               <PreviewSection code={ButtonSection.toString()} />
             } />

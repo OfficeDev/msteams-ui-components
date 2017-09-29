@@ -5,6 +5,7 @@ import anchor from './anchor';
 import button from './buttons';
 import checkbox from './checkbox';
 import dropdown from './dropdown';
+import font from './font';
 import input from './input';
 import panel from './panel';
 import radiobutton from './radiobutton';
@@ -18,9 +19,13 @@ import toggle from './toggle';
 export interface Theme {
   panel: string;
   surface: string;
-  typography: {
-    title: string;
+  fonts: {
+    semilight: string;
+    regular: string;
+    semibold: string;
+    bold: string;
   };
+  title: string;
   buttons: {
     primary: string;
     secondary: string;
@@ -78,7 +83,7 @@ export interface Theme {
 
 const defaultConfig: ThemeConfig = {
   baseFontSize: 16,
-  style: ThemeStyle.Dark,
+  style: ThemeStyle.Light,
   colors: Colors,
 };
 
@@ -95,9 +100,13 @@ export function getTheme(config?: ThemeConfig): Theme {
   return {
     panel: panel(context),
     surface: surface(context),
-    typography: {
-      title: title(context),
+    fonts: {
+      semilight: font.semilight(context),
+      regular: font.regular(context),
+      semibold: font.semibold(context),
+      bold: font.bold(context),
     },
+    title: title(context),
     buttons: {
       primary: button.primary(context),
       secondary: button.secondary(context),

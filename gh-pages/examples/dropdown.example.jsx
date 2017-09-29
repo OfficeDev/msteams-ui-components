@@ -1,4 +1,4 @@
-<Panel style={{ padding: '10px' }}>
+<Surface style={{ padding: '10px' }}>
   <Dropdown mainButtonText="left dropdown">
     <DropdownItem>option1</DropdownItem>
     <DropdownItem>option2</DropdownItem>
@@ -14,4 +14,4 @@
     <DropdownItem>option4</DropdownItem>
     <DropdownItem>option100000000000000000000000</DropdownItem>
   </Dropdown>
-</Panel>
+</Surface>
