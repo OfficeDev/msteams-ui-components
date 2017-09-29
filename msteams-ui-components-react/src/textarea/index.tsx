@@ -14,7 +14,15 @@ const TextAreaInternal: React.StatelessComponent<TextAreaProps & InjectedTeamsPr
 
   return (
     <div className={theme.textarea.container}>
-      {label ? <label className={theme.textarea.label} htmlFor={textareaId}>{label}</label> : null}
+      {label ? <label
+        className={classes(theme.textarea.label, theme.fonts.semilight)}
+        htmlFor={textareaId}
+      >
+        {label}
+      </label>
+        :
+        null
+      }
       <textarea className={classes(theme.textarea.textarea, className)} id={textareaId} {...rest}>{children}</textarea>
       <span className={theme.textarea.underline}></span>
     </div>

@@ -40,7 +40,8 @@ export function base(c: Context, colors: TextAreaColors): TextAreaStyles {
     label: {
       margin: 0,
       padding: 0,
-      fontWeight: 'lighter',
+      border: 0,
+      color: colors.label,
     },
   };
 }
