@@ -13,6 +13,7 @@ export function input(c: Context) {
         [`.${inputClass}:focus + &`]: raw.focusUnderline,
       },
     }),
+    label: style(raw.label),
   };
 }
 

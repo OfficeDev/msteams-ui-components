@@ -13,6 +13,7 @@ export function textarea(c: Context) {
         [`.${textareaClass}:focus + &`]: raw.focusUnderline,
       },
     }),
+    label: style(raw.label),
   };
 }
 

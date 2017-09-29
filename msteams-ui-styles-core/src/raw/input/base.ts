@@ -36,5 +36,12 @@ export function base(c: Context, inputColors: InputColors): InputStyles {
       left: 0,
       transform: 'scaleX(1)',
     },
+    label: {
+      padding: 0,
+      margin: 0,
+      border: 0,
+      fontWeight: 'lighter',
+      color: inputColors.label,
+    },
   };
 }

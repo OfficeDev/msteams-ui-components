@@ -37,5 +37,10 @@ export function base(c: Context, colors: TextAreaColors): TextAreaStyles {
       transform: 'scaleX(1)',
       transition: 'all 0.5s ease-in-out',
     },
+    label: {
+      margin: 0,
+      padding: 0,
+      fontWeight: 'lighter',
+    },
   };
 }

@@ -10,4 +10,5 @@ export interface TextAreaStyles {
   normal: CSSProperties;
   underline: CSSProperties;
   focusUnderline: CSSProperties;
+  label: CSSProperties;
 }
