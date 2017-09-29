@@ -6,5 +6,6 @@ export function light(c: Context): TextAreaStyles {
   return base(c, {
     background: c.colors.light.gray10,
     underline: c.colors.light.brand00,
+    label: c.colors.light.gray01,
   });
 }

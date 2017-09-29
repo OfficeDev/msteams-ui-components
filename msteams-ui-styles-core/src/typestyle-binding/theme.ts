@@ -50,6 +50,7 @@ export interface Theme {
     container: string;
     underline: string;
     input: string;
+    label: string;
   };
   tab: {
     container: string;
@@ -68,6 +69,7 @@ export interface Theme {
     textarea: string;
     underline: string;
     container: string;
+    label: string;
   };
   dropdown: {
     container: string;
@@ -129,6 +131,7 @@ export function getTheme(config?: ThemeConfig): Theme {
       input: inputClasses.input,
       container: inputClasses.container,
       underline: inputClasses.underline,
+      label: inputClasses.label,
     },
     tab: {
       container: tabClasses.container,
@@ -147,6 +150,7 @@ export function getTheme(config?: ThemeConfig): Theme {
       textarea: textareaClasses.textarea,
       container: textareaClasses.container,
       underline: textareaClasses.underline,
+      label: textareaClasses.label,
     },
     dropdown: {
       container: dropdownClasses.container,

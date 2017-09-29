@@ -6,5 +6,6 @@ export function dark(c: Context): InputStyles {
   return base(c, {
     background: c.colors.dark.black,
     underline: c.colors.dark.brand00,
+    label: c.colors.dark.white,
   });
 }
