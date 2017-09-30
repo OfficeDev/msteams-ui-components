@@ -4,11 +4,13 @@ import { ThemeConfig, ThemeStyle } from '../raw/theme-config';
 import anchor from './anchor';
 import button from './buttons';
 import checkbox from './checkbox';
+import { compoundbutton } from './compoundbutton';
 import dropdown from './dropdown';
 import font from './font';
 import input from './input';
 import panel from './panel';
 import radiobutton from './radiobutton';
+import sizes from './sizes';
 import surface from './surface';
 import tab from './tab';
 import table from './table';
@@ -25,10 +27,23 @@ export interface Theme {
     semibold: string;
     bold: string;
   };
+  sizes: {
+    title: string;
+    title2: string;
+    base: string;
+    caption: string;
+    xsmall: string;
+  };
   title: string;
   buttons: {
     primary: string;
     secondary: string;
+  };
+  compoundbutton: {
+    container: string;
+    icon: string;
+    primaryText: string;
+    secondaryText: string;
   };
   toggle: {
     container: string;
@@ -96,6 +111,7 @@ export function getTheme(config?: ThemeConfig): Theme {
   const tableClasses = table(context);
   const textareaClasses = textarea(context);
   const dropdownClasses = dropdown(context);
+  const compoundbuttonClasses = compoundbutton(context);
 
   return {
     panel: panel(context),
@@ -106,11 +122,19 @@ export function getTheme(config?: ThemeConfig): Theme {
       semibold: font.semibold(context),
       bold: font.bold(context),
     },
+    sizes: {
+      title: sizes.title(context),
+      title2: sizes.title2(context),
+      base: sizes.base(context),
+      caption: sizes.caption(context),
+      xsmall: sizes.xsmall(context),
+    },
     title: title(context),
     buttons: {
       primary: button.primary(context),
       secondary: button.secondary(context),
     },
+    compoundbutton: compoundbuttonClasses,
     toggle: {
       container: toggleClasses.container,
       input: toggleClasses.input,

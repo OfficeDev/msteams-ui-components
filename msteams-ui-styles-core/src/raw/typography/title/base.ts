@@ -1,5 +1,5 @@
 import { Context } from '../../context';
-import { font } from '../../fonts/font';
+import { font } from '../fonts/font';
 import { TitleColors } from './title-colors';
 import { TitleStyles } from './title-styles';
 

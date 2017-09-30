@@ -5,22 +5,30 @@ import classes from '../utils/classes';
 
 export interface CompoundButtonProps
   extends React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
-  icon?: string;
-  text?: string;
-  subText?: string;
+  disabled?: boolean;
+  icon?: (() => React.ReactNode);
+  primaryText?: string;
+  secondaryText?: string;
 }
 
 const CompoundButtonView: React.StatelessComponent<CompoundButtonProps & InjectedTeamsProps> =
   (props: CompoundButtonProps & InjectedTeamsProps) => {
-    const { theme, className, ...rest } = props;
-    return <button>
-      <img src={props.icon} />
-      <span>
-        {props.text}
-      </span>
-      <span>
-        {props.subText}
-      </span>
+    const { theme, icon, primaryText, secondaryText, className, ...rest } = props;
+
+    return <button className={classes(theme.compoundbutton.container, className)} {...rest}>
+      { props.icon ?
+      <div className={theme.compoundbutton.icon}>
+        {props.icon()}
+      </div> : null }
+      <div>
+        <div className={theme.compoundbutton.primaryText}>
+          {props.primaryText}
+        </div>
+        <div className={theme.compoundbutton.secondaryText}>
+          {props.secondaryText}
+        </div>
+      </div>
+      {props.children}
     </button>;
   };
 
