@@ -1,3 +1,4 @@
+import { secondaryButton } from 'msteams-ui-styles-core/dist/typestyle-binding/secondary-button';
 import * as React from 'react';
 import { InjectedTeamsProps } from '../index';
 import { connectTeamsComponent } from '../teams-context';
@@ -9,9 +10,10 @@ export interface SecondaryButtonProps
 }
 
 const SecondaryButtonView: React.StatelessComponent<SecondaryButtonProps & InjectedTeamsProps> = (props) => {
-  const { theme, className, ...rest } = props;
+  const { context, className, ...rest } = props;
+  const themeClassName = secondaryButton(context);
 
-  return <button className={classes(theme.buttons.secondary, className)} {...rest}>{props.children}</button>;
+  return <button className={classes(themeClassName, className)} {...rest}>{props.children}</button>;
 };
 
 export const SecondaryButton = connectTeamsComponent(SecondaryButtonView);

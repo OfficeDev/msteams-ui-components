@@ -1,6 +1,7 @@
 <Surface style={{ padding: '10px' }}>
-  <Input placeholder="Type in something" />
-
-  <Input placeholder="Type in something" label="I'm a label" />
+  <Input placeholder="Enabled" />
+  <Input placeholder="Disabled" disabled/>
+  <Input placeholder="Enabled" label="With a label" />
+  <Input placeholder="Disabled" label="With a label" disabled />
 </Surface>
 

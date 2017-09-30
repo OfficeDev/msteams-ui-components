@@ -1,3 +1,4 @@
+import { dropdown } from 'msteams-ui-styles-core/dist/typestyle-binding/dropdown';
 import * as React from 'react';
 import { connectTeamsComponent, InjectedTeamsProps } from '../index';
 import classes from '../utils/classes';
@@ -28,20 +29,21 @@ class DropdownInternal extends React.Component<DropdownProps & InjectedTeamsProp
   }
 
   render() {
-    const { theme, className, menuRightAlign, mainButtonText, ...rest } = this.props;
-    const itemContainerClass = [theme.dropdown.itemContainer];
+    const { context, className, menuRightAlign, mainButtonText, ...rest } = this.props;
+    const themeClassNames = dropdown(context);
+    const itemContainerClass = [themeClassNames.itemContainer];
 
     if (menuRightAlign) {
-      itemContainerClass.push(theme.dropdown.itemContainerRight);
+      itemContainerClass.push(themeClassNames.itemContainerRight);
     }
 
     if (this.state.show) {
-      itemContainerClass.push(theme.dropdown.showItems);
+      itemContainerClass.push(themeClassNames.showItems);
     }
 
     return (
-      <div className={theme.dropdown.container} onClick={this.toggle}>
-        <button className={classes(theme.dropdown.mainButton, className)} {...rest}>{mainButtonText}</button>
+      <div className={themeClassNames.container} onClick={this.toggle}>
+        <button className={classes(themeClassNames.mainButton, className)} {...rest}>{mainButtonText}</button>
         <div className={itemContainerClass.join(' ')}>
           {this.props.children}
         </div>

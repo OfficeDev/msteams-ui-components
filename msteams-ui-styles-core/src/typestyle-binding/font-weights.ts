@@ -1,29 +1,23 @@
-import { Context } from '../../../typestyle-binding/context';
-import { FontStyles } from './font-styles';
+import { style } from 'typestyle';
+import { Context } from './context';
 
-export function font(context: Context): FontStyles {
-  const style = {
-    semilight: {
+export function fontWeights(context: Context) {
+  return {
+    semilight: style({
       fontFamily: "'Segoe UI Light', 'Segoe UI', Tahoma, Helvetica, Sans-Serif",
       fontWeight: 300,
-    },
-    regular: {
+    }),
+    regular: style({
       fontFamily: "'Segoe UI', Tahoma, Helvetica, Sans-Serif",
       fontWeight: 400,
-    },
-    semibold: {
+    }),
+    semibold: style({
       fontFamily: "'Segoe UI Semibold', 'Segoe UI', Tahoma, Helvetica, Sans-Serif",
       fontWeight: 600,
-    },
-    bold: {
+    }),
+    bold: style({
       fontFamily: "'Segoe UI Bold', 'Segoe UI', Tahoma, Helvetica, Sans-Serif",
       fontWeight: 700,
-    },
+    }),
   };
-
-  return context.style({
-    light: style,
-    dark: style,
-    highContrast: style,
-  });
 }

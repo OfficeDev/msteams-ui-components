@@ -48,7 +48,6 @@ export interface ColorPalate {
     green: string;
   };
   highContrast: {
-    black: string;
     yellow: string;
     green: string;
   };
@@ -86,9 +85,9 @@ export const Colors: ColorPalate = {
     gray12: '#F3F4F5',
     brand00Dark: '#9FA4FE',
     brand00: '#5558AF',
-    brand04: '#484B95',
-    brand06: '#404283',
-    brand08: '#2B2C58',
+    brand04: '#4D51A0',
+    brand06: '#404283', // not right
+    brand08: '#2B2C58', // not right
     red: '#C50E2E',
     magenta: '#E3008C',
     yellow: '#FCD116',
@@ -98,26 +97,25 @@ export const Colors: ColorPalate = {
     black: '#2B2B30',
     white: '#FFFFFF',
     bar: '#222226',
-    gray02: '#C8C8C9',
-    gray03: '#B3B3B4',
-    gray04: '#9A9A9C',
-    gray06: '#77777B',
-    gray08: '#49494D',
-    gray10: '#404045',
-    gray11: '#3A3A3F',
-    gray12: '#36363B',
+    gray02: '#C8C8C9', // not right?
+    gray03: '#B3B3B4', // not right?
+    gray04: '#9A9A9C', // not right?
+    gray06: '#848487',
+    gray08: '#49494D', // not right?
+    gray10: '#404045', // not right?
+    gray11: '#3A3A3F', // not right?
+    gray12: '#36363B', // not right?
     brand00Light: '#5558AF',
     brand00: '#9FA4FE',
-    brand04: '#878BD8',
-    brand06: '#777BBF',
-    brand08: '#50527F',
+    brand04: '#B6BAFE',
+    brand06: '#777BBF', // not right
+    brand08: '#50527F', // not right
     red: '#ED1B3E',
     magenta: '#F236B8',
     yellow: '#FBC940',
     green: '#88BC2B',
   },
   highContrast: {
-    black: '#000000',
     yellow: '#FFFF01',
     green: '#3FF23F',
   },

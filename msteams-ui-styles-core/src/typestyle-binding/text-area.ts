@@ -3,7 +3,7 @@ import { font } from '../raw/typography/fonts/font';
 import { size } from '../raw/typography/sizes/size';
 import { Context } from './context';
 
-interface InputColors {
+interface TextAreaColors {
   rest: {
     background: string;
     border: string;
@@ -28,7 +28,7 @@ interface InputColors {
   label: string;
 }
 
-function base(context: Context, colors: InputColors) {
+function base(context: Context, colors: TextAreaColors) {
   const { rem } = context;
   const fonts = font(context);
   const sizes = size(context);
@@ -41,9 +41,9 @@ function base(context: Context, colors: InputColors) {
       display: 'block',
       overflow: 'hidden',
     }),
-    input: style({
-      height: rem(3.2),
+    textArea: style({
       width: '100%',
+      resize: 'none',
       borderRadius: rem(0.3),
       border: `${rem(0.2)} solid ${colors.rest.border}`,
       background: colors.rest.background,
@@ -165,7 +165,7 @@ function highContrast(context: Context) {
   });
 }
 
-export function input(context: Context) {
+export function textArea(context: Context) {
   return context.style({
     light: light(context),
     dark: dark(context),

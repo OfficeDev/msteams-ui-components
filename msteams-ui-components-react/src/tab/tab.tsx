@@ -1,3 +1,4 @@
+import { tab } from 'msteams-ui-styles-core/dist/typestyle-binding/tab';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import { connectTeamsComponent, InjectedTeamsProps } from '../index';
@@ -21,11 +22,11 @@ class TabInternal extends React.Component<InjectedTeamsProps & TabProps, {}> {
   context: TabContext;
 
   render() {
-    const { theme, tabId, onTabSelect, ...rest } = this.props;
-
-    const classes = [theme.tab.normal];
+    const { context, tabId, onTabSelect, ...rest } = this.props;
+    const themeClassNames = tab(context);
+    const classes = [themeClassNames.normal];
     if (this.context.isSelected(tabId)) {
-      classes.push(theme.tab.active);
+      classes.push(themeClassNames.active);
     }
 
     return (
