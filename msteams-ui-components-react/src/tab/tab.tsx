@@ -6,12 +6,12 @@ import { TabContext, TabContextType } from './index';
 
 export interface TabProps
   extends React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
-  tabId: string;
+  tabId: any;
   onTabSelect: () => void;
 }
 
 export const TabPropTypes = {
-  tabId: PropTypes.string.isRequired,
+  tabId: PropTypes.any.isRequired,
 };
 
 class TabInternal extends React.Component<InjectedTeamsProps & TabProps, {}> {

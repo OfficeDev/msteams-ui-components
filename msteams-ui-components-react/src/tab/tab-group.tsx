@@ -8,7 +8,7 @@ import { TabProps, TabPropTypes } from './tab';
 export interface TabGroupProps
   extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
   children: Array<React.ReactElement<TabProps>>;
-  selectedTabId: string;
+  selectedTabId: any;
 }
 
 class TabGroupInternal extends React.Component<InjectedTeamsProps & TabGroupProps, {}> {
@@ -32,7 +32,7 @@ class TabGroupInternal extends React.Component<InjectedTeamsProps & TabGroupProp
     }
 
     return {
-      isSelected: (tabId: string) => tabId === this.props.selectedTabId,
+      isSelected: (tabId: any) => tabId === this.props.selectedTabId,
     };
   }
 
