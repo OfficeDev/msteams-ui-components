@@ -1,4 +1,4 @@
-import { input } from 'msteams-ui-styles-core/dist/typestyle-binding/input';
+import { input } from 'msteams-ui-styles-core/lib/components/input';
 import * as React from 'react';
 import { connectTeamsComponent, InjectedTeamsProps } from '../index';
 import uniqueId from '../utils/uniqueId';

@@ -1,4 +1,4 @@
-import { checkbox } from 'msteams-ui-styles-core/dist/typestyle-binding/checkbox';
+import { checkbox } from 'msteams-ui-styles-core/lib/components/checkbox';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import { connectTeamsComponent, InjectedTeamsProps } from '../index';

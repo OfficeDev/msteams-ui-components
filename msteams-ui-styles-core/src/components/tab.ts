@@ -1,5 +1,5 @@
 import { style } from 'typestyle';
-import { Context } from './context';
+import { Context } from '../context';
 
 export interface TabColors {
   text: string;

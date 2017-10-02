@@ -1,6 +1,6 @@
 import { style } from 'typestyle';
 import { CSSProperties } from 'typestyle/lib/types';
-import { Context } from './context';
+import { Context } from '../context';
 
 interface ToggleColors {
   sliderBackground: string;

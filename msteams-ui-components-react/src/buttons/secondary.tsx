@@ -1,4 +1,4 @@
-import { secondaryButton } from 'msteams-ui-styles-core/dist/typestyle-binding/secondary-button';
+import { secondaryButton } from 'msteams-ui-styles-core/lib/components/secondary-button';
 import * as React from 'react';
 import { InjectedTeamsProps } from '../index';
 import { connectTeamsComponent } from '../teams-context';

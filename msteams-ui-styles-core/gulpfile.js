@@ -13,7 +13,7 @@ gulp.task('default', () => {
 });
 
 gulp.task('clean', () => {
-  del(['dist']);
+  del(['lib']);
 }); 
 
 gulp.task('lint', () => {
@@ -44,5 +44,5 @@ function createBuildTask(crashOnError) {
     .pipe(f)
     .pipe(babel())
     .pipe(f.restore)
-    .pipe(gulp.dest('dist'));
+    .pipe(gulp.dest('lib'));
 }

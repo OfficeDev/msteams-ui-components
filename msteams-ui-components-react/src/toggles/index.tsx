@@ -1,4 +1,4 @@
-import { toggle } from 'msteams-ui-styles-core/dist/typestyle-binding/toggle';
+import { toggle } from 'msteams-ui-styles-core/lib/components/toggle';
 import * as React from 'react';
 import { connectTeamsComponent, InjectedTeamsProps } from '../index';
 

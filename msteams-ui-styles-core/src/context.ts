@@ -1,6 +1,6 @@
-import { ThemeStyle } from '../index';
-import { ColorPalate } from '../raw/colors';
-import { ThemeConfig } from '../raw/theme-config';
+import { ColorPalate } from './color-palate';
+import { ThemeConfig } from './theme-config';
+import { ThemeStyle } from './theme-style';
 
 export interface Context {
   rem: (n: number) => string;

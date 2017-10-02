@@ -1,4 +1,4 @@
-import { table } from 'msteams-ui-styles-core/dist/typestyle-binding/table';
+import { table } from 'msteams-ui-styles-core/lib/components/table';
 import * as React from 'react';
 import { connectTeamsComponent, InjectedTeamsProps } from '../index';
 

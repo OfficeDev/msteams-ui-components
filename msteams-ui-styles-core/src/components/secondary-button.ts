@@ -1,6 +1,5 @@
 import { style } from 'typestyle';
-import { size } from '../raw/typography/sizes/size';
-import { Context } from './context';
+import { Context } from '../context';
 
 interface SecondaryButtonColors {
   rest: {
@@ -33,10 +32,8 @@ interface SecondaryButtonColors {
 
 function base(context: Context, colors: SecondaryButtonColors) {
   const { rem } = context;
-  const sizes = size(context);
 
   return style({
-    ...sizes.base,
     height: rem(3.2),
     minWidth: rem(3.2),
     border: rem(0.2) + ' solid',

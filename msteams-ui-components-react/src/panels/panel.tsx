@@ -1,4 +1,4 @@
-import { panel } from 'msteams-ui-styles-core/dist/typestyle-binding/panel';
+import { panel } from 'msteams-ui-styles-core/lib/components/panel';
 import * as React from 'react';
 import { connectTeamsComponent, InjectedTeamsProps } from '../teams-context';
 import classes from '../utils/classes';

@@ -1,4 +1,4 @@
-import { dropdown } from 'msteams-ui-styles-core/dist/typestyle-binding/dropdown';
+import { dropdown } from 'msteams-ui-styles-core/lib/components/dropdown';
 import * as React from 'react';
 import { connectTeamsComponent, InjectedTeamsProps } from '../index';
 import classes from '../utils/classes';
