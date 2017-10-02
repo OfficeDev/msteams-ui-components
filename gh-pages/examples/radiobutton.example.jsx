@@ -4,7 +4,7 @@ class RadiobuttonExample extends React.Component {
     this.onOneSelected = this.onOneSelected.bind(this);
     this.onTwoSelected = this.onTwoSelected.bind(this);
     this.onGroupSelected = this.onGroupSelected.bind(this);
-    this.state = {one: true, two: false, groupValue: 1};
+    this.state = {one: false, two: false, groupValue: 1};
   }
 
   onOneSelected(selected, value) {
@@ -21,13 +21,13 @@ class RadiobuttonExample extends React.Component {
 
   render() {
     return <Surface style={{padding: '10px'}}>
-      <h4>Alone</h4>
-      <Radiobutton value={1} label="Option 1"
+      <Radiobutton value={1} label="Enabled"
         selected={this.state.one}
         onSelected={this.onOneSelected} />
-      <Radiobutton value={2} label="Option 2"
+      <Radiobutton value={2} label="Disabled"
         selected={this.state.two}
-        onSelected={this.onTwoSelected} />
+        onSelected={this.onTwoSelected}
+        disabled />
       <h4>In Group</h4>
       <RadiobuttonGroup
         value={this.state.groupValue}

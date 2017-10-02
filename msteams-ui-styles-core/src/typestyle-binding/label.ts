@@ -1,7 +1,6 @@
 import { style } from 'typestyle';
-import { Context } from '../raw/context';
-import { label as labelRaw } from '../raw/labels';
+import { Context } from './context';
 
 export function label(c: Context) {
-  return style(labelRaw(c).normal);
+  return style({});
 }

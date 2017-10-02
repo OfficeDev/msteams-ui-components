@@ -1,3 +1,4 @@
+import { toggle } from 'msteams-ui-styles-core/dist/typestyle-binding/toggle';
 import * as React from 'react';
 import { connectTeamsComponent, InjectedTeamsProps } from '../index';
 
@@ -7,16 +8,16 @@ export interface ToggleProps {
 }
 
 const ToggleInternal: React.StatelessComponent<ToggleProps & InjectedTeamsProps> = (props) => {
-  const toggle = props.theme.toggle;
+  const { context } = props;
+  const themeClassNames = toggle(context);
 
   return (
     <div
-      className={toggle.container}
-    >
-      <input type="checkbox" className={toggle.input} checked={props.checked} />
+      className={themeClassNames.container}>
+      <input type="checkbox" className={themeClassNames.input} checked={props.checked} />
       <button
         onClick={() => props.onChange(!props.checked)}
-        className={toggle.slider}
+        className={themeClassNames.slider}
       />
     </div>
   );

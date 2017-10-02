@@ -21,13 +21,13 @@ class CheckboxExample extends React.Component {
 
   render() {
     return <Surface style={{padding: '10px'}}>
-      <h4>Alone</h4>
-      <Checkbox value={1} label="Option 1"
+      <Checkbox value={1} label="Enabled"
         checked={this.state.one}
         onChecked={this.onOneChecked} />
-      <Checkbox value={2} label="Option 2"
+      <Checkbox value={2} label="Disabled"
         checked={this.state.two}
-        onChecked={this.onTwoChecked} />
+        onChecked={this.onTwoChecked} disabled/>
+
       <h4>In Group</h4>
       <CheckboxGroup
         values={this.state.groupValues}

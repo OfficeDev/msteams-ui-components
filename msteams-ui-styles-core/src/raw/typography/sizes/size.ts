@@ -1,4 +1,4 @@
-import { Context } from '../../context';
+import { Context } from '../../../typestyle-binding/context';
 import { SizeStyles } from './size-styles';
 
 export function size(context: Context): SizeStyles {

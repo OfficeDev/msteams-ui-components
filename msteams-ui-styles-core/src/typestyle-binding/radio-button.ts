@@ -1,7 +1,7 @@
 import { style } from 'typestyle';
 import { Context } from './context';
 
-interface CheckboxColors {
+interface RadioButtonColors {
   rest: {
     border: string;
     background: string;
@@ -17,15 +17,14 @@ interface CheckboxColors {
   focus: {
     outline: string;
   };
-  checked: {
+  selected: {
     background: string;
     border: string;
   };
-  checkmark: string;
   container: string;
 }
 
-function base(context: Context, colors: CheckboxColors) {
+function base(context: Context, colors: RadioButtonColors) {
   const { rem } = context;
   return {
     container: style({
@@ -35,7 +34,7 @@ function base(context: Context, colors: CheckboxColors) {
       alignItems: 'center',
       outline: 'none',
     }),
-    checkbox: style({
+    radio: style({
       position: 'relative',
       ['-webkit-user-select']: 'none',
       ['-moz-user-select']: 'none',
@@ -46,6 +45,7 @@ function base(context: Context, colors: CheckboxColors) {
       width: rem(2),
       height: rem(2),
       margin: rem(0.6),
+      borderRadius: '100%',
       border: `${rem(0.2)} solid`,
       borderColor: colors.rest.border,
       background: colors.rest.background,
@@ -60,23 +60,16 @@ function base(context: Context, colors: CheckboxColors) {
           borderColor: colors.disabled.border,
         },
         '&:focus': {
-          outline: `${rem(0.4)} solid ${colors.focus.outline}`,
+          boxShadow: `0 0 0 ${rem(0.4)} ${colors.focus.outline}`,
+          outline: 'none',
         },
-        '&-checked': {
-          borderColor: colors.checked.border,
-          background: colors.checked.background,
+        '&-selected': {
+          borderColor: colors.selected.border,
+          background: colors.selected.background,
           $nest: {
             '&:hover': {
-              borderColor: colors.checked.border,
-              background: colors.checked.background,
-            },
-            '&::before': {
-              content: '"✓"',
-              color: colors.checkmark,
-              position: 'absolute',
-              fontSize: rem(1.8),
-              top: `-${rem(0.1)}`,
-              left: rem(0.1),
+              borderColor: colors.selected.border,
+              background: colors.selected.background,
             },
           },
         },
@@ -104,11 +97,10 @@ function light(context: Context) {
     focus: {
       outline: colors.light.brand00Dark,
     },
-    checked: {
+    selected: {
       background: colors.light.brand00,
       border: colors.light.brand00,
     },
-    checkmark: colors.light.white,
     container: colors.transparent,
   });
 }
@@ -131,11 +123,10 @@ function dark(context: Context) {
     focus: {
       outline: colors.dark.brand00Light,
     },
-    checked: {
+    selected: {
       background: colors.dark.brand00,
       border: colors.dark.brand00,
     },
-    checkmark: colors.dark.black,
     container: colors.transparent,
   });
 }
@@ -158,16 +149,15 @@ function highContrast(context: Context) {
     focus: {
       outline: colors.highContrast.yellow,
     },
-    checked: {
+    selected: {
       background: colors.highContrast.yellow,
       border: colors.highContrast.yellow,
     },
-    checkmark: colors.black,
     container: colors.transparent,
   });
 }
 
-export function checkbox(context: Context) {
+export function radioButton(context: Context) {
   return context.style({
     light: light(context),
     dark: dark(context),

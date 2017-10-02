@@ -1,6 +1,6 @@
+import { input } from 'msteams-ui-styles-core/dist/typestyle-binding/input';
 import * as React from 'react';
 import { connectTeamsComponent, InjectedTeamsProps } from '../index';
-import classes from '../utils/classes';
 import uniqueId from '../utils/uniqueId';
 
 export interface InputProps extends
@@ -9,14 +9,15 @@ export interface InputProps extends
 }
 
 const InputInternal: React.StatelessComponent<InputProps & InjectedTeamsProps> = (props) => {
-  const { theme, className, label, id, ...rest } = props;
+  const { context, className, label, id, ...rest } = props;
   const inputId = id ? id : uniqueId('input-');
+  const themeClassNames = input(context);
 
   return (
-    <div className={theme.input.container}>
+    <div className={themeClassNames.container}>
       {label ?
         <label
-          className={classes(theme.input.label, theme.fonts.semilight)}
+          className={themeClassNames.label}
           htmlFor={inputId}
         >
           {label}
@@ -24,8 +25,7 @@ const InputInternal: React.StatelessComponent<InputProps & InjectedTeamsProps> =
         :
         null
       }
-      <input className={[theme.input.input, className].join(' ')} id={inputId} {...rest} />
-      <span className={theme.input.underline} />
+      <input className={themeClassNames.input} id={inputId} {...rest} />
     </div>
   );
 };
