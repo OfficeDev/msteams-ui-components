@@ -1,5 +1,5 @@
-import { fontSizes } from 'msteams-ui-styles-core/dist/typestyle-binding/font-sizes';
-import { fontWeights } from 'msteams-ui-styles-core/dist/typestyle-binding/font-weights';
+import { fontSizes } from 'msteams-ui-styles-core/lib/components/font-sizes';
+import { fontWeights } from 'msteams-ui-styles-core/lib/components/font-weights';
 import * as React from 'react';
 import { connectTeamsComponent, InjectedTeamsProps } from '../index';
 import classes from '../utils/classes';

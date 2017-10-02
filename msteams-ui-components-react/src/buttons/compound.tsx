@@ -1,4 +1,4 @@
-import { compoundButton } from 'msteams-ui-styles-core/dist/typestyle-binding/compound-button';
+import { compoundButton } from 'msteams-ui-styles-core/lib/components/compound-button';
 import * as React from 'react';
 import { InjectedTeamsProps } from '../index';
 import { connectTeamsComponent } from '../teams-context';

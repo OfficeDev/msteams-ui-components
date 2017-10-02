@@ -1,4 +1,4 @@
-import { tab } from 'msteams-ui-styles-core/dist/typestyle-binding/tab';
+import { tab } from 'msteams-ui-styles-core/lib/components/tab';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import { connectTeamsComponent, InjectedTeamsProps } from '../index';

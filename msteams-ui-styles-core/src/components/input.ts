@@ -1,7 +1,7 @@
-import { style } from 'typestyle';
-import { font } from '../raw/typography/fonts/font';
-import { size } from '../raw/typography/sizes/size';
-import { Context } from './context';
+import { classes, style } from 'typestyle';
+import { Context } from '../context';
+import { fontSizes } from './font-sizes';
+import { fontWeights } from './font-weights';
 
 interface InputColors {
   rest: {
@@ -30,8 +30,8 @@ interface InputColors {
 
 function base(context: Context, colors: InputColors) {
   const { rem } = context;
-  const fonts = font(context);
-  const sizes = size(context);
+  const sizes = fontSizes(context);
+  const weights = fontWeights(context);
 
   return {
     container: style({
@@ -70,14 +70,12 @@ function base(context: Context, colors: InputColors) {
         },
       },
     }),
-    label: style({
-      ...fonts.regular,
-      ...sizes.caption,
+    label: classes(style({
       padding: 0,
       margin: 0,
       border: 0,
       color: colors.label,
-    }),
+    }), sizes.caption, weights.regular),
   };
 }
 

@@ -1,8 +1,8 @@
 {
   "name": "msteams-ui-components-react",
-  "version": "0.1.7",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "version": "0.2.0",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/OfficeDev/msteams-ui-components.git"
@@ -42,7 +42,7 @@
     "typescript": "^2.5.2"
   },
   "dependencies": {
-    "msteams-ui-styles-core": "^0.1.4",
+    "msteams-ui-styles-core": "^0.2.0",
     "prop-types": "^15.5.10"
   },
   "peerDependencies": {

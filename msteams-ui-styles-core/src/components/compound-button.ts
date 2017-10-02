@@ -1,7 +1,7 @@
-import { style } from 'typestyle';
-import { font } from '../raw/typography/fonts/font';
-import { size } from '../raw/typography/sizes/size';
-import { Context } from './context';
+import { classes, style } from 'typestyle';
+import { Context } from '../context';
+import { fontSizes } from './font-sizes';
+import { fontWeights } from './font-weights';
 
 interface CompoundButtonColors {
   rest: {
@@ -32,20 +32,21 @@ interface CompoundButtonColors {
   };
 }
 
-function base(c: Context, colors: CompoundButtonColors) {
-  const fonts = font(c);
-  const sizes = size(c);
+function base(context: Context, colors: CompoundButtonColors) {
+  const { rem } = context;
+  const sizes = fontSizes(context);
+  const weights = fontWeights(context);
 
   return {
     container: style({
-        minWidth: c.rem(4.8),
-        minHeight: c.rem(4.8),
+        minWidth: rem(4.8),
+        minHeight: rem(4.8),
         display: 'flex',
         alignItems: 'center',
         padding: 0,
-        border: `${c.rem(0.2)} solid`,
+        border: `${rem(0.2)} solid`,
         borderColor: colors.rest.border,
-        borderRadius: c.rem(0.3),
+        borderRadius: rem(0.3),
         background: colors.rest.background,
         color: colors.rest.text,
       }, {
@@ -58,8 +59,8 @@ function base(c: Context, colors: CompoundButtonColors) {
           color: colors.focus.text,
           borderColor: colors.focus.border,
           background: colors.focus.background,
-          outline: `${c.rem(0.2)} solid ${colors.focus.outline}`,
-          outlineOffset: `-${c.rem(0.5)}`,
+          outline: `${rem(0.2)} solid ${colors.focus.outline}`,
+          outlineOffset: `-${rem(0.5)}`,
         },
         '&:active': {
           background: colors.down.background,
@@ -74,26 +75,22 @@ function base(c: Context, colors: CompoundButtonColors) {
       },
     }),
     icon: style({
-      width: c.rem(4.8),
-      height: c.rem(4.8),
+      width: rem(4.8),
+      height: rem(4.8),
       display: 'flex',
       alignItems: 'center',
       overflow: 'hidden',
     }),
-    primaryText: style({
-      ...fonts.semibold,
-      ...sizes.base,
+    primaryText: classes(style({
       textAlign: 'left',
-      paddingLeft: c.rem(1.2),
-      paddingRight: c.rem(1.2),
-    }),
-    secondaryText: style({
-      ...fonts.regular,
-      ...sizes.caption,
+      paddingLeft: rem(1.2),
+      paddingRight: rem(1.2),
+    }), sizes.base, weights.semibold),
+    secondaryText: classes(style({
       textAlign: 'left',
-      paddingLeft: c.rem(1.2),
-      paddingRight: c.rem(1.2),
-    }),
+      paddingLeft: rem(1.2),
+      paddingRight: rem(1.2),
+    }), sizes.caption, weights.regular),
   };
 }
 

@@ -1,4 +1,4 @@
-import { anchor } from 'msteams-ui-styles-core/dist/typestyle-binding/anchor';
+import { anchor } from 'msteams-ui-styles-core/lib/components/anchor';
 import * as React from 'react';
 import { connectTeamsComponent, InjectedTeamsProps } from '../index';
 import classes from '../utils/classes';

@@ -1,4 +1,4 @@
-import { textArea } from 'msteams-ui-styles-core/dist/typestyle-binding/text-area';
+import { textArea } from 'msteams-ui-styles-core/lib/components/text-area';
 import * as React from 'react';
 import { connectTeamsComponent, InjectedTeamsProps } from '../index';
 import uniqueId from '../utils/uniqueId';

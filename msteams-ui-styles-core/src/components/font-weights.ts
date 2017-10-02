@@ -1,5 +1,5 @@
 import { style } from 'typestyle';
-import { Context } from './context';
+import { Context } from '../context';
 
 export function fontWeights(context: Context) {
   return {

@@ -1,4 +1,4 @@
-import { surface } from 'msteams-ui-styles-core/dist/typestyle-binding/surface';
+import { surface } from 'msteams-ui-styles-core/lib/components/surface';
 import * as React from 'react';
 import { connectTeamsComponent, InjectedTeamsProps } from '../teams-context';
 import classes from '../utils/classes';
