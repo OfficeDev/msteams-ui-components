@@ -23,7 +23,6 @@ interface TeamsControlContext {
 }
 
 const staticTypes = {
-  theme: PropTypes.object,
   subscribe: PropTypes.func,
   style: PropTypes.number,
   context: PropTypes.object,
@@ -91,7 +90,6 @@ export function connectTeamsComponent<TChildProps>(
     render() {
       const props: Readonly<TChildProps> & Readonly<InjectedTeamsProps> = {
         ...this.props as any,
-        theme: this.context.theme,
         context: this.context.context,
       };
       return <ChildComp {...props} />;

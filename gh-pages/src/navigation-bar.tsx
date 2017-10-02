@@ -1,50 +1,32 @@
+import { Anchor } from 'msteams-ui-components-react';
 import * as React from 'react';
-import { MenuItem, Nav, Navbar, NavDropdown, NavItem } from 'react-bootstrap';
-import { LinkContainer } from 'react-router-bootstrap';
 
 export interface NavigationBarProps {
 }
 
 export const NavigationBar: React.StatelessComponent<NavigationBarProps> =
   (props: NavigationBarProps) => {
-    return <Navbar>
-      <Navbar.Header>
-        <Navbar.Brand>MSTeams UI Components</Navbar.Brand>
-      </Navbar.Header>
-      <Nav>
-        <LinkContainer to="/typography">
-          <NavItem>Typography</NavItem>
-        </LinkContainer>
-        <LinkContainer to="/buttons">
-          <NavItem>Buttons</NavItem>
-        </LinkContainer>
-        <LinkContainer to="/checkboxes">
-          <NavItem>Checkboxes</NavItem>
-        </LinkContainer>
-        <LinkContainer to="/radiobuttons">
-          <NavItem>Radiobuttons</NavItem>
-        </LinkContainer>
-        <LinkContainer to="/inputs">
-          <NavItem>Input Fields</NavItem>
-        </LinkContainer>
-        <LinkContainer to="/links">
-          <NavItem>Links</NavItem>
-        </LinkContainer>
-        <LinkContainer to="/toggles">
-          <NavItem>Toggles</NavItem>
-        </LinkContainer>
-        <LinkContainer to="/tabs">
-          <NavItem>Tabs</NavItem>
-        </LinkContainer>
-        <LinkContainer to="/tables">
-          <NavItem>Table</NavItem>
-        </LinkContainer>
-        <LinkContainer to="/textareas">
-          <NavItem>TextArea</NavItem>
-        </LinkContainer>
-        <LinkContainer to="/dropdowns">
-          <NavItem>Dropdown</NavItem>
-        </LinkContainer>
-      </Nav>
-    </Navbar>;
+    return <div>
+      <Anchor href="#/typography">Typography</Anchor>
+      <span>   </span>
+      <Anchor href="#/buttons">Button</Anchor>
+      <span>   </span>
+      <Anchor href="#/checkboxes">Checkbox</Anchor>
+      <span>   </span>
+      <Anchor href="#/radiobuttons">RadioButton</Anchor>
+      <span>   </span>
+      <Anchor href="#/inputs">Input</Anchor>
+      <span>   </span>
+      <Anchor href="#/links">Link</Anchor>
+      <span>   </span>
+      <Anchor href="#/toggles">Toggle</Anchor>
+      <span>   </span>
+      <Anchor href="#/tables">Table</Anchor>
+      <span>   </span>
+      <Anchor href="#/textareas">TextArea</Anchor>
+      <span>   </span>
+      <Anchor href="#/tabs">Tabs</Anchor>
+      <span>   </span>
+      <Anchor href="#/dropdowns">Dropdowns</Anchor>
+    </div>;
   };

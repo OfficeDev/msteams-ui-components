@@ -17,27 +17,29 @@ function base(context: Context, colors: TabColors) {
     margin: 0,
   });
 
+  const normalClass = style({
+    $nest: {
+      [`.${containerClass} &`]: {
+        outline: 'none',
+        background: 0,
+        border: 0,
+        padding: `${rem(1)}`,
+        margin: 0,
+        cursor: 'pointer',
+        display: 'inline-block',
+        borderBottom: `transparent ${rem(0.3)} solid`,
+        color: colors.text,
+        paddingBottom: rem(0.8),
+      },
+    },
+  });
+
   return {
     container: containerClass,
-    normal: style({
-      $nest: {
-        [`.${containerClass} &`]: {
-          outline: 'none',
-          background: 0,
-          border: 0,
-          padding: `${rem(1)}`,
-          margin: 0,
-          cursor: 'pointer',
-          display: 'inline-block',
-          borderBottom: `transparent ${rem(0.3)} solid`,
-          color: colors.text,
-          paddingBottom: rem(0.8),
-        },
-      },
-    }),
+    normal: normalClass,
     active: style({
       $nest: {
-        [`.${containerClass} &`]: {
+        [`.${containerClass} &.${normalClass}`]: {
           borderBottomColor: colors.underline,
           color: colors.textActive,
         },
