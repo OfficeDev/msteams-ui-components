@@ -1,5 +1,5 @@
 import { Context } from '../context';
-import { font } from '../fonts/font';
+import { font } from '../typography/fonts/font';
 import { SurfaceColors } from './surface-colors';
 import { SurfaceStyles } from './surface-styles';
 

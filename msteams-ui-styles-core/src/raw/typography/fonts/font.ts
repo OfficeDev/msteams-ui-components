@@ -1,4 +1,4 @@
-import { Context } from '../context';
+import { Context } from '../../context';
 import { FontStyles } from './font-styles';
 
 export function font(context: Context): FontStyles {

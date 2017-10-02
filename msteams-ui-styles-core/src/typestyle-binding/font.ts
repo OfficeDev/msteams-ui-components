@@ -1,6 +1,6 @@
 import { style } from 'typestyle';
 import { Context } from '../raw/context';
-import { font as fontRaw } from '../raw/fonts/font';
+import { font as fontRaw } from '../raw/typography/fonts/font';
 
 export function semilight(c: Context) {
   const styles = fontRaw(c);
