@@ -1,6 +1,8 @@
+import { radioButton } from 'msteams-ui-styles-core/lib/components/radio-button';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import { connectTeamsComponent, InjectedTeamsProps } from '../index';
+import classes from '../utils/classes';
 import uniqueId from '../utils/uniqueId';
 
 export interface RadiobuttonProps
@@ -9,6 +11,7 @@ export interface RadiobuttonProps
   value: any;
   selected?: boolean;
   label?: string;
+  disabled?: boolean;
 }
 
 interface RadiobuttonState {
@@ -40,43 +43,31 @@ class RadiobuttonInner extends React.Component<RadiobuttonProps & InjectedTeamsP
   }
 
   render() {
-    const selected = this.selected(this.props, this.context);
-    let boxClassName: string | undefined;
-    let labelClassName: string | undefined;
-    if (this.props.theme) {
-      boxClassName = this.props.theme.radiobutton.unselected;
-      if (selected) {
-        boxClassName += ' ' + this.props.theme.radiobutton.selected;
-      }
-      labelClassName = this.props.theme.checkbox.label;
+    const { context, disabled, className, onSelected, value, selected, label, ...rest } = this.props;
+
+    const actuallySelected = this.isSelected(this.props, this.context);
+    const themeClassNames = radioButton(context);
+    let radioClassName = themeClassNames.radio;
+    if (actuallySelected) {
+      radioClassName = classes(themeClassNames.radio, themeClassNames.radio + '-selected');
     }
 
-    const divProps = { ...this.props };
-    delete divProps.theme;
-    delete divProps.onSelected;
-    delete divProps.value;
-    delete divProps.selected;
-    delete divProps.label;
-
     return (
-      <div {...divProps}>
-        <input
-          id={this.state.id}
-          type="radio"
-          value={this.props.value}
-          onChange={() => null}
-          checked={selected}
-          hidden />
+      <div
+        className={classes(themeClassNames.container, className)}
+        {...rest}>
         <button
           onClick={() => this.handleSelect()}
-          className={boxClassName} />
-        {this.props.label ? <label htmlFor={this.state.id} className={labelClassName}>{this.props.label}</label> : null}
+          className={radioClassName}
+          disabled={disabled} />
+        {this.props.label ?
+          <label htmlFor={this.state.id} className={themeClassNames.label}>{this.props.label}</label> : null}
         {this.props.children}
       </div>
     );
   }
 
-  private selected(props: RadiobuttonProps, context: RadiobuttonContext): boolean {
+  private isSelected(props: RadiobuttonProps, context: RadiobuttonContext): boolean {
     if (context.value != null) {
       return context.value === props.value;
     }

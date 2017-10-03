@@ -1,8 +1,8 @@
 {
   "name": "msteams-ui-components-react",
-  "version": "0.1.7",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "version": "0.2.0",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/OfficeDev/msteams-ui-components.git"
@@ -11,12 +11,14 @@
     "url": "https://github.com/OfficeDev/msteams-ui-components/issues"
   },
   "scripts": {
-    "prepublishOnly": "npm run clean && npm run build",
+    "prepublishOnly": "npm run clean && npm install && npm run build",
     "clean": "gulp clean",
     "build": "gulp",
-    "build:watch": "linklocal && gulp watch",
+    "build:watch": "gulp watch",
     "build:crash": "gulp build-crash-on-error",
-    "lint": "gulp lint"
+    "lint": "gulp lint",
+    "link:self": "npm link",
+    "link:deps": "npm link msteams-ui-styles-core"
   },
   "author": {
     "name": "Microsoft Corporation"
@@ -25,7 +27,7 @@
   "devDependencies": {
     "@types/node": "^8.0.31",
     "@types/prop-types": "^15.5.1",
-    "@types/react": "^16.0.5",
+    "@types/react": "^16.0.7",
     "babel-core": "^6.26.0",
     "babel-preset-env": "^1.6.0",
     "del": "^3.0.0",
@@ -40,7 +42,7 @@
     "typescript": "^2.5.2"
   },
   "dependencies": {
-    "msteams-ui-styles-core": "^0.1.4",
+    "msteams-ui-styles-core": "^0.2.0",
     "prop-types": "^15.5.10"
   },
   "peerDependencies": {

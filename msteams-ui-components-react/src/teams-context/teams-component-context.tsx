@@ -1,4 +1,4 @@
-import { Colors, getTheme, Theme, ThemeStyle } from 'msteams-ui-styles-core';
+import { Colors, Context, getContext, ThemeStyle } from 'msteams-ui-styles-core';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import uniqueId from '../utils/uniqueId';
@@ -19,13 +19,13 @@ interface Unsubscribe {
 
 interface TeamsControlContext {
   subscribe: (notify: Notify) => Unsubscribe;
-  theme: Theme;
+  context: Context;
 }
 
 const staticTypes = {
-  theme: PropTypes.object,
   subscribe: PropTypes.func,
   style: PropTypes.number,
+  context: PropTypes.object,
 };
 
 export class TeamsComponentContext extends React.Component<TeamsComponentProps> {
@@ -55,7 +55,7 @@ export class TeamsComponentContext extends React.Component<TeamsComponentProps> 
   protected getChildContext(): any {
     const context: TeamsControlContext = {
       subscribe: this.subscribe,
-      theme: getTheme({ baseFontSize: this.props.fontSize, colors: Colors, style: this.props.theme }),
+      context: getContext({ baseFontSize: this.props.fontSize, colors: Colors, style: this.props.theme }),
     };
     return context;
   }
@@ -68,7 +68,7 @@ export class TeamsComponentContext extends React.Component<TeamsComponentProps> 
 }
 
 export interface InjectedTeamsProps {
-  readonly theme: Theme;
+  readonly context: Context;
 }
 
 export function connectTeamsComponent<TChildProps>(
@@ -90,7 +90,7 @@ export function connectTeamsComponent<TChildProps>(
     render() {
       const props: Readonly<TChildProps> & Readonly<InjectedTeamsProps> = {
         ...this.props as any,
-        theme: this.context.theme,
+        context: this.context.context,
       };
       return <ChildComp {...props} />;
     }

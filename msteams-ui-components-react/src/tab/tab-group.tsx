@@ -1,3 +1,4 @@
+import { tab as tabClasses } from 'msteams-ui-styles-core/lib/components/tab';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import { connectTeamsComponent, InjectedTeamsProps } from '../index';
@@ -7,7 +8,7 @@ import { TabProps, TabPropTypes } from './tab';
 export interface TabGroupProps
   extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
   children: Array<React.ReactElement<TabProps>>;
-  selectedTabId: string;
+  selectedTabId: any;
 }
 
 class TabGroupInternal extends React.Component<InjectedTeamsProps & TabGroupProps, {}> {
@@ -31,15 +32,15 @@ class TabGroupInternal extends React.Component<InjectedTeamsProps & TabGroupProp
     }
 
     return {
-      isSelected: (tabId: string) => tabId === this.props.selectedTabId,
+      isSelected: (tabId: any) => tabId === this.props.selectedTabId,
     };
   }
 
   render() {
-    const { theme, selectedTabId, ...rest } = this.props;
-
+    const { context, selectedTabId, ...rest } = this.props;
+    const themeClassNames = tabClasses(context);
     return (
-      <div className={theme.tab.container} {...rest}>
+      <div className={themeClassNames.container} {...rest}>
         {this.props.children}
       </div>
     );

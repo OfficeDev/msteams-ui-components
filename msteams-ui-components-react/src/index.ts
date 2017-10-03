@@ -7,3 +7,8 @@ export * from './anchor';
 export * from './input';
 export * from './radiobuttons';
 export * from './tab';
+export * from './table';
+export * from './textarea';
+export * from './dropdown';
+export * from './surface';
+export * from './typography';

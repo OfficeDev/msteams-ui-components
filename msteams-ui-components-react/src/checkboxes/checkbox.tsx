@@ -1,6 +1,8 @@
+import { checkbox } from 'msteams-ui-styles-core/lib/components/checkbox';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import { connectTeamsComponent, InjectedTeamsProps } from '../index';
+import classes from '../utils/classes';
 import uniqueId from '../utils/uniqueId';
 
 export interface CheckboxProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
@@ -8,6 +10,7 @@ export interface CheckboxProps extends React.DetailedHTMLProps<React.HTMLAttribu
   value: any;
   checked?: boolean;
   label?: string;
+  disabled?: boolean;
 }
 
 interface CheckboxState {
@@ -39,43 +42,32 @@ class CheckboxInner extends React.Component<CheckboxProps & InjectedTeamsProps, 
   }
 
   render() {
-    const checked = this.checked(this.props, this.context);
-    let boxClassName: string | undefined;
-    let labelClassName: string | undefined;
-    if (this.props.theme) {
-      boxClassName = this.props.theme.checkbox.unchecked;
-      if (checked) {
-        boxClassName += ' ' + this.props.theme.checkbox.checked;
-      }
-      labelClassName = this.props.theme.checkbox.label;
+    const { context, disabled, className, onChecked, value, checked, label, ...rest } = this.props;
+
+    const actuallyChecked = this.isChecked(this.props, this.context);
+    const themeClassNames = checkbox(context);
+    let checkboxClassNames = themeClassNames.checkbox;
+    if (actuallyChecked) {
+      checkboxClassNames = classes(themeClassNames.checkbox, themeClassNames.checkbox + '-checked');
     }
 
-    const divProps = { ...this.props };
-    delete divProps.theme;
-    delete divProps.onChecked;
-    delete divProps.value;
-    delete divProps.checked;
-    delete divProps.label;
-
     return (
-      <div {...divProps}>
-        <input
-          id={this.state.id}
-          type="checkbox"
-          value={this.props.value}
-          checked={checked}
-          onChange={() => null}
-          hidden />
+      <div
+        className={classes(themeClassNames.container, className)}
+        {...rest} >
         <button
-          onClick={() => this.handleCheck(!checked)}
-          className={boxClassName} />
-        {this.props.label ? <label htmlFor={this.state.id} className={labelClassName}>{this.props.label}</label> : null}
+          id={this.state.id}
+          className={checkboxClassNames}
+          disabled={disabled}
+          onClick={() => this.handleCheck(!actuallyChecked)} />
+        {this.props.label ?
+          <label htmlFor={this.state.id} className={themeClassNames.label}>{this.props.label}</label> : null}
         {this.props.children}
       </div>
     );
   }
 
-  private checked(props: CheckboxProps, context: CheckboxContext): boolean {
+  private isChecked(props: CheckboxProps, context: CheckboxContext): boolean {
     if (Array.isArray(context.values)) {
       return context.values.indexOf(props.value) >= 0;
     }
