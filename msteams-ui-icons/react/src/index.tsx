@@ -3,9 +3,13 @@ import * as React from 'react';
 import { classes } from 'typestyle';
 
 export enum MSTeamsIconType {
-  Plus = 1,
-  File = 2,
-  Monkey = 3,
+  MSTeamsLogo,
+  Pencil,
+  Checkmark,
+  Plus,
+  MagnifyingGlass,
+  File,
+  Monkey,
 }
 
 export enum MSTeamsIconWeight {
@@ -23,8 +27,16 @@ function weightClass(iconWeight?: MSTeamsIconWeight): string {
 
 function typeClass(iconType?: MSTeamsIconType): string {
   switch (iconType) {
+    case MSTeamsIconType.MSTeamsLogo:
+      return IconStyles.msteamsLogo();
+    case MSTeamsIconType.Pencil:
+      return IconStyles.pencil();
+    case MSTeamsIconType.Checkmark:
+      return IconStyles.checkmark();
     case MSTeamsIconType.Plus:
       return IconStyles.plus();
+    case MSTeamsIconType.MagnifyingGlass:
+      return IconStyles.magnifyingGlass();
     case MSTeamsIconType.File:
       return IconStyles.file();
     case MSTeamsIconType.Monkey:
