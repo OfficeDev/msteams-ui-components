@@ -32,8 +32,7 @@ export class GHPages extends React.Component<{}, ContentState> {
         <TeamsComponentContext
           fontSize={this.state.fontSize}
           theme={this.state.theme}>
-          <Surface>
-            <Panel>
+          <Surface style={{minHeight: '100%'}}>
               <Title>MSTeams UI Components</Title>
               <TabGroup selectedTabId={this.state.theme}>
                 <Tab
@@ -46,9 +45,10 @@ export class GHPages extends React.Component<{}, ContentState> {
                   tabId={ThemeStyle.HighContrast}
                   onTabSelect={() => this.onThemeChange(ThemeStyle.HighContrast)}>High Contrast</Tab>
               </TabGroup>
-              <NavigationBar />
-              <Content />
-            </Panel>
+              <Panel>
+                <NavigationBar />
+                <Content />
+              </Panel>
           </Surface>
         </TeamsComponentContext>
       </HashRouter>
