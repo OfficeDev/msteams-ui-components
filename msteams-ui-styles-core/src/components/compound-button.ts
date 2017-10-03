@@ -75,8 +75,8 @@ function base(context: Context, colors: CompoundButtonColors) {
       },
     }),
     icon: style({
-      width: rem(4.8),
-      height: rem(4.8),
+      width: rem(4.4),
+      height: rem(4.4),
       display: 'flex',
       alignItems: 'center',
       overflow: 'hidden',

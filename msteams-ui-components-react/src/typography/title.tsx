@@ -9,7 +9,7 @@ const TitleInternal: React.StatelessComponent<InjectedTeamsProps> = (props) => {
   const sizes = fontSizes(context);
   const weight = fontWeights(context);
 
-  return <div className={classes(sizes.title, weight.bold)}>
+  return <div className={classes(sizes.title, weight.semibold)}>
     {props.children}
   </div>;
 };
