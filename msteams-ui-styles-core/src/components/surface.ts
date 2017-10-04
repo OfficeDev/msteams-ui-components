@@ -21,7 +21,7 @@ function base(context: Context, colors: SurfaceColors) {
 function light(context: Context) {
   const { colors } = context;
   return base(context, {
-    background: colors.white,
+    background: colors.gray,
     font: colors.light.black,
   });
 }

@@ -28,5 +28,7 @@ export const NavigationBar: React.StatelessComponent<NavigationBarProps> =
       <Anchor href="#/tabs">Tabs</Anchor>
       <span>   </span>
       <Anchor href="#/dropdowns">Dropdowns</Anchor>
+      <span>   </span>
+      <Anchor href="#/icons">Icons</Anchor>
     </div>;
   };

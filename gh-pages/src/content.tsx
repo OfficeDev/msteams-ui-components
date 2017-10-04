@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router';
 import * as ButtonSection from '../examples/button.example.jsx';
 import * as CheckboxSection from '../examples/checkbox.example.jsx';
 import * as DropdownSection from '../examples/dropdown.example.jsx';
+import * as IconsSection from '../examples/icons.example.jsx';
 import * as InputSection from '../examples/input.example.jsx';
 import * as LinkSection from '../examples/link.example.jsx';
 import * as RadiobuttonSection from '../examples/radiobutton.example.jsx';
@@ -47,6 +48,9 @@ export const Content: React.StatelessComponent = () => {
     } />
     <Route path="/dropdowns" render={() =>
       <PreviewSection code={DropdownSection.toString()} />
+    } />
+    <Route path="/icons" render={() =>
+      <PreviewSection code={IconsSection.toString()} />
     } />
   </Switch>;
 };

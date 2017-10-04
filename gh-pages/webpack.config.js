@@ -16,7 +16,13 @@ const defaultConfig = {
         use: ['babel-loader', 'ts-loader'],
         exclude: /node_modules/,
       },
-      {test: /\.example.jsx$/, use: 'raw-loader'}      
+      {test: /\.example.jsx$/, use: 'raw-loader'},
+      {
+        test: /\.(png|svg|jpg|gif|woff|woff2|eot|ttf|otf)$/,
+        use: [
+          'file-loader',
+        ],
+      }
     ],
   },
   resolve: {

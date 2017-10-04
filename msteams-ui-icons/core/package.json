@@ -1,0 +1,35 @@
+{
+  "name": "msteams-ui-icons-core",
+  "description": "MSTeams UI Icon Library Core",
+  "version": "0.1.0",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OfficeDev/msteams-ui-components.git"
+  },
+  "bugs": {
+    "url": "https://github.com/OfficeDev/msteams-ui-components/issues"
+  },
+  "author": {
+    "name": "Microsoft Corporation"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "gulp"
+  },
+  "peerDependencies": {
+    "typestyle": "^1.4.1"
+  },
+  "devDependencies": {
+    "@types/node": "^8.0.32",
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.0",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^7.0.0",
+    "gulp-filter": "^5.0.1",
+    "gulp-typescript": "^3.2.2",
+    "typescript": "^2.5.3",
+    "typestyle": "^1.4.1"
+  }
+}
