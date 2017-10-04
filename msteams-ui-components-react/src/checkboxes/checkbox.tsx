@@ -34,17 +34,14 @@ class CheckboxInner extends React.Component<CheckboxProps & InjectedTeamsProps, 
     onChecked: PropTypes.func,
     values: PropTypes.array,
   };
+  context: CheckboxContext;
 
-  constructor(props: CheckboxProps & InjectedTeamsProps, context: any) {
-    super(props, context);
-    this.handleCheck = this.handleCheck.bind(this);
-    this.state = { id: uniqueId('ts-cb-') };
-  }
+  state = { id: uniqueId('ts-cb-') };
 
   render() {
     const { context, disabled, className, onChecked, value, checked, label, ...rest } = this.props;
 
-    const actuallyChecked = this.isChecked(this.props, this.context);
+    const actuallyChecked = this.isChecked();
     const themeClassNames = checkbox(context);
     let checkboxClassNames = themeClassNames.checkbox;
     if (actuallyChecked) {
@@ -59,7 +56,7 @@ class CheckboxInner extends React.Component<CheckboxProps & InjectedTeamsProps, 
           id={this.state.id}
           className={checkboxClassNames}
           disabled={disabled}
-          onClick={() => this.handleCheck(!actuallyChecked)} />
+          onClick={this.handleCheck} />
         {this.props.label ?
           <label htmlFor={this.state.id} className={themeClassNames.label}>{this.props.label}</label> : null}
         {this.props.children}
@@ -67,19 +64,20 @@ class CheckboxInner extends React.Component<CheckboxProps & InjectedTeamsProps, 
     );
   }
 
-  private isChecked(props: CheckboxProps, context: CheckboxContext): boolean {
-    if (Array.isArray(context.values)) {
-      return context.values.indexOf(props.value) >= 0;
+  private isChecked = (): boolean => {
+    if (Array.isArray(this.context.values)) {
+      return this.context.values.indexOf(this.props.value) >= 0;
     }
-    return props.checked || false;
+    return this.props.checked || false;
   }
 
-  private handleCheck(checked: boolean) {
+  private handleCheck = () => {
+    const checked = this.isChecked();
     if (this.context.onChecked) {
-      this.context.onChecked(checked, this.props.value);
+      this.context.onChecked(!checked, this.props.value);
     }
     if (this.props.onChecked) {
-      this.props.onChecked(checked, this.props.value);
+      this.props.onChecked(!checked, this.props.value);
     }
   }
 }
