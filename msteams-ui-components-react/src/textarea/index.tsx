@@ -7,16 +7,15 @@ import uniqueId from '../utils/uniqueId';
 export interface TextAreaProps
   extends React.DetailedHTMLProps<React.TextareaHTMLAttributes<HTMLTextAreaElement>, HTMLTextAreaElement> {
   label?: string;
-  containerClassName?: string;
 }
 
 const TextAreaInternal: React.StatelessComponent<TextAreaProps & InjectedTeamsProps> = (props) => {
-  const { context, containerClassName, className, label, id, children, ...rest } = props;
+  const { context, className, label, id, children, ...rest } = props;
   const textareaId = id ? id : uniqueId('textarea-');
   const themeClassNames = textArea(context);
 
   return (
-    <div className={classes(themeClassNames.container, containerClassName)}>
+    <div className={classes(themeClassNames.container, className)}>
       {label ?
         <label
           className={themeClassNames.label}
@@ -27,7 +26,7 @@ const TextAreaInternal: React.StatelessComponent<TextAreaProps & InjectedTeamsPr
         :
         null
       }
-      <textarea className={classes(themeClassNames.textArea, className)} id={textareaId} {...rest}>{children}</textarea>
+      <textarea className={themeClassNames.textArea} id={textareaId} {...rest}>{children}</textarea>
     </div>
   );
 };
