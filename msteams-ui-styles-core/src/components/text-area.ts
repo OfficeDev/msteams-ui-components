@@ -36,8 +36,8 @@ function base(context: Context, colors: TextAreaColors) {
   return {
     container: style({
       position: 'relative',
-      padding: 0,
-      margin: 0,
+      // padding: 0,
+      // margin: 0,
       display: 'block',
       overflow: 'hidden',
     }),
@@ -51,25 +51,25 @@ function base(context: Context, colors: TextAreaColors) {
       margin: 0,
       outline: 'none',
     }, {
-      $nest: {
-        '&:active:enabled': {
-          background: colors.active.background,
-          borderBottomColor: colors.active.underline,
+        $nest: {
+          '&:active:enabled': {
+            background: colors.active.background,
+            borderBottomColor: colors.active.underline,
+          },
+          '&:hover:inactive:enabled': {
+            background: colors.hover.background,
+            borderBottomColor: colors.hover.underline,
+          },
+          '&:disabled': {
+            background: colors.disabled.background,
+            borderBottomColor: colors.disabled.underline,
+          },
+          '&:focus': {
+            borderBottomColor: colors.active.underline,
+            background: colors.focus.background,
+          },
         },
-        '&:hover:inactive:enabled': {
-          background: colors.hover.background,
-          borderBottomColor: colors.hover.underline,
-        },
-        '&:disabled': {
-          background: colors.disabled.background,
-          borderBottomColor: colors.disabled.underline,
-        },
-        '&:focus': {
-          borderBottomColor: colors.active.underline,
-          background: colors.focus.background,
-        },
-      },
-    }),
+      }),
     label: classes(style({
       padding: 0,
       margin: 0,
