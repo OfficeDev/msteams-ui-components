@@ -16,9 +16,7 @@ export const TabPropTypes = {
 
 class TabInternal extends React.Component<InjectedTeamsProps & TabProps, {}> {
   static contextTypes = TabContextType;
-
   static propTypes = TabPropTypes;
-
   context: TabContext;
 
   render() {
