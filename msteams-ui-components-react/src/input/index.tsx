@@ -1,6 +1,7 @@
 import { input } from 'msteams-ui-styles-core/lib/components/input';
 import * as React from 'react';
 import { connectTeamsComponent, InjectedTeamsProps } from '../index';
+import classes from '../utils/classes';
 import uniqueId from '../utils/uniqueId';
 
 export interface InputProps extends
@@ -14,7 +15,7 @@ const InputInternal: React.StatelessComponent<InputProps & InjectedTeamsProps> =
   const themeClassNames = input(context);
 
   return (
-    <div className={themeClassNames.container}>
+    <div className={classes(themeClassNames.container, className)}>
       {label ?
         <label
           className={themeClassNames.label}

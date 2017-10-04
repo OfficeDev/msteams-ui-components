@@ -1,6 +1,7 @@
 import { textArea } from 'msteams-ui-styles-core/lib/components/text-area';
 import * as React from 'react';
 import { connectTeamsComponent, InjectedTeamsProps } from '../index';
+import classes from '../utils/classes';
 import uniqueId from '../utils/uniqueId';
 
 export interface TextAreaProps
@@ -14,13 +15,14 @@ const TextAreaInternal: React.StatelessComponent<TextAreaProps & InjectedTeamsPr
   const themeClassNames = textArea(context);
 
   return (
-    <div className={themeClassNames.container}>
-      {label ? <label
-        className={themeClassNames.label}
-        htmlFor={textareaId}
-      >
-        {label}
-      </label>
+    <div className={classes(themeClassNames.container, className)}>
+      {label ?
+        <label
+          className={themeClassNames.label}
+          htmlFor={textareaId}
+        >
+          {label}
+        </label>
         :
         null
       }
