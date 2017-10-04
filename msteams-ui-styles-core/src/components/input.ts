@@ -36,8 +36,6 @@ function base(context: Context, colors: InputColors) {
   return {
     container: style({
       position: 'relative',
-      // padding: 0,
-      // margin: 0,
       display: 'block',
       overflow: 'hidden',
     }),
