@@ -8,13 +8,13 @@ export const iconWeights = {
 export const iconTypes = {
   msOfficeLogo: '"\\e014"',
   msTeamsLogo: '"\\e016"',
+  file: '"\\e306"',
   pencil: '"\\e40d"',
   checkmark: '"\\e412"',
   plus: '"\\e415"',
-  magnifyingGlass: '"\\e446"',
-  file: '"\\e306"',
-  monkey: '"\\e633"',
   dropdownArrow: '"\\e41e"',
+  magnifyingGlass: '"\\e446"',
+  monkey: '"\\e633"',
 };
 
 export function baseStyle(iconWeight?: number): string {
