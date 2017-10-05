@@ -19,9 +19,11 @@
     "build": "gulp"
   },
   "dependencies": {
-    "msteams-ui-icons-core": "file:../core"
+    "msteams-ui-icons-core": "file:../core",
+    "object.values": "^1.0.4"
   },
   "devDependencies": {
+    "@types/prop-types": "^15.5.2",
     "@types/react": "^16.0.9",
     "babel-core": "^6.26.0",
     "babel-preset-env": "^1.6.0",
@@ -29,12 +31,14 @@
     "gulp-babel": "^7.0.0",
     "gulp-filter": "^5.0.1",
     "gulp-typescript": "^3.2.2",
-    "typescript": "^2.5.3",
+    "prop-types": "^15.6.0",
     "react": "^16.0.0",
+    "typescript": "^2.5.3",
     "typestyle": "^1.4.1"
   },
   "peerDependencies": {
     "react": "^16.0.0",
+    "prop-types": "^15.6.0",
     "typestyle": "^1.4.1"
   }
 }
