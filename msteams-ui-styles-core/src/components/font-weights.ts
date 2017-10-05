@@ -3,21 +3,9 @@ import { Context } from '../context';
 
 export function fontWeights(context: Context) {
   return {
-    semilight: style({
-      fontFamily: "'Segoe UI Light', 'Segoe UI', Tahoma, Helvetica, Sans-Serif",
-      fontWeight: 300,
-    }),
-    regular: style({
-      fontFamily: "'Segoe UI', Tahoma, Helvetica, Sans-Serif",
-      fontWeight: 400,
-    }),
-    semibold: style({
-      fontFamily: "'Segoe UI Semibold', 'Segoe UI', Tahoma, Helvetica, Sans-Serif",
-      fontWeight: 600,
-    }),
-    bold: style({
-      fontFamily: "'Segoe UI Bold', 'Segoe UI', Tahoma, Helvetica, Sans-Serif",
-      fontWeight: 700,
-    }),
+    semilight: style(context.font.weights.semilight),
+    regular: style(context.font.weights.regular),
+    semibold: style(context.font.weights.semibold),
+    bold: style(context.font.weights.bold),
   };
 }

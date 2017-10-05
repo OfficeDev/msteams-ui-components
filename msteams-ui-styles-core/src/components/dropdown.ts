@@ -1,6 +1,6 @@
 import { baseStyle, iconTypes, iconWeights } from 'msteams-ui-icons-core';
 import { classes, style } from 'typestyle';
-import { Context } from '../context';
+import { chooseStyle, Context } from '../context';
 import { fontSizes } from './font-sizes';
 import { fontWeights } from './font-weights';
 
@@ -15,11 +15,11 @@ interface DropdownColors {
   label: string;
 }
 
-function base(c: Context, colors: DropdownColors) {
+function base(context: Context, colors: DropdownColors) {
   baseStyle(iconWeights.light);
-  const { rem } = c;
-  const sizes = fontSizes(c);
-  const weights = fontWeights(c);
+  const { rem } = context;
+  const sizes = fontSizes(context);
+  const weights = fontWeights(context);
 
   const containerClass = style({
     position: 'relative',
@@ -110,49 +110,48 @@ function base(c: Context, colors: DropdownColors) {
   };
 }
 
-function light(c: Context) {
-  return base(c, {
-    mainButton: c.colors.light.black,
-    mainButtonBg: c.colors.light.gray12,
-    item: c.colors.light.black,
-    itemBg: c.colors.light.gray12,
-    itemContainerBg: c.colors.light.gray12,
-    itemHover: c.colors.light.white,
-    itemHoverBg: c.colors.light.brand00,
-    label: c.colors.light.gray01,
+function light(context: Context) {
+  const { colors } = context;
+  return base(context, {
+    mainButton: colors.light.black,
+    mainButtonBg: colors.light.gray12,
+    item: colors.light.black,
+    itemBg: colors.light.gray12,
+    itemContainerBg: colors.light.gray12,
+    itemHover: colors.light.white,
+    itemHoverBg: colors.light.brand00,
+    label: colors.light.gray01,
   });
 }
 
-function dark(c: Context) {
-  return base(c, {
-    mainButton: c.colors.dark.white,
-    mainButtonBg: c.colors.dark.black,
-    itemBg: c.colors.dark.black,
-    item: c.colors.dark.white,
-    itemContainerBg: c.colors.dark.black,
-    itemHover: c.colors.dark.white,
-    itemHoverBg: c.colors.dark.brand00,
-    label: c.colors.dark.white,
+function dark(context: Context) {
+  const { colors } = context;
+  return base(context, {
+    mainButton: colors.dark.white,
+    mainButtonBg: colors.dark.black,
+    itemBg: colors.dark.black,
+    item: colors.dark.white,
+    itemContainerBg: colors.dark.black,
+    itemHover: colors.dark.white,
+    itemHoverBg: colors.dark.brand00,
+    label: colors.dark.white,
   });
 }
 
-function highContrast(c: Context) {
-  return base(c, {
-    mainButton: c.colors.white,
-    mainButtonBg: c.colors.black,
-    item: c.colors.white,
-    itemBg: c.colors.black,
-    itemContainerBg: c.colors.highContrast.yellow,
-    itemHover: c.colors.white,
-    itemHoverBg: c.colors.highContrast.green,
-    label: c.colors.white,
+function highContrast(context: Context) {
+  const { colors } = context;
+  return base(context, {
+    mainButton: colors.white,
+    mainButtonBg: colors.black,
+    item: colors.white,
+    itemBg: colors.black,
+    itemContainerBg: colors.highContrast.yellow,
+    itemHover: colors.white,
+    itemHoverBg: colors.highContrast.green,
+    label: colors.white,
   });
 }
 
-export function dropdown(c: Context) {
-  return c.style({
-    light: light(c),
-    dark: dark(c),
-    highContrast: highContrast(c),
-  });
+export function dropdown(context: Context) {
+  return chooseStyle(context, light, dark, highContrast);
 }

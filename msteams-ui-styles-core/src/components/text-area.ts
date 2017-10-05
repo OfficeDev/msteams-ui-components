@@ -1,5 +1,5 @@
 import { classes, style } from 'typestyle';
-import { Context } from '../context';
+import { chooseStyle, Context } from '../context';
 import { fontSizes } from './font-sizes';
 import { fontWeights } from './font-weights';
 
@@ -162,9 +162,5 @@ function highContrast(context: Context) {
 }
 
 export function textArea(context: Context) {
-  return context.style({
-    light: light(context),
-    dark: dark(context),
-    highContrast: highContrast(context),
-  });
+  return chooseStyle(context, light, dark, highContrast);
 }

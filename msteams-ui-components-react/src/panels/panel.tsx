@@ -4,14 +4,18 @@ import { connectTeamsComponent, InjectedTeamsProps } from '../teams-context';
 import classes from '../utils/classes';
 
 export interface PanelProps
-  extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> { }
+  extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
+  spacing?: string;
+}
 
 const PanelView: React.StatelessComponent<PanelProps & InjectedTeamsProps> =
   (props) => {
-    const { context, className, ...rest } = props;
-    const themeClassName = panel(context);
+    const { context, spacing, className, ...rest } = props;
+    const themeClassName = panel(context, spacing || context.spacing.xxxLarge);
     return (
-      <div className={classes(themeClassName, className)} {...rest}>{props.children}</div>
+      <div className={classes(themeClassName, className)} {...rest}>
+        {props.children}
+      </div>
     );
   };
 

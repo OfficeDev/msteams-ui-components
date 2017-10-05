@@ -1,5 +1,5 @@
 import { classes, style } from 'typestyle';
-import { Context } from '../context';
+import { chooseStyle, Context } from '../context';
 import { fontSizes } from './font-sizes';
 import { fontWeights } from './font-weights';
 
@@ -49,6 +49,7 @@ function base(context: Context, colors: CompoundButtonColors) {
         borderRadius: rem(0.3),
         background: colors.rest.background,
         color: colors.rest.text,
+        cursor: 'pointer',
       }, {
       $nest: {
         '&:hover:enabled': {
@@ -191,9 +192,5 @@ function highContrast(context: Context) {
 }
 
 export function compoundButton(context: Context) {
-  return context.style({
-    light: light(context),
-    dark: dark(context),
-    highContrast: highContrast(context),
-  });
+  return chooseStyle(context, light, dark, highContrast);
 }
