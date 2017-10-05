@@ -21,18 +21,21 @@ export function baseStyle(iconWeight?: number): string {
   let fontName;
   let eotFile;
   let woffFile;
+  let woff2File;
   let ttfFile;
   let svgFile;
   if (iconWeight === iconWeights.light) {
     fontName = 'MSTeamsIcons-Light';
     eotFile = require('../fonts/TeamsAssets-Light.eot');
     woffFile = require('../fonts/TeamsAssets-Light.woff');
+    woff2File = require('../fonts/TeamsAssets-Light.woff2');
     ttfFile = require('../fonts/TeamsAssets-Light.ttf');
     svgFile = require('../fonts/TeamsAssets-Light.svg');
   } else {
     fontName = 'MSTeamsIcons-Regular';
     eotFile = require('../fonts/TeamsAssets-Regular.eot');
     woffFile = require('../fonts/TeamsAssets-Regular.woff');
+    woff2File = require('../fonts/TeamsAssets-Regular.woff2');
     ttfFile = require('../fonts/TeamsAssets-Regular.ttf');
     svgFile = require('../fonts/TeamsAssets-Regular.svg');
   }
@@ -41,7 +44,7 @@ export function baseStyle(iconWeight?: number): string {
   fontFace({
     fontFamily: fontName,
     src: `url("${eotFile}"),
-  url('${woffFile}') format('woff2'),
+  url('${woff2File}') format('woff2'),
   url('${woffFile}') format('woff'),
   url('${ttfFile}') format('truetype'),
   url('${svgFile}#${fontName}') format('svg'),
