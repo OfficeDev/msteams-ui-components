@@ -1,6 +1,8 @@
 import { baseStyle, iconTypes, iconWeights } from 'msteams-ui-icons-core';
-import { style } from 'typestyle';
+import { classes, style } from 'typestyle';
 import { Context } from '../context';
+import { fontSizes } from './font-sizes';
+import { fontWeights } from './font-weights';
 
 interface DropdownColors {
   mainButton: string;
@@ -16,6 +18,9 @@ interface DropdownColors {
 function base(c: Context, colors: DropdownColors) {
   baseStyle(iconWeights.light);
   const { rem } = c;
+  const sizes = fontSizes(c);
+  const weights = fontWeights(c);
+
   const containerClass = style({
     position: 'relative',
     display: 'block',
@@ -45,12 +50,12 @@ function base(c: Context, colors: DropdownColors) {
 
   return {
     container: containerClass,
-    label: style({
+    label: classes(style({
       padding: 0,
       margin: 0,
       border: 0,
       color: colors.label,
-    }),
+    }), sizes.caption, weights.regular),
     mainButton: style({
       height: rem(3.2),
       color: colors.mainButton,
