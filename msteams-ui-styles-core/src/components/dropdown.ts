@@ -1,3 +1,4 @@
+import { baseStyle, iconTypes, iconWeights } from 'msteams-ui-icons-core';
 import { style } from 'typestyle';
 import { Context } from '../context';
 
@@ -12,10 +13,20 @@ interface DropdownColors {
 }
 
 function base(c: Context, colors: DropdownColors) {
+  baseStyle(iconWeights.light);
   const { rem } = c;
   const containerClass = style({
     position: 'relative',
-    display: 'inline-block',
+    display: 'block',
+    $nest: {
+      '&:after': {
+        fontFamily: 'MSTeamsIcons-Light',
+        content: iconTypes.dropdownArrow,
+        position: 'absolute',
+        top: rem(0.9),
+        right: rem(0.4),
+      },
+    },
   });
   const itemContainerClass = style({
     backgroundColor: colors.itemContainerBg,
@@ -43,13 +54,8 @@ function base(c: Context, colors: DropdownColors) {
       fontSize: rem(1.4),
       cursor: 'pointer',
       borderRadius: rem(0.3),
-    }, {
-      $nest: {
-        '&:after': {
-          content: '"▼"',
-          marginLeft: rem(0.5),
-        },
-      },
+      width: '100%',
+      textAlign: 'left',
     }),
     itemContainer: itemContainerClass,
     itemContainerRight: style({
@@ -82,13 +88,13 @@ function base(c: Context, colors: DropdownColors) {
       color: colors.item,
       outline: 'none',
     }, {
-      $nest: {
-        '&:hover': {
-          backgroundColor: colors.itemHoverBg,
-          color: colors.itemHover,
+        $nest: {
+          '&:hover': {
+            backgroundColor: colors.itemHoverBg,
+            color: colors.itemHover,
+          },
         },
-      },
-    }),
+      }),
   };
 }
 

@@ -14,6 +14,7 @@ export const iconTypes = {
   magnifyingGlass: '"\\e446"',
   file: '"\\e306"',
   monkey: '"\\e633"',
+  dropdownArrow: '"\\e41e"',
 };
 
 export function baseStyle(iconWeight?: number): string {
@@ -60,9 +61,9 @@ export function baseStyle(iconWeight?: number): string {
   });
 }
 
-export function iconStyle(iconType?: string): string|null {
+export function iconStyle(iconType?: string): string | null {
   if (!iconType) {
     return null;
   }
-  return style({ $nest: { '&::before': { content: iconType }}});
+  return style({ $nest: { '&::before': { content: iconType } } });
 }
