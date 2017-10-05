@@ -7,7 +7,7 @@
     <DropdownItem>option100000000000000000000000</DropdownItem>
   </Dropdown>
 
-  <Dropdown menuRightAlign mainButtonText="right dropdown">
+  <Dropdown menuRightAlign mainButtonText="right dropdown" label="I'm a label">
     <DropdownItem>option1</DropdownItem>
     <DropdownItem>option2</DropdownItem>
     <DropdownItem>option3</DropdownItem>

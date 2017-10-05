@@ -10,6 +10,7 @@ interface DropdownColors {
   item: string;
   itemHoverBg: string;
   itemHover: string;
+  label: string;
 }
 
 function base(c: Context, colors: DropdownColors) {
@@ -23,7 +24,7 @@ function base(c: Context, colors: DropdownColors) {
         fontFamily: 'MSTeamsIcons-Light',
         content: iconTypes.downCaret,
         position: 'absolute',
-        top: rem(0.9),
+        bottom: rem(0.9),
         right: rem(0.4),
       },
     },
@@ -44,6 +45,12 @@ function base(c: Context, colors: DropdownColors) {
 
   return {
     container: containerClass,
+    label: style({
+      padding: 0,
+      margin: 0,
+      border: 0,
+      color: colors.label,
+    }),
     mainButton: style({
       height: rem(3.2),
       color: colors.mainButton,
@@ -107,6 +114,7 @@ function light(c: Context) {
     itemContainerBg: c.colors.light.gray12,
     itemHover: c.colors.light.white,
     itemHoverBg: c.colors.light.brand00,
+    label: c.colors.light.gray01,
   });
 }
 
@@ -119,6 +127,7 @@ function dark(c: Context) {
     itemContainerBg: c.colors.dark.black,
     itemHover: c.colors.dark.white,
     itemHoverBg: c.colors.dark.brand00,
+    label: c.colors.dark.white,
   });
 }
 
@@ -131,6 +140,7 @@ function highContrast(c: Context) {
     itemContainerBg: c.colors.highContrast.yellow,
     itemHover: c.colors.white,
     itemHoverBg: c.colors.highContrast.green,
+    label: c.colors.white,
   });
 }
 

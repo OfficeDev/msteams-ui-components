@@ -7,6 +7,7 @@ export interface DropdownProps
   extends React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
   menuRightAlign?: boolean;
   mainButtonText: string;
+  label?: string;
 }
 
 interface DropdownState {
@@ -17,7 +18,7 @@ class DropdownInternal extends React.Component<DropdownProps & InjectedTeamsProp
   state = { show: false };
 
   render() {
-    const { context, className, menuRightAlign, mainButtonText, ...rest } = this.props;
+    const { context, className, children, menuRightAlign, label, mainButtonText, ...rest } = this.props;
     const themeClassNames = dropdown(context);
     const itemContainerClass = [themeClassNames.itemContainer];
 
@@ -30,10 +31,15 @@ class DropdownInternal extends React.Component<DropdownProps & InjectedTeamsProp
     }
 
     return (
-      <div className={themeClassNames.container} onClick={this.toggle}>
-        <button className={classes(themeClassNames.mainButton, className)} {...rest}>{mainButtonText}</button>
-        <div className={itemContainerClass.join(' ')}>
-          {this.props.children}
+      <div className={classes(themeClassNames.container, className)}>
+        {label ? <label className={themeClassNames.label}>{label}</label> : null}
+        <button
+          className={themeClassNames.mainButton}
+          onClick={this.toggle}
+          {...rest}
+        >{mainButtonText}</button>
+        <div className={itemContainerClass.join(' ')} onClick={this.toggle}>
+          {children}
         </div>
       </div>
     );
