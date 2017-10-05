@@ -36,6 +36,7 @@
     "typescript": "^2.5.2"
   },
   "dependencies": {
-    "typestyle": "^1.4.1"
+    "typestyle": "^1.4.1",
+    "msteams-ui-icons-core": "file:../msteams-ui-icons/core"
   }
 }

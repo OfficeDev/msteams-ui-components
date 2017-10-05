@@ -1,5 +1,8 @@
-import { style } from 'typestyle';
+import { baseStyle, iconTypes, iconWeights } from 'msteams-ui-icons-core';
+import { classes, style } from 'typestyle';
 import { Context } from '../context';
+import { fontSizes } from './font-sizes';
+import { fontWeights } from './font-weights';
 
 interface DropdownColors {
   mainButton: string;
@@ -9,13 +12,27 @@ interface DropdownColors {
   item: string;
   itemHoverBg: string;
   itemHover: string;
+  label: string;
 }
 
 function base(c: Context, colors: DropdownColors) {
+  baseStyle(iconWeights.light);
   const { rem } = c;
+  const sizes = fontSizes(c);
+  const weights = fontWeights(c);
+
   const containerClass = style({
     position: 'relative',
-    display: 'inline-block',
+    display: 'block',
+    $nest: {
+      '&:after': {
+        fontFamily: 'MSTeamsIcons-Light',
+        content: iconTypes.downCaret,
+        position: 'absolute',
+        bottom: rem(0.9),
+        right: rem(0.4),
+      },
+    },
   });
   const itemContainerClass = style({
     backgroundColor: colors.itemContainerBg,
@@ -33,6 +50,12 @@ function base(c: Context, colors: DropdownColors) {
 
   return {
     container: containerClass,
+    label: classes(style({
+      padding: 0,
+      margin: 0,
+      border: 0,
+      color: colors.label,
+    }), sizes.caption, weights.regular),
     mainButton: style({
       height: rem(3.2),
       color: colors.mainButton,
@@ -43,13 +66,8 @@ function base(c: Context, colors: DropdownColors) {
       fontSize: rem(1.4),
       cursor: 'pointer',
       borderRadius: rem(0.3),
-    }, {
-      $nest: {
-        '&:after': {
-          content: '"▼"',
-          marginLeft: rem(0.5),
-        },
-      },
+      width: '100%',
+      textAlign: 'left',
     }),
     itemContainer: itemContainerClass,
     itemContainerRight: style({
@@ -82,13 +100,13 @@ function base(c: Context, colors: DropdownColors) {
       color: colors.item,
       outline: 'none',
     }, {
-      $nest: {
-        '&:hover': {
-          backgroundColor: colors.itemHoverBg,
-          color: colors.itemHover,
+        $nest: {
+          '&:hover': {
+            backgroundColor: colors.itemHoverBg,
+            color: colors.itemHover,
+          },
         },
-      },
-    }),
+      }),
   };
 }
 
@@ -101,6 +119,7 @@ function light(c: Context) {
     itemContainerBg: c.colors.light.gray12,
     itemHover: c.colors.light.white,
     itemHoverBg: c.colors.light.brand00,
+    label: c.colors.light.gray01,
   });
 }
 
@@ -113,6 +132,7 @@ function dark(c: Context) {
     itemContainerBg: c.colors.dark.black,
     itemHover: c.colors.dark.white,
     itemHoverBg: c.colors.dark.brand00,
+    label: c.colors.dark.white,
   });
 }
 
@@ -125,6 +145,7 @@ function highContrast(c: Context) {
     itemContainerBg: c.colors.highContrast.yellow,
     itemHover: c.colors.white,
     itemHoverBg: c.colors.highContrast.green,
+    label: c.colors.white,
   });
 }
 

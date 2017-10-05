@@ -8,11 +8,12 @@ export const iconWeights = {
 export const iconTypes = {
   msOfficeLogo: '"\\e014"',
   msTeamsLogo: '"\\e016"',
+  file: '"\\e306"',
   pencil: '"\\e40d"',
   checkmark: '"\\e412"',
   plus: '"\\e415"',
+  downCaret: '"\\e41e"',
   magnifyingGlass: '"\\e446"',
-  file: '"\\e306"',
   monkey: '"\\e633"',
 };
 
@@ -63,9 +64,9 @@ export function baseStyle(iconWeight?: number): string {
   });
 }
 
-export function iconStyle(iconType?: string): string|null {
+export function iconStyle(iconType?: string): string | null {
   if (!iconType) {
     return null;
   }
-  return style({ $nest: { '&::before': { content: iconType }}});
+  return style({ $nest: { '&::before': { content: iconType } } });
 }
