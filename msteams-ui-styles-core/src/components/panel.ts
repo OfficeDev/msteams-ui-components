@@ -1,34 +1,36 @@
 import { style } from 'typestyle';
-import { Context } from '../context';
+import { chooseStyle, Context } from '../context';
 
 interface PanelColors {
   background: string;
 }
 
-function base(context: Context, colors: PanelColors) {
+function base(context: Context, spacing: string, colors: PanelColors) {
   return style({
     backgroundColor: colors.background,
     borderRadius: context.rem(0.3),
-    padding: context.rem(3.2),
+    padding: spacing,
+    ['-webkit-box-sizing']: 'border-box',
+    ['-moz-box-sizing']: 'border-box',
+    boxSizing: 'border-box',
   });
 }
 
-function light(c: Context) {
-  return base(c, { background: c.colors.light.white });
+function light(context: Context, spacing: string) {
+  return base(context, spacing, { background: context.colors.light.white });
 }
 
-function dark(c: Context) {
-  return base(c, { background: c.colors.dark.black });
+function dark(context: Context, spacing: string) {
+  return base(context, spacing, { background: context.colors.dark.black });
 }
 
-function highContrast(c: Context) {
-  return base(c, { background: c.colors.black });
+function highContrast(context: Context, spacing: string) {
+  return base(context, spacing, { background: context.colors.black });
 }
 
-export function panel(context: Context) {
-  return context.style({
-    light: light(context),
-    dark: dark(context),
-    highContrast: highContrast(context),
-  });
+export function panel(context: Context, spacing: string) {
+  const lightFunc = (c: Context) => light(c, spacing);
+  const darkFunc = (c: Context) => dark(c, spacing);
+  const highContrastFunc = (c: Context) => highContrast(c, spacing);
+  return chooseStyle(context, lightFunc, darkFunc, highContrastFunc);
 }

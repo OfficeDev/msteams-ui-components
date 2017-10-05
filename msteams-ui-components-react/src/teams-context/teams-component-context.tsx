@@ -49,7 +49,11 @@ export class TeamsComponentContext extends React.Component<TeamsComponentProps> 
   protected getChildContext(): any {
     const context: TeamsControlContext = {
       subscribe: this.subscribe,
-      context: getContext({ baseFontSize: this.props.fontSize, colors: Colors, style: this.props.theme }),
+      context: getContext({
+        baseFontSize: this.props.fontSize,
+        colors: Colors,
+        style: this.props.theme,
+      }),
     };
     return context;
   }
@@ -98,5 +102,6 @@ export function connectTeamsComponent<TChildProps>(
 }
 
 export {
-  ThemeStyle
+  ThemeStyle,
+  Context
 };

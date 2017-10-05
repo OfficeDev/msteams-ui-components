@@ -1,5 +1,5 @@
 import { style } from 'typestyle';
-import { Context } from '../context';
+import { chooseStyle, Context } from '../context';
 
 interface CheckboxColors {
   rest: {
@@ -168,9 +168,5 @@ function highContrast(context: Context) {
 }
 
 export function checkbox(context: Context) {
-  return context.style({
-    light: light(context),
-    dark: dark(context),
-    highContrast: highContrast(context),
-  });
+  return chooseStyle(context, light, dark, highContrast);
 }

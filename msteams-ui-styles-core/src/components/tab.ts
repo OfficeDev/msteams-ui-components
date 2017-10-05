@@ -1,5 +1,5 @@
 import { style } from 'typestyle';
-import { Context } from '../context';
+import { chooseStyle, Context } from '../context';
 
 export interface TabColors {
   text: string;
@@ -79,9 +79,5 @@ function highContrast(context: Context) {
 }
 
 export function tab(context: Context) {
-  return context.style({
-    light: light(context),
-    dark: dark(context),
-    highContrast: highContrast(context),
-  });
+  return chooseStyle(context, light, dark, highContrast);
 }

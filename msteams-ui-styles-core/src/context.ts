@@ -1,33 +1,56 @@
 import { ColorPalate } from './color-palate';
+import { FontSizePalate } from './font-size-palate';
+import { FontSizes } from './font-sizes';
+import { FontWeightPalate } from './font-weight-palate';
+import { FontWeights } from './font-weights';
+import { Spacing } from './spacing';
+import { SpacingPalate } from './spacing-palate';
 import { ThemeConfig } from './theme-config';
 import { ThemeStyle } from './theme-style';
 
+export interface RemFunction {
+  (n: number): string;
+}
+
+export interface StyleFunction<T> {
+  (context: Context): T;
+}
+
 export interface Context {
-  rem: (n: number) => string;
-  style: <T1, T2, T3>(styles: {
-    light: T1,
-    dark: T2,
-    highContrast: T3,
-  }) => T1 | T2 | T3;
+  rem: RemFunction;
+  style: ThemeStyle;
   colors: ColorPalate;
+  spacing: SpacingPalate;
+  font: {
+    weights: FontWeightPalate;
+    sizes: FontSizePalate;
+  };
+}
+
+export function chooseStyle<T>(
+  context: Context,
+  light: StyleFunction<T>,
+  dark: StyleFunction<T>,
+  highContrast: StyleFunction<T>): T {
+  if (context.style === ThemeStyle.HighContrast) {
+    return highContrast(context);
+  } else if (context.style === ThemeStyle.Dark) {
+    return dark(context);
+  } else {
+    return light(context);
+  }
 }
 
 export function getContext(config: ThemeConfig): Context {
+  const rem = (n: number) => `${n * 10.0 / config.baseFontSize}rem`;
   return {
-    rem: (n: number) => `${n * 10.0 / config.baseFontSize}rem`,
-    style: <T1, T2, T3>(styles: {
-      light: T1,
-      dark: T2,
-      highContrast: T3,
-    }) => {
-      if (config.style === ThemeStyle.HighContrast) {
-        return styles.highContrast;
-      } else if (config.style === ThemeStyle.Dark) {
-        return styles.dark;
-      } else {
-        return styles.light;
-      }
-    },
+    rem,
+    style: config.style,
     colors: config.colors!,
+    spacing: Spacing(rem),
+    font: {
+      weights: FontWeights(rem),
+      sizes: FontSizes(rem),
+    },
   };
 }
