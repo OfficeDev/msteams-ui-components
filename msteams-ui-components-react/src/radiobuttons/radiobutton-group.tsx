@@ -18,11 +18,6 @@ export class RadiobuttonGroup extends React.Component<RadiobuttonGroupProps> {
     value: PropTypes.any,
   };
 
-  constructor(props: RadiobuttonGroupProps) {
-    super(props);
-    this.handleChange = this.handleChange.bind(this);
-  }
-
   render() {
     const divProps = { ...this.props };
     delete divProps.onSelected;
@@ -41,7 +36,7 @@ export class RadiobuttonGroup extends React.Component<RadiobuttonGroupProps> {
     };
   }
 
-  private handleChange(selected: boolean, value: any) {
+  private handleChange = (selected: boolean, value: any) => {
     if (selected && this.props.onSelected) {
       this.props.onSelected(value);
     }

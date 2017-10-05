@@ -14,19 +14,7 @@ interface DropdownState {
 }
 
 class DropdownInternal extends React.Component<DropdownProps & InjectedTeamsProps, DropdownState> {
-  constructor(props: any) {
-    super(props);
-    this.state = {
-      show: false,
-    };
-    this.toggle = this.toggle.bind(this);
-  }
-
-  toggle() {
-    this.setState({
-      show: !this.state.show,
-    });
-  }
+  state = { show: false };
 
   render() {
     const { context, className, menuRightAlign, mainButtonText, ...rest } = this.props;
@@ -49,6 +37,12 @@ class DropdownInternal extends React.Component<DropdownProps & InjectedTeamsProp
         </div>
       </div>
     );
+  }
+
+  private toggle = () => {
+    this.setState({
+      show: !this.state.show,
+    });
   }
 }
 

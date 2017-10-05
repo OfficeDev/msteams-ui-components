@@ -35,17 +35,14 @@ class RadiobuttonInner extends React.Component<RadiobuttonProps & InjectedTeamsP
     onSelected: PropTypes.func,
     value: PropTypes.any,
   };
+  context: RadiobuttonContext;
 
-  constructor(props: RadiobuttonProps & InjectedTeamsProps, context: any) {
-    super(props, context);
-    this.handleSelect = this.handleSelect.bind(this);
-    this.state = { id: uniqueId('ts-rb-') };
-  }
+  state = { id: uniqueId('ts-rb-') };
 
   render() {
     const { context, disabled, className, onSelected, value, selected, label, ...rest } = this.props;
 
-    const actuallySelected = this.isSelected(this.props, this.context);
+    const actuallySelected = this.isSelected();
     const themeClassNames = radioButton(context);
     let radioClassName = themeClassNames.radio;
     if (actuallySelected) {
@@ -57,7 +54,7 @@ class RadiobuttonInner extends React.Component<RadiobuttonProps & InjectedTeamsP
         className={classes(themeClassNames.container, className)}
         {...rest}>
         <button
-          onClick={() => this.handleSelect()}
+          onClick={this.handleSelect}
           className={radioClassName}
           disabled={disabled} />
         {this.props.label ?
@@ -67,14 +64,14 @@ class RadiobuttonInner extends React.Component<RadiobuttonProps & InjectedTeamsP
     );
   }
 
-  private isSelected(props: RadiobuttonProps, context: RadiobuttonContext): boolean {
-    if (context.value != null) {
-      return context.value === props.value;
+  private isSelected = (): boolean => {
+    if (this.context.value != null) {
+      return this.context.value === this.props.value;
     }
-    return props.selected || false;
+    return this.props.selected || false;
   }
 
-  private handleSelect() {
+  private handleSelect = () => {
     if (this.context.onSelected) {
       this.context.onSelected(true, this.props.value);
     }
