@@ -21,7 +21,7 @@ function base(c: Context, colors: DropdownColors) {
     $nest: {
       '&:after': {
         fontFamily: 'MSTeamsIcons-Light',
-        content: iconTypes.dropdownArrow,
+        content: iconTypes.downCaret,
         position: 'absolute',
         top: rem(0.9),
         right: rem(0.4),

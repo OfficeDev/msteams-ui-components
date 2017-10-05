@@ -12,7 +12,7 @@ export const iconTypes = {
   pencil: '"\\e40d"',
   checkmark: '"\\e412"',
   plus: '"\\e415"',
-  dropdownArrow: '"\\e41e"',
+  downCaret: '"\\e41e"',
   magnifyingGlass: '"\\e446"',
   monkey: '"\\e633"',
 };
