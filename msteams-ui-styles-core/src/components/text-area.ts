@@ -36,11 +36,12 @@ function base(context: Context, colors: TextAreaColors) {
   return {
     container: style({
       position: 'relative',
-      display: 'block',
       overflow: 'hidden',
+      display: 'flex',
+      flexDirection: 'column',
     }),
     textArea: style({
-      width: '100%',
+      flex: '1 1 auto',
       resize: 'none',
       borderRadius: rem(0.3),
       border: `${rem(0.2)} solid ${colors.rest.border}`,
@@ -48,6 +49,9 @@ function base(context: Context, colors: TextAreaColors) {
       padding: `${rem(0.8)} ${rem(1.2)}`,
       margin: 0,
       outline: 'none',
+      ['-webkit-box-sizing']: 'border-box',
+      ['-moz-box-sizing']: 'border-box',
+      boxSizing: 'border-box',
     }, {
         $nest: {
           '&:active:enabled': {
@@ -69,6 +73,7 @@ function base(context: Context, colors: TextAreaColors) {
         },
       }),
     label: classes(style({
+      flex: '0 0 auto',
       padding: 0,
       margin: 0,
       border: 0,

@@ -36,7 +36,6 @@ function base(context: Context, colors: InputColors) {
   return {
     container: style({
       position: 'relative',
-      display: 'block',
       overflow: 'hidden',
     }),
     input: style({
@@ -48,6 +47,9 @@ function base(context: Context, colors: InputColors) {
       padding: `${rem(0.8)} ${rem(1.2)}`,
       margin: 0,
       outline: 'none',
+      ['-webkit-box-sizing']: 'border-box',
+      ['-moz-box-sizing']: 'border-box',
+      boxSizing: 'border-box',
     }, {
         $nest: {
           '&:active:enabled': {
