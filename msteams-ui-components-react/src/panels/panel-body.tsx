@@ -3,20 +3,17 @@ import * as React from 'react';
 import { connectTeamsComponent, InjectedTeamsProps } from '../teams-context';
 import classes from '../utils/classes';
 
-export interface PanelProps
+export interface PanelBodyProps
   extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
-  spacing?: string;
 }
 
-const PanelView: React.StatelessComponent<PanelProps & InjectedTeamsProps> =
+const PanelBodyView: React.StatelessComponent<PanelBodyProps & InjectedTeamsProps> =
   (props) => {
-    const { context, spacing, className, ...rest } = props;
+    const { context, className, ...rest } = props;
     const classNames = panel(context);
-    return (
-      <div className={classes(classNames.container, className)} {...rest}>
+    return <div className={classes(classNames.body, className)} {...rest}>
         {props.children}
-      </div>
-    );
+    </div>;
   };
 
-export const Panel = connectTeamsComponent(PanelView);
+export const PanelBody = connectTeamsComponent(PanelBodyView);

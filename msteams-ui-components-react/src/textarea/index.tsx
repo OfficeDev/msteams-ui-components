@@ -11,7 +11,7 @@ export interface TextAreaProps
 
 const TextAreaInternal: React.StatelessComponent<TextAreaProps & InjectedTeamsProps> = (props) => {
   const { context, className, label, id, children, ...rest } = props;
-  const textareaId = id ? id : uniqueId('textarea-');
+  const textareaId = id ? id : uniqueId('ts-ta-');
   const themeClassNames = textArea(context);
 
   return (
