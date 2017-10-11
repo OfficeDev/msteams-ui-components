@@ -1,4 +1,5 @@
 import { fontFace, style } from 'typestyle';
+// tslint:disable-next-line:no-var-requires
 const memoize = require('lodash.memoize');
 
 export const iconWeights = {
