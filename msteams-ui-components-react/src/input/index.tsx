@@ -14,13 +14,9 @@ const InputInternal: React.StatelessComponent<InputProps & InjectedTeamsProps> =
   const { context, className, label, errorLabel, id, ...rest } = props;
   const inputId = id ? id : uniqueId('input-');
   const themeClassNames = input(context);
-  const containerClasses = [themeClassNames.container];
-  if (errorLabel) {
-    containerClasses.push(themeClassNames.errorIcon);
-  }
 
   return (
-    <div className={classes(containerClasses.join(' '), className)}>
+    <div className={classes(themeClassNames.container, errorLabel ? themeClassNames.errorIcon : null, className)}>
       {label || errorLabel ?
         <div>
           {label ?
