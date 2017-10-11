@@ -37,7 +37,7 @@
     "gulp-tslint": "^8.1.2",
     "gulp-typescript": "^3.2.2",
     "linklocal": "^2.8.1",
-    "react": "^15.6.1",
+    "react": "^15.6.2",
     "tslint": "^5.7.0",
     "typescript": "^2.5.2"
   },

@@ -7,22 +7,34 @@ import uniqueId from '../utils/uniqueId';
 export interface InputProps extends
   React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
   label?: string;
+  errorLabel?: string;
 }
 
 const InputInternal: React.StatelessComponent<InputProps & InjectedTeamsProps> = (props) => {
-  const { context, className, label, id, ...rest } = props;
+  const { context, className, label, errorLabel, id, ...rest } = props;
   const inputId = id ? id : uniqueId('input-');
   const themeClassNames = input(context);
 
   return (
-    <div className={classes(themeClassNames.container, className)}>
-      {label ?
-        <label
-          className={themeClassNames.label}
-          htmlFor={inputId}
-        >
-          {label}
-        </label>
+    <div className={classes(themeClassNames.container, errorLabel ? themeClassNames.errorIcon : null, className)}>
+      {label || errorLabel ?
+        <div>
+          {label ?
+            <label
+              className={themeClassNames.label}
+              htmlFor={inputId}
+            >
+              {label}
+            </label>
+            :
+            null
+          }
+          {errorLabel ?
+            <label className={themeClassNames.errorLabel}>{errorLabel}</label>
+            :
+            null
+          }
+        </div>
         :
         null
       }

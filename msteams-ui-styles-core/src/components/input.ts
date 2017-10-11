@@ -1,3 +1,4 @@
+import { baseStyle, iconTypes, iconWeights } from 'msteams-ui-icons-core';
 import { classes, style } from 'typestyle';
 import { chooseStyle, Context } from '../context';
 import { fontSizes } from './font-sizes';
@@ -26,9 +27,12 @@ interface InputColors {
     underline: string;
   };
   label: string;
+  errorLabel: string;
 }
 
 function base(context: Context, colors: InputColors) {
+  baseStyle(iconWeights.light);
+
   const { rem } = context;
   const sizes = fontSizes(context);
   const weights = fontWeights(context);
@@ -71,11 +75,24 @@ function base(context: Context, colors: InputColors) {
         },
       }),
     label: classes(style({
-      padding: 0,
-      margin: 0,
-      border: 0,
       color: colors.label,
     }), sizes.caption, weights.regular),
+    errorLabel: classes(style({
+      color: colors.errorLabel,
+      float: 'right',
+    }), sizes.caption, weights.regular),
+    errorIcon: style({
+      $nest: {
+        '&:after': {
+          fontFamily: 'MSTeamsIcons-Light',
+          content: iconTypes.error,
+          position: 'absolute',
+          color: colors.errorLabel,
+          right: rem(1.2),
+          bottom: rem(1),
+        },
+      },
+    }),
   };
 }
 
@@ -104,6 +121,7 @@ function light(context: Context) {
       underline: colors.light.brand00,
     },
     label: colors.light.gray01,
+    errorLabel: colors.light.red,
   });
 }
 
@@ -132,6 +150,7 @@ function dark(context: Context) {
       underline: colors.dark.brand00,
     },
     label: colors.dark.white,
+    errorLabel: colors.dark.red,
   });
 }
 
@@ -160,6 +179,7 @@ function highContrast(context: Context) {
       underline: colors.highContrast.yellow,
     },
     label: colors.white,
+    errorLabel: colors.highContrast.yellow,
   });
 }
 
