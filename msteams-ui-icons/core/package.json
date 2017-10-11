@@ -30,6 +30,6 @@
     "gulp-filter": "^5.0.1",
     "gulp-typescript": "^3.2.2",
     "typescript": "^2.5.3",
-    "typestyle": "^1.4.1"
+    "typestyle": "^1.4.2"
   }
 }
