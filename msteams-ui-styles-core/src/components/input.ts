@@ -1,4 +1,4 @@
-import { baseStyle, iconWeights } from 'msteams-ui-icons-core';
+import { baseStyle, iconTypes, iconWeights } from 'msteams-ui-icons-core';
 import { classes, style } from 'typestyle';
 import { chooseStyle, Context } from '../context';
 import { fontSizes } from './font-sizes';
@@ -84,7 +84,7 @@ function base(context: Context, colors: InputColors) {
       $nest: {
         '&:after': {
           fontFamily: 'MSTeamsIcons-Light',
-          content: '"\\e450"',
+          content: iconTypes.error,
           position: 'absolute',
           color: colors.errorLabel,
           right: rem(1.2),

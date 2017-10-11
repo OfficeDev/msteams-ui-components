@@ -14,6 +14,7 @@ export const iconTypes = {
   plus: '"\\e415"',
   downCaret: '"\\e41e"',
   magnifyingGlass: '"\\e446"',
+  error: '"\\e450"',
   monkey: '"\\e633"',
 };
 
