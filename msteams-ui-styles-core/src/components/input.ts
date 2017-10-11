@@ -32,6 +32,7 @@ interface InputColors {
 
 function base(context: Context, colors: InputColors) {
   baseStyle(iconWeights.light);
+
   const { rem } = context;
   const sizes = fontSizes(context);
   const weights = fontWeights(context);

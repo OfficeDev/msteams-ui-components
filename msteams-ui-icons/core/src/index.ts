@@ -1,4 +1,5 @@
 import { fontFace, style } from 'typestyle';
+const memoize = require('lodash.memoize');
 
 export const iconWeights = {
   regular: 0,
@@ -18,7 +19,7 @@ export const iconTypes = {
   monkey: '"\\e633"',
 };
 
-export function baseStyle(iconWeight?: number): string {
+export const baseStyle = memoize((iconWeight?: number): string => {
   // tslint:disable:no-var-requires
   let fontName;
   let eotFile;
@@ -63,7 +64,7 @@ export function baseStyle(iconWeight?: number): string {
     ['-webkit-font-smoothing']: 'antialiased',
     ['-moz-osx-font-smoothing']: 'grayscale',
   });
-}
+});
 
 export function iconStyle(iconType?: string): string | null {
   if (!iconType) {
