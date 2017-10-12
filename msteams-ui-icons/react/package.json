@@ -18,7 +18,9 @@
   "scripts": {
     "prepublishOnly": "npm run clean && npm install && npm run build",
     "clean": "gulp clean",
-    "build": "gulp"
+    "build": "gulp",
+	"link:self": "npm link",
+	"link:deps": "npm link msteams-ui-icons-core"
   },
   "dependencies": {
     "msteams-ui-icons-core": "^0.1.1"
