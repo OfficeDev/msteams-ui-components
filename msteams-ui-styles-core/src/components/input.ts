@@ -75,6 +75,13 @@ function base(context: Context, colors: InputColors) {
         },
       }),
     label: classes(style({
+      display: 'inline-block',
+      padding: 0,
+      border: 0,
+      marginBottom: rem(0.6),
+      marginLeft: 0,
+      marginRight: 0,
+      marginTop: 0,
       color: colors.label,
     }), sizes.caption, weights.regular),
     errorLabel: classes(style({

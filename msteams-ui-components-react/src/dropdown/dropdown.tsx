@@ -6,7 +6,7 @@ import classes from '../utils/classes';
 export interface DropdownProps
   extends React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
   menuRightAlign?: boolean;
-  mainButtonText: string;
+  mainButtonText?: string;
   label?: string;
 }
 
@@ -38,17 +38,17 @@ class DropdownInternal extends React.Component<DropdownProps & InjectedTeamsProp
           onClick={this.toggle}
           {...rest}
         >{mainButtonText}</button>
-        <div className={itemContainerClass.join(' ')} onClick={this.toggle}>
-          {children}
-        </div>
+        {this.state.show ? <div className={itemContainerClass.join(' ')} onClick={this.close}>{children}</div> : null }
       </div>
     );
   }
 
   private toggle = () => {
-    this.setState({
-      show: !this.state.show,
-    });
+    this.setState({show: !this.state.show});
+  }
+
+  private close = () => {
+    this.setState({show: false});
   }
 }
 

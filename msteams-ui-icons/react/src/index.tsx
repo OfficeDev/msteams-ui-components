@@ -16,22 +16,28 @@ export interface MSTeamsIconProps extends React.DetailedHTMLProps<React.HTMLAttr
   iconWeight?: number;
 }
 
-const MSTeamsIconInternal: React.StatelessComponent<MSTeamsIconProps> = (props) => {
-  const { iconWeight, iconType, className, ...rest } = props;
-  const classNames = classes(baseStyle(iconWeight), iconStyle(iconType), className);
+export interface MSTeamsIconState {
+  baseClass: string;
+  iconClass: string | null;
+}
 
-  return <i className={classNames} {...rest}>{props.children}</i>;
-};
+export class MSTeamsIcon extends React.PureComponent<MSTeamsIconProps, MSTeamsIconState> {
+  static propTypes = {
+    iconType: PropTypes.oneOf(values(iconTypes)),
+    iconWeight: PropTypes.oneOf(values(iconWeights)),
+  };
 
-MSTeamsIconInternal.propTypes = {
-  iconType: PropTypes.oneOf(values(iconTypes)),
-  iconWeight: PropTypes.oneOf(values(iconWeights)),
-};
+  static defaultProps = {
+    iconWeight: iconWeights.regular,
+  };
 
-MSTeamsIconInternal.defaultProps = {
-  iconWeight: iconWeights.regular,
-};
+  render() {
+    const { iconWeight, iconType, className, children, ...rest } = this.props;
+    const classNames = classes(baseStyle(this.props.iconWeight), iconStyle(this.props.iconType), className);
 
-export const MSTeamsIcon = MSTeamsIconInternal;
+    return <i className={classNames} {...rest}>{children}</i>;
+  }
+}
+
 export const MSTeamsIconType = iconTypes;
 export const MSTeamsIconWeight = iconWeights;

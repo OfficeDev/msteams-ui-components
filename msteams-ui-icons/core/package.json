@@ -19,7 +19,7 @@
     "build": "gulp"
   },
   "peerDependencies": {
-    "typestyle": "^1.4.1"
+    "typestyle": "^1.4.2"
   },
   "devDependencies": {
     "@types/lodash.memoize": "^4.1.3",
