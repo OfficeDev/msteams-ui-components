@@ -4,8 +4,7 @@
   "scripts": {
     "dev": "webpack-dev-server",
     "build": "webpack --env.prod -p",
-    "lint": "tslint --project tsconfig.json",
-    "link:deps": "npm link msteams-ui-styles-core && npm link msteams-ui-components-react"
+    "lint": "tslint --project tsconfig.json"
   },
   "author": {
     "name": "Microsoft Corporation"
@@ -13,10 +12,11 @@
   "license": "MIT",
   "devDependencies": {
     "@types/prop-types": "^15.5.2",
-    "@types/react": "^16.0.9",
-    "@types/react-dom": "^16.0.0",
+    "@types/react": "^16.0.10",
+    "@types/react-dom": "^16.0.1",
     "@types/react-router": "^4.0.15",
     "@types/react-router-dom": "^4.0.8",
+    "@types/lodash.memoize": "^4.1.3",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.0",
@@ -25,9 +25,8 @@
     "csx": "^8.5.0",
     "file-loader": "^1.1.4",
     "html-webpack-plugin": "^2.30.1",
-    "linklocal": "^2.8.1",
-    "msteams-ui-components-react": "file:../msteams-ui-components-react",
-    "msteams-ui-icons-react": "file:../msteams-ui-icons/react",
+    "msteams-ui-components-react": "^0.3.0",
+    "msteams-ui-icons-react": "^0.1.1",
     "prop-types": "^15.6.0",
     "raw-loader": "^0.5.1",
     "react": "^16.0.0",

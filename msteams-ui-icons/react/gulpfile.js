@@ -2,11 +2,16 @@ const gulp = require('gulp');
 const ts = require('gulp-typescript');
 const babel = require('gulp-babel');
 const filter = require('gulp-filter');
+const del = require('del');
 
 const src = ['src/**/*.{ts,tsx}'];
 
 gulp.task('default', () => {
   return createBuildTask();
+});
+
+gulp.task('clean', () => {
+  del(['lib']);
 });
 
 gulp.task('watch', ['default'], () => {
