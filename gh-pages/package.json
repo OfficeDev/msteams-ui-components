@@ -26,7 +26,7 @@
     "file-loader": "^1.1.4",
     "html-webpack-plugin": "^2.30.1",
     "linklocal": "^2.8.1",
-    "msteams-ui-components-react": "^0.2.0",
+    "msteams-ui-components-react": "file:../msteams-ui-components-react",
     "msteams-ui-icons-react": "file:../msteams-ui-icons/react",
     "prop-types": "^15.6.0",
     "raw-loader": "^0.5.1",
@@ -38,7 +38,7 @@
     "ts-loader": "^2.3.7",
     "tslint": "^5.7.0",
     "typescript": "^2.5.2",
-    "typestyle": "^1.4.1",
+    "typestyle": "^1.4.2",
     "webpack": "^3.5.6",
     "webpack-dev-server": "^2.8.2"
   }

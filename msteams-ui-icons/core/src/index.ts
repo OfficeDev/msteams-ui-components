@@ -1,6 +1,5 @@
-import { fontFace, style } from 'typestyle';
-// tslint:disable-next-line:no-var-requires
-const memoize = require('lodash.memoize');
+import { TypeStyle } from 'typestyle';
+import memoize = require('lodash.memoize');
 
 export const iconWeights = {
   regular: 0,
@@ -10,18 +9,28 @@ export const iconWeights = {
 export const iconTypes = {
   msOfficeLogo: '"\\e014"',
   msTeamsLogo: '"\\e016"',
+  folder: '"\\e137"',
   file: '"\\e306"',
+  list: '"\\e30a"',
+  robot: '"\\e21a"',
+  connectors: '"\\e221"',
+  signal: '"\\e344"',
   pencil: '"\\e40d"',
   checkmark: '"\\e412"',
   plus: '"\\e415"',
   downCaret: '"\\e41e"',
+  trashCan: '"\\e42b"',
   magnifyingGlass: '"\\e446"',
   error: '"\\e450"',
   monkey: '"\\e633"',
+  close: '"\\e8bb"',
+  ellipsis: '"\\e94f"',
 };
 
+const fontFaceTS = new TypeStyle({autoGenerateTag: true});
+const iconTS = new TypeStyle({autoGenerateTag: true});
+
 export const baseStyle = memoize((iconWeight?: number): string => {
-  // tslint:disable:no-var-requires
   let fontName;
   let eotFile;
   let woffFile;
@@ -43,9 +52,8 @@ export const baseStyle = memoize((iconWeight?: number): string => {
     ttfFile = require('../fonts/TeamsAssets-Regular.ttf');
     svgFile = require('../fonts/TeamsAssets-Regular.svg');
   }
-  // tslint:enable:no-var-requires
 
-  fontFace({
+  fontFaceTS.fontFace({
     fontFamily: fontName,
     src: `url("${eotFile}"),
   url('${woff2File}') format('woff2'),
@@ -57,9 +65,9 @@ export const baseStyle = memoize((iconWeight?: number): string => {
     fontStyle: 'normal',
   });
 
-  return style({
+  return iconTS.style({
     display: 'inline-block',
-    font: `normal normal normal 14px/1 ${fontName}`,
+    font: `normal normal normal 16px/1 ${fontName}`,
     fontSize: 'inherit',
     textRendering: 'auto',
     ['-webkit-font-smoothing']: 'antialiased',
@@ -67,9 +75,9 @@ export const baseStyle = memoize((iconWeight?: number): string => {
   });
 });
 
-export function iconStyle(iconType?: string): string | null {
+export const iconStyle = memoize((iconType?: string): string | null => {
   if (!iconType) {
     return null;
   }
-  return style({ $nest: { '&::before': { content: iconType } } });
-}
+  return iconTS.style({ $nest: { '&::before': { content: iconType } } });
+});

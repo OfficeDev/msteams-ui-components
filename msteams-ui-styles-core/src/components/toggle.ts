@@ -1,5 +1,4 @@
 import { style } from 'typestyle';
-import { CSSProperties } from 'typestyle/lib/types';
 import { chooseStyle, Context } from '../context';
 
 interface ToggleColors {
@@ -19,57 +18,8 @@ function base(context: Context, colors: ToggleColors) {
   const { rem } = context;
   const delta = width - ballDeltaX * 2 - ballSize;
 
-  const sliderBackground: CSSProperties = {
-    position: 'absolute',
-    cursor: 'pointer',
-    border: 0,
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    width: '100%',
-    height: '100%',
-    backgroundColor: colors.sliderBackground,
-    transition: '0.4s',
-    borderRadius: rem(height),
-    outline: 'none',
-  };
-
-  const sliderFocus: CSSProperties = {
-    content: '""',
-    position: 'absolute',
-    top: rem(-0.1),
-    bottom: rem(-0.1),
-    left: rem(-0.1),
-    right: rem(-0.1),
-    borderRadius: rem(height),
-    border: `${rem(0.2)} solid ${colors.sliderFocus}`,
-  };
-
-  const sliderBall: CSSProperties = {
-    position: 'absolute',
-    content: '""',
-    height: rem(ballSize),
-    width: rem(ballSize),
-    left: rem(ballDeltaX),
-    top: rem((height - ballSize) / 2),
-    backgroundColor: colors.sliderBall,
-    transition: '0.4s',
-    borderRadius: '50%',
-  };
-
   const inputClass = style({
     display: 'none',
-  });
-
-  const sliderBackgroundChecked = Object.assign({}, sliderBackground, {
-    backgroundColor: colors.sliderBackgroundChecked,
-  });
-
-  const sliderFocusChecked = Object.assign({}, sliderFocus, {});
-  const sliderBallChecked = Object.assign({}, sliderBall, {
-    backgroundColor: colors.sliderBallChecked,
-    transform: `translateX(${rem(delta)})`,
   });
 
   return {
@@ -80,13 +30,51 @@ function base(context: Context, colors: ToggleColors) {
       height: rem(height),
     }),
     input: inputClass,
-    slider: style(sliderBackground, {
+    slider: style({
+      position: 'absolute',
+      cursor: 'pointer',
+      border: 0,
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      width: '100%',
+      height: '100%',
+      backgroundColor: colors.sliderBackground,
+      transition: '0.4s',
+      borderRadius: rem(height),
+      outline: 'none',
       $nest: {
-        '&:before': sliderBall,
-        '&:focus:after': sliderFocus,
-        [`.${inputClass}:checked + &`]: sliderBackgroundChecked,
-        [`.${inputClass}:checked + &:before`]: sliderBallChecked,
-        [`.${inputClass}:checked + &:focus:after`]: sliderFocusChecked,
+        '&:before': {
+          position: 'absolute',
+          content: '""',
+          height: rem(ballSize),
+          width: rem(ballSize),
+          left: rem(ballDeltaX),
+          top: rem((height - ballSize) / 2),
+          backgroundColor: colors.sliderBall,
+          transition: '0.4s',
+          borderRadius: '50%',
+          $nest: {
+            [`.${inputClass}:checked + &`]: {
+              backgroundColor: colors.sliderBallChecked,
+              transform: `translateX(${rem(delta)})`,
+            },
+          },
+        },
+        '&:focus:after': {
+          content: '""',
+          position: 'absolute',
+          top: rem(-0.1),
+          bottom: rem(-0.1),
+          left: rem(-0.1),
+          right: rem(-0.1),
+          borderRadius: rem(height),
+          border: `${rem(0.2)} solid ${colors.sliderFocus}`,
+        },
+        [`.${inputClass}:checked + &`]: {
+          backgroundColor: colors.sliderBackgroundChecked,
+        },
       },
     }),
   };

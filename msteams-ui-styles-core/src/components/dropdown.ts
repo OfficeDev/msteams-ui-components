@@ -21,19 +21,6 @@ function base(context: Context, colors: DropdownColors) {
   const sizes = fontSizes(context);
   const weights = fontWeights(context);
 
-  const containerClass = style({
-    position: 'relative',
-    display: 'block',
-    $nest: {
-      '&:after': {
-        fontFamily: 'MSTeamsIcons-Light',
-        content: iconTypes.downCaret,
-        position: 'absolute',
-        bottom: rem(0.9),
-        right: rem(0.4),
-      },
-    },
-  });
   const itemContainerClass = style({
     backgroundColor: colors.itemContainerBg,
     position: 'absolute',
@@ -49,7 +36,10 @@ function base(context: Context, colors: DropdownColors) {
   });
 
   return {
-    container: containerClass,
+    container: style({
+      position: 'relative',
+      display: 'block',
+    }),
     label: classes(style({
       padding: 0,
       margin: 0,
@@ -68,6 +58,15 @@ function base(context: Context, colors: DropdownColors) {
       borderRadius: rem(0.3),
       width: '100%',
       textAlign: 'left',
+      $nest: {
+        '&:after': {
+          fontFamily: 'MSTeamsIcons-Light',
+          content: iconTypes.downCaret,
+          position: 'absolute',
+          bottom: rem(0.9),
+          right: rem(0.4),
+        },
+      },
     }),
     itemContainer: itemContainerClass,
     itemContainerRight: style({
@@ -98,6 +97,7 @@ function base(context: Context, colors: DropdownColors) {
       display: 'block',
       backgroundColor: colors.itemBg,
       color: colors.item,
+      cursor: 'pointer',
       outline: 'none',
     }, {
         $nest: {

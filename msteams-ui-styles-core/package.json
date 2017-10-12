@@ -23,6 +23,9 @@
     "name": "Microsoft Corporation"
   },
   "license": "MIT",
+  "peerDependencies": {
+    "typestyle": "^1.4.2"
+  },
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-preset-env": "^1.6.0",
@@ -33,10 +36,10 @@
     "gulp-tslint": "^8.1.2",
     "gulp-typescript": "^3.2.2",
     "tslint": "^5.7.0",
-    "typescript": "^2.5.2"
+    "typescript": "^2.5.2",
+    "typestyle": "^1.4.2"
   },
   "dependencies": {
-    "typestyle": "^1.4.1",
     "msteams-ui-icons-core": "file:../msteams-ui-icons/core"
   }
 }

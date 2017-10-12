@@ -6,7 +6,7 @@ interface PanelColors {
 }
 
 function base(context: Context, colors: PanelColors) {
-  const { rem } = context;
+  const { rem, spacing } = context;
   return {
     container: style({
       backgroundColor: colors.background,
@@ -16,24 +16,23 @@ function base(context: Context, colors: PanelColors) {
       boxSizing: 'border-box',
       display: 'flex',
       flexDirection: 'column',
-      height: '100%',
     }),
     header: style({
       flex: '0 0 auto',
-      marginTop: context.spacing.xxLarge,
-      marginLeft: context.spacing.xxLarge,
-      marginRight: context.spacing.xxLarge,
+      marginTop: spacing.xxxLarge,
+      marginLeft: spacing.xxxLarge,
+      marginRight: spacing.xxxLarge,
     }),
     body: style({
-      marginLeft: context.spacing.xxLarge,
-      marginRight: context.spacing.xxLarge,
+      marginLeft: spacing.xxxLarge,
+      marginRight: spacing.xxxLarge,
       flex: '1 1 auto',
       overflowY: 'auto',
     }),
     footer: style({
-      marginBottom: context.spacing.xxLarge,
-      marginLeft: context.spacing.xxLarge,
-      marginRight: context.spacing.xxLarge,
+      marginBottom: spacing.xxxLarge,
+      marginLeft: spacing.xxxLarge,
+      marginRight: spacing.xxxLarge,
       flex: '0 0 auto',
     }),
   };

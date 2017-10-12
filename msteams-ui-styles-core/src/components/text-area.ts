@@ -73,10 +73,14 @@ function base(context: Context, colors: TextAreaColors) {
         },
       }),
     label: classes(style({
+      display: 'inline-block',
       flex: '0 0 auto',
       padding: 0,
-      margin: 0,
       border: 0,
+      marginBottom: rem(0.6),
+      marginLeft: 0,
+      marginRight: 0,
+      marginTop: 0,
       color: colors.label,
     }), sizes.caption, weights.regular),
   };
