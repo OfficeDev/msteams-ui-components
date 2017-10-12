@@ -17,5 +17,4 @@ npm run clean
 npm run build
 cd ../gh-pages
 npm install
-npm run link:deps
 npm run build
