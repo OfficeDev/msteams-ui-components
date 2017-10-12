@@ -4,7 +4,8 @@
   "scripts": {
     "dev": "webpack-dev-server",
     "build": "webpack --env.prod -p",
-    "lint": "tslint --project tsconfig.json"
+    "lint": "tslint --project tsconfig.json",
+    "link:deps": "npm link msteams-ui-components-react && npm link msteams-ui-icons-react"
   },
   "author": {
     "name": "Microsoft Corporation"
