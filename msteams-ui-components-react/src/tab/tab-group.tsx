@@ -20,7 +20,18 @@ class TabGroupInternal extends React.Component<InjectedTeamsProps & TabGroupProp
     })).isRequired,
   };
 
-  getChildContext(): TabContext {
+  render() {
+    const { context, selectedTabId, ...rest } = this.props;
+    const themeClassNames = tabClasses(context);
+    return (
+      <div className={themeClassNames.container} {...rest}>
+        {this.props.children}
+      </div>
+    );
+  }
+
+  // tslint:disable-next-line:no-unused-variable
+  private getChildContext(): TabContext {
     if (process.env.NODE_ENV !== 'production') {
       const childTabIds = new Set<string>();
       React.Children.forEach(this.props.children, (tab: React.ReactElement<TabProps>) => {
@@ -34,16 +45,6 @@ class TabGroupInternal extends React.Component<InjectedTeamsProps & TabGroupProp
     return {
       isSelected: (tabId: any) => tabId === this.props.selectedTabId,
     };
-  }
-
-  render() {
-    const { context, selectedTabId, ...rest } = this.props;
-    const themeClassNames = tabClasses(context);
-    return (
-      <div className={themeClassNames.container} {...rest}>
-        {this.props.children}
-      </div>
-    );
   }
 }
 

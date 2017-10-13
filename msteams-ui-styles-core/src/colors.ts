@@ -1,4 +1,4 @@
-import { ColorPalate } from '../color-palate';
+import { ColorPalate } from './color-palate';
 
 export const Colors: ColorPalate = {
   transparent: 'transparent',

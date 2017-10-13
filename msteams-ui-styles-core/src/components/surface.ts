@@ -1,5 +1,5 @@
 import { classes, style } from 'typestyle';
-import { Context } from '../context';
+import { chooseStyle, Context } from '../context';
 import { fontSizes } from './font-sizes';
 import { fontWeights } from './font-weights';
 
@@ -21,7 +21,7 @@ function base(context: Context, colors: SurfaceColors) {
 function light(context: Context) {
   const { colors } = context;
   return base(context, {
-    background: colors.white,
+    background: colors.gray,
     font: colors.light.black,
   });
 }
@@ -43,9 +43,5 @@ function highContrast(context: Context) {
 }
 
 export function surface(context: Context) {
-  return context.style({
-    light: light(context),
-    dark: dark(context),
-    highContrast: highContrast(context),
-  });
+  return chooseStyle(context, light, dark, highContrast);
 }

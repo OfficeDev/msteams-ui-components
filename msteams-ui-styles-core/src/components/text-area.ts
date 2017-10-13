@@ -1,5 +1,5 @@
 import { classes, style } from 'typestyle';
-import { Context } from '../context';
+import { chooseStyle, Context } from '../context';
 import { fontSizes } from './font-sizes';
 import { fontWeights } from './font-weights';
 
@@ -36,13 +36,12 @@ function base(context: Context, colors: TextAreaColors) {
   return {
     container: style({
       position: 'relative',
-      padding: 0,
-      margin: 0,
-      display: 'block',
       overflow: 'hidden',
+      display: 'flex',
+      flexDirection: 'column',
     }),
     textArea: style({
-      width: '100%',
+      flex: '1 1 auto',
       resize: 'none',
       borderRadius: rem(0.3),
       border: `${rem(0.2)} solid ${colors.rest.border}`,
@@ -50,30 +49,38 @@ function base(context: Context, colors: TextAreaColors) {
       padding: `${rem(0.8)} ${rem(1.2)}`,
       margin: 0,
       outline: 'none',
+      ['-webkit-box-sizing']: 'border-box',
+      ['-moz-box-sizing']: 'border-box',
+      boxSizing: 'border-box',
     }, {
-      $nest: {
-        '&:active:enabled': {
-          background: colors.active.background,
-          borderBottomColor: colors.active.underline,
+        $nest: {
+          '&:active:enabled': {
+            background: colors.active.background,
+            borderBottomColor: colors.active.underline,
+          },
+          '&:hover:inactive:enabled': {
+            background: colors.hover.background,
+            borderBottomColor: colors.hover.underline,
+          },
+          '&:disabled': {
+            background: colors.disabled.background,
+            borderBottomColor: colors.disabled.underline,
+          },
+          '&:focus': {
+            borderBottomColor: colors.active.underline,
+            background: colors.focus.background,
+          },
         },
-        '&:hover:inactive:enabled': {
-          background: colors.hover.background,
-          borderBottomColor: colors.hover.underline,
-        },
-        '&:disabled': {
-          background: colors.disabled.background,
-          borderBottomColor: colors.disabled.underline,
-        },
-        '&:focus': {
-          borderBottomColor: colors.active.underline,
-          background: colors.focus.background,
-        },
-      },
-    }),
+      }),
     label: classes(style({
+      display: 'inline-block',
+      flex: '0 0 auto',
       padding: 0,
-      margin: 0,
       border: 0,
+      marginBottom: rem(0.6),
+      marginLeft: 0,
+      marginRight: 0,
+      marginTop: 0,
       color: colors.label,
     }), sizes.caption, weights.regular),
   };
@@ -164,9 +171,5 @@ function highContrast(context: Context) {
 }
 
 export function textArea(context: Context) {
-  return context.style({
-    light: light(context),
-    dark: dark(context),
-    highContrast: highContrast(context),
-  });
+  return chooseStyle(context, light, dark, highContrast);
 }

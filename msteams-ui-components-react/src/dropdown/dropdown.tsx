@@ -6,7 +6,8 @@ import classes from '../utils/classes';
 export interface DropdownProps
   extends React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
   menuRightAlign?: boolean;
-  mainButtonText: string;
+  mainButtonText?: string;
+  label?: string;
 }
 
 interface DropdownState {
@@ -14,22 +15,10 @@ interface DropdownState {
 }
 
 class DropdownInternal extends React.Component<DropdownProps & InjectedTeamsProps, DropdownState> {
-  constructor(props: any) {
-    super(props);
-    this.state = {
-      show: false,
-    };
-    this.toggle = this.toggle.bind(this);
-  }
-
-  toggle() {
-    this.setState({
-      show: !this.state.show,
-    });
-  }
+  state = { show: false };
 
   render() {
-    const { context, className, menuRightAlign, mainButtonText, ...rest } = this.props;
+    const { context, className, children, menuRightAlign, label, mainButtonText, ...rest } = this.props;
     const themeClassNames = dropdown(context);
     const itemContainerClass = [themeClassNames.itemContainer];
 
@@ -42,13 +31,24 @@ class DropdownInternal extends React.Component<DropdownProps & InjectedTeamsProp
     }
 
     return (
-      <div className={themeClassNames.container} onClick={this.toggle}>
-        <button className={classes(themeClassNames.mainButton, className)} {...rest}>{mainButtonText}</button>
-        <div className={itemContainerClass.join(' ')}>
-          {this.props.children}
-        </div>
+      <div className={classes(themeClassNames.container, className)}>
+        {label ? <label className={themeClassNames.label}>{label}</label> : null}
+        <button
+          className={themeClassNames.mainButton}
+          onClick={this.toggle}
+          {...rest}
+        >{mainButtonText}</button>
+        {this.state.show ? <div className={itemContainerClass.join(' ')} onClick={this.close}>{children}</div> : null }
       </div>
     );
+  }
+
+  private toggle = () => {
+    this.setState({show: !this.state.show});
+  }
+
+  private close = () => {
+    this.setState({show: false});
   }
 }
 

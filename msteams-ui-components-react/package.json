@@ -1,6 +1,6 @@
 {
   "name": "msteams-ui-components-react",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "repository": {
@@ -25,9 +25,10 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@types/node": "^8.0.31",
-    "@types/prop-types": "^15.5.1",
-    "@types/react": "^16.0.7",
+    "@types/lodash.memoize": "^4.1.3",
+    "@types/prop-types": "^15.5.2",
+    "@types/react": "^16.0.10",
+    "@types/node": "^8.0.32",
     "babel-core": "^6.26.0",
     "babel-preset-env": "^1.6.0",
     "del": "^3.0.0",
@@ -36,16 +37,19 @@
     "gulp-filter": "^5.0.1",
     "gulp-tslint": "^8.1.2",
     "gulp-typescript": "^3.2.2",
-    "linklocal": "^2.8.1",
-    "react": "^15.6.1",
+    "react": "^16.0.0",
+    "prop-types": "^15.6.0",
     "tslint": "^5.7.0",
-    "typescript": "^2.5.2"
-  },
-  "dependencies": {
-    "msteams-ui-styles-core": "^0.2.0",
-    "prop-types": "^15.5.10"
+    "typescript": "^2.5.2",
+    "typestyle": "^1.4.2"
   },
   "peerDependencies": {
-    "@types/prop-types": "^15.5.1"
+    "@types/prop-types": "^15.5.2",
+    "@types/react": "^16.0.10",
+    "react": "^16.0.0",
+    "prop-types": "^15.6.0"
+  },
+  "dependencies": {
+    "msteams-ui-styles-core": "^0.3.0"
   }
 }

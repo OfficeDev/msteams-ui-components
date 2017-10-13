@@ -1,5 +1,6 @@
+import { baseStyle, iconTypes, iconWeights } from 'msteams-ui-icons-core';
 import { classes, style } from 'typestyle';
-import { Context } from '../context';
+import { chooseStyle, Context } from '../context';
 import { fontSizes } from './font-sizes';
 import { fontWeights } from './font-weights';
 
@@ -26,9 +27,12 @@ interface InputColors {
     underline: string;
   };
   label: string;
+  errorLabel: string;
 }
 
 function base(context: Context, colors: InputColors) {
+  baseStyle(iconWeights.light);
+
   const { rem } = context;
   const sizes = fontSizes(context);
   const weights = fontWeights(context);
@@ -36,9 +40,6 @@ function base(context: Context, colors: InputColors) {
   return {
     container: style({
       position: 'relative',
-      padding: 0,
-      margin: 0,
-      display: 'block',
       overflow: 'hidden',
     }),
     input: style({
@@ -50,32 +51,55 @@ function base(context: Context, colors: InputColors) {
       padding: `${rem(0.8)} ${rem(1.2)}`,
       margin: 0,
       outline: 'none',
+      ['-webkit-box-sizing']: 'border-box',
+      ['-moz-box-sizing']: 'border-box',
+      boxSizing: 'border-box',
     }, {
+        $nest: {
+          '&:active:enabled': {
+            background: colors.active.background,
+            borderBottomColor: colors.active.underline,
+          },
+          '&:hover:inactive:enabled': {
+            background: colors.hover.background,
+            borderBottomColor: colors.hover.underline,
+          },
+          '&:disabled': {
+            background: colors.disabled.background,
+            borderBottomColor: colors.disabled.underline,
+          },
+          '&:focus': {
+            borderBottomColor: colors.active.underline,
+            background: colors.focus.background,
+          },
+        },
+      }),
+    label: classes(style({
+      display: 'inline-block',
+      padding: 0,
+      border: 0,
+      marginBottom: rem(0.6),
+      marginLeft: 0,
+      marginRight: 0,
+      marginTop: 0,
+      color: colors.label,
+    }), sizes.caption, weights.regular),
+    errorLabel: classes(style({
+      color: colors.errorLabel,
+      float: 'right',
+    }), sizes.caption, weights.regular),
+    errorIcon: style({
       $nest: {
-        '&:active:enabled': {
-          background: colors.active.background,
-          borderBottomColor: colors.active.underline,
-        },
-        '&:hover:inactive:enabled': {
-          background: colors.hover.background,
-          borderBottomColor: colors.hover.underline,
-        },
-        '&:disabled': {
-          background: colors.disabled.background,
-          borderBottomColor: colors.disabled.underline,
-        },
-        '&:focus': {
-          borderBottomColor: colors.active.underline,
-          background: colors.focus.background,
+        '&:after': {
+          fontFamily: 'MSTeamsIcons-Light',
+          content: iconTypes.error,
+          position: 'absolute',
+          color: colors.errorLabel,
+          right: rem(1.2),
+          bottom: rem(1),
         },
       },
     }),
-    label: classes(style({
-      padding: 0,
-      margin: 0,
-      border: 0,
-      color: colors.label,
-    }), sizes.caption, weights.regular),
   };
 }
 
@@ -104,6 +128,7 @@ function light(context: Context) {
       underline: colors.light.brand00,
     },
     label: colors.light.gray01,
+    errorLabel: colors.light.red,
   });
 }
 
@@ -132,6 +157,7 @@ function dark(context: Context) {
       underline: colors.dark.brand00,
     },
     label: colors.dark.white,
+    errorLabel: colors.dark.red,
   });
 }
 
@@ -160,13 +186,10 @@ function highContrast(context: Context) {
       underline: colors.highContrast.yellow,
     },
     label: colors.white,
+    errorLabel: colors.highContrast.yellow,
   });
 }
 
 export function input(context: Context) {
-  return context.style({
-    light: light(context),
-    dark: dark(context),
-    highContrast: highContrast(context),
-  });
+  return chooseStyle(context, light, dark, highContrast);
 }

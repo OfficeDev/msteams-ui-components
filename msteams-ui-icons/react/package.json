@@ -1,0 +1,51 @@
+{
+  "name": "msteams-ui-icons-react",
+  "description": "MSTeams UI Icon Library for React",
+  "version": "0.1.1",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OfficeDev/msteams-ui-components.git"
+  },
+  "bugs": {
+    "url": "https://github.com/OfficeDev/msteams-ui-components/issues"
+  },
+  "author": {
+    "name": "Microsoft Corporation"
+  },
+  "license": "MIT",
+  "scripts": {
+    "prepublishOnly": "npm run clean && npm install && npm run build",
+    "clean": "gulp clean",
+    "build": "gulp",
+	"link:self": "npm link",
+	"link:deps": "npm link msteams-ui-icons-core"
+  },
+  "dependencies": {
+    "msteams-ui-icons-core": "^0.1.1"
+  },
+  "devDependencies": {
+    "@types/lodash.memoize": "^4.1.3",
+    "@types/prop-types": "^15.5.2",
+    "@types/react": "^16.0.10",
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.0",
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^7.0.0",
+    "gulp-filter": "^5.0.1",
+    "gulp-typescript": "^3.2.2",
+    "prop-types": "^15.6.0",
+    "react": "^16.0.0",
+    "typescript": "^2.5.3",
+    "typestyle": "^1.4.2"
+  },
+  "peerDependencies": {
+    "@types/prop-types": "^15.5.2",
+    "@types/react": "^16.0.10",
+    "react": "^16.0.0",
+    "prop-types": "^15.6.0",
+    "typestyle": "^1.4.2"
+  }
+}

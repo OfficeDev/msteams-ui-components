@@ -34,13 +34,7 @@ export class TeamsComponentContext extends React.Component<TeamsComponentProps> 
     children: PropTypes.element.isRequired,
   };
 
-  private subscribers: { [id: string]: Notify };
-
-  constructor(props: TeamsComponentProps) {
-    super(props);
-    this.subscribers = {};
-    this.subscribe = this.subscribe.bind(this);
-  }
+  private subscribers: { [id: string]: Notify } = {};
 
   componentWillReceiveProps(nextProps: TeamsComponentProps) {
     if (nextProps.fontSize !== this.props.fontSize || nextProps.theme !== this.props.theme) {
@@ -55,12 +49,16 @@ export class TeamsComponentContext extends React.Component<TeamsComponentProps> 
   protected getChildContext(): any {
     const context: TeamsControlContext = {
       subscribe: this.subscribe,
-      context: getContext({ baseFontSize: this.props.fontSize, colors: Colors, style: this.props.theme }),
+      context: getContext({
+        baseFontSize: this.props.fontSize,
+        colors: Colors,
+        style: this.props.theme,
+      }),
     };
     return context;
   }
 
-  private subscribe(notify: Notify): Unsubscribe {
+  private subscribe = (notify: Notify): Unsubscribe => {
     const id = uniqueId();
     this.subscribers[id] = notify;
     return () => delete this.subscribers[id];
@@ -80,11 +78,16 @@ export function connectTeamsComponent<TChildProps>(
     private unsubscribe: Unsubscribe;
 
     componentDidMount() {
-      this.unsubscribe = this.context.subscribe(() => this.forceUpdate());
+      const subscribe = this.context && this.context.subscribe;
+      if (subscribe) {
+        this.unsubscribe = subscribe(() => this.forceUpdate());
+      }
     }
 
     componentWillUnmount() {
-      this.unsubscribe();
+      if (this.unsubscribe) {
+        this.unsubscribe();
+      }
     }
 
     render() {
@@ -99,5 +102,6 @@ export function connectTeamsComponent<TChildProps>(
 }
 
 export {
-  ThemeStyle
+  ThemeStyle,
+  Context
 };

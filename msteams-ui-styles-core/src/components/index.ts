@@ -1,6 +1,5 @@
 export * from './anchor';
 export * from './checkbox';
-export * from './colors';
 export * from './compound-button';
 export * from './dropdown';
 export * from './font-sizes';

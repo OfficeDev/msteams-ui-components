@@ -1,5 +1,6 @@
+import { baseStyle, iconTypes, iconWeights } from 'msteams-ui-icons-core';
 import { style } from 'typestyle';
-import { Context } from '../context';
+import { chooseStyle, Context } from '../context';
 
 interface CheckboxColors {
   rest: {
@@ -26,6 +27,7 @@ interface CheckboxColors {
 }
 
 function base(context: Context, colors: CheckboxColors) {
+  baseStyle(iconWeights.light);
   const { rem } = context;
   return {
     container: style({
@@ -71,12 +73,13 @@ function base(context: Context, colors: CheckboxColors) {
               background: colors.checked.background,
             },
             '&::before': {
-              content: '"✓"',
+              fontFamily: 'MSTeamsIcons-Light',
+              content: iconTypes.checkmark,
               color: colors.checkmark,
               position: 'absolute',
-              fontSize: rem(1.8),
+              fontSize: rem(1.4),
               top: `-${rem(0.1)}`,
-              left: rem(0.1),
+              left: rem(0.05),
             },
           },
         },
@@ -168,9 +171,5 @@ function highContrast(context: Context) {
 }
 
 export function checkbox(context: Context) {
-  return context.style({
-    light: light(context),
-    dark: dark(context),
-    highContrast: highContrast(context),
-  });
+  return chooseStyle(context, light, dark, highContrast);
 }

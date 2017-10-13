@@ -1,34 +1,58 @@
 import { style } from 'typestyle';
-import { Context } from '../context';
+import { chooseStyle, Context } from '../context';
 
 interface PanelColors {
   background: string;
 }
 
 function base(context: Context, colors: PanelColors) {
-  return style({
-    backgroundColor: colors.background,
-    borderRadius: context.rem(0.3),
-    padding: context.rem(3.2),
-  });
+  const { rem, spacing } = context;
+  return {
+    container: style({
+      backgroundColor: colors.background,
+      borderRadius: rem(0.3),
+      ['-webkit-box-sizing']: 'border-box',
+      ['-moz-box-sizing']: 'border-box',
+      boxSizing: 'border-box',
+      display: 'flex',
+      flexDirection: 'column',
+    }),
+    header: style({
+      flex: '0 0 auto',
+      marginTop: spacing.xxxLarge,
+      marginLeft: spacing.xxxLarge,
+      marginRight: spacing.xxxLarge,
+    }),
+    body: style({
+      marginLeft: spacing.xxxLarge,
+      marginRight: spacing.xxxLarge,
+      flex: '1 1 auto',
+      overflowY: 'auto',
+    }),
+    footer: style({
+      marginBottom: spacing.xxxLarge,
+      marginLeft: spacing.xxxLarge,
+      marginRight: spacing.xxxLarge,
+      flex: '0 0 auto',
+    }),
+  };
 }
 
-function light(c: Context) {
-  return base(c, { background: c.colors.light.white });
+function light(context: Context) {
+  return base(context, { background: context.colors.light.white });
 }
 
-function dark(c: Context) {
-  return base(c, { background: c.colors.dark.black });
+function dark(context: Context) {
+  return base(context, { background: context.colors.dark.black });
 }
 
-function highContrast(c: Context) {
-  return base(c, { background: c.colors.black });
+function highContrast(context: Context) {
+  return base(context, { background: context.colors.black });
 }
 
 export function panel(context: Context) {
-  return context.style({
-    light: light(context),
-    dark: dark(context),
-    highContrast: highContrast(context),
-  });
+  const lightFunc = (c: Context) => light(c);
+  const darkFunc = (c: Context) => dark(c);
+  const highContrastFunc = (c: Context) => highContrast(c);
+  return chooseStyle(context, lightFunc, darkFunc, highContrastFunc);
 }

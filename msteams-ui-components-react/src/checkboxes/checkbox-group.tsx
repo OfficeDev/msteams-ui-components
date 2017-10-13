@@ -20,11 +20,6 @@ export class CheckboxGroup extends React.Component<CheckboxGroupProps> {
     values: PropTypes.array,
   };
 
-  constructor(props: CheckboxGroupProps) {
-    super(props);
-    this.handleChange = this.handleChange.bind(this);
-  }
-
   render() {
     const divProps = { ...this.props };
     delete divProps.onChecked;
@@ -43,7 +38,7 @@ export class CheckboxGroup extends React.Component<CheckboxGroupProps> {
     };
   }
 
-  private handleChange(checked: boolean, value: any) {
+  private handleChange = (checked: boolean, value: any) => {
     if (this.props.onChecked) {
       let values = Array.isArray(this.props.values) ? this.props.values : [];
       values = checked ? add(values, value) : remove(values, value);
