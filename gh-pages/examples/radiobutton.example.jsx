@@ -28,8 +28,8 @@ class RadiobuttonExample extends React.Component {
         selected={this.state.two}
         onSelected={this.onTwoSelected}
         disabled />
-      <h4>In Group</h4>
       <RadiobuttonGroup
+        label="In Group"
         value={this.state.groupValue}
         onSelected={this.onGroupSelected} >
         <Radiobutton value={1} label="Option 1" />

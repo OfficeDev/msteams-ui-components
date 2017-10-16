@@ -19,7 +19,7 @@
     "prepublishOnly": "npm run clean && npm install && npm run build",
     "clean": "gulp clean",
     "build": "gulp",
-	"link:self": "npm link"
+    "link:self": "npm link"
   },
   "peerDependencies": {
     "typestyle": "^1.4.2",

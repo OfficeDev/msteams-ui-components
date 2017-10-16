@@ -35,12 +35,11 @@ function base(context: Context, colors: SecondaryButtonColors) {
 
   return style({
     height: rem(3.2),
-    minWidth: rem(3.2),
+    minWidth: rem(9.6),
     border: rem(0.2) + ' solid',
     borderRadius: rem(0.3),
-    padding: rem(0.4) + ' ' + rem(3.2),
+    padding: rem(0.4),
     whiteSpace: 'nowrap',
-    position: 'relative',
     cursor: 'pointer',
     background: colors.rest.background,
     color: colors.rest.text,
