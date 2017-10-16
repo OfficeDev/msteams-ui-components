@@ -1,15 +1,18 @@
+import { checkboxGroup } from 'msteams-ui-styles-core/lib/components/checkbox-group';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
+import { connectTeamsComponent, InjectedTeamsProps } from '../teams-context/teams-component-context';
 import add from '../utils/add';
 import remove from '../utils/remove';
 
 export interface CheckboxGroupProps
   extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
+  label?: string;
   onChecked?: (values: any[]) => void;
   values?: any[];
 }
 
-export class CheckboxGroup extends React.Component<CheckboxGroupProps> {
+class CheckboxGroupInner extends React.Component<CheckboxGroupProps & InjectedTeamsProps> {
   static childContextTypes = {
     onChecked: PropTypes.func,
     values: PropTypes.array,
@@ -21,12 +24,16 @@ export class CheckboxGroup extends React.Component<CheckboxGroupProps> {
   };
 
   render() {
-    const divProps = { ...this.props };
-    delete divProps.onChecked;
-    delete divProps.values;
+    const {context, onChecked, values, label, ...rest} = this.props;
+    const themeClassNames = checkboxGroup(context);
 
     return (
-      <div {...divProps}>{this.props.children}</div>
+      <div {...rest}>
+        {label ?
+          <label className={themeClassNames.label}>{label}</label>
+          : null}
+        {this.props.children}
+      </div>
     );
   }
 
@@ -46,3 +53,5 @@ export class CheckboxGroup extends React.Component<CheckboxGroupProps> {
     }
   }
 }
+
+export const CheckboxGroup = connectTeamsComponent(CheckboxGroupInner);

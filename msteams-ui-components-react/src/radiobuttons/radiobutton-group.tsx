@@ -1,13 +1,16 @@
+import { radioButtonGroup } from 'msteams-ui-styles-core/lib/components/radio-button-group';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
+import { connectTeamsComponent, InjectedTeamsProps } from '../teams-context/teams-component-context';
 
 export interface RadiobuttonGroupProps
   extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
+  label?: string;
   onSelected?: (value: any) => void;
   value?: any;
 }
 
-export class RadiobuttonGroup extends React.Component<RadiobuttonGroupProps> {
+class RadiobuttonGroupInner extends React.Component<RadiobuttonGroupProps & InjectedTeamsProps> {
   static childContextTypes = {
     onSelected: PropTypes.func,
     value: PropTypes.any,
@@ -19,12 +22,16 @@ export class RadiobuttonGroup extends React.Component<RadiobuttonGroupProps> {
   };
 
   render() {
-    const divProps = { ...this.props };
-    delete divProps.onSelected;
-    delete divProps.value;
+    const {context, onSelected, value, label, ...rest} = this.props;
+    const themeClassNames = radioButtonGroup(context);
 
     return (
-      <div {...divProps}>{this.props.children}</div>
+      <div {...rest}>
+        {label ?
+          <label className={themeClassNames.label}>{label}</label>
+          : null}
+        {this.props.children}
+      </div>
     );
   }
 
@@ -42,3 +49,5 @@ export class RadiobuttonGroup extends React.Component<RadiobuttonGroupProps> {
     }
   }
 }
+
+export const RadiobuttonGroup = connectTeamsComponent(RadiobuttonGroupInner);

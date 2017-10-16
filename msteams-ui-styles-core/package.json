@@ -18,7 +18,7 @@
     "build:crash": "gulp build-crash-on-error",
     "lint": "gulp lint",
     "link:self": "npm link",
-	"link:deps": "npm link msteams-ui-icons-core"
+    "link:deps": "npm link msteams-ui-icons-core"
   },
   "author": {
     "name": "Microsoft Corporation"

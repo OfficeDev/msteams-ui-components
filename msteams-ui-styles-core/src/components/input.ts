@@ -86,6 +86,12 @@ function base(context: Context, colors: InputColors) {
     }), sizes.caption, weights.regular),
     errorLabel: classes(style({
       color: colors.errorLabel,
+      padding: 0,
+      border: 0,
+      marginBottom: rem(0.6),
+      marginLeft: 0,
+      marginRight: 0,
+      marginTop: 0,
       float: 'right',
     }), sizes.caption, weights.regular),
     errorIcon: style({
