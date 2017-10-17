@@ -1,7 +1,7 @@
 import { radioButtonGroup } from 'msteams-ui-styles-core/lib/components/radio-button-group';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-import { connectTeamsComponent, InjectedTeamsProps } from '../teams-context/teams-component-context';
+import { connectTeamsComponent, InjectedTeamsProps } from '../teams-context/connect-teams-component';
 
 export interface RadiobuttonGroupProps
   extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {

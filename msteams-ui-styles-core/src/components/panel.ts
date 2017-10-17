@@ -43,7 +43,7 @@ function light(context: Context) {
 }
 
 function dark(context: Context) {
-  return base(context, { background: context.colors.dark.black });
+  return base(context, { background: context.colors.dark.gray10 });
 }
 
 function highContrast(context: Context) {
@@ -51,8 +51,5 @@ function highContrast(context: Context) {
 }
 
 export function panel(context: Context) {
-  const lightFunc = (c: Context) => light(c);
-  const darkFunc = (c: Context) => dark(c);
-  const highContrastFunc = (c: Context) => highContrast(c);
-  return chooseStyle(context, lightFunc, darkFunc, highContrastFunc);
+  return chooseStyle(context, light, dark, highContrast);
 }

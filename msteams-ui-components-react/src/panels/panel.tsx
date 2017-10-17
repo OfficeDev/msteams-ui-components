@@ -5,12 +5,11 @@ import classes from '../utils/classes';
 
 export interface PanelProps
   extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
-  spacing?: string;
 }
 
 const PanelView: React.StatelessComponent<PanelProps & InjectedTeamsProps> =
   (props) => {
-    const { context, spacing, className, ...rest } = props;
+    const { context, className, ...rest } = props;
     const classNames = panel(context);
     return (
       <div className={classes(classNames.container, className)} {...rest}>
