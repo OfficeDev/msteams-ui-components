@@ -15,6 +15,7 @@ function base(context: Context, colors: PanelColors) {
       ['-moz-box-sizing']: 'border-box',
       boxSizing: 'border-box',
       display: 'flex',
+      overflow: 'hidden',
       flexDirection: 'column',
     }),
     header: style({
@@ -25,9 +26,10 @@ function base(context: Context, colors: PanelColors) {
     }),
     body: style({
       marginLeft: spacing.xxxLarge,
-      marginRight: spacing.xxxLarge,
       flex: '1 1 auto',
-      overflowY: 'auto',
+      marginRight: `-${rem(2.0)}`,
+      paddingRight: rem(5.2), // xxxLarge + negative margin
+      overflow: 'auto',
     }),
     footer: style({
       marginBottom: spacing.xxxLarge,
