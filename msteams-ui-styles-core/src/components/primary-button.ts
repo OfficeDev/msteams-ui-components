@@ -41,6 +41,7 @@ function base(context: Context, colors: PrimaryButtonColors) {
     padding: rem(0.4),
     whiteSpace: 'nowrap',
     cursor: 'pointer',
+    font: 'inherit',
     background: colors.rest.background,
     color: colors.rest.text,
     borderColor: colors.rest.border,

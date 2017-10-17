@@ -29,7 +29,7 @@ function light(context: Context) {
 function dark(context: Context) {
   const { colors } = context;
   return base(context, {
-    background: colors.dark.gray10,
+    background: colors.dark.black,
     font: colors.dark.white,
   });
 }

@@ -51,6 +51,8 @@ function base(context: Context, colors: TextAreaColors) {
       background: colors.rest.background,
       padding: `${rem(0.8)} ${rem(1.2)}`,
       margin: 0,
+      color: 'inherit',
+      font: 'inherit',
       outline: 'none',
       ['-webkit-box-sizing']: 'border-box',
       ['-moz-box-sizing']: 'border-box',

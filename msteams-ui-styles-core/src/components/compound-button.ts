@@ -44,6 +44,7 @@ function base(context: Context, colors: CompoundButtonColors) {
         display: 'flex',
         alignItems: 'center',
         padding: 0,
+        font: 'inherit',
         border: `${rem(0.2)} solid`,
         borderColor: colors.rest.border,
         borderRadius: rem(0.3),

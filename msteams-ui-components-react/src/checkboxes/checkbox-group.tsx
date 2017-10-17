@@ -1,7 +1,7 @@
 import { checkboxGroup } from 'msteams-ui-styles-core/lib/components/checkbox-group';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-import { connectTeamsComponent, InjectedTeamsProps } from '../teams-context/teams-component-context';
+import { connectTeamsComponent, InjectedTeamsProps } from '../teams-context/connect-teams-component';
 import add from '../utils/add';
 import remove from '../utils/remove';
 
