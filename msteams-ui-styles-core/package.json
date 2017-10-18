@@ -25,12 +25,12 @@
   },
   "license": "MIT",
   "peerDependencies": {
-    "typestyle": "^1.4.2"
+    "typestyle": "^1.4.3"
   },
   "devDependencies": {
     "@types/lodash.memoize": "^4.1.3",
     "babel-core": "^6.26.0",
-    "babel-preset-env": "^1.6.0",
+    "babel-preset-env": "^1.6.1",
     "del": "^3.0.0",
     "gulp": "^3.9.1",
     "gulp-babel": "^7.0.0",
@@ -38,8 +38,8 @@
     "gulp-tslint": "^8.1.2",
     "gulp-typescript": "^3.2.2",
     "tslint": "^5.7.0",
-    "typescript": "^2.5.2",
-    "typestyle": "^1.4.2"
+    "typescript": "^2.5.3",
+    "typestyle": "^1.4.3"
   },
   "dependencies": {
     "msteams-ui-icons-core": "^0.1.1"
