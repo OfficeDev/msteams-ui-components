@@ -7,7 +7,7 @@ import { TabContext, TabContextType } from './index';
 export interface TabProps
   extends React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
   tabId: any;
-  onTabSelect: () => void;
+  onTabSelect: (tabId: any) => void;
 }
 
 export const TabPropTypes = {
@@ -29,13 +29,17 @@ class TabInternal extends React.Component<InjectedTeamsProps & TabProps, {}> {
 
     return (
       <button
-        onClick={onTabSelect}
+        onClick={this.select}
         className={classes.join(' ')}
         {...rest}
       >
         {this.props.children}
       </button>
     );
+  }
+
+  private select = () => {
+    this.props.onTabSelect(this.props.tabId);
   }
 }
 

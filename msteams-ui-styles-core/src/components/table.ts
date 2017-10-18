@@ -17,7 +17,6 @@ function base(c: Context, colors: TableColors) {
       width: '100%',
       borderCollapse: 'collapse',
       padding: 0,
-      margin: 0,
     }),
     tbody: style({}),
     td: style({
