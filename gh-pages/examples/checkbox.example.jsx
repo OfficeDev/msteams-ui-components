@@ -29,7 +29,8 @@ class CheckboxExample extends React.Component {
         onChecked={this.onTwoChecked} disabled/>
 
       <CheckboxGroup
-        label="In Group"
+        label="In group"
+        errorLabel="With an error"
         values={this.state.groupValues}
         onChecked={this.onGroupChecked} >
         <Checkbox value={1} label="Option 1" />

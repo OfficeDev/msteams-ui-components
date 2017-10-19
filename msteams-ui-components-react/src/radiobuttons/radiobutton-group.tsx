@@ -6,6 +6,7 @@ import { connectTeamsComponent, InjectedTeamsProps } from '../teams-context/conn
 export interface RadiobuttonGroupProps
   extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
   label?: string;
+  errorLabel?: string;
   onSelected?: (value: any) => void;
   value?: any;
 }
@@ -22,13 +23,18 @@ class RadiobuttonGroupInner extends React.Component<RadiobuttonGroupProps & Inje
   };
 
   render() {
-    const {context, onSelected, value, label, ...rest} = this.props;
+    const {context, onSelected, value, label, errorLabel, ...rest} = this.props;
     const themeClassNames = radioButtonGroup(context);
 
     return (
       <div {...rest}>
-        {label ?
-          <label className={themeClassNames.label}>{label}</label>
+        {label || errorLabel ?
+          <div>
+            {label ?
+              <label className={themeClassNames.label}>{label}</label> : null}
+            {errorLabel ?
+              <label className={themeClassNames.errorLabel}>{errorLabel}</label> : null}
+          </div>
           : null}
         {this.props.children}
       </div>

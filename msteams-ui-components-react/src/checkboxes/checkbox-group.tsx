@@ -8,6 +8,7 @@ import remove from '../utils/remove';
 export interface CheckboxGroupProps
   extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
   label?: string;
+  errorLabel?: string;
   onChecked?: (values: any[]) => void;
   values?: any[];
 }
@@ -24,13 +25,18 @@ class CheckboxGroupInner extends React.Component<CheckboxGroupProps & InjectedTe
   };
 
   render() {
-    const {context, onChecked, values, label, ...rest} = this.props;
+    const {context, onChecked, values, label, errorLabel, ...rest} = this.props;
     const themeClassNames = checkboxGroup(context);
 
     return (
       <div {...rest}>
-        {label ?
-          <label className={themeClassNames.label}>{label}</label>
+        {label || errorLabel ?
+          <div>
+            {label ?
+              <label className={themeClassNames.label}>{label}</label> : null}
+            {errorLabel ?
+              <label className={themeClassNames.errorLabel}>{errorLabel}</label> : null}
+          </div>
           : null}
         {this.props.children}
       </div>
