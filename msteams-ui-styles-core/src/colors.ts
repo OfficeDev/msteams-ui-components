@@ -52,6 +52,7 @@ export const Colors: ColorPalate = {
   highContrast: {
     yellow: '#FFFF01',
     green: '#3FF23F',
+    blue: '#1AEBFF',
   },
   avatars: {
     avatar1: '#B3DBF2',

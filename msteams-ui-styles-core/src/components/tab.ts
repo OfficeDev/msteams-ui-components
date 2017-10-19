@@ -12,7 +12,7 @@ function base(context: Context, colors: TabColors) {
   const { rem } = context;
   const containerClass = style({
     width: '100%',
-    boxShadow: `${rem(0)} ${rem(0.2)} ${rem(0.3)} ${rem(-0.3)} ${colors.containerUnderline}`,
+    borderBottom: `${rem(0.1)} solid ${colors.containerUnderline}`,
     padding: 0,
     margin: 0,
   });
@@ -23,13 +23,20 @@ function base(context: Context, colors: TabColors) {
         outline: 'none',
         background: 0,
         border: 0,
-        padding: `${rem(1)}`,
+        font: 'inherit',
         margin: 0,
+        marginRight: rem(2),
+        paddingLeft: 0,
+        paddingRight: 0,
         cursor: 'pointer',
         display: 'inline-block',
         borderBottom: `transparent ${rem(0.3)} solid`,
         color: colors.text,
-        paddingBottom: rem(0.8),
+        $nest: {
+          '&:last-child': {
+            marginRight: 0,
+          },
+        },
       },
     },
   });

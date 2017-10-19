@@ -32,19 +32,13 @@ class TabGroupInternal extends React.Component<InjectedTeamsProps & TabGroupProp
 
   // tslint:disable-next-line:no-unused-variable
   private getChildContext(): TabContext {
-    if (process.env.NODE_ENV !== 'production') {
-      const childTabIds = new Set<string>();
-      React.Children.forEach(this.props.children, (tab: React.ReactElement<TabProps>) => {
-        if (childTabIds.has(tab.props.tabId)) {
-          throw new Error(`Duplicated tab id: ${tab.props.tabId}`);
-        }
-        childTabIds.add(tab.props.tabId);
-      });
-    }
-
     return {
-      isSelected: (tabId: any) => tabId === this.props.selectedTabId,
+      isSelected: this.isSelected,
     };
+  }
+
+  private isSelected = (tabId: any) => {
+    return tabId === this.props.selectedTabId;
   }
 }
 
