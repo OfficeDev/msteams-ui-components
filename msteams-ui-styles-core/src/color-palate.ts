@@ -50,6 +50,7 @@ export interface ColorPalate {
   highContrast: {
     yellow: string;
     green: string;
+    blue: string;
   };
   avatars: {
     avatar1: string;
