@@ -3,6 +3,7 @@ import { chooseStyle, Context } from '../context';
 
 interface PanelColors {
   background: string;
+  border: string;
 }
 
 function base(context: Context, colors: PanelColors) {
@@ -10,6 +11,9 @@ function base(context: Context, colors: PanelColors) {
   return {
     container: style({
       backgroundColor: colors.background,
+      borderStyle: 'solid',
+      borderWidth: rem(0.2),
+      borderColor: colors.border,
       borderRadius: rem(0.3),
       ['-webkit-box-sizing']: 'border-box',
       ['-moz-box-sizing']: 'border-box',
@@ -41,15 +45,27 @@ function base(context: Context, colors: PanelColors) {
 }
 
 function light(context: Context) {
-  return base(context, { background: context.colors.light.white });
+  const { colors } = context;
+  return base(context, {
+    background: colors.light.white,
+    border: colors.transparent,
+   });
 }
 
 function dark(context: Context) {
-  return base(context, { background: context.colors.dark.gray10 });
+  const { colors } = context;
+  return base(context, {
+    background: context.colors.dark.gray10,
+    border: colors.transparent,
+   });
 }
 
 function highContrast(context: Context) {
-  return base(context, { background: context.colors.black });
+  const { colors } = context;
+  return base(context, {
+    background: context.colors.black,
+    border: colors.white,
+   });
 }
 
 export function panel(context: Context) {

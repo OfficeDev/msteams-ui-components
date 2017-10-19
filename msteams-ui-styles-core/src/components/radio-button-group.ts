@@ -5,6 +5,7 @@ import { fontWeights } from './font-weights';
 
 interface RadioButtonColors {
   label: string;
+  errorLabel: string;
 }
 
 function base(context: Context, colors: RadioButtonColors) {
@@ -17,11 +18,15 @@ function base(context: Context, colors: RadioButtonColors) {
       flex: '0 0 auto',
       padding: 0,
       border: 0,
-      marginBottom: 0,
-      marginLeft: 0,
-      marginRight: 0,
-      marginTop: 0,
+      margin: 0,
       color: colors.label,
+    }), sizes.caption, weights.regular),
+    errorLabel: classes(style({
+      color: colors.errorLabel,
+      padding: 0,
+      border: 0,
+      margin: 0,
+      float: 'right',
     }), sizes.caption, weights.regular),
   };
 }
@@ -30,6 +35,7 @@ function light(context: Context) {
   const { colors } = context;
   return base(context, {
     label: colors.light.gray01,
+    errorLabel: colors.light.red,
   });
 }
 
@@ -37,6 +43,7 @@ function dark(context: Context) {
   const { colors } = context;
   return base(context, {
     label: colors.dark.white,
+    errorLabel: colors.dark.red,
   });
 }
 
@@ -44,6 +51,7 @@ function highContrast(context: Context) {
   const { colors } = context;
   return base(context, {
     label: colors.white,
+    errorLabel: colors.highContrast.yellow,
   });
 }
 
