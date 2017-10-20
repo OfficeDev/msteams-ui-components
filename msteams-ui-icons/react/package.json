@@ -19,6 +19,7 @@
     "prepublishOnly": "npm run clean && npm install && npm run build",
     "clean": "gulp clean",
     "build": "gulp",
+    "build:watch": "gulp watch",
     "link:self": "npm link",
     "link:deps": "npm link msteams-ui-icons-core"
   },
