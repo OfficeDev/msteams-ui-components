@@ -20,7 +20,7 @@ class RadiobuttonExample extends React.Component {
   }
 
   render() {
-    return <Surface style={{padding: '10px'}}>
+    return <div>
       <Radiobutton value={1} label="Enabled"
         selected={this.state.one}
         onSelected={this.onOneSelected} />
@@ -36,6 +36,6 @@ class RadiobuttonExample extends React.Component {
         <Radiobutton value={1} label="Option 1" />
         <Radiobutton value={2} label="Option 2" />
       </RadiobuttonGroup>
-    </Surface>;
+    </div>;
   }
 }

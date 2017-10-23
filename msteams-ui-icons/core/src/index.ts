@@ -10,6 +10,7 @@ export const iconTypes = {
   msOfficeLogo: '"\\e014"',
   msTeamsLogo: '"\\e016"',
   folder: '"\\e137"',
+  runner: '"\\e220"',
   file: '"\\e306"',
   list: '"\\e30a"',
   robot: '"\\e21a"',
@@ -22,12 +23,21 @@ export const iconTypes = {
   trashCan: '"\\e42b"',
   magnifyingGlass: '"\\e446"',
   error: '"\\e450"',
+  link: '"\\e612"',
   monkey: '"\\e633"',
   close: '"\\e8bb"',
+  sublist: '"\\e941"',
+  book: '"\\e945"',
   ellipsis: '"\\e94f"',
+  fingerPress: '"\\e957"',
+  checkbox: '"\\e97e"',
+  grid: '"\\e992"',
+  circle: '"\\f108"',
+  checkedbulb: '"\\f201"',
 };
 
-const fontFaceTS = new TypeStyle({autoGenerateTag: true});
+const regularFontFaceTS = new TypeStyle({autoGenerateTag: true});
+const lightFontFaceTS = new TypeStyle({autoGenerateTag: true});
 const iconTS = new TypeStyle({autoGenerateTag: true});
 
 export const baseStyle = memoize((iconWeight?: number): string => {
@@ -44,6 +54,18 @@ export const baseStyle = memoize((iconWeight?: number): string => {
     woff2File = require('../fonts/TeamsAssets-Light.woff2');
     ttfFile = require('../fonts/TeamsAssets-Light.ttf');
     svgFile = require('../fonts/TeamsAssets-Light.svg');
+
+    lightFontFaceTS.fontFace({
+      fontFamily: fontName,
+      src: `url("${eotFile}"),
+    url('${woff2File}') format('woff2'),
+    url('${woffFile}') format('woff'),
+    url('${ttfFile}') format('truetype'),
+    url('${svgFile}#${fontName}') format('svg'),
+    url('${eotFile}?#iefix') format('embedded-opentype')`,
+      fontWeight: 'normal',
+      fontStyle: 'normal',
+    });
   } else {
     fontName = 'MSTeamsIcons-Regular';
     eotFile = require('../fonts/TeamsAssets-Regular.eot');
@@ -51,19 +73,19 @@ export const baseStyle = memoize((iconWeight?: number): string => {
     woff2File = require('../fonts/TeamsAssets-Regular.woff2');
     ttfFile = require('../fonts/TeamsAssets-Regular.ttf');
     svgFile = require('../fonts/TeamsAssets-Regular.svg');
-  }
 
-  fontFaceTS.fontFace({
-    fontFamily: fontName,
-    src: `url("${eotFile}"),
-  url('${woff2File}') format('woff2'),
-  url('${woffFile}') format('woff'),
-  url('${ttfFile}') format('truetype'),
-  url('${svgFile}#${fontName}') format('svg'),
-  url('${eotFile}?#iefix') format('embedded-opentype')`,
-    fontWeight: 'normal',
-    fontStyle: 'normal',
-  });
+    regularFontFaceTS.fontFace({
+      fontFamily: fontName,
+      src: `url("${eotFile}"),
+    url('${woff2File}') format('woff2'),
+    url('${woffFile}') format('woff'),
+    url('${ttfFile}') format('truetype'),
+    url('${svgFile}#${fontName}') format('svg'),
+    url('${eotFile}?#iefix') format('embedded-opentype')`,
+      fontWeight: 'normal',
+      fontStyle: 'normal',
+    });
+  }
 
   return iconTS.style({
     display: 'inline-block',

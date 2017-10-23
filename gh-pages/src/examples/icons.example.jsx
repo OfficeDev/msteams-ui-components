@@ -1,4 +1,4 @@
-<Surface style={{padding: '10px'}}>
+<div>
   {Object.keys(MSTeamsIconWeight).map((weightTypeKey) => {
     return <div key={weightTypeKey}>
       <h4>{`MSTeamsIconWeight.${weightTypeKey}`}</h4>
@@ -10,4 +10,4 @@
       })}
       </div>;
   })}
-</Surface>
+</div>

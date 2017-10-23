@@ -2,7 +2,12 @@
   "compilerOptions": {
     "target": "es6",
     "module": "commonjs",
+    "moduleResolution": "node",
     "jsx": "react",
+    "sourceMap": true,
     "strict": true
-  }
+  },
+  "exclude": [
+    "node_modules"
+  ]
 }

@@ -1,3 +1,3 @@
-<Surface style={{padding: '10px'}}>
+<div>
   <Anchor href="#" onClick={(e) => e.preventDefault()}>a link</Anchor>
-</Surface>
+</div>

@@ -20,7 +20,7 @@ class CheckboxExample extends React.Component {
   }
 
   render() {
-    return <Surface style={{padding: '10px'}}>
+    return <div>
       <Checkbox value={1} label="Enabled"
         checked={this.state.one}
         onChecked={this.onOneChecked} />
@@ -36,6 +36,6 @@ class CheckboxExample extends React.Component {
         <Checkbox value={1} label="Option 1" />
         <Checkbox value={2} label="Option 2" />
       </CheckboxGroup>
-    </Surface>;
+    </div>;
   }
 }
