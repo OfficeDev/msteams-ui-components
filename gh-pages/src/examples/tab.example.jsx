@@ -16,12 +16,12 @@ class TabExample extends React.Component {
 
   render() {
     return (
-      <Surface style={{padding: '10px'}}>
+      <div>
         <TabGroup selectedTabId={this.state.selectedTab}>
           <Tab tabId="a" onTabSelect={this.selectTabA}>Tab A</Tab>
           <Tab tabId="b" onTabSelect={this.selectTabB}>Tab B</Tab>
         </TabGroup>
-      </Surface>
+      </div>
     );
   }
 }

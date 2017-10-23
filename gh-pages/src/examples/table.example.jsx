@@ -1,4 +1,4 @@
-<Surface style={{ padding: '10px' }}>
+<div>
   <Table>
     <THead>
       <Tr>
@@ -10,4 +10,4 @@
       <Tr><Td>1</Td><Td>2</Td></Tr>
     </TBody>
   </Table>
-</Surface>
+</div>

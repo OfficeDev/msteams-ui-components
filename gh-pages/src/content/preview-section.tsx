@@ -10,7 +10,7 @@ export interface PreviewSectionProps {
 export const PreviewSection: React.StatelessComponent<PreviewSectionProps> =
   (props: PreviewSectionProps) => {
     return <LiveProvider code={props.code} scope={{...Components, ...Icons}}>
-      <LivePreview />
+      <LivePreview style={{paddingBottom: '16px'}}/>
       <LiveEditor />
       <LiveError />
     </LiveProvider>;

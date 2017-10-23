@@ -2,8 +2,8 @@
   "name": "gh-pages",
   "version": "0.0.1",
   "scripts": {
-    "dev": "webpack-dev-server",
-    "build": "webpack --env.prod -p",
+    "build": "webpack --config webpack.prod.js",
+    "dev": "webpack-dev-server --config webpack.dev.js",
     "lint": "tslint --project tsconfig.json",
     "link:deps": "npm link msteams-ui-components-react && npm link msteams-ui-icons-react"
   },
@@ -20,6 +20,8 @@
     "@types/react-router-dom": "^4.0.8",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
+    "babel-minify-webpack-plugin": "^0.2.0",
+    "babel-plugin-lodash": "^3.2.11",
     "babel-preset-env": "^1.6.1",
     "clean-webpack-plugin": "^0.1.17",
     "csstips": "^0.2.2",
@@ -40,6 +42,7 @@
     "typescript": "^2.5.3",
     "typestyle": "^1.4.3",
     "webpack": "^3.8.1",
-    "webpack-dev-server": "^2.9.2"
+    "webpack-dev-server": "^2.9.2",
+    "webpack-merge": "^4.1.0"
   }
 }
