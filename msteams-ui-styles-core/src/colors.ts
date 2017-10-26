@@ -17,6 +17,7 @@ export const Colors: ColorPalate = {
     gray08: '#DEE0E3',
     gray10: '#EEF1F5 ',
     gray12: '#F3F4F5',
+    brand00SemiTransparent: '#9496CA',
     brand00Dark: '#9FA4FE',
     brand00: '#5558AF',
     brand04: '#4D51A0',
@@ -39,6 +40,7 @@ export const Colors: ColorPalate = {
     gray10: '#404045', // not right?
     gray11: '#3A3A3F', // not right?
     gray12: '#36363B', // not right?
+    brand00SemiTransparent: '#7174AA',
     brand00Light: '#5558AF',
     brand00: '#9FA4FE',
     brand04: '#B6BAFE',
