@@ -1,8 +1,8 @@
 import { Panel, PanelBody, PanelFooter, PanelHeader } from 'msteams-ui-components-react';
 import * as React from 'react';
-import { Route, Switch } from 'react-router';
-import { PreviewSection } from './preview-section';
+import { Redirect, Route, Switch } from 'react-router';
 import { Routes } from '../routes';
+import { PreviewSection } from './preview-section';
 
 // tslint:disable:no-var-requires
 const ButtonSection = require('../examples/button.example.jsx');
@@ -57,6 +57,7 @@ export const Content: React.StatelessComponent = () => {
         <Route path={Routes.icons} render={() =>
           <PreviewSection code={IconsSection} />
         } />
+        <Redirect to={Routes.buttons} />
       </Switch>
     </PanelBody>
     <PanelFooter>

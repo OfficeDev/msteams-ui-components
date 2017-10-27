@@ -8,8 +8,6 @@ import { Content } from './content';
 import { Sidebar } from './sidebar';
 
 const mountPoint = 'root';
-// tslint:disable-next-line:prefer-const
-let microsoftTeams: any;
 
 normalize();
 setupPage(`#${mountPoint}`);
