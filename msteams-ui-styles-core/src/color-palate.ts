@@ -15,6 +15,7 @@ export interface ColorPalate {
     gray08: string;
     gray10: string;
     gray12: string;
+    brand00SemiTransparent: string;
     brand00Dark: string;
     brand00: string;
     brand04: string;
@@ -37,6 +38,7 @@ export interface ColorPalate {
     gray10: string;
     gray11: string;
     gray12: string;
+    brand00SemiTransparent: string;
     brand00Light: string;
     brand00: string;
     brand04: string;

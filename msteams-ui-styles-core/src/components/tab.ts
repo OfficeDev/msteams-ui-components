@@ -6,6 +6,7 @@ export interface TabColors {
   underline: string;
   textActive: string;
   containerUnderline: string;
+  hoverUnderline: string;
 }
 
 function base(context: Context, colors: TabColors) {
@@ -36,6 +37,9 @@ function base(context: Context, colors: TabColors) {
           '&:last-child': {
             marginRight: 0,
           },
+          '&:hover': {
+            borderBottomColor: colors.hoverUnderline,
+          },
         },
       },
     },
@@ -62,6 +66,7 @@ function light(context: Context) {
     textActive: colors.light.brand00,
     underline: colors.light.brand00,
     containerUnderline: colors.light.gray06,
+    hoverUnderline: colors.light.brand00SemiTransparent,
   });
 }
 
@@ -72,6 +77,7 @@ function dark(context: Context) {
     textActive: colors.dark.brand00,
     underline: colors.dark.brand00,
     containerUnderline: colors.dark.white,
+    hoverUnderline: colors.dark.brand00SemiTransparent,
   });
 }
 
@@ -80,8 +86,9 @@ function highContrast(context: Context) {
   return base(context, {
     text: colors.white,
     textActive: colors.white,
-    underline: colors.highContrast.yellow,
+    underline: colors.highContrast.blue,
     containerUnderline: colors.highContrast.green,
+    hoverUnderline: colors.highContrast.yellow,
   });
 }
 
