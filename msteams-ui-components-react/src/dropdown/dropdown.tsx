@@ -17,6 +17,7 @@ export interface DropdownProps
 export interface DropdownItem {
   text?: string;
   render?: () => string | JSX.Element;
+  onClick: () => void;
 }
 
 interface DropdownState {
@@ -121,6 +122,7 @@ class DropdownInternal extends React.Component<DropdownProps & InjectedTeamsProp
         key={index}
         className={className}
         ref={(ref) => this.itemButtons.push(ref!)}
+        onClick={item.onClick}
       >
         {item.text ? item.text : null}
         {item.render ? item.render() : null}
