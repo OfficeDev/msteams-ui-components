@@ -23,6 +23,10 @@ class DropdownInternal extends React.Component<DropdownProps & InjectedTeamsProp
     id: uniqueId('ts-dd-'),
   };
 
+  componentWillUnmount() {
+    document.removeEventListener('click', this.close);
+  }
+
   render() {
     const state = this.state;
     const {
