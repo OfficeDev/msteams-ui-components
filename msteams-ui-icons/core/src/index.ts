@@ -88,10 +88,11 @@ export const baseStyle = memoize((iconWeight?: number): string => {
   }
 
   return iconTS.style({
-    display: 'inline-block',
-    font: `normal normal normal 16px/1 ${fontName}`,
-    fontSize: 'inherit',
-    textRendering: 'auto',
+    fontFamily: fontName,
+    fontStyle: 'normal',
+    speak: 'none',
+    fontWeight: 'normal',
+    textRendering: 'optimizeLegibility',
     ['-webkit-font-smoothing']: 'antialiased',
     ['-moz-osx-font-smoothing']: 'grayscale',
   });
