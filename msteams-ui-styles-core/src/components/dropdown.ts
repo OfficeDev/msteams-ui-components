@@ -1,4 +1,3 @@
-import { baseStyle, iconTypes, iconWeights } from 'msteams-ui-icons-core';
 import { classes, style } from 'typestyle';
 import { chooseStyle, Context } from '../context';
 import { fontSizes } from './font-sizes';
@@ -13,10 +12,10 @@ interface DropdownColors {
   itemHoverBg: string;
   itemHover: string;
   label: string;
+  underline: string;
 }
 
 function base(context: Context, colors: DropdownColors) {
-  baseStyle(iconWeights.light);
   const { rem } = context;
   const sizes = fontSizes(context);
   const weights = fontWeights(context);
@@ -38,7 +37,8 @@ function base(context: Context, colors: DropdownColors) {
   return {
     container: style({
       position: 'relative',
-      display: 'block',
+      display: 'inline-block',
+      minWidth: rem(2.2),
     }),
     label: classes(style({
       padding: 0,
@@ -50,7 +50,7 @@ function base(context: Context, colors: DropdownColors) {
       height: rem(3.2),
       color: colors.mainButton,
       backgroundColor: colors.mainButtonBg,
-      border: 0,
+      border: `${rem(0.2)} solid transparent`,
       padding: `${rem(0.4)} ${rem(1)} ${rem(0.4)} ${rem(1)}`,
       whiteSpace: 'nowrap',
       fontSize: rem(1.4),
@@ -58,15 +58,18 @@ function base(context: Context, colors: DropdownColors) {
       borderRadius: rem(0.3),
       width: '100%',
       textAlign: 'left',
+      outline: 'none',
       $nest: {
-        '&:after': {
-          fontFamily: 'MSTeamsIcons-Light',
-          content: iconTypes.downCaret,
-          position: 'absolute',
-          bottom: rem(0.9),
-          right: rem(0.4),
+        '&:focus': {
+          borderBottomColor: colors.underline,
         },
       },
+    }),
+    mainButtonIcon: style({
+      position: 'absolute',
+      bottom: rem(0.7),
+      right: rem(0.4),
+      textAlign: 'center',
     }),
     itemContainer: itemContainerClass,
     itemContainerRight: style({
@@ -80,9 +83,8 @@ function base(context: Context, colors: DropdownColors) {
     showItems: style({
       $nest: {
         [`&.${itemContainerClass}`]: {
-          minWidth: rem(10),
+          minWidth: '100%',
           transform: 'scaleY(1)',
-          transition: 'transform 0.3s ease-in-out',
         },
       },
     }),
@@ -99,14 +101,17 @@ function base(context: Context, colors: DropdownColors) {
       color: colors.item,
       cursor: 'pointer',
       outline: 'none',
-    }, {
-        $nest: {
-          '&:hover': {
-            backgroundColor: colors.itemHoverBg,
-            color: colors.itemHover,
-          },
+      $nest: {
+        '&:focus': {
+          backgroundColor: colors.itemHoverBg,
+          color: colors.itemHover,
         },
-      }),
+        '&:hover': {
+          backgroundColor: colors.itemHoverBg,
+          color: colors.itemHover,
+        },
+      },
+    }),
   };
 }
 
@@ -121,6 +126,7 @@ function light(context: Context) {
     itemHover: colors.light.white,
     itemHoverBg: colors.light.brand00,
     label: colors.light.gray01,
+    underline: colors.light.brand00,
   });
 }
 
@@ -135,6 +141,7 @@ function dark(context: Context) {
     itemHover: colors.dark.white,
     itemHoverBg: colors.dark.brand00,
     label: colors.dark.white,
+    underline: colors.dark.brand00,
   });
 }
 
@@ -149,6 +156,7 @@ function highContrast(context: Context) {
     itemHover: colors.white,
     itemHoverBg: colors.highContrast.green,
     label: colors.white,
+    underline: colors.highContrast.yellow,
   });
 }
 
