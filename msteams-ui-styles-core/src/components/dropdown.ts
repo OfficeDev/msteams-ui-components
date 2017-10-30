@@ -85,7 +85,6 @@ function base(context: Context, colors: DropdownColors) {
         [`&.${itemContainerClass}`]: {
           minWidth: '100%',
           transform: 'scaleY(1)',
-          transition: 'transform 0.3s ease-in-out',
         },
       },
     }),
@@ -102,14 +101,17 @@ function base(context: Context, colors: DropdownColors) {
       color: colors.item,
       cursor: 'pointer',
       outline: 'none',
-    }, {
-        $nest: {
-          '&:hover': {
-            backgroundColor: colors.itemHoverBg,
-            color: colors.itemHover,
-          },
+      $nest: {
+        '&:focus': {
+          backgroundColor: colors.itemHoverBg,
+          color: colors.itemHover,
         },
-      }),
+        '&:hover': {
+          backgroundColor: colors.itemHoverBg,
+          color: colors.itemHover,
+        },
+      },
+    }),
   };
 }
 

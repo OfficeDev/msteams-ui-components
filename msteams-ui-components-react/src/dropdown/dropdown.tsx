@@ -60,7 +60,7 @@ class DropdownInternal extends React.Component<DropdownProps & InjectedTeamsProp
           {mainButtonText}
           <span className={themeClassNames.mainButtonIcon}>{mainButtonIcon}</span>
         </button>
-        <div className={itemContainerClass.join(' ')}>{children}</div>
+        {state.show ? <div className={itemContainerClass.join(' ')}>{children}</div> : null}
       </div>
     );
   }
