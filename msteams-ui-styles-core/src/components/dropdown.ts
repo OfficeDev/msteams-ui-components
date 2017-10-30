@@ -12,6 +12,7 @@ interface DropdownColors {
   itemHoverBg: string;
   itemHover: string;
   label: string;
+  underline: string;
 }
 
 function base(context: Context, colors: DropdownColors) {
@@ -49,7 +50,7 @@ function base(context: Context, colors: DropdownColors) {
       height: rem(3.2),
       color: colors.mainButton,
       backgroundColor: colors.mainButtonBg,
-      border: 0,
+      border: `${rem(0.2)} solid transparent`,
       padding: `${rem(0.4)} ${rem(1)} ${rem(0.4)} ${rem(1)}`,
       whiteSpace: 'nowrap',
       fontSize: rem(1.4),
@@ -57,6 +58,12 @@ function base(context: Context, colors: DropdownColors) {
       borderRadius: rem(0.3),
       width: '100%',
       textAlign: 'left',
+      outline: 'none',
+      $nest: {
+        '&:focus': {
+          borderBottomColor: colors.underline,
+        },
+      },
     }),
     mainButtonIcon: style({
       position: 'absolute',
@@ -117,6 +124,7 @@ function light(context: Context) {
     itemHover: colors.light.white,
     itemHoverBg: colors.light.brand00,
     label: colors.light.gray01,
+    underline: colors.light.brand00,
   });
 }
 
@@ -131,6 +139,7 @@ function dark(context: Context) {
     itemHover: colors.dark.white,
     itemHoverBg: colors.dark.brand00,
     label: colors.dark.white,
+    underline: colors.dark.brand00,
   });
 }
 
@@ -145,6 +154,7 @@ function highContrast(context: Context) {
     itemHover: colors.white,
     itemHoverBg: colors.highContrast.green,
     label: colors.white,
+    underline: colors.highContrast.yellow,
   });
 }
 
