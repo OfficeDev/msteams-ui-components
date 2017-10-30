@@ -10,7 +10,7 @@ export interface PrimaryButtonProps
 }
 
 const PrimaryButtonView: React.StatelessComponent<PrimaryButtonProps & InjectedTeamsProps> =
-  (props: any) => {
+  (props: PrimaryButtonProps & InjectedTeamsProps) => {
     const { context, className, ...rest } = props;
     const themeClassName = primaryButton(context);
 
