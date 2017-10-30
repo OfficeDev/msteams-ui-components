@@ -1,4 +1,3 @@
-import { baseStyle, iconTypes, iconWeights } from 'msteams-ui-icons-core';
 import { classes, style } from 'typestyle';
 import { chooseStyle, Context } from '../context';
 import { fontSizes } from './font-sizes';
@@ -16,7 +15,6 @@ interface DropdownColors {
 }
 
 function base(context: Context, colors: DropdownColors) {
-  baseStyle(iconWeights.light);
   const { rem } = context;
   const sizes = fontSizes(context);
   const weights = fontWeights(context);
@@ -38,7 +36,8 @@ function base(context: Context, colors: DropdownColors) {
   return {
     container: style({
       position: 'relative',
-      display: 'block',
+      display: 'inline-block',
+      minWidth: rem(2.2),
     }),
     label: classes(style({
       padding: 0,
@@ -58,15 +57,12 @@ function base(context: Context, colors: DropdownColors) {
       borderRadius: rem(0.3),
       width: '100%',
       textAlign: 'left',
-      $nest: {
-        '&:after': {
-          fontFamily: 'MSTeamsIcons-Light',
-          content: iconTypes.downCaret,
-          position: 'absolute',
-          bottom: rem(0.9),
-          right: rem(0.4),
-        },
-      },
+    }),
+    mainButtonIcon: style({
+      position: 'absolute',
+      bottom: rem(0.7),
+      right: rem(0.4),
+      textAlign: 'center',
     }),
     itemContainer: itemContainerClass,
     itemContainerRight: style({
@@ -80,7 +76,7 @@ function base(context: Context, colors: DropdownColors) {
     showItems: style({
       $nest: {
         [`&.${itemContainerClass}`]: {
-          minWidth: rem(10),
+          minWidth: '100%',
           transform: 'scaleY(1)',
           transition: 'transform 0.3s ease-in-out',
         },

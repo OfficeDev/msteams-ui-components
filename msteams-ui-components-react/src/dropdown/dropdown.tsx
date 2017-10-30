@@ -2,53 +2,79 @@ import { dropdown } from 'msteams-ui-styles-core/lib/components/dropdown';
 import * as React from 'react';
 import { connectTeamsComponent, InjectedTeamsProps } from '../index';
 import classes from '../utils/classes';
+import uniqueId from '../utils/uniqueId';
 
 export interface DropdownProps
   extends React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
   menuRightAlign?: boolean;
   mainButtonText?: string;
   label?: string;
+  renderMainButtonIcon?: () => string | JSX.Element;
 }
 
 interface DropdownState {
   show: boolean;
+  id: string;
 }
 
 class DropdownInternal extends React.Component<DropdownProps & InjectedTeamsProps, DropdownState> {
-  state = { show: false };
+  state = {
+    show: false,
+    id: uniqueId('ts-dd-'),
+  };
 
   render() {
-    const { context, className, children, menuRightAlign, label, mainButtonText, ...rest } = this.props;
+    const state = this.state;
+    const {
+      context,
+      className,
+      children,
+      menuRightAlign,
+      label,
+      mainButtonText,
+      style,
+      renderMainButtonIcon,
+      ...rest,
+    } = this.props;
     const themeClassNames = dropdown(context);
-    const itemContainerClass = [themeClassNames.itemContainer];
 
+    const itemContainerClass = [themeClassNames.itemContainer];
     if (menuRightAlign) {
       itemContainerClass.push(themeClassNames.itemContainerRight);
     }
-
     if (this.state.show) {
       itemContainerClass.push(themeClassNames.showItems);
     }
 
+    const mainButtonIcon = renderMainButtonIcon ? renderMainButtonIcon() : '▼';
+
     return (
-      <div className={classes(themeClassNames.container, className)}>
-        {label ? <label className={themeClassNames.label}>{label}</label> : null}
+      <div className={classes(themeClassNames.container, className)} style={style}>
+        {label ? <label className={themeClassNames.label} htmlFor={state.id}>{label}</label> : null}
         <button
           className={themeClassNames.mainButton}
-          onClick={this.toggle}
+          onClick={this.open}
           {...rest}
-        >{mainButtonText}</button>
-        {this.state.show ? <div className={itemContainerClass.join(' ')} onClick={this.close}>{children}</div> : null }
+          id={state.id}
+        >
+          {mainButtonText}
+          <span className={themeClassNames.mainButtonIcon}>{mainButtonIcon}</span>
+        </button>
+        <div className={itemContainerClass.join(' ')}>{children}</div>
       </div>
     );
   }
 
-  private toggle = () => {
-    this.setState({show: !this.state.show});
+  private open = () => {
+    if (!this.state.show) {
+      this.setState({ show: !this.state.show });
+      document.addEventListener('click', this.close);
+    }
   }
 
   private close = () => {
-    this.setState({show: false});
+    document.removeEventListener('click', this.close);
+    this.setState({ show: false });
   }
 }
 
