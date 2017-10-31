@@ -4,12 +4,13 @@
     <Dropdown mainButtonText="left dropdown" renderMainButtonIcon={() =>
       <MSTeamsIcon iconWeight={MSTeamsIconWeight.light} iconType={MSTeamsIconType.downCaret} />
     } style={{ width: '100%' }}
-    >
-      <DropdownItem>option1</DropdownItem>
-      <DropdownItem>option2</DropdownItem>
-      <DropdownItem>option3</DropdownItem>
-      <DropdownItem>option4</DropdownItem>
-    </Dropdown>
+      items={[
+        { text: 'option1', onClick: () => console.log('hello') },
+        { text: 'option2', onClick: () => console.log('hello') },
+        { text: 'option3', onClick: () => console.log('hello') },
+        { text: 'option4', onClick: () => console.log('hello') }
+      ]}
+    />
   </div>
 
   <div>
@@ -17,27 +18,46 @@
       renderMainButtonIcon={() =>
         <MSTeamsIcon iconWeight={MSTeamsIconWeight.light} iconType={MSTeamsIconType.downCaret} />
       } style={{ width: '100%' }}
-    >
-      <DropdownItem>option1</DropdownItem>
-      <DropdownItem>option2</DropdownItem>
-      <DropdownItem>option3</DropdownItem>
-      <DropdownItem>option4</DropdownItem>
-    </Dropdown>
+      items={[
+        { text: 'option1', onClick: () => alert('hello') },
+        { text: 'option2', onClick: () => alert('hello') },
+        { text: 'option3', onClick: () => alert('hello') },
+        { text: 'option4', onClick: () => alert('hello') }
+      ]}
+    />
   </div>
 
   <div>
-    <Dropdown mainButtonText="small dropdown" style={{ width: '150px' }} label="Default icon"  >
-      <DropdownItem>Lonnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnng item text</DropdownItem>
-    </Dropdown>
+    <Dropdown mainButtonText="small dropdown" style={{ width: '100%' }} label="Customized item content"
+      items={[
+        {
+          render: () => <MSTeamsIcon iconWeight={MSTeamsIconWeight.light} iconType={MSTeamsIconType.monkey} />,
+          onClick: () => alert('hello'),
+        }
+      ]}
+    />
+  </div>
+
+  <div>
+    <Dropdown mainButtonText="small dropdown" style={{ width: '150px' }} label="Default icon"
+      items={[
+        {
+          text: 'Lonnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnng item text',
+          onClick: () => alert('hello'),
+        }
+      ]}
+    />
   </div>
 
   <div>
     An icon only dropdown:
     <Dropdown renderMainButtonIcon={() =>
       <MSTeamsIcon iconWeight={MSTeamsIconWeight.light} iconType={MSTeamsIconType.ellipsis} />
-    }>
-      <DropdownItem>Option 1</DropdownItem>
-    </Dropdown>
+    }
+      items={[
+        { text: 'Option 1', onClick: () => alert('hello') }
+      ]}
+    />
   </div>
 
 </div>
