@@ -18,7 +18,9 @@ class TextAreaInternal extends React.Component<TextAreaProps & InjectedTeamsProp
     const themeClassNames = textArea(context);
 
     return (
-      <div style={style}
+      <div
+        data-component-type="TextArea"
+        style={style}
         className={classes(themeClassNames.container, errorLabel ? themeClassNames.errorIcon : null, className)}>
         {label || errorLabel ?
           <div>

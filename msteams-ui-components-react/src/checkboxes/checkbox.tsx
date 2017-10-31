@@ -50,6 +50,7 @@ class CheckboxInner extends React.Component<CheckboxProps & InjectedTeamsProps, 
 
     return (
       <div
+        data-component-type="Checkbox"
         className={classes(themeClassNames.container, className)}
         {...rest} >
         <button

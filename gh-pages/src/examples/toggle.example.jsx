@@ -6,12 +6,31 @@ class ToggleExample extends React.Component {
   }
 
   onToggle() {
-    this.setState(Object.assign({}, this.state, { toggle: !this.state.toggle }));
+    this.setState({toggle: !this.state.toggle});
   }
 
   render() {
-    return <div>
-      <Toggle checked={this.state.toggle} onChange={this.onToggle} />
-    </div>;
+    return <ConnectedComponent render={(props) => {
+      const { context } = props;
+      const { rem, font } = context;
+      const { sizes, weights } = font;
+
+      const styles = {
+        header: {...sizes.title, ...weights.semibold},
+        section: {...sizes.title2, marginTop: rem(1.4), marginBottom: rem(1.4)}
+      }
+
+      return <Panel>
+        <PanelHeader>
+          <div style={styles.header}>Toggles</div>
+        </PanelHeader>
+        <PanelBody>
+          <div style={styles.section}></div>
+          <Toggle checked={this.state.toggle} onChange={this.onToggle} />
+        </PanelBody>
+        <PanelFooter>
+        </PanelFooter>
+      </Panel>;
+    }} />;
   }
 }

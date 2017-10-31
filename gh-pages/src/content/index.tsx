@@ -19,48 +19,42 @@ const TogglesSection = require('../examples/toggle.example.jsx');
 // tslint:enable:no-var-requires
 
 export const Content: React.StatelessComponent = () => {
-  return <Panel>
-    <PanelHeader>
-    </PanelHeader>
-    <PanelBody>
-      <Switch>
-        <Route path={Routes.buttons} render={() =>
-          <PreviewSection code={ButtonSection} />
-        } />
-        <Route path={Routes.toggles} render={() =>
-          <PreviewSection code={TogglesSection} />
-        } />
-        <Route path={Routes.checkboxes} render={() =>
-          <PreviewSection code={CheckboxSection} />
-        } />
-        <Route path={Routes.links} render={() =>
-          <PreviewSection code={LinkSection} />
-        } />
-        <Route path={Routes.inputs} render={() =>
-          <PreviewSection code={InputSection} />
-        } />
-        <Route path={Routes.radiobuttons} render={() =>
-          <PreviewSection code={RadiobuttonSection} />
-        } />
-        <Route path={Routes.tabs} render={() =>
-          <PreviewSection code={TabSection} />
-        } />
-        <Route path={Routes.tables} render={() =>
-          <PreviewSection code={TableSection} />
-        } />
-        <Route path={Routes.textareas} render={() =>
-          <PreviewSection code={TextAreaSection} />
-        } />
-        <Route path={Routes.dropdowns} render={() =>
-          <PreviewSection code={DropdownSection} />
-        } />
-        <Route path={Routes.icons} render={() =>
-          <PreviewSection code={IconsSection} />
-        } />
-        <Redirect to={Routes.buttons} />
-      </Switch>
-    </PanelBody>
-    <PanelFooter>
-    </PanelFooter>
-  </Panel>;
+  return (
+    <Switch>
+      <Route path={Routes.buttons} render={() =>
+        <PreviewSection code={ButtonSection} />
+      } />
+      <Route path={Routes.toggles} render={() =>
+        <PreviewSection code={TogglesSection} />
+      } />
+      <Route path={Routes.checkboxes} render={() =>
+        <PreviewSection code={CheckboxSection} />
+      } />
+      <Route path={Routes.links} render={() =>
+        <PreviewSection code={LinkSection} />
+      } />
+      <Route path={Routes.inputs} render={() =>
+        <PreviewSection code={InputSection} />
+      } />
+      <Route path={Routes.radiobuttons} render={() =>
+        <PreviewSection code={RadiobuttonSection} />
+      } />
+      <Route path={Routes.tabs} render={() =>
+        <PreviewSection code={TabSection} />
+      } />
+      <Route path={Routes.tables} render={() =>
+        <PreviewSection code={TableSection} />
+      } />
+      <Route path={Routes.textareas} render={() =>
+        <PreviewSection code={TextAreaSection} />
+      } />
+      <Route path={Routes.dropdowns} render={() =>
+        <PreviewSection code={DropdownSection} />
+      } />
+      <Route path={Routes.icons} render={() =>
+        <PreviewSection code={IconsSection} />
+      } />
+      <Redirect to={Routes.buttons} />
+    </Switch>
+  );
 };

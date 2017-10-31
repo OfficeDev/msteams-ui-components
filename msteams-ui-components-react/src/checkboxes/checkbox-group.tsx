@@ -1,8 +1,10 @@
 import { checkboxGroup } from 'msteams-ui-styles-core/lib/components/checkbox-group';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-import { connectTeamsComponent, InjectedTeamsProps } from '../teams-context/connect-teams-component';
+import { connectTeamsComponent } from '../teams-context/connect-teams-component';
+import { InjectedTeamsProps } from '../teams-context/connected-component';
 import add from '../utils/add';
+import classes from '../utils/classes';
 import remove from '../utils/remove';
 
 export interface CheckboxGroupProps
@@ -25,11 +27,14 @@ class CheckboxGroupInner extends React.Component<CheckboxGroupProps & InjectedTe
   };
 
   render() {
-    const {context, onChecked, values, label, errorLabel, ...rest} = this.props;
+    const {context, className, onChecked, values, label, errorLabel, ...rest} = this.props;
     const themeClassNames = checkboxGroup(context);
 
     return (
-      <div {...rest}>
+      <div
+        data-component-type="CheckboxGroup"
+        className={classes(themeClassNames.container, className)}
+        {...rest}>
         {label || errorLabel ?
           <div>
             {label ?

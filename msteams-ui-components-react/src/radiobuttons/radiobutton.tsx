@@ -51,6 +51,7 @@ class RadiobuttonInner extends React.Component<RadiobuttonProps & InjectedTeamsP
 
     return (
       <div
+        data-component-type="RadioButton"
         className={classes(themeClassNames.container, className)}
         {...rest}>
         <button

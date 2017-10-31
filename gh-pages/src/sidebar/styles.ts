@@ -9,11 +9,13 @@ export function sidebar(context: Context) {
     container: style({
       height: '100%',
     }),
-    body: {
+    header: {
       title: style(sizes.title, weights.semibold),
       welcomeText: style({
         marginTop: rem(0.8),
       }),
+    },
+    body: {
       button: style({
         width: '100%',
         marginTop: '8px',

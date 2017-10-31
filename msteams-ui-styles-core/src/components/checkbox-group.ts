@@ -13,6 +13,9 @@ function base(context: Context, colors: CheckboxGroupColors) {
   const weights = fontWeights(context);
 
   return {
+    container: style({
+      display: 'inline-block',
+    }),
     label: classes(style({
       display: 'inline-block',
       flex: '0 0 auto',

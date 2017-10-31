@@ -9,7 +9,9 @@ export interface TrProps
 const TrInternal: React.StatelessComponent<TrProps & InjectedTeamsProps> = (props) => {
   const { context, className, ...rest } = props;
   const themeClassNames = table(context);
-  return <tr className={classes(themeClassNames.tr, className)} {...rest}>{props.children}</tr>;
+  return <tr
+    data-component-type="Tr"
+    className={classes(themeClassNames.tr, className)} {...rest}>{props.children}</tr>;
 };
 
 export const Tr = connectTeamsComponent<TrProps>(TrInternal);

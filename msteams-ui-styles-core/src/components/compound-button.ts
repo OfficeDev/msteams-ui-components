@@ -39,19 +39,20 @@ function base(context: Context, colors: CompoundButtonColors) {
 
   return {
     container: style({
-        minWidth: rem(4.8),
-        minHeight: rem(4.8),
-        display: 'flex',
-        alignItems: 'center',
-        padding: 0,
-        font: 'inherit',
-        border: `${rem(0.2)} solid`,
-        borderColor: colors.rest.border,
-        borderRadius: rem(0.3),
-        background: colors.rest.background,
-        color: colors.rest.text,
-        cursor: 'pointer',
-      }, {
+      minWidth: rem(4.8),
+      minHeight: rem(4.8),
+      display: 'inline-flex',
+      alignItems: 'center',
+      padding: 0,
+      font: 'inherit',
+      verticalAlign: 'middle',
+      border: `${rem(0.2)} solid`,
+      borderColor: colors.rest.border,
+      borderRadius: rem(0.3),
+      background: colors.rest.background,
+      color: colors.rest.text,
+      cursor: 'pointer',
+    }, {
       $nest: {
         '&:hover:enabled': {
           background: colors.hover.background,

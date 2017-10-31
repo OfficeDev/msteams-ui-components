@@ -4,7 +4,8 @@ import {
   connectTeamsComponent,
   InjectedTeamsProps,
   Panel,
-  PanelHeader
+  PanelHeader,
+  PanelBody
 } from 'msteams-ui-components-react';
 import { MSTeamsIcon, MSTeamsIconType, MSTeamsIconWeight } from 'msteams-ui-icons-react';
 import * as React from 'react';
@@ -83,10 +84,10 @@ class SidebarInner extends React.Component<SidebarViewProps & InjectedTeamsProps
     const classNames = sidebar(context);
     return <Panel className={classNames.container}>
       <PanelHeader>
-        <div className={classNames.body.title} >
+        <div className={classNames.header.title} >
           Control Library
         </div>
-        <div className={classNames.body.welcomeText}>
+        <div className={classNames.header.welcomeText}>
           <p>
             This tab is a showcase of the Microsoft Teams UI Controls library.
           </p>
@@ -94,19 +95,18 @@ class SidebarInner extends React.Component<SidebarViewProps & InjectedTeamsProps
             Click through the controls below to get a preview of what is available.
           </p>
         </div>
-
-        <div>
-          {map(SidebarInner.buttons, (button, index) => {
-            return <CompoundButton
-              key={index}
-              className={classNames.body.button}
-              onClick={this.onClick(button.location)}
-              icon={button.icon}
-              primaryText={button.name}
-              secondaryText={button.description} />;
-          })}
-        </div>
       </PanelHeader>
+      <PanelBody>
+        {map(SidebarInner.buttons, (button, index) => {
+          return <CompoundButton
+            key={index}
+            className={classNames.body.button}
+            onClick={this.onClick(button.location)}
+            icon={button.icon}
+            primaryText={button.name}
+            secondaryText={button.description} />;
+        })}
+      </PanelBody>
     </Panel>;
   }
 
