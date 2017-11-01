@@ -17,7 +17,7 @@ export interface ConnectedComponentState {
   context: Context;
 }
 
-export class ConnectedComponent<T extends ConnectedComponentProps = ConnectedComponentProps>
+export class ConnectedComponent
   extends React.Component<any, ConnectedComponentState> {
   static propTypes = {
     component: PropTypes.func,

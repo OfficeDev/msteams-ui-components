@@ -95,7 +95,7 @@ function dark(context: Context) {
   const { colors } = context;
   return base(context, {
     sliderBackground: colors.dark.black,
-    sliderBall: colors.dark.gray11,
+    sliderBall: colors.dark.gray02,
     sliderFocus: colors.dark.brand00,
     sliderBackgroundChecked: colors.dark.green,
     sliderBallChecked: colors.dark.white,
