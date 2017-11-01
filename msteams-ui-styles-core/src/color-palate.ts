@@ -1,8 +1,5 @@
 export interface ColorPalate {
   transparent: string;
-  black: string;
-  white: string;
-  gray: string;
   light: {
     black: string;
     white: string;
@@ -55,6 +52,8 @@ export interface ColorPalate {
     green: string;
   };
   highContrast: {
+    black: string;
+    white: string;
     yellow: string;
     green: string;
     blue: string;

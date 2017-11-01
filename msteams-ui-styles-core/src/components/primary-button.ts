@@ -99,7 +99,7 @@ function light(context: Context) {
     focus: {
       background: colors.light.brand06,
       text: colors.light.white,
-      outline: colors.white,
+      outline: colors.light.white,
       border: colors.transparent,
     },
   });
@@ -131,7 +131,7 @@ function dark(context: Context) {
     focus: {
       background: colors.dark.brand06,
       text: colors.dark.black,
-      outline: colors.black,
+      outline: colors.dark.black,
       border: colors.transparent,
     },
   });
@@ -141,30 +141,30 @@ function highContrast(context: Context) {
   const { colors } = context;
   return base(context, {
     rest: {
-      background: colors.black,
-      text: colors.white,
-      border: colors.white,
+      background: colors.highContrast.black,
+      text: colors.highContrast.white,
+      border: colors.highContrast.white,
     },
     hover: {
       background: colors.highContrast.yellow,
-      text: colors.black,
-      border: colors.white,
+      text: colors.highContrast.black,
+      border: colors.highContrast.white,
     },
     down: {
       background: colors.highContrast.yellow,
-      text: colors.black,
-      border: colors.white,
+      text: colors.highContrast.black,
+      border: colors.highContrast.white,
     },
     disabled: {
       background: colors.highContrast.green,
-      text: colors.black,
-      border: colors.white,
+      text: colors.highContrast.black,
+      border: colors.highContrast.white,
     },
     focus: {
       background: colors.highContrast.yellow,
-      text: colors.black,
+      text: colors.highContrast.black,
       outline: colors.transparent,
-      border: colors.white,
+      border: colors.highContrast.white,
     },
   });
 }

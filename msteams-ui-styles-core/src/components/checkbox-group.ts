@@ -53,7 +53,7 @@ function dark(context: Context) {
 function highContrast(context: Context) {
   const { colors } = context;
   return base(context, {
-    label: colors.white,
+    label: colors.highContrast.white,
     errorLabel: colors.highContrast.yellow,
   });
 }

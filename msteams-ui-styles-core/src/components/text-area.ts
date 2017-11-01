@@ -173,27 +173,27 @@ function highContrast(context: Context) {
   const { colors } = context;
   return base(context, {
     rest: {
-      background: colors.black,
-      border: colors.white,
+      background: colors.highContrast.black,
+      border: colors.highContrast.white,
       underline: colors.transparent,
     },
     active: {
-      background: colors.black,
+      background: colors.highContrast.black,
       underline: colors.highContrast.yellow,
     },
     disabled: {
       background: colors.highContrast.green,
-      underline: colors.white,
+      underline: colors.highContrast.white,
     },
     hover: {
-      background: colors.black,
+      background: colors.highContrast.black,
       underline: colors.transparent,
     },
     focus: {
-      background: colors.black,
+      background: colors.highContrast.black,
       underline: colors.highContrast.yellow,
     },
-    label: colors.white,
+    label: colors.highContrast.white,
     errorLabel: colors.highContrast.yellow,
   });
 }

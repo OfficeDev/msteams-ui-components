@@ -2,9 +2,6 @@ import { ColorPalate } from './color-palate';
 
 export const Colors: ColorPalate = {
   transparent: 'transparent',
-  black: '#000000',
-  white: '#FFFFFF',
-  gray: '#F0F2F4',
   light: {
     black: '#16233A',
     white: '#FFFFFF',
@@ -57,6 +54,8 @@ export const Colors: ColorPalate = {
     green: '#88BC2B',
   },
   highContrast: {
+    black: '#000000',
+    white: '#FFFFFF',
     yellow: '#FFFF00',
     green: '#30F42C',
     blue: '#00EBFF',

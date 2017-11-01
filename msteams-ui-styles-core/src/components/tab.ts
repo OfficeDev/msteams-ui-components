@@ -62,7 +62,7 @@ function base(context: Context, colors: TabColors) {
 function light(context: Context) {
   const { colors } = context;
   return base(context, {
-    text: colors.black,
+    text: colors.light.black,
     textActive: colors.light.brand00,
     underline: colors.light.brand00,
     containerUnderline: colors.light.gray06,
@@ -73,7 +73,7 @@ function light(context: Context) {
 function dark(context: Context) {
   const { colors } = context;
   return base(context, {
-    text: colors.white,
+    text: colors.dark.white,
     textActive: colors.dark.brand00,
     underline: colors.dark.brand00,
     containerUnderline: colors.dark.white,
@@ -84,8 +84,8 @@ function dark(context: Context) {
 function highContrast(context: Context) {
   const { colors } = context;
   return base(context, {
-    text: colors.white,
-    textActive: colors.white,
+    text: colors.highContrast.white,
+    textActive: colors.highContrast.white,
     underline: colors.highContrast.blue,
     containerUnderline: colors.highContrast.green,
     hoverUnderline: colors.highContrast.yellow,

@@ -105,7 +105,7 @@ function dark(context: Context) {
 function highContrast(context: Context) {
   const { colors } = context;
   return base(context, {
-    sliderBackground: colors.white,
+    sliderBackground: colors.highContrast.white,
     sliderBall: colors.highContrast.yellow,
     sliderFocus: colors.highContrast.green,
     sliderBackgroundChecked: colors.light.green,

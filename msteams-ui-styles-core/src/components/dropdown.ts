@@ -148,14 +148,14 @@ function dark(context: Context) {
 function highContrast(context: Context) {
   const { colors } = context;
   return base(context, {
-    mainButton: colors.white,
-    mainButtonBg: colors.black,
-    item: colors.white,
-    itemBg: colors.black,
+    mainButton: colors.highContrast.white,
+    mainButtonBg: colors.highContrast.black,
+    item: colors.highContrast.white,
+    itemBg: colors.highContrast.black,
     itemContainerBg: colors.highContrast.yellow,
-    itemHover: colors.white,
+    itemHover: colors.highContrast.white,
     itemHoverBg: colors.highContrast.green,
-    label: colors.white,
+    label: colors.highContrast.white,
     underline: colors.highContrast.yellow,
   });
 }

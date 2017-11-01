@@ -119,7 +119,7 @@ function light(context: Context) {
       text: colors.light.black,
       border: colors.transparent,
       background: colors.light.gray06,
-      outline: colors.black,
+      outline: colors.light.black,
     },
     disabled: {
       background: colors.transparent,
@@ -151,7 +151,7 @@ function dark(context: Context) {
       text: colors.dark.white,
       border: colors.transparent,
       background: colors.dark.gray06,
-      outline: colors.white,
+      outline: colors.dark.white,
     },
     disabled: {
       background: colors.transparent,
@@ -166,29 +166,29 @@ function highContrast(context: Context) {
   return base(context, {
     rest: {
       background: colors.transparent,
-      text: colors.white,
-      border: colors.white,
+      text: colors.highContrast.white,
+      border: colors.highContrast.white,
     },
     hover: {
       background: colors.highContrast.yellow,
-      border: colors.white,
-      text: colors.black,
+      border: colors.highContrast.white,
+      text: colors.highContrast.black,
     },
     down: {
       background: colors.highContrast.yellow,
-      text: colors.black,
-      border: colors.white,
+      text: colors.highContrast.black,
+      border: colors.highContrast.white,
     },
     focus: {
-      text: colors.black,
-      border: colors.white,
+      text: colors.highContrast.black,
+      border: colors.highContrast.white,
       background: colors.highContrast.yellow,
       outline: colors.transparent,
     },
     disabled: {
       background: colors.highContrast.green,
-      text: colors.black,
-      border: colors.white,
+      text: colors.highContrast.black,
+      border: colors.highContrast.white,
     },
   });
 }

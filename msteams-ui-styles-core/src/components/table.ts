@@ -53,8 +53,8 @@ function light(context: Context) {
     tableBg: colors.light.gray12,
     th: colors.light.gray04,
     td: colors.light.black,
-    thBg: colors.white,
-    trBorder: colors.white,
+    thBg: colors.light.white,
+    trBorder: colors.light.white,
   });
 }
 
@@ -64,7 +64,7 @@ function dark(context: Context) {
     tableBg: colors.dark.black,
     th: colors.dark.white,
     td: colors.dark.white,
-    thBg: colors.black,
+    thBg: colors.dark.black,
     trBorder: colors.dark.brand00,
   });
 }
@@ -72,10 +72,10 @@ function dark(context: Context) {
 function highContrast(context: Context) {
   const { colors } = context;
   return base(context, {
-    tableBg: colors.black,
+    tableBg: colors.highContrast.black,
     th: colors.highContrast.green,
-    td: colors.white,
-    thBg: colors.black,
+    td: colors.highContrast.white,
+    thBg: colors.highContrast.black,
     trBorder: colors.highContrast.yellow,
   });
 }
