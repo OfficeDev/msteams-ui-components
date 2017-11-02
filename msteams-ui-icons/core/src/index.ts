@@ -24,6 +24,7 @@ export const iconTypes = {
   magnifyingGlass: '"\\e446"',
   error: '"\\e450"',
   link: '"\\e612"',
+  listDocument: '"\\e620"',
   monkey: '"\\e633"',
   close: '"\\e8bb"',
   sublist: '"\\e941"',
