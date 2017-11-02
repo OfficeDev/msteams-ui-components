@@ -147,16 +147,16 @@ function highContrast(context: Context) {
   const { colors } = context;
   return base(context, {
     rest: {
-      border: colors.white,
-      background: colors.black,
+      border: colors.highContrast.white,
+      background: colors.highContrast.black,
     },
     hover: {
-      background: colors.black,
-      border: colors.white,
+      background: colors.highContrast.black,
+      border: colors.highContrast.white,
     },
     disabled: {
       background: colors.highContrast.green,
-      border: colors.white,
+      border: colors.highContrast.white,
     },
     focus: {
       outline: colors.highContrast.yellow,
@@ -165,7 +165,7 @@ function highContrast(context: Context) {
       background: colors.highContrast.yellow,
       border: colors.highContrast.yellow,
     },
-    checkmark: colors.black,
+    checkmark: colors.highContrast.black,
     container: colors.transparent,
   });
 }

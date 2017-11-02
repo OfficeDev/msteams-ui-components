@@ -12,7 +12,9 @@ const PanelView: React.StatelessComponent<PanelProps & InjectedTeamsProps> =
     const { context, className, ...rest } = props;
     const classNames = panel(context);
     return (
-      <div className={classes(classNames.container, className)} {...rest}>
+      <div
+        data-component-type="Panel"
+        className={classes(classNames.container, className)} {...rest}>
         {props.children}
       </div>
     );

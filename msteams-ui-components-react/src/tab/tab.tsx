@@ -29,6 +29,7 @@ class TabInternal extends React.Component<InjectedTeamsProps & TabProps, {}> {
 
     return (
       <button
+        data-component-type="Tab"
         onClick={this.select}
         className={classes.join(' ')}
         {...rest}

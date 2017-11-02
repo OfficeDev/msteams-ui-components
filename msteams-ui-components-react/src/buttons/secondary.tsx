@@ -13,7 +13,9 @@ const SecondaryButtonView: React.StatelessComponent<SecondaryButtonProps & Injec
   const { context, className, ...rest } = props;
   const themeClassName = secondaryButton(context);
 
-  return <button className={classes(themeClassName, className)} {...rest}>{props.children}</button>;
+  return <button
+    data-component-type="SecondaryButton"
+    className={classes(themeClassName, className)} {...rest}>{props.children}</button>;
 };
 
 export const SecondaryButton = connectTeamsComponent(SecondaryButtonView);

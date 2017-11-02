@@ -9,7 +9,9 @@ export interface TdProps
 const TdInternal: React.StatelessComponent<TdProps & InjectedTeamsProps> = (props) => {
   const { context, className, ...rest } = props;
   const themeClassNames = table(context);
-  return <td className={classes(themeClassNames.td, className)} {...rest}>{props.children}</td>;
+  return <td
+    data-component-type="Td"
+    className={classes(themeClassNames.td, className)} {...rest}>{props.children}</td>;
 };
 
 export const Td = connectTeamsComponent<TdProps>(TdInternal);

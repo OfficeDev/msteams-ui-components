@@ -10,7 +10,9 @@ extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLTableElement>, HTMLTabl
 const TableInternal: React.StatelessComponent<TableProps & InjectedTeamsProps> = (props) => {
   const { context, className, children, ...rest } = props;
   const themeClassNames = table(context);
-  return <table className={classes(themeClassNames.table, className)} {...rest}>
+  return <table
+    data-component-type="Table"
+    className={classes(themeClassNames.table, className)} {...rest}>
     {children}
   </table>;
 };

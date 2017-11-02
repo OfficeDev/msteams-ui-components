@@ -13,6 +13,9 @@ function base(context: Context, colors: CheckboxGroupColors) {
   const weights = fontWeights(context);
 
   return {
+    container: style({
+      display: 'inline-block',
+    }),
     label: classes(style({
       display: 'inline-block',
       flex: '0 0 auto',
@@ -50,7 +53,7 @@ function dark(context: Context) {
 function highContrast(context: Context) {
   const { colors } = context;
   return base(context, {
-    label: colors.white,
+    label: colors.highContrast.white,
     errorLabel: colors.highContrast.yellow,
   });
 }

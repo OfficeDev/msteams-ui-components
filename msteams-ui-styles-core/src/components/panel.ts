@@ -62,8 +62,8 @@ function dark(context: Context) {
 function highContrast(context: Context) {
   const { colors } = context;
   return base(context, {
-    background: context.colors.black,
-    border: colors.white,
+    background: context.colors.highContrast.black,
+    border: colors.highContrast.white,
    });
 }
 

@@ -40,12 +40,10 @@ function base(context: Context, colors: TextAreaColors) {
     container: style({
       position: 'relative',
       overflow: 'hidden',
-      display: 'flex',
-      flexDirection: 'column',
     }),
     textArea: style({
-      flex: '1 1 auto',
-      resize: 'none',
+      height: '100%',
+      width: '100%',
       borderRadius: rem(0.3),
       border: `${rem(0.2)} solid ${colors.rest.border}`,
       background: colors.rest.background,
@@ -57,29 +55,29 @@ function base(context: Context, colors: TextAreaColors) {
       ['-webkit-box-sizing']: 'border-box',
       ['-moz-box-sizing']: 'border-box',
       boxSizing: 'border-box',
+      resize: 'none',
     }, {
-        $nest: {
-          '&:active:enabled': {
-            background: colors.active.background,
-            borderBottomColor: colors.active.underline,
-          },
-          '&:hover:inactive:enabled': {
-            background: colors.hover.background,
-            borderBottomColor: colors.hover.underline,
-          },
-          '&:disabled': {
-            background: colors.disabled.background,
-            borderBottomColor: colors.disabled.underline,
-          },
-          '&:focus': {
-            borderBottomColor: colors.active.underline,
-            background: colors.focus.background,
-          },
+      $nest: {
+        '&:active:enabled': {
+          background: colors.active.background,
+          borderBottomColor: colors.active.underline,
         },
-      }),
+        '&:hover:inactive:enabled': {
+          background: colors.hover.background,
+          borderBottomColor: colors.hover.underline,
+        },
+        '&:disabled': {
+          background: colors.disabled.background,
+          borderBottomColor: colors.disabled.underline,
+        },
+        '&:focus': {
+          borderBottomColor: colors.active.underline,
+          background: colors.focus.background,
+        },
+      },
+    }),
     label: classes(style({
       display: 'inline-block',
-      flex: '0 0 auto',
       padding: 0,
       border: 0,
       marginBottom: rem(0.6),
@@ -175,27 +173,27 @@ function highContrast(context: Context) {
   const { colors } = context;
   return base(context, {
     rest: {
-      background: colors.black,
-      border: colors.white,
+      background: colors.highContrast.black,
+      border: colors.highContrast.white,
       underline: colors.transparent,
     },
     active: {
-      background: colors.black,
+      background: colors.highContrast.black,
       underline: colors.highContrast.yellow,
     },
     disabled: {
       background: colors.highContrast.green,
-      underline: colors.white,
+      underline: colors.highContrast.white,
     },
     hover: {
-      background: colors.black,
+      background: colors.highContrast.black,
       underline: colors.transparent,
     },
     focus: {
-      background: colors.black,
+      background: colors.highContrast.black,
       underline: colors.highContrast.yellow,
     },
-    label: colors.white,
+    label: colors.highContrast.white,
     errorLabel: colors.highContrast.yellow,
   });
 }

@@ -24,7 +24,9 @@ class TabGroupInternal extends React.Component<InjectedTeamsProps & TabGroupProp
     const { context, selectedTabId, ...rest } = this.props;
     const themeClassNames = tabClasses(context);
     return (
-      <div className={themeClassNames.container} {...rest}>
+      <div
+        data-component-type="TabGroup"
+        className={themeClassNames.container} {...rest}>
         {this.props.children}
       </div>
     );

@@ -19,6 +19,7 @@ class InputInternal extends React.Component<InputProps & InjectedTeamsProps> {
 
     return (
       <div
+        data-component-type="Input"
         style={style}
         className={classes(themeClassNames.container, errorLabel ? themeClassNames.errorIcon : null, className)}>
         {label || errorLabel ?

@@ -18,7 +18,9 @@ const CompoundButtonView: React.StatelessComponent<CompoundButtonProps & Injecte
 
     const themeClassNames = compoundButton(context);
 
-    return <button className={classes(themeClassNames.container, className)} {...rest}>
+    return <button
+      data-component-type="CompoundButton"
+      className={classes(themeClassNames.container, className)} {...rest}>
       { props.icon ?
       <div className={themeClassNames.icon}>
         {props.icon()}
