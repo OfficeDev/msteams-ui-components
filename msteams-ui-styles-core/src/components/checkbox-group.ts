@@ -9,6 +9,7 @@ interface CheckboxGroupColors {
 }
 
 function base(context: Context, colors: CheckboxGroupColors) {
+  const { rem } = context;
   const sizes = fontSizes(context);
   const weights = fontWeights(context);
 
@@ -18,17 +19,22 @@ function base(context: Context, colors: CheckboxGroupColors) {
     }),
     label: classes(style({
       display: 'inline-block',
-      flex: '0 0 auto',
       padding: 0,
       border: 0,
-      margin: 0,
+      marginBottom: rem(0.8),
+      marginLeft: 0,
+      marginRight: 0,
+      marginTop: 0,
       color: colors.label,
     }), sizes.caption, weights.regular),
     errorLabel: classes(style({
       color: colors.errorLabel,
       padding: 0,
       border: 0,
-      margin: 0,
+      marginBottom: rem(0.8),
+      marginLeft: 0,
+      marginRight: 0,
+      marginTop: 0,
       float: 'right',
     }), sizes.caption, weights.regular),
   };

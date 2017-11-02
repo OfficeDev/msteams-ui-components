@@ -33,6 +33,11 @@ function base(context: Context, colors: RadioButtonColors) {
       display: 'flex',
       alignItems: 'center',
       outline: 'none',
+      $nest: {
+        '& + &' : {
+          marginTop: rem(0.8),
+        },
+      },
     }),
     radio: style({
       position: 'relative',
@@ -44,7 +49,9 @@ function base(context: Context, colors: RadioButtonColors) {
       cursor: 'pointer',
       width: rem(2),
       height: rem(2),
-      margin: rem(0.6),
+      margin: 0,
+      font: 'inherit',
+      padding: 0,
       borderRadius: '100%',
       border: `${rem(0.2)} solid`,
       borderColor: colors.rest.border,
@@ -75,7 +82,9 @@ function base(context: Context, colors: RadioButtonColors) {
         },
       },
     }),
-    label: style({}),
+    label: style({
+      marginLeft: rem(1.2),
+    }),
   };
 }
 

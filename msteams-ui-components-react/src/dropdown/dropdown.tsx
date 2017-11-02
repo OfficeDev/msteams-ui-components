@@ -1,4 +1,5 @@
 import 'mousetrap';
+import { MSTeamsIcon, MSTeamsIconType, MSTeamsIconWeight } from 'msteams-ui-icons-react';
 import { dropdown } from 'msteams-ui-styles-core/lib/components/dropdown';
 import * as React from 'react';
 import { connectTeamsComponent, InjectedTeamsProps } from '../index';
@@ -10,7 +11,6 @@ export interface DropdownProps
   menuRightAlign?: boolean;
   mainButtonText?: string;
   label?: string;
-  renderMainButtonIcon?: () => string | JSX.Element;
   items: DropdownItem[];
 }
 
@@ -56,7 +56,6 @@ class DropdownInternal extends React.Component<DropdownProps & InjectedTeamsProp
       label,
       mainButtonText,
       style,
-      renderMainButtonIcon,
       items,
       ...rest,
     } = this.props;
@@ -70,7 +69,6 @@ class DropdownInternal extends React.Component<DropdownProps & InjectedTeamsProp
       itemContainerClass.push(themeClassNames.showItems);
     }
 
-    const mainButtonIcon = renderMainButtonIcon ? renderMainButtonIcon() : '▼';
     const renderItem = this.renderItemWithClass(themeClassNames.item);
 
     return (
@@ -81,14 +79,20 @@ class DropdownInternal extends React.Component<DropdownProps & InjectedTeamsProp
       >
         {label ? <label className={themeClassNames.label} htmlFor={state.id}>{label}</label> : null}
         <button
-          className={themeClassNames.mainButton}
+          className={themeClassNames.mainButton.container}
           onClick={this.open}
           {...rest}
           id={state.id}
           ref={(ref) => this.mainButton = ref!}
         >
-          {mainButtonText}
-          <span className={themeClassNames.mainButtonIcon}>{mainButtonIcon}</span>
+          {mainButtonText ?
+            <span className={themeClassNames.mainButton.text}>
+              {mainButtonText}
+            </span> : null}
+          <MSTeamsIcon
+            className={themeClassNames.mainButton.icon}
+            iconType={MSTeamsIconType.downCaret}
+            iconWeight={MSTeamsIconWeight.light} />
         </button>
         {state.show ? <div className={itemContainerClass.join(' ')}>
           {items.map(renderItem)}
