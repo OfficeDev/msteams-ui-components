@@ -14,7 +14,7 @@ export const Colors: ColorPalate = {
     gray08: '#DEE0E3',
     gray10: '#F0F2F4',
     gray12: '#F3F4F5',
-    gray13: '#FAFAFB',
+    gray13: '#F8F8F9',
     gray14: '#FAFAFB',
     brand00SemiTransparent: '#9496CA', // needs to be checked
     brand00Dark: '#9FA4FE',
