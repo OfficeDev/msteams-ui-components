@@ -2,30 +2,45 @@ import { style } from 'typestyle';
 import { chooseStyle, Context } from '../context';
 
 interface TableColors {
-  tableBg: string;
-  trBorder: string;
-  thBg: string;
-  th: string;
-  td: string;
+  table: {
+    background: string;
+    text: string;
+  };
+  head: {
+    background: string;
+  };
+  body: {
+    background: string;
+  };
+  row: {
+    border: string;
+  };
 }
 
 function base(c: Context, colors: TableColors) {
-  const { rem } = c;
+  const { rem, font } = c;
+  const { sizes, weights } = font;
+
   return {
     table: style({
-      backgroundColor: colors.tableBg,
-      width: '100%',
+      backgroundColor: colors.table.background,
+      color: colors.table.text,
       borderCollapse: 'collapse',
       padding: 0,
     }),
-    tbody: style({}),
+    thead: style({
+      backgroundColor: colors.head.background,
+    }),
+    tbody: style({
+      backgroundColor: colors.body.background,
+    }),
     td: style({
-      padding: `${rem(0.5)} ${rem(1)}`,
-      color: colors.td,
+      paddingTop: rem(1.4),
+      paddingBottom: rem(1.4),
     }),
     tr: style({
-      borderTop: `${colors.trBorder} ${rem(0.2)} solid`,
-      borderBottom: `${colors.trBorder} ${rem(0.2)} solid`,
+      borderTop: `${colors.row.border} ${rem(0.2)} solid`,
+      borderBottom: `${colors.row.border} ${rem(0.2)} solid`,
     }, {
       $nest: {
         '&:first-child': {
@@ -36,13 +51,9 @@ function base(c: Context, colors: TableColors) {
         },
       },
     }),
-    thead: style({}),
-    th: style({
-      backgroundColor: colors.thBg,
+    th: style(sizes.caption, weights.regular, {
       textAlign: 'left',
-      padding: `${rem(0.5)} ${rem(1)}`,
-      color: colors.th,
-      fontWeight: 'lighter',
+      paddingBottom: rem(0.6),
     }),
   };
 }
@@ -50,33 +61,57 @@ function base(c: Context, colors: TableColors) {
 function light(context: Context) {
   const { colors } = context;
   return base(context, {
-    tableBg: colors.light.gray12,
-    th: colors.light.gray04,
-    td: colors.light.black,
-    thBg: colors.light.white,
-    trBorder: colors.light.white,
+    table: {
+      background: colors.transparent,
+      text: colors.light.gray02,
+    },
+    head: {
+      background: colors.transparent,
+    },
+    body: {
+      background: colors.light.gray14,
+    },
+    row: {
+      border: colors.light.white,
+    },
   });
 }
 
 function dark(context: Context) {
   const { colors } = context;
   return base(context, {
-    tableBg: colors.dark.black,
-    th: colors.dark.white,
-    td: colors.dark.white,
-    thBg: colors.dark.black,
-    trBorder: colors.dark.brand00,
+    table: {
+      background: colors.transparent,
+      text: colors.dark.gray02,
+    },
+    head: {
+      background: colors.transparent,
+    },
+    body: {
+      background: colors.dark.gray14,
+    },
+    row: {
+      border: colors.dark.black,
+    },
   });
 }
 
 function highContrast(context: Context) {
   const { colors } = context;
   return base(context, {
-    tableBg: colors.highContrast.black,
-    th: colors.highContrast.green,
-    td: colors.highContrast.white,
-    thBg: colors.highContrast.black,
-    trBorder: colors.highContrast.yellow,
+    table: {
+      background: colors.transparent,
+      text: colors.highContrast.white,
+    },
+    head: {
+      background: colors.transparent,
+    },
+    body: {
+      background: colors.transparent,
+    },
+    row: {
+      border: colors.highContrast.white,
+    },
   });
 }
 

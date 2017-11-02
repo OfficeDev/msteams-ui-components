@@ -67,7 +67,7 @@ function base(context: Context, colors: PrimaryButtonColors) {
         borderColor: colors.focus.border,
         background: colors.focus.background,
         outline: `${rem(0.2)} solid ${colors.focus.outline}`,
-        outlineOffset: `-${rem(0.5)}`,
+        outlineOffset: `${rem(-0.4)}`,
       },
     },
   });
@@ -92,12 +92,12 @@ function light(context: Context) {
       border: colors.transparent,
     },
     disabled: {
-      background: colors.light.gray10,
-      text: colors.light.gray04,
+      background: colors.light.gray12,
+      text: colors.light.gray06,
       border: colors.transparent,
     },
     focus: {
-      background: colors.light.brand06,
+      background: colors.light.brand04,
       text: colors.light.white,
       outline: colors.light.white,
       border: colors.transparent,
@@ -124,12 +124,12 @@ function dark(context: Context) {
       border: colors.transparent,
     },
     disabled: {
-      background: colors.dark.gray10,
-      text: colors.dark.gray04,
+      background: colors.dark.gray12,
+      text: colors.dark.gray06,
       border: colors.transparent,
     },
     focus: {
-      background: colors.dark.brand06,
+      background: colors.dark.gray04,
       text: colors.dark.black,
       outline: colors.dark.black,
       border: colors.transparent,
@@ -141,30 +141,30 @@ function highContrast(context: Context) {
   const { colors } = context;
   return base(context, {
     rest: {
-      background: colors.highContrast.black,
-      text: colors.highContrast.white,
-      border: colors.highContrast.white,
+      background: colors.highContrast.white,
+      text: colors.highContrast.black,
+      border: colors.transparent,
     },
     hover: {
       background: colors.highContrast.yellow,
       text: colors.highContrast.black,
-      border: colors.highContrast.white,
+      border: colors.transparent,
     },
     down: {
       background: colors.highContrast.yellow,
       text: colors.highContrast.black,
-      border: colors.highContrast.white,
+      border: colors.transparent,
     },
     disabled: {
       background: colors.highContrast.green,
       text: colors.highContrast.black,
-      border: colors.highContrast.white,
+      border: colors.transparent,
     },
     focus: {
       background: colors.highContrast.yellow,
       text: colors.highContrast.black,
       outline: colors.transparent,
-      border: colors.highContrast.white,
+      border: colors.transparent,
     },
   });
 }

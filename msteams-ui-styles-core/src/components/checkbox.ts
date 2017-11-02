@@ -36,6 +36,11 @@ function base(context: Context, colors: CheckboxColors) {
       display: 'flex',
       alignItems: 'center',
       outline: 'none',
+      $nest: {
+        '& + &' : {
+          marginTop: rem(0.8),
+        },
+      },
     }),
     checkbox: style({
       position: 'relative',
@@ -47,7 +52,9 @@ function base(context: Context, colors: CheckboxColors) {
       cursor: 'pointer',
       width: rem(2),
       height: rem(2),
-      margin: rem(0.6),
+      padding: 0,
+      font: 'inherit',
+      margin: 0,
       border: `${rem(0.2)} solid`,
       borderColor: colors.rest.border,
       background: colors.rest.background,
@@ -85,7 +92,9 @@ function base(context: Context, colors: CheckboxColors) {
         },
       },
     }),
-    label: style({}),
+    label: style({
+      marginLeft: rem(1.2),
+    }),
   };
 }
 

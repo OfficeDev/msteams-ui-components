@@ -63,7 +63,7 @@ function base(context: Context, colors: CompoundButtonColors) {
           borderColor: colors.focus.border,
           background: colors.focus.background,
           outline: `${rem(0.2)} solid ${colors.focus.outline}`,
-          outlineOffset: `-${rem(0.5)}`,
+          outlineOffset: `-${rem(0.4)}`,
         },
         '&:active': {
           background: colors.down.background,

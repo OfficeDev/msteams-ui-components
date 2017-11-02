@@ -1,11 +1,14 @@
 import { classes, style } from 'typestyle';
 import { chooseStyle, Context } from '../context';
 import { fontSizes } from './font-sizes';
-import { fontWeights } from './font-weights';
 
 interface DropdownColors {
-  mainButton: string;
-  mainButtonBg: string;
+  mainButton: {
+    text: string;
+    background: string;
+    icon: string;
+    border: string;
+  };
   itemContainerBg: string;
   itemBg: string;
   item: string;
@@ -18,7 +21,6 @@ interface DropdownColors {
 function base(context: Context, colors: DropdownColors) {
   const { rem } = context;
   const sizes = fontSizes(context);
-  const weights = fontWeights(context);
 
   const itemContainerClass = style({
     backgroundColor: colors.itemContainerBg,
@@ -41,36 +43,53 @@ function base(context: Context, colors: DropdownColors) {
       minWidth: rem(2.2),
     }),
     label: classes(style({
+      display: 'inline-block',
       padding: 0,
-      margin: 0,
       border: 0,
+      marginBottom: rem(0.8),
+      marginLeft: 0,
+      marginRight: 0,
+      marginTop: 0,
       color: colors.label,
-    }), sizes.caption, weights.regular),
-    mainButton: style({
-      height: rem(3.2),
-      color: colors.mainButton,
-      backgroundColor: colors.mainButtonBg,
-      border: `${rem(0.2)} solid transparent`,
-      padding: `${rem(0.4)} ${rem(1)} ${rem(0.4)} ${rem(1)}`,
-      whiteSpace: 'nowrap',
-      fontSize: rem(1.4),
-      cursor: 'pointer',
-      borderRadius: rem(0.3),
-      width: '100%',
-      textAlign: 'left',
-      outline: 'none',
-      $nest: {
-        '&:focus': {
-          borderBottomColor: colors.underline,
+    }), sizes.caption),
+    mainButton: {
+      container: style({
+        height: rem(3.2),
+        display: 'inline-flex',
+        alignItems: 'center',
+        color: colors.mainButton.text,
+        backgroundColor: colors.mainButton.background,
+        border: `${rem(0.1)} solid`,
+        borderColor: colors.mainButton.border,
+        paddingLeft: rem(0.6),
+        paddingRight: rem(0.6),
+        paddingBottom: 0,
+        paddingTop: 0,
+        fontFamily: 'inherit',
+        whiteSpace: 'nowrap',
+        fontSize: rem(1.4),
+        cursor: 'pointer',
+        borderRadius: rem(0.3),
+        width: '100%',
+        textAlign: 'left',
+        outline: 'none',
+        $nest: {
+          '&:focus': {
+            borderBottomWidth: rem(0.2),
+            borderBottomColor: colors.underline,
+          },
         },
-      },
-    }),
-    mainButtonIcon: style({
-      position: 'absolute',
-      bottom: rem(0.7),
-      right: rem(0.4),
-      textAlign: 'center',
-    }),
+      }),
+      text: style({
+        flex: '1 1 auto',
+        paddingLeft: rem(0.4),
+        paddingRight: rem(0.8),
+      }),
+      icon: style({
+        flex: '0 0 auto',
+        color: colors.mainButton.icon,
+      }),
+    },
     itemContainer: itemContainerClass,
     itemContainerRight: style({
       $nest: {
@@ -118,14 +137,18 @@ function base(context: Context, colors: DropdownColors) {
 function light(context: Context) {
   const { colors } = context;
   return base(context, {
-    mainButton: colors.light.black,
-    mainButtonBg: colors.light.gray12,
+    mainButton: {
+      text: colors.light.black,
+      icon: colors.light.gray02,
+      background: colors.light.gray10,
+      border: colors.transparent,
+    },
     item: colors.light.black,
     itemBg: colors.light.gray12,
     itemContainerBg: colors.light.gray12,
     itemHover: colors.light.white,
     itemHoverBg: colors.light.brand00,
-    label: colors.light.gray01,
+    label: colors.light.gray02,
     underline: colors.light.brand00,
   });
 }
@@ -133,14 +156,18 @@ function light(context: Context) {
 function dark(context: Context) {
   const { colors } = context;
   return base(context, {
-    mainButton: colors.dark.white,
-    mainButtonBg: colors.dark.black,
+    mainButton: {
+      text: colors.dark.white,
+      icon: colors.dark.gray02,
+      background: colors.dark.black,
+      border: colors.transparent,
+    },
     itemBg: colors.dark.black,
     item: colors.dark.white,
     itemContainerBg: colors.dark.black,
     itemHover: colors.dark.white,
     itemHoverBg: colors.dark.brand00,
-    label: colors.dark.white,
+    label: colors.dark.gray02,
     underline: colors.dark.brand00,
   });
 }
@@ -148,8 +175,12 @@ function dark(context: Context) {
 function highContrast(context: Context) {
   const { colors } = context;
   return base(context, {
-    mainButton: colors.highContrast.white,
-    mainButtonBg: colors.highContrast.black,
+    mainButton: {
+      text: colors.highContrast.white,
+      icon: colors.highContrast.white,
+      background: colors.highContrast.black,
+      border: colors.highContrast.white,
+    },
     item: colors.highContrast.white,
     itemBg: colors.highContrast.black,
     itemContainerBg: colors.highContrast.yellow,

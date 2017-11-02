@@ -17,9 +17,9 @@ class DropdownExample extends React.Component {
         <PanelBody>
   <div>
     <div style={styles.section}>No Label</div>
-    <Dropdown mainButtonText="left dropdown" renderMainButtonIcon={() =>
-      <MSTeamsIcon iconWeight={MSTeamsIconWeight.light} iconType={MSTeamsIconType.downCaret} />
-    } style={{ width: '100%' }}
+    <Dropdown
+      mainButtonText="left dropdown"
+      style={{ width: '100%' }}
       items={[
         { text: 'option1', onClick: () => console.log('hello') },
         { text: 'option2', onClick: () => console.log('hello') },
@@ -31,10 +31,11 @@ class DropdownExample extends React.Component {
 
   <div>
   <div style={styles.section}>With a label</div>
-    <Dropdown menuRightAlign mainButtonText="right dropdown" label="I'm a label"
-      renderMainButtonIcon={() =>
-        <MSTeamsIcon iconWeight={MSTeamsIconWeight.light} iconType={MSTeamsIconType.downCaret} />
-      } style={{ width: '100%' }}
+    <Dropdown
+      menuRightAlign
+      mainButtonText="right dropdown" 
+      label="I'm a label"
+      style={{ width: '100%' }}
       items={[
         { text: 'option1', onClick: () => alert('hello') },
         { text: 'option2', onClick: () => alert('hello') },
@@ -46,7 +47,10 @@ class DropdownExample extends React.Component {
 
   <div>
     <div style={styles.section}>Custom content in items</div>
-    <Dropdown mainButtonText="small dropdown" style={{ width: '100%' }} label="Customized item content"
+    <Dropdown
+      mainButtonText="small dropdown"
+      style={{ width: '100%' }}
+      label="Customized item content"
       items={[
         {
           render: () => <MSTeamsIcon iconWeight={MSTeamsIconWeight.light} iconType={MSTeamsIconType.monkey} />,
@@ -58,7 +62,10 @@ class DropdownExample extends React.Component {
 
   <div>
     <div style={styles.section}>Small dropdown</div>
-    <Dropdown mainButtonText="small dropdown" style={{ width: '150px' }} label="Default icon"
+    <Dropdown
+      mainButtonText="small dropdown"
+      style={{ width: '150px' }}
+      label="Default icon"
       items={[
         {
           text: 'Lonnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnng item text',
@@ -70,9 +77,7 @@ class DropdownExample extends React.Component {
 
   <div>
     <div style={styles.section}>Icon only dropdown</div>
-    <Dropdown renderMainButtonIcon={() =>
-      <MSTeamsIcon iconWeight={MSTeamsIconWeight.light} iconType={MSTeamsIconType.ellipsis} />
-    }
+    <Dropdown
       items={[
         { text: 'Option 1', onClick: () => alert('hello') }
       ]}
