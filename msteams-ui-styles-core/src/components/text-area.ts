@@ -40,10 +40,12 @@ function base(context: Context, colors: TextAreaColors) {
     container: style({
       position: 'relative',
       overflow: 'hidden',
+      display: 'flex',
+      flexAlign: 'stretch',
+      flexDirection: 'column',
     }),
     textArea: style({
-      height: '100%',
-      width: '100%',
+      flex: 1,
       borderRadius: rem(0.3),
       border: `${rem(0.2)} solid ${colors.rest.border}`,
       background: colors.rest.background,
@@ -57,25 +59,25 @@ function base(context: Context, colors: TextAreaColors) {
       boxSizing: 'border-box',
       resize: 'none',
     }, {
-      $nest: {
-        '&:active:enabled': {
-          background: colors.active.background,
-          borderBottomColor: colors.active.underline,
+        $nest: {
+          '&:active:enabled': {
+            background: colors.active.background,
+            borderBottomColor: colors.active.underline,
+          },
+          '&:hover:inactive:enabled': {
+            background: colors.hover.background,
+            borderBottomColor: colors.hover.underline,
+          },
+          '&:disabled': {
+            background: colors.disabled.background,
+            borderBottomColor: colors.disabled.underline,
+          },
+          '&:focus': {
+            borderBottomColor: colors.active.underline,
+            background: colors.focus.background,
+          },
         },
-        '&:hover:inactive:enabled': {
-          background: colors.hover.background,
-          borderBottomColor: colors.hover.underline,
-        },
-        '&:disabled': {
-          background: colors.disabled.background,
-          borderBottomColor: colors.disabled.underline,
-        },
-        '&:focus': {
-          borderBottomColor: colors.active.underline,
-          background: colors.focus.background,
-        },
-      },
-    }),
+      }),
     label: classes(style({
       display: 'inline-block',
       padding: 0,
