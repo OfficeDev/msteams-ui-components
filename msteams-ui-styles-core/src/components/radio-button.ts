@@ -47,13 +47,13 @@ function base(context: Context, colors: RadioButtonColors) {
       userSelect: 'none',
       display: 'inline-block',
       cursor: 'pointer',
-      width: rem(2),
-      height: rem(2),
+      width: rem(1.2),
+      height: rem(1.2),
       margin: 0,
       font: 'inherit',
       padding: 0,
       borderRadius: '100%',
-      border: `${rem(0.2)} solid`,
+      border: `${rem(0.06)} solid`,
       borderColor: colors.rest.border,
       background: colors.rest.background,
     }, {
@@ -78,6 +78,9 @@ function base(context: Context, colors: RadioButtonColors) {
               borderColor: colors.selected.border,
               background: colors.selected.background,
             },
+            // '&:focus': {
+            //   boxShadow:`0 0 0 0`, //removed focus on On Click, commented the code for now.
+            // },
           },
         },
       },

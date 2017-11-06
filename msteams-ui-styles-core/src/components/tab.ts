@@ -31,7 +31,7 @@ function base(context: Context, colors: TabColors) {
         paddingRight: 0,
         cursor: 'pointer',
         display: 'inline-block',
-        borderBottom: `transparent ${rem(0.3)} solid`,
+        borderBottom: `transparent ${rem(0.4)} solid`,
         color: colors.text,
         $nest: {
           '&:last-child': {
@@ -62,10 +62,10 @@ function base(context: Context, colors: TabColors) {
 function light(context: Context) {
   const { colors } = context;
   return base(context, {
-    text: colors.light.black,
+    text: colors.light.gray02,
     textActive: colors.light.brand00,
     underline: colors.light.brand00,
-    containerUnderline: colors.light.gray06,
+    containerUnderline: colors.light.gray12, 
     hoverUnderline: colors.light.brand00SemiTransparent,
   });
 }
@@ -73,10 +73,10 @@ function light(context: Context) {
 function dark(context: Context) {
   const { colors } = context;
   return base(context, {
-    text: colors.dark.white,
+    text: colors.dark.gray02,
     textActive: colors.dark.brand00,
     underline: colors.dark.brand00,
-    containerUnderline: colors.dark.white,
+    containerUnderline: colors.dark.gray12,
     hoverUnderline: colors.dark.brand00SemiTransparent,
   });
 }
