@@ -6,13 +6,17 @@ class TextAreaExample extends React.Component {
       const { sizes, weights } = font;
 
       const styles = {
-        header: {...sizes.title, ...weights.semibold},
-        section: {...sizes.title2, marginTop: rem(1.4), marginBottom: rem(1.4)},
+        header: { ...sizes.title, ...weights.semibold },
+        section: { ...sizes.title2, marginTop: rem(1.4), marginBottom: rem(1.4) },
         textArea: {
           paddingLeft: rem(0.5),
           paddingRight: rem(0.5),
-          display: 'inline-block',
-          width: '50%'},
+          flex: 1,
+        },
+        textAreaContainer: {
+          display: 'flex',
+          flexDirection: 'row',
+        },
       }
 
       return <Panel>
@@ -21,17 +25,25 @@ class TextAreaExample extends React.Component {
         </PanelHeader>
         <PanelBody>
           <div style={styles.section}>No Label or Error</div>
-          <TextArea style={styles.textArea} placeholder="Enabled" />
-          <TextArea style={styles.textArea} placeholder="Disabled" disabled/>
+          <div style={styles.textAreaContainer}>
+            <TextArea style={styles.textArea} placeholder="Enabled" />
+            <TextArea style={styles.textArea} placeholder="Disabled" disabled />
+          </div>
           <div style={styles.section}>With a label</div>
-          <TextArea style={styles.textArea} placeholder="Enabled" label="With a label" />
-          <TextArea style={styles.textArea} placeholder="Disabled" label="With a label" disabled />
+          <div style={styles.textAreaContainer}>
+            <TextArea style={styles.textArea} placeholder="Enabled" label="With a label" />
+            <TextArea style={styles.textArea} placeholder="Disabled" label="With a label" disabled />
+          </div>
           <div style={styles.section}>With an error</div>
-          <TextArea style={styles.textArea} placeholder="Enabled" errorLabel="With an error " />
-          <TextArea style={styles.textArea} placeholder="Disabled" errorLabel="With an error" disabled />
+          <div style={styles.textAreaContainer}>
+            <TextArea style={styles.textArea} placeholder="Enabled" errorLabel="With an error " />
+            <TextArea style={styles.textArea} placeholder="Disabled" errorLabel="With an error" disabled />
+          </div>
           <div style={styles.section}>With a label and error</div>
-          <TextArea style={styles.textArea} placeholder="Enabled" label="With a label" errorLabel="With an error" />
-          <TextArea style={styles.textArea} placeholder="Disabled" label="With a label" errorLabel="With an error" disabled />
+          <div style={styles.textAreaContainer}>
+            <TextArea style={styles.textArea} placeholder="Enabled" label="With a label" errorLabel="With an error" />
+            <TextArea style={styles.textArea} placeholder="Disabled" label="With a label" errorLabel="With an error" disabled />
+          </div>
         </PanelBody>
         <PanelFooter>
         </PanelFooter>

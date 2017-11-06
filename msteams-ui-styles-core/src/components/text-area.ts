@@ -42,6 +42,7 @@ function base(context: Context, colors: TextAreaColors) {
       overflow: 'hidden',
       display: 'flex',
       flexAlign: 'stretch',
+      flexDirection: 'column',
     }),
     textArea: style({
       flex: 1,
