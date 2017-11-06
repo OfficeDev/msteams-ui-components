@@ -20,6 +20,7 @@ export const iconTypes = {
   checkmark: '"\\e412"',
   plus: '"\\e415"',
   downCaret: '"\\e41e"',
+  rightCaret: '"\\e421"',
   trashCan: '"\\e42b"',
   magnifyingGlass: '"\\e446"',
   error: '"\\e450"',
