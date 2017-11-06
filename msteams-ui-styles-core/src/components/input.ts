@@ -9,7 +9,7 @@ interface InputColors {
     background: string;
     border: string;
     underline: string;
-    text:string;
+    text: string;
   };
   active: {
     background: string;
@@ -18,7 +18,7 @@ interface InputColors {
   disabled: {
     background: string;
     underline: string;
-    text:string;
+    text: string;
   };
   hover: {
     background: string;
@@ -71,7 +71,7 @@ function base(context: Context, colors: InputColors) {
           '&:disabled': {
             background: colors.disabled.background,
             borderBottomColor: colors.disabled.underline,
-            color:colors.disabled.text,
+            color: colors.disabled.text,
           },
           '&:focus': {
             borderBottomColor: colors.active.underline,
@@ -121,7 +121,7 @@ function light(context: Context) {
       background: colors.light.gray10,
       border: colors.transparent,
       underline: colors.transparent,
-      text:colors.light.gray02,
+      text: colors.light.gray02,
     },
     active: {
       background: colors.light.gray10,
@@ -130,7 +130,7 @@ function light(context: Context) {
     disabled: {
       background: colors.light.gray12,
       underline: colors.transparent,
-      text:colors.light.gray08,
+      text: colors.light.gray08,
     },
     hover: {
       background: colors.light.gray10,
@@ -152,7 +152,7 @@ function dark(context: Context) {
       background: colors.dark.black,
       border: colors.transparent,
       underline: colors.transparent,
-      text:colors.dark.gray02,
+      text: colors.dark.gray02,
     },
     active: {
       background: colors.dark.black,
@@ -161,7 +161,7 @@ function dark(context: Context) {
     disabled: {
       background: colors.dark.gray12,
       underline: colors.transparent,
-      text:colors.dark.gray08,
+      text: colors.dark.gray08,
     },
     hover: {
       background: colors.dark.black,
@@ -183,7 +183,7 @@ function highContrast(context: Context) {
       background: colors.highContrast.black,
       border: colors.highContrast.white,
       underline: colors.transparent,
-      text:colors.highContrast.white,
+      text: colors.highContrast.white,
     },
     active: {
       background: colors.highContrast.black,
@@ -192,7 +192,7 @@ function highContrast(context: Context) {
     disabled: {
       background: colors.highContrast.green,
       underline: colors.highContrast.white,
-      text:colors.highContrast.white,
+      text: colors.highContrast.white,
     },
     hover: {
       background: colors.highContrast.black,

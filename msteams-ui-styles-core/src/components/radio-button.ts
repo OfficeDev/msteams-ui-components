@@ -78,9 +78,6 @@ function base(context: Context, colors: RadioButtonColors) {
               borderColor: colors.selected.border,
               background: colors.selected.background,
             },
-            // '&:focus': {
-            //   boxShadow:`0 0 0 0`, //removed focus on On Click, commented the code for now.
-            // },
           },
         },
       },

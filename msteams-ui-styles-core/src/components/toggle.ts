@@ -10,8 +10,8 @@ interface ToggleColors {
 }
 
 const width = 6;
-const height = 2; //changed the heigth of slider to 20 px
-const ballSize = 1.4; //changed the ball size to 14 x 14
+const height = 2;
+const ballSize = 1.4;
 const ballDeltaX = 0.3;
 
 function base(context: Context, colors: ToggleColors) {

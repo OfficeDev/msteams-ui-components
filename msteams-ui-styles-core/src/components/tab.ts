@@ -65,7 +65,7 @@ function light(context: Context) {
     text: colors.light.gray02,
     textActive: colors.light.brand00,
     underline: colors.light.brand00,
-    containerUnderline: colors.light.gray12, 
+    containerUnderline: colors.light.gray12,
     hoverUnderline: colors.light.brand00SemiTransparent,
   });
 }

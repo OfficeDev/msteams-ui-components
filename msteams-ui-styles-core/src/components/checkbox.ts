@@ -53,12 +53,12 @@ function base(context: Context, colors: CheckboxColors) {
       padding: 0,
       font: 'inherit',
       margin: 0,
-      width: rem(1.6), //changed the size of Checkbox 16 x 16
-      height: rem(1.6), //changed the size of Checkbox 16 x 16
+      width: rem(1.6),
+      height: rem(1.6),
       border: `${rem(0.2)} solid`,
       borderColor: colors.rest.border,
       background: colors.rest.background,
-      borderRadius:rem(0.3),
+      borderRadius: rem(0.3),
     }, {
       $nest: {
         '&:hover': {
@@ -67,12 +67,12 @@ function base(context: Context, colors: CheckboxColors) {
         },
         '&:disabled': {
           background: colors.disabled.background,
-          borderColor: colors.disabled.border,          
+          borderColor: colors.disabled.border,
           $nest: {
             '& + label': {
               color: colors.rest.background,
             },
-          }
+          },
         },
         '&:focus': {
           outline: `${rem(0.4)} solid ${colors.focus.outline}`,
@@ -90,17 +90,14 @@ function base(context: Context, colors: CheckboxColors) {
               content: iconTypes.checkmark,
               color: colors.checkmark,
               position: 'absolute',
-              fontSize: rem(1.2), //changed the inside checkmark down to 12 x 12
+              fontSize: rem(1.2),
               top: `-${rem(0.1)}`,
               left: rem(0.05),
-              width:rem(1.2),
-              height:rem(1.2),
-              padding:0,
-              lineHeight:rem(1),
+              width: rem(1.2),
+              height: rem(1.2),
+              padding: 0,
+              lineHeight: rem(1),
             },
-            // '&:focus': {
-            //   outline: `none`, //removed focus on On Click, comment the code for now
-            // },
           },
         },
       },
