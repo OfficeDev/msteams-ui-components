@@ -1,27 +1,17 @@
 cd msteams-ui-icons/core
-npm install
-npm run clean
 npm run link:self
-npm run build
 cd ../react
-npm install
-npm run clean
 npm run link:self
-npm run link:deps
-npm run build
 cd ../../msteams-ui-styles-core
-npm install
-npm run clean
 npm run link:self
-npm run link:deps
-npm run build
 cd ../msteams-ui-components-react
-npm install
-npm run clean
 npm run link:self
+
+cd ../msteams-ui-icons/react
 npm run link:deps
-npm run build
+cd ../../msteams-ui-styles-core
+npm run link:deps
+cd ../msteams-ui-components-react
+npm run link:deps
 cd ../gh-pages
-npm install
 npm run link:deps
-npm run build
