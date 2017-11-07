@@ -35,13 +35,13 @@ function base(context: Context, colors: SecondaryButtonColors) {
 
   return style({
     height: rem(3.2),
-    minWidth: rem(3.2),
+    minWidth: rem(9.6),
     border: rem(0.2) + ' solid',
     borderRadius: rem(0.3),
-    padding: rem(0.4) + ' ' + rem(3.2),
+    padding: rem(0.4),
     whiteSpace: 'nowrap',
-    position: 'relative',
     cursor: 'pointer',
+    font: 'inherit',
     background: colors.rest.background,
     color: colors.rest.text,
     borderColor: colors.rest.border,
@@ -67,7 +67,7 @@ function base(context: Context, colors: SecondaryButtonColors) {
         borderColor: colors.focus.border,
         background: colors.focus.background,
         outline: `${rem(0.2)} solid ${colors.focus.outline}`,
-        outlineOffset: `-${rem(0.5)}`,
+        outlineOffset: `-${rem(0.4)}`,
       },
     },
   });
@@ -78,29 +78,29 @@ function light(context: Context) {
   return base(context, {
     rest: {
       background: colors.light.white,
-      text: colors.light.black,
+      text: colors.light.gray02,
       border: colors.light.gray06,
     },
     hover: {
       background: colors.light.gray06,
       text: colors.light.black,
-      border: colors.light.gray06,
+      border: colors.transparent,
     },
     down: {
       background: colors.light.gray04,
       text: colors.light.black,
-      border: colors.light.gray04,
+      border: colors.transparent,
     },
     disabled: {
       background: colors.light.white,
-      text: colors.light.gray08,
-      border: colors.light.gray10,
+      text: colors.light.gray06,
+      border: colors.light.gray12,
     },
     focus: {
       background: colors.light.gray06,
       text: colors.light.black,
-      border: colors.light.gray06,
-      outline: colors.black,
+      border: colors.transparent,
+      outline: colors.light.black,
     },
   });
 }
@@ -109,30 +109,30 @@ function dark(context: Context) {
   const { colors } = context;
   return base(context, {
     rest: {
-      background: colors.dark.black,
-      text: colors.dark.white,
+      background: colors.dark.gray10,
+      text: colors.dark.gray02,
       border: colors.dark.gray06,
     },
     hover: {
       background: colors.dark.gray06,
       text: colors.dark.white,
-      border: colors.dark.gray06,
+      border: colors.transparent,
     },
     down: {
-      background: colors.dark.gray04,
+      background: colors.dark.gray08,
       text: colors.dark.white,
-      border: colors.dark.gray04,
+      border: colors.transparent,
     },
     disabled: {
-      background: colors.dark.black,
-      text: colors.dark.gray08,
-      border: colors.dark.gray10,
+      background: colors.dark.gray10,
+      text: colors.dark.gray06,
+      border: colors.dark.gray12,
     },
     focus: {
       background: colors.dark.gray06,
       text: colors.dark.white,
-      border: colors.dark.gray06,
-      outline: colors.white,
+      border: colors.transparent,
+      outline: colors.dark.white,
     },
   });
 }
@@ -141,30 +141,30 @@ function highContrast(context: Context) {
   const { colors } = context;
   return base(context, {
     rest: {
-      background: colors.black,
-      text: colors.white,
-      border: colors.white,
+      background: colors.highContrast.black,
+      text: colors.highContrast.white,
+      border: colors.highContrast.white,
     },
     hover: {
       background: colors.highContrast.yellow,
-      text: colors.black,
-      border: colors.white,
+      text: colors.highContrast.black,
+      border: colors.transparent,
     },
     down: {
       background: colors.highContrast.yellow,
-      text: colors.black,
-      border: colors.white,
+      text: colors.highContrast.black,
+      border: colors.transparent,
     },
     disabled: {
-      background: colors.highContrast.green,
-      text: colors.black,
-      border: colors.white,
+      background: colors.highContrast.black,
+      text: colors.highContrast.green,
+      border: colors.highContrast.green,
     },
     focus: {
       background: colors.highContrast.yellow,
-      text: colors.black,
+      text: colors.highContrast.black,
       outline: colors.transparent,
-      border: colors.white,
+      border: colors.transparent,
     },
   });
 }

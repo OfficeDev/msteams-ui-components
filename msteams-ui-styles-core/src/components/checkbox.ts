@@ -36,6 +36,11 @@ function base(context: Context, colors: CheckboxColors) {
       display: 'flex',
       alignItems: 'center',
       outline: 'none',
+      $nest: {
+        '& + &' : {
+          marginTop: rem(0.8),
+        },
+      },
     }),
     checkbox: style({
       position: 'relative',
@@ -47,7 +52,9 @@ function base(context: Context, colors: CheckboxColors) {
       cursor: 'pointer',
       width: rem(2),
       height: rem(2),
-      margin: rem(0.6),
+      padding: 0,
+      font: 'inherit',
+      margin: 0,
       border: `${rem(0.2)} solid`,
       borderColor: colors.rest.border,
       background: colors.rest.background,
@@ -85,7 +92,9 @@ function base(context: Context, colors: CheckboxColors) {
         },
       },
     }),
-    label: style({}),
+    label: style({
+      marginLeft: rem(1.2),
+    }),
   };
 }
 
@@ -147,16 +156,16 @@ function highContrast(context: Context) {
   const { colors } = context;
   return base(context, {
     rest: {
-      border: colors.white,
-      background: colors.black,
+      border: colors.highContrast.white,
+      background: colors.highContrast.black,
     },
     hover: {
-      background: colors.black,
-      border: colors.white,
+      background: colors.highContrast.black,
+      border: colors.highContrast.white,
     },
     disabled: {
       background: colors.highContrast.green,
-      border: colors.white,
+      border: colors.highContrast.white,
     },
     focus: {
       outline: colors.highContrast.yellow,
@@ -165,7 +174,7 @@ function highContrast(context: Context) {
       background: colors.highContrast.yellow,
       border: colors.highContrast.yellow,
     },
-    checkmark: colors.black,
+    checkmark: colors.highContrast.black,
     container: colors.transparent,
   });
 }

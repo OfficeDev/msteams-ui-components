@@ -6,13 +6,14 @@ export interface TabColors {
   underline: string;
   textActive: string;
   containerUnderline: string;
+  hoverUnderline: string;
 }
 
 function base(context: Context, colors: TabColors) {
   const { rem } = context;
   const containerClass = style({
     width: '100%',
-    boxShadow: `${rem(0)} ${rem(0.2)} ${rem(0.3)} ${rem(-0.3)} ${colors.containerUnderline}`,
+    borderBottom: `${rem(0.1)} solid ${colors.containerUnderline}`,
     padding: 0,
     margin: 0,
   });
@@ -23,13 +24,23 @@ function base(context: Context, colors: TabColors) {
         outline: 'none',
         background: 0,
         border: 0,
-        padding: `${rem(1)}`,
+        font: 'inherit',
         margin: 0,
+        marginRight: rem(2),
+        paddingLeft: 0,
+        paddingRight: 0,
         cursor: 'pointer',
         display: 'inline-block',
         borderBottom: `transparent ${rem(0.3)} solid`,
         color: colors.text,
-        paddingBottom: rem(0.8),
+        $nest: {
+          '&:last-child': {
+            marginRight: 0,
+          },
+          '&:hover': {
+            borderBottomColor: colors.hoverUnderline,
+          },
+        },
       },
     },
   });
@@ -51,30 +62,33 @@ function base(context: Context, colors: TabColors) {
 function light(context: Context) {
   const { colors } = context;
   return base(context, {
-    text: colors.black,
+    text: colors.light.black,
     textActive: colors.light.brand00,
     underline: colors.light.brand00,
     containerUnderline: colors.light.gray06,
+    hoverUnderline: colors.light.brand00SemiTransparent,
   });
 }
 
 function dark(context: Context) {
   const { colors } = context;
   return base(context, {
-    text: colors.white,
+    text: colors.dark.white,
     textActive: colors.dark.brand00,
     underline: colors.dark.brand00,
     containerUnderline: colors.dark.white,
+    hoverUnderline: colors.dark.brand00SemiTransparent,
   });
 }
 
 function highContrast(context: Context) {
   const { colors } = context;
   return base(context, {
-    text: colors.white,
-    textActive: colors.white,
-    underline: colors.highContrast.yellow,
+    text: colors.highContrast.white,
+    textActive: colors.highContrast.white,
+    underline: colors.highContrast.blue,
     containerUnderline: colors.highContrast.green,
+    hoverUnderline: colors.highContrast.yellow,
   });
 }
 

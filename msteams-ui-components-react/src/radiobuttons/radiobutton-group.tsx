@@ -1,13 +1,19 @@
+import { radioButtonGroup } from 'msteams-ui-styles-core/lib/components/radio-button-group';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
+import { connectTeamsComponent } from '../teams-context/connect-teams-component';
+import { InjectedTeamsProps } from '../teams-context/connected-component';
+import classes from '../utils/classes';
 
 export interface RadiobuttonGroupProps
   extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
+  label?: string;
+  errorLabel?: string;
   onSelected?: (value: any) => void;
   value?: any;
 }
 
-export class RadiobuttonGroup extends React.Component<RadiobuttonGroupProps> {
+class RadiobuttonGroupInner extends React.Component<RadiobuttonGroupProps & InjectedTeamsProps> {
   static childContextTypes = {
     onSelected: PropTypes.func,
     value: PropTypes.any,
@@ -19,12 +25,24 @@ export class RadiobuttonGroup extends React.Component<RadiobuttonGroupProps> {
   };
 
   render() {
-    const divProps = { ...this.props };
-    delete divProps.onSelected;
-    delete divProps.value;
+    const {context, className, onSelected, value, label, errorLabel, ...rest} = this.props;
+    const themeClassNames = radioButtonGroup(context);
 
     return (
-      <div {...divProps}>{this.props.children}</div>
+      <div
+        data-component-type="RadioButtonGroup"
+        className={classes(themeClassNames.container, className)}
+        {...rest}>
+        {label || errorLabel ?
+          <div>
+            {label ?
+              <label className={themeClassNames.label}>{label}</label> : null}
+            {errorLabel ?
+              <label className={themeClassNames.errorLabel}>{errorLabel}</label> : null}
+          </div>
+          : null}
+        {this.props.children}
+      </div>
     );
   }
 
@@ -42,3 +60,5 @@ export class RadiobuttonGroup extends React.Component<RadiobuttonGroupProps> {
     }
   }
 }
+
+export const RadiobuttonGroup = connectTeamsComponent(RadiobuttonGroupInner);

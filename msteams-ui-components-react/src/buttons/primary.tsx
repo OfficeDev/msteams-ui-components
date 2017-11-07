@@ -10,11 +10,13 @@ export interface PrimaryButtonProps
 }
 
 const PrimaryButtonView: React.StatelessComponent<PrimaryButtonProps & InjectedTeamsProps> =
-  (props: any) => {
+  (props: PrimaryButtonProps & InjectedTeamsProps) => {
     const { context, className, ...rest } = props;
     const themeClassName = primaryButton(context);
 
-    return <button className={classes(themeClassName, className)} {...rest}>{props.children}</button>;
+    return <button
+      data-component-type="PrimaryButton"
+      className={classes(themeClassName, className)} {...rest}>{props.children}</button>;
   };
 
 export const PrimaryButton = connectTeamsComponent(PrimaryButtonView);

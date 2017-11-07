@@ -1,25 +1,26 @@
-import { baseStyle, iconTypes, iconWeights } from 'msteams-ui-icons-core';
 import { classes, style } from 'typestyle';
 import { chooseStyle, Context } from '../context';
 import { fontSizes } from './font-sizes';
-import { fontWeights } from './font-weights';
 
 interface DropdownColors {
-  mainButton: string;
-  mainButtonBg: string;
+  mainButton: {
+    text: string;
+    background: string;
+    icon: string;
+    border: string;
+  };
   itemContainerBg: string;
   itemBg: string;
   item: string;
   itemHoverBg: string;
   itemHover: string;
   label: string;
+  underline: string;
 }
 
 function base(context: Context, colors: DropdownColors) {
-  baseStyle(iconWeights.light);
   const { rem } = context;
   const sizes = fontSizes(context);
-  const weights = fontWeights(context);
 
   const itemContainerClass = style({
     backgroundColor: colors.itemContainerBg,
@@ -38,36 +39,57 @@ function base(context: Context, colors: DropdownColors) {
   return {
     container: style({
       position: 'relative',
-      display: 'block',
+      display: 'inline-block',
+      minWidth: rem(2.2),
     }),
     label: classes(style({
+      display: 'inline-block',
       padding: 0,
-      margin: 0,
       border: 0,
+      marginBottom: rem(0.8),
+      marginLeft: 0,
+      marginRight: 0,
+      marginTop: 0,
       color: colors.label,
-    }), sizes.caption, weights.regular),
-    mainButton: style({
-      height: rem(3.2),
-      color: colors.mainButton,
-      backgroundColor: colors.mainButtonBg,
-      border: 0,
-      padding: `${rem(0.4)} ${rem(1)} ${rem(0.4)} ${rem(1)}`,
-      whiteSpace: 'nowrap',
-      fontSize: rem(1.4),
-      cursor: 'pointer',
-      borderRadius: rem(0.3),
-      width: '100%',
-      textAlign: 'left',
-      $nest: {
-        '&:after': {
-          fontFamily: 'MSTeamsIcons-Light',
-          content: iconTypes.downCaret,
-          position: 'absolute',
-          bottom: rem(0.9),
-          right: rem(0.4),
+    }), sizes.caption),
+    mainButton: {
+      container: style({
+        height: rem(3.2),
+        display: 'inline-flex',
+        alignItems: 'center',
+        color: colors.mainButton.text,
+        backgroundColor: colors.mainButton.background,
+        border: `${rem(0.1)} solid`,
+        borderColor: colors.mainButton.border,
+        paddingLeft: rem(0.6),
+        paddingRight: rem(0.6),
+        paddingBottom: 0,
+        paddingTop: 0,
+        fontFamily: 'inherit',
+        whiteSpace: 'nowrap',
+        fontSize: rem(1.4),
+        cursor: 'pointer',
+        borderRadius: rem(0.3),
+        width: '100%',
+        textAlign: 'left',
+        outline: 'none',
+        $nest: {
+          '&:focus': {
+            borderBottomWidth: rem(0.2),
+            borderBottomColor: colors.underline,
+          },
         },
-      },
-    }),
+      }),
+      text: style({
+        flex: '1 1 auto',
+        paddingLeft: rem(0.4),
+        paddingRight: rem(0.8),
+      }),
+      icon: style({
+        flex: '0 0 auto',
+        color: colors.mainButton.icon,
+      }),
+    },
     itemContainer: itemContainerClass,
     itemContainerRight: style({
       $nest: {
@@ -80,9 +102,8 @@ function base(context: Context, colors: DropdownColors) {
     showItems: style({
       $nest: {
         [`&.${itemContainerClass}`]: {
-          minWidth: rem(10),
+          minWidth: '100%',
           transform: 'scaleY(1)',
-          transition: 'transform 0.3s ease-in-out',
         },
       },
     }),
@@ -99,56 +120,74 @@ function base(context: Context, colors: DropdownColors) {
       color: colors.item,
       cursor: 'pointer',
       outline: 'none',
-    }, {
-        $nest: {
-          '&:hover': {
-            backgroundColor: colors.itemHoverBg,
-            color: colors.itemHover,
-          },
+      $nest: {
+        '&:focus': {
+          backgroundColor: colors.itemHoverBg,
+          color: colors.itemHover,
         },
-      }),
+        '&:hover': {
+          backgroundColor: colors.itemHoverBg,
+          color: colors.itemHover,
+        },
+      },
+    }),
   };
 }
 
 function light(context: Context) {
   const { colors } = context;
   return base(context, {
-    mainButton: colors.light.black,
-    mainButtonBg: colors.light.gray12,
+    mainButton: {
+      text: colors.light.black,
+      icon: colors.light.gray02,
+      background: colors.light.gray10,
+      border: colors.transparent,
+    },
     item: colors.light.black,
     itemBg: colors.light.gray12,
     itemContainerBg: colors.light.gray12,
     itemHover: colors.light.white,
     itemHoverBg: colors.light.brand00,
-    label: colors.light.gray01,
+    label: colors.light.gray02,
+    underline: colors.light.brand00,
   });
 }
 
 function dark(context: Context) {
   const { colors } = context;
   return base(context, {
-    mainButton: colors.dark.white,
-    mainButtonBg: colors.dark.black,
+    mainButton: {
+      text: colors.dark.white,
+      icon: colors.dark.gray02,
+      background: colors.dark.black,
+      border: colors.transparent,
+    },
     itemBg: colors.dark.black,
     item: colors.dark.white,
     itemContainerBg: colors.dark.black,
     itemHover: colors.dark.white,
     itemHoverBg: colors.dark.brand00,
-    label: colors.dark.white,
+    label: colors.dark.gray02,
+    underline: colors.dark.brand00,
   });
 }
 
 function highContrast(context: Context) {
   const { colors } = context;
   return base(context, {
-    mainButton: colors.white,
-    mainButtonBg: colors.black,
-    item: colors.white,
-    itemBg: colors.black,
+    mainButton: {
+      text: colors.highContrast.white,
+      icon: colors.highContrast.white,
+      background: colors.highContrast.black,
+      border: colors.highContrast.white,
+    },
+    item: colors.highContrast.white,
+    itemBg: colors.highContrast.black,
     itemContainerBg: colors.highContrast.yellow,
-    itemHover: colors.white,
+    itemHover: colors.highContrast.white,
     itemHoverBg: colors.highContrast.green,
-    label: colors.white,
+    label: colors.highContrast.white,
+    underline: colors.highContrast.yellow,
   });
 }
 

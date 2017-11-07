@@ -11,9 +11,14 @@ const PanelHeaderView: React.StatelessComponent<PanelHeaderProps & InjectedTeams
   (props) => {
     const { context, className, ...rest } = props;
     const classNames = panel(context);
-    return <div className={classes(classNames.header, className)} {...rest}>
+    return (
+      <div
+        data-component-type="PanelHeader"
+        className={classes(classNames.header, className)}
+        {...rest}>
         {props.children}
-    </div>;
+      </div>
+    );
   };
 
 export const PanelHeader = connectTeamsComponent(PanelHeaderView);

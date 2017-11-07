@@ -1,8 +1,5 @@
 export interface ColorPalate {
   transparent: string;
-  black: string;
-  white: string;
-  gray: string;
   light: {
     black: string;
     white: string;
@@ -15,13 +12,17 @@ export interface ColorPalate {
     gray08: string;
     gray10: string;
     gray12: string;
+    gray13: string;
+    gray14: string;
+    brand00SemiTransparent: string;
     brand00Dark: string;
     brand00: string;
     brand04: string;
     brand06: string;
-    brand08: string;
-    red: string;
+    orchid: string;
     magenta: string;
+    red: string;
+    orange: string;
     yellow: string;
     green: string;
   };
@@ -35,21 +36,27 @@ export interface ColorPalate {
     gray06: string;
     gray08: string;
     gray10: string;
-    gray11: string;
     gray12: string;
+    gray13: string;
+    gray14: string;
+    brand00SemiTransparent: string;
     brand00Light: string;
     brand00: string;
     brand04: string;
     brand06: string;
-    brand08: string;
-    red: string;
+    orchid: string;
     magenta: string;
+    red: string;
+    orange: string;
     yellow: string;
     green: string;
   };
   highContrast: {
+    black: string;
+    white: string;
     yellow: string;
     green: string;
+    blue: string;
   };
   avatars: {
     avatar1: string;

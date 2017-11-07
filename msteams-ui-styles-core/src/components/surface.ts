@@ -21,7 +21,7 @@ function base(context: Context, colors: SurfaceColors) {
 function light(context: Context) {
   const { colors } = context;
   return base(context, {
-    background: colors.gray,
+    background: colors.light.gray10,
     font: colors.light.black,
   });
 }
@@ -29,7 +29,7 @@ function light(context: Context) {
 function dark(context: Context) {
   const { colors } = context;
   return base(context, {
-    background: colors.dark.gray10,
+    background: colors.dark.black,
     font: colors.dark.white,
   });
 }
@@ -37,8 +37,8 @@ function dark(context: Context) {
 function highContrast(context: Context) {
   const { colors } = context;
   return base(context, {
-    background: colors.black,
-    font: colors.white,
+    background: colors.highContrast.black,
+    font: colors.highContrast.white,
   });
 }
 

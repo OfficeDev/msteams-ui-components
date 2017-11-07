@@ -1,3 +1,4 @@
+import { baseStyle, iconTypes, iconWeights } from 'msteams-ui-icons-core';
 import { classes, style } from 'typestyle';
 import { chooseStyle, Context } from '../context';
 import { fontSizes } from './font-sizes';
@@ -26,9 +27,11 @@ interface TextAreaColors {
     underline: string;
   };
   label: string;
+  errorLabel: string;
 }
 
 function base(context: Context, colors: TextAreaColors) {
+  baseStyle(iconWeights.light);
   const { rem } = context;
   const sizes = fontSizes(context);
   const weights = fontWeights(context);
@@ -38,20 +41,23 @@ function base(context: Context, colors: TextAreaColors) {
       position: 'relative',
       overflow: 'hidden',
       display: 'flex',
+      flexAlign: 'stretch',
       flexDirection: 'column',
     }),
     textArea: style({
-      flex: '1 1 auto',
-      resize: 'none',
+      flex: 1,
       borderRadius: rem(0.3),
       border: `${rem(0.2)} solid ${colors.rest.border}`,
       background: colors.rest.background,
       padding: `${rem(0.8)} ${rem(1.2)}`,
       margin: 0,
+      color: 'inherit',
+      font: 'inherit',
       outline: 'none',
       ['-webkit-box-sizing']: 'border-box',
       ['-moz-box-sizing']: 'border-box',
       boxSizing: 'border-box',
+      resize: 'none',
     }, {
         $nest: {
           '&:active:enabled': {
@@ -74,15 +80,36 @@ function base(context: Context, colors: TextAreaColors) {
       }),
     label: classes(style({
       display: 'inline-block',
-      flex: '0 0 auto',
       padding: 0,
       border: 0,
-      marginBottom: rem(0.6),
+      marginBottom: rem(0.8),
       marginLeft: 0,
       marginRight: 0,
       marginTop: 0,
       color: colors.label,
     }), sizes.caption, weights.regular),
+    errorLabel: classes(style({
+      color: colors.errorLabel,
+      padding: 0,
+      border: 0,
+      marginBottom: rem(0.8),
+      marginLeft: 0,
+      marginRight: 0,
+      marginTop: 0,
+      float: 'right',
+    }), sizes.caption, weights.regular),
+    errorIcon: style({
+      $nest: {
+        '&:after': {
+          fontFamily: 'MSTeamsIcons-Light',
+          content: iconTypes.error,
+          position: 'absolute',
+          color: colors.errorLabel,
+          right: rem(1.2),
+          bottom: rem(1),
+        },
+      },
+    }),
   };
 }
 
@@ -111,6 +138,7 @@ function light(context: Context) {
       underline: colors.light.brand00,
     },
     label: colors.light.gray01,
+    errorLabel: colors.light.red,
   });
 }
 
@@ -139,6 +167,7 @@ function dark(context: Context) {
       underline: colors.dark.brand00,
     },
     label: colors.dark.white,
+    errorLabel: colors.dark.red,
   });
 }
 
@@ -146,27 +175,28 @@ function highContrast(context: Context) {
   const { colors } = context;
   return base(context, {
     rest: {
-      background: colors.black,
-      border: colors.white,
+      background: colors.highContrast.black,
+      border: colors.highContrast.white,
       underline: colors.transparent,
     },
     active: {
-      background: colors.black,
+      background: colors.highContrast.black,
       underline: colors.highContrast.yellow,
     },
     disabled: {
       background: colors.highContrast.green,
-      underline: colors.white,
+      underline: colors.highContrast.white,
     },
     hover: {
-      background: colors.black,
+      background: colors.highContrast.black,
       underline: colors.transparent,
     },
     focus: {
-      background: colors.black,
+      background: colors.highContrast.black,
       underline: colors.highContrast.yellow,
     },
-    label: colors.white,
+    label: colors.highContrast.white,
+    errorLabel: colors.highContrast.yellow,
   });
 }
 

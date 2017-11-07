@@ -50,6 +50,8 @@ function base(context: Context, colors: InputColors) {
       background: colors.rest.background,
       padding: `${rem(0.8)} ${rem(1.2)}`,
       margin: 0,
+      color: 'inherit',
+      font: 'inherit',
       outline: 'none',
       ['-webkit-box-sizing']: 'border-box',
       ['-moz-box-sizing']: 'border-box',
@@ -78,7 +80,7 @@ function base(context: Context, colors: InputColors) {
       display: 'inline-block',
       padding: 0,
       border: 0,
-      marginBottom: rem(0.6),
+      marginBottom: rem(0.8),
       marginLeft: 0,
       marginRight: 0,
       marginTop: 0,
@@ -86,6 +88,12 @@ function base(context: Context, colors: InputColors) {
     }), sizes.caption, weights.regular),
     errorLabel: classes(style({
       color: colors.errorLabel,
+      padding: 0,
+      border: 0,
+      marginBottom: rem(0.8),
+      marginLeft: 0,
+      marginRight: 0,
+      marginTop: 0,
       float: 'right',
     }), sizes.caption, weights.regular),
     errorIcon: style({
@@ -165,27 +173,27 @@ function highContrast(context: Context) {
   const { colors } = context;
   return base(context, {
     rest: {
-      background: colors.black,
-      border: colors.white,
+      background: colors.highContrast.black,
+      border: colors.highContrast.white,
       underline: colors.transparent,
     },
     active: {
-      background: colors.black,
+      background: colors.highContrast.black,
       underline: colors.highContrast.yellow,
     },
     disabled: {
       background: colors.highContrast.green,
-      underline: colors.white,
+      underline: colors.highContrast.white,
     },
     hover: {
-      background: colors.black,
+      background: colors.highContrast.black,
       underline: colors.transparent,
     },
     focus: {
-      background: colors.black,
+      background: colors.highContrast.black,
       underline: colors.highContrast.yellow,
     },
-    label: colors.white,
+    label: colors.highContrast.white,
     errorLabel: colors.highContrast.yellow,
   });
 }

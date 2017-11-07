@@ -39,18 +39,20 @@ function base(context: Context, colors: CompoundButtonColors) {
 
   return {
     container: style({
-        minWidth: rem(4.8),
-        minHeight: rem(4.8),
-        display: 'flex',
-        alignItems: 'center',
-        padding: 0,
-        border: `${rem(0.2)} solid`,
-        borderColor: colors.rest.border,
-        borderRadius: rem(0.3),
-        background: colors.rest.background,
-        color: colors.rest.text,
-        cursor: 'pointer',
-      }, {
+      minWidth: rem(4.8),
+      minHeight: rem(4.8),
+      display: 'inline-flex',
+      alignItems: 'center',
+      padding: 0,
+      font: 'inherit',
+      verticalAlign: 'middle',
+      border: `${rem(0.2)} solid`,
+      borderColor: colors.rest.border,
+      borderRadius: rem(0.3),
+      background: colors.rest.background,
+      color: colors.rest.text,
+      cursor: 'pointer',
+    }, {
       $nest: {
         '&:hover:enabled': {
           background: colors.hover.background,
@@ -61,7 +63,7 @@ function base(context: Context, colors: CompoundButtonColors) {
           borderColor: colors.focus.border,
           background: colors.focus.background,
           outline: `${rem(0.2)} solid ${colors.focus.outline}`,
-          outlineOffset: `-${rem(0.5)}`,
+          outlineOffset: `-${rem(0.4)}`,
         },
         '&:active': {
           background: colors.down.background,
@@ -117,7 +119,7 @@ function light(context: Context) {
       text: colors.light.black,
       border: colors.transparent,
       background: colors.light.gray06,
-      outline: colors.black,
+      outline: colors.light.black,
     },
     disabled: {
       background: colors.transparent,
@@ -149,7 +151,7 @@ function dark(context: Context) {
       text: colors.dark.white,
       border: colors.transparent,
       background: colors.dark.gray06,
-      outline: colors.white,
+      outline: colors.dark.white,
     },
     disabled: {
       background: colors.transparent,
@@ -164,29 +166,29 @@ function highContrast(context: Context) {
   return base(context, {
     rest: {
       background: colors.transparent,
-      text: colors.white,
-      border: colors.white,
+      text: colors.highContrast.white,
+      border: colors.highContrast.white,
     },
     hover: {
       background: colors.highContrast.yellow,
-      border: colors.white,
-      text: colors.black,
+      border: colors.highContrast.white,
+      text: colors.highContrast.black,
     },
     down: {
       background: colors.highContrast.yellow,
-      text: colors.black,
-      border: colors.white,
+      text: colors.highContrast.black,
+      border: colors.highContrast.white,
     },
     focus: {
-      text: colors.black,
-      border: colors.white,
+      text: colors.highContrast.black,
+      border: colors.highContrast.white,
       background: colors.highContrast.yellow,
       outline: colors.transparent,
     },
     disabled: {
       background: colors.highContrast.green,
-      text: colors.black,
-      border: colors.white,
+      text: colors.highContrast.black,
+      border: colors.highContrast.white,
     },
   });
 }

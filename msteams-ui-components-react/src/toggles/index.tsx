@@ -13,6 +13,7 @@ const ToggleInternal: React.StatelessComponent<ToggleProps & InjectedTeamsProps>
 
   return (
     <div
+      data-component-type="Toggle"
       className={themeClassNames.container}>
       <input type="checkbox" className={themeClassNames.input} checked={props.checked} />
       <button

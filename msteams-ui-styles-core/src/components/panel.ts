@@ -3,6 +3,7 @@ import { chooseStyle, Context } from '../context';
 
 interface PanelColors {
   background: string;
+  border: string;
 }
 
 function base(context: Context, colors: PanelColors) {
@@ -10,11 +11,15 @@ function base(context: Context, colors: PanelColors) {
   return {
     container: style({
       backgroundColor: colors.background,
+      borderStyle: 'solid',
+      borderWidth: rem(0.2),
+      borderColor: colors.border,
       borderRadius: rem(0.3),
       ['-webkit-box-sizing']: 'border-box',
       ['-moz-box-sizing']: 'border-box',
       boxSizing: 'border-box',
       display: 'flex',
+      overflow: 'hidden',
       flexDirection: 'column',
     }),
     header: style({
@@ -27,7 +32,7 @@ function base(context: Context, colors: PanelColors) {
       marginLeft: spacing.xxxLarge,
       marginRight: spacing.xxxLarge,
       flex: '1 1 auto',
-      overflowY: 'auto',
+      overflow: 'auto',
     }),
     footer: style({
       marginBottom: spacing.xxxLarge,
@@ -39,20 +44,29 @@ function base(context: Context, colors: PanelColors) {
 }
 
 function light(context: Context) {
-  return base(context, { background: context.colors.light.white });
+  const { colors } = context;
+  return base(context, {
+    background: colors.light.white,
+    border: colors.transparent,
+   });
 }
 
 function dark(context: Context) {
-  return base(context, { background: context.colors.dark.black });
+  const { colors } = context;
+  return base(context, {
+    background: context.colors.dark.gray10,
+    border: colors.transparent,
+   });
 }
 
 function highContrast(context: Context) {
-  return base(context, { background: context.colors.black });
+  const { colors } = context;
+  return base(context, {
+    background: context.colors.highContrast.black,
+    border: colors.highContrast.white,
+   });
 }
 
 export function panel(context: Context) {
-  const lightFunc = (c: Context) => light(c);
-  const darkFunc = (c: Context) => dark(c);
-  const highContrastFunc = (c: Context) => highContrast(c);
-  return chooseStyle(context, lightFunc, darkFunc, highContrastFunc);
+  return chooseStyle(context, light, dark, highContrast);
 }

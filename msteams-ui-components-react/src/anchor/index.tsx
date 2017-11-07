@@ -11,7 +11,9 @@ const AnchorInternal: React.StatelessComponent<AnchorProps & InjectedTeamsProps>
   const themeClassName = anchor(context);
 
   return (
-    <a className={classes(themeClassName, className)} {...rest}>{props.children}</a>
+    <a
+      data-component-type="Anchor"
+      className={classes(themeClassName, className)} {...rest}>{props.children}</a>
   );
 };
 

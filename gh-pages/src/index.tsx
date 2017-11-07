@@ -1,10 +1,11 @@
 import { normalize, setupPage } from 'csstips';
-import { Panel, Surface, Tab, TabGroup, TeamsComponentContext, ThemeStyle, Title } from 'msteams-ui-components-react';
+import { Panel, Surface, Tab, TabGroup, TeamsComponentContext, ThemeStyle } from 'msteams-ui-components-react';
 import * as React from 'react';
 import { render } from 'react-dom';
 import { HashRouter } from 'react-router-dom';
+import { AppLayout } from './app-layout';
 import { Content } from './content';
-import { NavigationBar } from './navigation-bar';
+import { Sidebar } from './sidebar';
 
 const mountPoint = 'root';
 
@@ -17,13 +18,21 @@ export interface ContentState {
 }
 
 export class GHPages extends React.Component<{}, ContentState> {
-  constructor() {
-    super();
-    this.onThemeChange = this.onThemeChange.bind(this);
-    this.state = {
+  state = {
+    theme: ThemeStyle.Light,
+    fontSize: 16,
+  };
+
+  componentWillMount() {
+    this.updateTheme(this.getQueryVariable('theme'));
+    this.setState({
       fontSize: this.pageFontSize(),
-      theme: ThemeStyle.Light,
-    };
+    });
+
+    if (this.inTeams()) {
+      microsoftTeams.initialize();
+      microsoftTeams.registerOnThemeChangeHandler(this.updateTheme);
+    }
   }
 
   render() {
@@ -32,44 +41,56 @@ export class GHPages extends React.Component<{}, ContentState> {
         <TeamsComponentContext
           fontSize={this.state.fontSize}
           theme={this.state.theme}>
-          <Surface style={{minHeight: '100%'}}>
-              <Title>MSTeams UI Components</Title>
-              <TabGroup selectedTabId={this.state.theme}>
-                <Tab
-                  tabId={ThemeStyle.Light}
-                  onTabSelect={() => this.onThemeChange(ThemeStyle.Light)}>Light</Tab>
-                <Tab
-                  tabId={ThemeStyle.Dark}
-                  onTabSelect={() => this.onThemeChange(ThemeStyle.Dark)}>Dark</Tab>
-                <Tab
-                  tabId={ThemeStyle.HighContrast}
-                  onTabSelect={() => this.onThemeChange(ThemeStyle.HighContrast)}>High Contrast</Tab>
-              </TabGroup>
-              <Panel>
-                <NavigationBar />
-                <Content />
-              </Panel>
-          </Surface>
+          <AppLayout sidebar={Sidebar} main={Content}/>
         </TeamsComponentContext>
       </HashRouter>
     );
   }
 
-  private onThemeChange(newTheme: ThemeStyle) {
-    this.setState({
-      fontSize: this.pageFontSize(),
-      theme: newTheme,
-    });
+  private updateTheme = (themeStr?: string | null): void => {
+    let theme;
+    switch (themeStr) {
+      case 'dark':
+        theme = ThemeStyle.Dark;
+        break;
+      case 'contrast':
+        theme = ThemeStyle.HighContrast;
+        break;
+      case 'default':
+      default:
+        theme = ThemeStyle.Light;
+    }
+    this.setState({theme});
   }
 
-  private pageFontSize(): number {
-    let fontSize = window.getComputedStyle(document.getElementsByTagName('html')[0]).getPropertyValue('font-size');
-    fontSize = fontSize.replace('px', '');
-    let size = parseInt(fontSize, 10);
-    if (!size) {
-      size = 16;
+  private inTeams = (): boolean => {
+    try {
+      return window.self !== window.top;
+    } catch (e) {
+      return true;
     }
-    return size;
+  }
+
+  private pageFontSize = (): number => {
+    let sizeStr = window.getComputedStyle(document.getElementsByTagName('html')[0]).getPropertyValue('font-size');
+    sizeStr = sizeStr.replace('px', '');
+    let fontSize = parseInt(sizeStr, 10);
+    if (!fontSize) {
+      fontSize = 16;
+    }
+    return fontSize;
+  }
+
+  private getQueryVariable = (variable: string): string | null => {
+    const query = window.location.search.substring(1);
+    const vars = query.split('&');
+    for (const varPairs of vars) {
+        const pair = varPairs.split('=');
+        if (decodeURIComponent(pair[0]) === variable) {
+            return decodeURIComponent(pair[1]);
+        }
+    }
+    return null;
   }
 }
 

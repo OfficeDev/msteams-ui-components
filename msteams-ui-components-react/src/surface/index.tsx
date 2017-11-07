@@ -12,7 +12,9 @@ const SurfaceView: React.StatelessComponent<SurfaceProps & InjectedTeamsProps> =
     const themeClassName = surface(context);
 
     return (
-      <div className={classes(themeClassName, className)} {...rest}>{props.children}</div>
+      <div
+        data-component-type="Surface"
+        className={classes(themeClassName, className)} {...rest}>{props.children}</div>
     );
   };
 
