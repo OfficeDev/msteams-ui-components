@@ -1,6 +1,6 @@
 {
   "name": "msteams-ui-components-react",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "repository": {
@@ -52,7 +52,7 @@
   },
   "dependencies": {
     "mousetrap": "^1.6.1",
-    "msteams-ui-styles-core": "^0.3.0",
-    "msteams-ui-icons-react": "^0.1.1"
+    "msteams-ui-styles-core": "^0.3.1",
+    "msteams-ui-icons-react": "^0.1.2"
   }
 }
