@@ -50,14 +50,15 @@ function base(context: Context, colors: CheckboxColors) {
       userSelect: 'none',
       display: 'inline-block',
       cursor: 'pointer',
-      width: rem(2),
-      height: rem(2),
       padding: 0,
       font: 'inherit',
-      margin: 0,
+      marginLeft: rem(0.4),
+      width: rem(1.6),
+      height: rem(1.6),
       border: `${rem(0.2)} solid`,
       borderColor: colors.rest.border,
       background: colors.rest.background,
+      borderRadius: rem(0.3),
     }, {
       $nest: {
         '&:hover': {
@@ -67,6 +68,11 @@ function base(context: Context, colors: CheckboxColors) {
         '&:disabled': {
           background: colors.disabled.background,
           borderColor: colors.disabled.border,
+          $nest: {
+            '& + label': {
+              color: colors.rest.background,
+            },
+          },
         },
         '&:focus': {
           outline: `${rem(0.4)} solid ${colors.focus.outline}`,
@@ -84,9 +90,13 @@ function base(context: Context, colors: CheckboxColors) {
               content: iconTypes.checkmark,
               color: colors.checkmark,
               position: 'absolute',
-              fontSize: rem(1.4),
+              fontSize: rem(1.2),
               top: `-${rem(0.1)}`,
               left: rem(0.05),
+              width: rem(1.2),
+              height: rem(1.2),
+              padding: 0,
+              lineHeight: rem(1),
             },
           },
         },
@@ -103,7 +113,7 @@ function light(context: Context) {
   return base(context, {
     rest: {
       border: colors.light.gray03,
-      background: colors.light.white,
+      background: colors.light.gray03,
     },
     hover: {
       background: colors.light.white,
@@ -111,7 +121,7 @@ function light(context: Context) {
     },
     disabled: {
       background: colors.light.gray10,
-      border: colors.light.gray12,
+      border: colors.light.gray03,
     },
     focus: {
       outline: colors.light.brand00Dark,

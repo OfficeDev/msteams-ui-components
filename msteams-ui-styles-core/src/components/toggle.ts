@@ -10,8 +10,8 @@ interface ToggleColors {
 }
 
 const width = 6;
-const height = 3.2;
-const ballSize = 2.5;
+const height = 2;
+const ballSize = 1.4;
 const ballDeltaX = 0.3;
 
 function base(context: Context, colors: ToggleColors) {
@@ -35,7 +35,7 @@ function base(context: Context, colors: ToggleColors) {
       cursor: 'pointer',
       border: 0,
       top: 0,
-      left: 0,
+      left: rem(0.4),
       right: 0,
       bottom: 0,
       width: '100%',
