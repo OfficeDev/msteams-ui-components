@@ -52,7 +52,7 @@ function base(context: Context, colors: CheckboxColors) {
       cursor: 'pointer',
       padding: 0,
       font: 'inherit',
-      margin: 0,
+      marginLeft: rem(0.4),
       width: rem(1.6),
       height: rem(1.6),
       border: `${rem(0.2)} solid`,

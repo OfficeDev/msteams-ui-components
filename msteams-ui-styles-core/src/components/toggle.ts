@@ -35,7 +35,7 @@ function base(context: Context, colors: ToggleColors) {
       cursor: 'pointer',
       border: 0,
       top: 0,
-      left: 0,
+      left: rem(0.4),
       right: 0,
       bottom: 0,
       width: '100%',
