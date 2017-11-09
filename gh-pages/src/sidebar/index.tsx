@@ -4,8 +4,8 @@ import {
   connectTeamsComponent,
   InjectedTeamsProps,
   Panel,
-  PanelHeader,
-  PanelBody
+  PanelBody,
+  PanelHeader
 } from 'msteams-ui-components-react';
 import { MSTeamsIcon, MSTeamsIconType, MSTeamsIconWeight } from 'msteams-ui-icons-react';
 import * as React from 'react';
@@ -13,7 +13,7 @@ import { RouteComponentProps, withRouter } from 'react-router';
 import { Routes } from '../routes';
 import { sidebar } from './styles';
 
-interface SidebarViewProps  { }
+interface SidebarViewProps { }
 
 class SidebarInner extends React.Component<SidebarViewProps & InjectedTeamsProps & RouteComponentProps<{}>> {
   static buttons = [{
@@ -74,9 +74,9 @@ class SidebarInner extends React.Component<SidebarViewProps & InjectedTeamsProps
   }];
 
   private static icon = (type: string) => {
-   return <MSTeamsIcon
-    style={{ margin: 'auto', fontSize: '28px' }}
-    iconWeight={MSTeamsIconWeight.light} iconType={type} />;
+    return <MSTeamsIcon
+      style={{ margin: 'auto', fontSize: '28px' }}
+      iconWeight={MSTeamsIconWeight.light} iconType={type} />;
   }
 
   render() {
@@ -113,8 +113,8 @@ class SidebarInner extends React.Component<SidebarViewProps & InjectedTeamsProps
   private onClick = (location: string) => {
     return () => {
       this.props.history.push(location);
-    }
+    };
   }
-};
+}
 
-export const Sidebar = withRouter(connectTeamsComponent(SidebarInner));
+export const Sidebar = withRouter<{}>(connectTeamsComponent(SidebarInner));
