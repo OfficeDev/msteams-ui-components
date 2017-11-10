@@ -5,6 +5,7 @@ interface RadioButtonColors {
   rest: {
     border: string;
     background: string;
+    text: string;
   };
   hover: {
     background: string;
@@ -13,6 +14,7 @@ interface RadioButtonColors {
   disabled: {
     background: string;
     border: string;
+    text: string;
   };
   focus: {
     outline: string;
@@ -20,12 +22,15 @@ interface RadioButtonColors {
   selected: {
     background: string;
     border: string;
+    text: string;
   };
   container: string;
 }
 
 function base(context: Context, colors: RadioButtonColors) {
-  const { rem } = context;
+  const { rem, font } = context;
+  const { sizes } = font;
+
   return {
     container: style({
       border: 'none',
@@ -49,7 +54,7 @@ function base(context: Context, colors: RadioButtonColors) {
       cursor: 'pointer',
       width: rem(1.2),
       height: rem(1.2),
-      marginLeft: rem(.4),
+      margin: rem(0.2),
       font: 'inherit',
       padding: 0,
       borderRadius: '100%',
@@ -65,9 +70,15 @@ function base(context: Context, colors: RadioButtonColors) {
         '&:disabled': {
           background: colors.disabled.background,
           borderColor: colors.disabled.border,
+          $nest: {
+            '& + label': {
+              color: colors.disabled.text,
+              cursor: 'default',
+            },
+          },
         },
         '&:focus': {
-          boxShadow: `0 0 0 ${rem(0.4)} ${colors.focus.outline}`,
+          boxShadow: `0 0 0 ${rem(0.2)} ${colors.focus.outline}`,
           outline: 'none',
         },
         '&-selected': {
@@ -78,12 +89,17 @@ function base(context: Context, colors: RadioButtonColors) {
               borderColor: colors.selected.border,
               background: colors.selected.background,
             },
+            '& + label': {
+              color: colors.selected.text,
+            },
           },
         },
       },
     }),
-    label: style({
-      marginLeft: rem(1.2),
+    label: style(sizes.caption, {
+      color: colors.rest.text,
+      cursor: 'pointer',
+      marginLeft: rem(1),
     }),
   };
 }
@@ -92,16 +108,18 @@ function light(context: Context) {
   const { colors } = context;
   return base(context, {
     rest: {
-      border: colors.light.gray03,
-      background: colors.light.white,
+      border: colors.light.gray02,
+      background: colors.transparent,
+      text: colors.light.gray02,
     },
     hover: {
-      background: colors.light.white,
-      border: colors.light.gray03,
+      border: colors.light.gray02,
+      background: colors.transparent,
     },
     disabled: {
+      border: colors.light.gray06,
       background: colors.light.gray10,
-      border: colors.light.gray12,
+      text: colors.light.gray06,
     },
     focus: {
       outline: colors.light.brand00Dark,
@@ -109,6 +127,7 @@ function light(context: Context) {
     selected: {
       background: colors.light.brand00,
       border: colors.light.brand00,
+      text : colors.light.black,
     },
     container: colors.transparent,
   });
@@ -118,16 +137,18 @@ function dark(context: Context) {
   const { colors } = context;
   return base(context, {
     rest: {
-      border: colors.dark.gray03,
-      background: colors.dark.black,
+      border: colors.dark.gray02,
+      background: colors.transparent,
+      text: colors.dark.gray02,
     },
     hover: {
-      background: colors.dark.black,
-      border: colors.dark.gray03,
+      border: colors.dark.gray02,
+      background: colors.transparent,
     },
     disabled: {
+      border: colors.dark.gray06,
       background: colors.dark.gray10,
-      border: colors.dark.gray12,
+      text: colors.dark.gray06,
     },
     focus: {
       outline: colors.dark.brand00Light,
@@ -135,6 +156,7 @@ function dark(context: Context) {
     selected: {
       background: colors.dark.brand00,
       border: colors.dark.brand00,
+      text : colors.dark.white,
     },
     container: colors.transparent,
   });
@@ -145,22 +167,25 @@ function highContrast(context: Context) {
   return base(context, {
     rest: {
       border: colors.highContrast.white,
-      background: colors.highContrast.black,
+      background: colors.transparent,
+      text: colors.highContrast.white,
     },
     hover: {
-      background: colors.highContrast.black,
       border: colors.highContrast.white,
+      background: colors.transparent,
     },
     disabled: {
-      background: colors.highContrast.green,
-      border: colors.highContrast.white,
+      background: colors.transparent,
+      border: colors.highContrast.green,
+      text: colors.highContrast.green,
     },
     focus: {
       outline: colors.highContrast.yellow,
     },
     selected: {
-      background: colors.highContrast.yellow,
-      border: colors.highContrast.yellow,
+      background: colors.highContrast.blue,
+      border: colors.highContrast.blue,
+      text: colors.highContrast.white,
     },
     container: colors.transparent,
   });
