@@ -3,7 +3,7 @@ import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import { connectTeamsComponent, InjectedTeamsProps } from '../index';
 import { TabContext, TabContextType } from './index';
-import { TabProps, TabPropTypes } from './tab';
+import { TabPropTypes } from './tab';
 
 export interface TabGroupProps
   extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
