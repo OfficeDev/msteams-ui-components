@@ -55,6 +55,7 @@ function base(context: Context, colors: RadioButtonColors) {
       width: rem(1.2),
       height: rem(1.2),
       margin: rem(0.2),
+      marginLeft: rem(0.6),
       font: 'inherit',
       padding: 0,
       borderRadius: '100%',

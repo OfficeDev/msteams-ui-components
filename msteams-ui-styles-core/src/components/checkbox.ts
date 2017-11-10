@@ -43,7 +43,7 @@ function base(context: Context, colors: CheckboxColors) {
       outline: 'none',
       $nest: {
         '& + &' : {
-          marginTop: rem(0.8),
+          marginTop: rem(0.4),
         },
       },
     }),
