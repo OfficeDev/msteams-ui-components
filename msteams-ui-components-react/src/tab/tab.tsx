@@ -1,7 +1,6 @@
 import { tab, TabStyles } from 'msteams-ui-styles-core/lib/components/tab';
 import * as React from 'react';
 import { connectTeamsComponent, InjectedTeamsProps } from '../index';
-import uniqueId from '../utils/uniqueId';
 
 export interface TabProps {
   tabs: TabItem[];
