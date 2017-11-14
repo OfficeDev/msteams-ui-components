@@ -33,23 +33,17 @@ function base(context: Context, colors: TabColors) {
         border: 0,
         font: 'inherit',
         margin: 0,
-        marginRight: rem(2),
         padding: `${spacing.xxxSmall} ${spacing.xSmall}`,
         cursor: 'pointer',
         display: 'inline-block',
         borderBottom: `transparent ${rem(0.4)} solid`,
         color: colors.text,
         $nest: {
-          '&:last-child': {
-            marginRight: 0,
-          },
           '&:hover': {
             borderBottomColor: colors.hoverUnderline,
           },
           '&:focus': {
-            borderBottomColor: colors.focusBg,
             color: colors.focus,
-            backgroundColor: colors.focusBg,
           },
         },
       },
@@ -64,6 +58,20 @@ function base(context: Context, colors: TabColors) {
         [`.${containerClass} &`]: {
           borderBottomColor: colors.underline,
           color: colors.textActive,
+        },
+        '&&:focus': {
+          borderBottomColor: colors.focus,
+        },
+      },
+    }),
+    itemContainer: style({
+      display: 'inline-block',
+      marginRight: rem(2),
+      padding: `0 ${spacing.xxSmall}`,
+      outline: 'none',
+      $nest: {
+        '&:focus-within': {
+          backgroundColor: colors.focusBg,
         },
       },
     }),
