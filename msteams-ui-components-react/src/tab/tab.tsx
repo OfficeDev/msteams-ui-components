@@ -1,47 +1,58 @@
-import { tab } from 'msteams-ui-styles-core/lib/components/tab';
-import * as PropTypes from 'prop-types';
+import { tab, TabStyles } from 'msteams-ui-styles-core/lib/components/tab';
 import * as React from 'react';
 import { connectTeamsComponent, InjectedTeamsProps } from '../index';
-import { TabContext, TabContextType } from './index';
+import uniqueId from '../utils/uniqueId';
 
-export interface TabProps
-  extends React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
-  tabId: any;
-  onTabSelect: (tabId: any) => void;
+export interface TabProps {
+  tabs: TabItem[];
+  selectedTabId: any;
 }
 
-export const TabPropTypes = {
-  tabId: PropTypes.any.isRequired,
-};
+export interface TabItem {
+  text: string;
+  onSelect: () => void;
+  id: any;
+}
 
-class TabInternal extends React.Component<InjectedTeamsProps & TabProps, {}> {
-  static contextTypes = TabContextType;
-  static propTypes = TabPropTypes;
-  context: TabContext;
-
+class TabInternal extends React.Component<TabProps & InjectedTeamsProps> {
   render() {
-    const { context, tabId, onTabSelect, ...rest } = this.props;
-    const themeClassNames = tab(context);
-    const classes = [themeClassNames.normal];
-    if (this.context.isSelected(tabId)) {
-      classes.push(themeClassNames.active);
-    }
+    const { context, tabs } = this.props;
+    const styles = tab(context);
+
+    const renderTab = this.renderTabWithStyle(styles);
 
     return (
-      <button
+      <div
         data-component-type="Tab"
-        onClick={this.select}
-        className={classes.join(' ')}
-        {...rest}
+        className={styles.container}
       >
-        {this.props.children}
-      </button>
+        {tabs.map(renderTab)}
+      </div>
     );
   }
 
-  private select = () => {
-    this.props.onTabSelect(this.props.tabId);
+  private renderTabWithStyle = (styles: TabStyles) => {
+    const renderTab = (item: TabItem) => {
+      const classes = [styles.normal];
+
+      if (this.props.selectedTabId === item.id) {
+        classes.push(styles.active);
+      }
+
+      return (
+        <button
+          key={item.id}
+          data-component-type="Tab"
+          onClick={item.onSelect}
+          className={classes.join(' ')}
+        >
+          {item.text}
+        </button>
+      );
+    };
+
+    return renderTab;
   }
 }
 
-export const Tab = connectTeamsComponent<TabProps>(TabInternal);
+export const Tab = connectTeamsComponent(TabInternal);

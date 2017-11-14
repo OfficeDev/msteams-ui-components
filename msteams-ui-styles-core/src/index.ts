@@ -1,5 +1,4 @@
 export * from './components';
-export * from './color-palate';
 export * from './spacing-palate';
 export * from './colors';
 export * from './context';

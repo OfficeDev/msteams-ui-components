@@ -1,5 +1,5 @@
 import { normalize, setupPage } from 'csstips';
-import { Panel, Surface, Tab, TabGroup, TeamsComponentContext, ThemeStyle } from 'msteams-ui-components-react';
+import { Panel, Surface, Tab, TeamsComponentContext, ThemeStyle } from 'msteams-ui-components-react';
 import * as React from 'react';
 import { render } from 'react-dom';
 import { HashRouter } from 'react-router-dom';
@@ -41,7 +41,7 @@ export class GHPages extends React.Component<{}, ContentState> {
         <TeamsComponentContext
           fontSize={this.state.fontSize}
           theme={this.state.theme}>
-          <AppLayout sidebar={Sidebar} main={Content}/>
+          <AppLayout sidebar={Sidebar} main={Content} />
         </TeamsComponentContext>
       </HashRouter>
     );
@@ -60,7 +60,7 @@ export class GHPages extends React.Component<{}, ContentState> {
       default:
         theme = ThemeStyle.Light;
     }
-    this.setState({theme});
+    this.setState({ theme });
   }
 
   private inTeams = (): boolean => {
@@ -85,10 +85,10 @@ export class GHPages extends React.Component<{}, ContentState> {
     const query = window.location.search.substring(1);
     const vars = query.split('&');
     for (const varPairs of vars) {
-        const pair = varPairs.split('=');
-        if (decodeURIComponent(pair[0]) === variable) {
-            return decodeURIComponent(pair[1]);
-        }
+      const pair = varPairs.split('=');
+      if (decodeURIComponent(pair[0]) === variable) {
+        return decodeURIComponent(pair[1]);
+      }
     }
     return null;
   }

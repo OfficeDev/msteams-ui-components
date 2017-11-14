@@ -1,5 +1,6 @@
 import { style } from 'typestyle';
 import { chooseStyle, Context } from '../context';
+import { getReturnType } from '../get-return-type';
 
 export interface TabColors {
   text: string;
@@ -7,10 +8,16 @@ export interface TabColors {
   textActive: string;
   containerUnderline: string;
   hoverUnderline: string;
+  focus: string;
+  focusBg: string;
 }
 
+// tslint:disable-next-line:variable-name
+export const _extractingTabStyles = getReturnType(base);
+export type TabStyles = typeof _extractingTabStyles;
+
 function base(context: Context, colors: TabColors) {
-  const { rem } = context;
+  const { rem, spacing } = context;
   const containerClass = style({
     width: '100%',
     borderBottom: `${rem(0.1)} solid ${colors.containerUnderline}`,
@@ -27,8 +34,7 @@ function base(context: Context, colors: TabColors) {
         font: 'inherit',
         margin: 0,
         marginRight: rem(2),
-        paddingLeft: 0,
-        paddingRight: 0,
+        padding: `${spacing.xxxSmall} ${spacing.xSmall}`,
         cursor: 'pointer',
         display: 'inline-block',
         borderBottom: `transparent ${rem(0.4)} solid`,
@@ -40,6 +46,11 @@ function base(context: Context, colors: TabColors) {
           '&:hover': {
             borderBottomColor: colors.hoverUnderline,
           },
+          '&:focus': {
+            borderBottomColor: colors.focusBg,
+            color: colors.focus,
+            backgroundColor: colors.focusBg,
+          },
         },
       },
     },
@@ -50,7 +61,7 @@ function base(context: Context, colors: TabColors) {
     normal: normalClass,
     active: style({
       $nest: {
-        [`.${containerClass} &.${normalClass}`]: {
+        [`.${containerClass} &`]: {
           borderBottomColor: colors.underline,
           color: colors.textActive,
         },
@@ -67,6 +78,8 @@ function light(context: Context) {
     underline: colors.light.brand00,
     containerUnderline: colors.light.gray12,
     hoverUnderline: colors.light.brand00SemiTransparent,
+    focus: colors.light.white,
+    focusBg: colors.light.brand00,
   });
 }
 
@@ -78,6 +91,8 @@ function dark(context: Context) {
     underline: colors.dark.brand00,
     containerUnderline: colors.dark.gray12,
     hoverUnderline: colors.dark.brand00SemiTransparent,
+    focus: colors.dark.white,
+    focusBg: colors.dark.brand00Light,
   });
 }
 
@@ -89,6 +104,8 @@ function highContrast(context: Context) {
     underline: colors.highContrast.blue,
     containerUnderline: colors.highContrast.green,
     hoverUnderline: colors.highContrast.yellow,
+    focus: colors.highContrast.black,
+    focusBg: colors.highContrast.yellow,
   });
 }
 
