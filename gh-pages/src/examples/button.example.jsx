@@ -21,10 +21,6 @@ class ButtonExample extends React.Component {
           <div style={styles.section}>Secondary</div>
           <SecondaryButton>Enabled</SecondaryButton>
           <SecondaryButton disabled>Disabled</SecondaryButton>
-          <div style={styles.section}>Compound</div>
-          <CompoundButton primaryText="No Icon" secondaryText="Secondary Text" />
-          <CompoundButton icon={this.renderIcon} primaryText="Enabled" secondaryText="Secondary Text" />
-          <CompoundButton icon={this.renderIcon} primaryText="Disabled" secondaryText="Secondary Text" disabled/>
         </PanelBody>
         <PanelFooter>
         </PanelFooter>
