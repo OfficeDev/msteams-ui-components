@@ -1,4 +1,3 @@
-import { style } from 'typestyle';
 import { chooseStyle, Context } from '../context';
 
 interface RadioButtonColors {
@@ -28,11 +27,16 @@ interface RadioButtonColors {
 }
 
 function base(context: Context, colors: RadioButtonColors) {
-  const { rem, font } = context;
+  const names = {
+    container: 'radio-container',
+    button: 'radio-button',
+    label: 'radio-label',
+  };
+  const { css, rem, font } = context;
   const { sizes } = font;
 
   return {
-    container: style({
+    container: css(names.container, {
       border: 'none',
       background: colors.container,
       display: 'flex',
@@ -44,12 +48,11 @@ function base(context: Context, colors: RadioButtonColors) {
         },
       },
     }),
-    radio: style({
+    radio: css(names.button, {
       position: 'relative',
       ['-webkit-user-select']: 'none',
       ['-moz-user-select']: 'none',
       ['-ms-user-select']: 'none',
-      userSelect: 'none',
       display: 'inline-block',
       cursor: 'pointer',
       width: rem(1.2),
@@ -97,7 +100,7 @@ function base(context: Context, colors: RadioButtonColors) {
         },
       },
     }),
-    label: style(sizes.caption, {
+    label: css(names.label, sizes.caption, {
       color: colors.rest.text,
       cursor: 'pointer',
       marginLeft: rem(1),

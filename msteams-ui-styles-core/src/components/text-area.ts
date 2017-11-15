@@ -1,8 +1,5 @@
 import { baseStyle, iconTypes, iconWeights } from 'msteams-ui-icons-core';
-import { classes, style } from 'typestyle';
 import { chooseStyle, Context } from '../context';
-import { fontSizes } from './font-sizes';
-import { fontWeights } from './font-weights';
 
 interface TextAreaColors {
   rest: {
@@ -34,19 +31,25 @@ interface TextAreaColors {
 
 function base(context: Context, colors: TextAreaColors) {
   baseStyle(iconWeights.light);
-  const { rem } = context;
-  const sizes = fontSizes(context);
-  const weights = fontWeights(context);
+  const names = {
+    container: 'textarea-container',
+    textarea: 'textarea-field',
+    label: 'textarea-label',
+    error: 'textarea-error',
+    errorIcon: 'textarea-error-icon',
+  };
+  const { css, font, rem } = context;
+  const { sizes, weights } = font;
 
   return {
-    container: style({
+    container: css(names.container, {
       position: 'relative',
       overflow: 'hidden',
       display: 'flex',
       flexAlign: 'stretch',
       flexDirection: 'column',
     }),
-    textArea: style({
+    textArea: css(names.textarea, {
       flex: 1,
       borderRadius: rem(0.3),
       border: `${rem(0.2)} solid ${colors.rest.border}`,
@@ -81,7 +84,8 @@ function base(context: Context, colors: TextAreaColors) {
           },
         },
       }),
-    label: classes(style({
+    label: css(names.label,
+      sizes.caption, weights.regular, {
       display: 'inline-block',
       padding: 0,
       border: 0,
@@ -90,8 +94,9 @@ function base(context: Context, colors: TextAreaColors) {
       marginRight: 0,
       marginTop: 0,
       color: colors.label,
-    }), sizes.caption, weights.regular),
-    errorLabel: classes(style({
+    }),
+    errorLabel: css(names.error,
+      sizes.caption, weights.regular, {
       color: colors.errorLabel,
       padding: 0,
       border: 0,
@@ -100,8 +105,8 @@ function base(context: Context, colors: TextAreaColors) {
       marginRight: 0,
       marginTop: 0,
       float: 'right',
-    }), sizes.caption, weights.regular),
-    errorIcon: style({
+    }),
+    errorIcon: css(names.errorIcon, {
       $nest: {
         '&:after': {
           fontFamily: 'MSTeamsIcons-Light',

@@ -1,4 +1,3 @@
-import { style } from 'typestyle';
 import { chooseStyle, Context } from '../context';
 
 interface ToggleColors {
@@ -15,22 +14,27 @@ const ballSize = 1.4;
 const ballDeltaX = 0.3;
 
 function base(context: Context, colors: ToggleColors) {
-  const { rem } = context;
+  const names = {
+    container: 'toggle',
+    input: 'toggle-input',
+    slider: 'toggle-ball',
+  };
+  const { css, rem } = context;
   const delta = width - ballDeltaX * 2 - ballSize;
 
-  const inputClass = style({
+  const inputClass = css(names.input, {
     display: 'none',
   });
 
   return {
-    container: style({
+    container: css(names.container, {
       position: 'relative',
       display: 'inline-block',
       width: rem(width),
       height: rem(height),
     }),
     input: inputClass,
-    slider: style({
+    slider: css(names.slider, {
       position: 'absolute',
       cursor: 'pointer',
       border: 0,

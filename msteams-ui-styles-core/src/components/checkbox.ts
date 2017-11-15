@@ -1,5 +1,4 @@
 import { baseStyle, iconTypes, iconWeights } from 'msteams-ui-icons-core';
-import { style } from 'typestyle';
 import { chooseStyle, Context } from '../context';
 
 interface CheckboxColors {
@@ -31,11 +30,16 @@ interface CheckboxColors {
 
 function base(context: Context, colors: CheckboxColors) {
   baseStyle(iconWeights.light);
-  const { rem, font } = context;
+  const names = {
+    container: 'check-container',
+    checkbox: 'check-box',
+    label: 'check-label',
+  };
+  const { css, rem, font } = context;
   const { sizes } = font;
 
   return {
-    container: style({
+    container: css(names.container, {
       border: 'none',
       background: colors.container,
       display: 'flex',
@@ -47,7 +51,7 @@ function base(context: Context, colors: CheckboxColors) {
         },
       },
     }),
-    checkbox: style({
+    checkbox: css(names.checkbox, {
       position: 'relative',
       ['-webkit-user-select']: 'none',
       ['-moz-user-select']: 'none',
@@ -113,7 +117,7 @@ function base(context: Context, colors: CheckboxColors) {
         },
       },
     }),
-    label: style(sizes.caption, {
+    label: css(names.label, sizes.caption, {
       marginLeft: rem(1),
       cursor: 'pointer',
       color: colors.rest.text,

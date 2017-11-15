@@ -1,8 +1,5 @@
 import { baseStyle, iconTypes, iconWeights } from 'msteams-ui-icons-core';
-import { classes, style } from 'typestyle';
 import { chooseStyle, Context } from '../context';
-import { fontSizes } from './font-sizes';
-import { fontWeights } from './font-weights';
 
 interface InputColors {
   rest: {
@@ -34,17 +31,22 @@ interface InputColors {
 
 function base(context: Context, colors: InputColors) {
   baseStyle(iconWeights.light);
-
-  const { rem } = context;
-  const sizes = fontSizes(context);
-  const weights = fontWeights(context);
+  const names = {
+    container: 'input-container',
+    input: 'input-field',
+    label: 'input-label',
+    error: 'input-error',
+    errorIcon: 'input-error-icon',
+  };
+  const { css, font, rem } = context;
+  const { sizes, weights } = font;
 
   return {
-    container: style({
+    container: css(names.container, {
       position: 'relative',
       overflow: 'hidden',
     }),
-    input: style({
+    input: css(names.input, {
       height: rem(3.2),
       width: '100%',
       borderRadius: rem(0.3),
@@ -79,7 +81,8 @@ function base(context: Context, colors: InputColors) {
           },
         },
       }),
-    label: classes(style({
+    label: css(names.label,
+      sizes.caption, weights.regular, {
       display: 'inline-block',
       padding: 0,
       border: 0,
@@ -88,8 +91,9 @@ function base(context: Context, colors: InputColors) {
       marginRight: 0,
       marginTop: 0,
       color: colors.label,
-    }), sizes.caption, weights.regular),
-    errorLabel: classes(style({
+    }),
+    errorLabel: css(names.error,
+      sizes.caption, weights.regular, {
       color: colors.errorLabel,
       padding: 0,
       border: 0,
@@ -98,8 +102,8 @@ function base(context: Context, colors: InputColors) {
       marginRight: 0,
       marginTop: 0,
       float: 'right',
-    }), sizes.caption, weights.regular),
-    errorIcon: style({
+    }),
+    errorIcon: css(names.errorIcon, {
       $nest: {
         '&:after': {
           fontFamily: 'MSTeamsIcons-Light',
