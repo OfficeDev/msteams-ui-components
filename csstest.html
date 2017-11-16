@@ -61,8 +61,9 @@ function toggle() {
 				<button id="radio-single-real" class="radio-button" onClick="radio('radio-single')"></button>
 				<label for="radio-single-real" class="radio-label">Radio 1</label>
 			</div>
-			<div class="radio-group">
-				<label class="radio-group-label">Radio Group</label>
+			<div class="radio-group" style="width:200px">
+				<label class="label">Radio Group</label>
+				<label class="error-label">with an error</label>
 				<div class="radio-container">
 					<input id="radio1" type="radio" class="hidden-input" />
 					<button id="radio1-real" onClick="radio('radio1')" class="radio-button"></button>
@@ -79,6 +80,18 @@ function toggle() {
 			<div class="toggle">
 				<input id="toggle1" type="checkbox" class="hidden-input"></input>
 				<button onClick="toggle()" class="toggle-ball"></button>
+			</div>
+
+			<div class="font-title2" style="margin-top: 10px; margin-bottom: 10px">Input Fields:</div>
+			<div class="input-container" style="width: 50%">
+				<label for="input1" class="label">Label</label>
+				<input id="input1" class="input-field" placeholder="Placeholder text"></input>
+			</div>
+
+			<div class="font-title2" style="margin-top: 10px; margin-bottom: 10px">Text Fields:</div>
+			<div class="textarea-container" style="width: 50%">
+				<label for="textarea1" class="label">Label</label>
+				<textarea id="textarea1" class="textarea-field" placeholder="Placeholder text"></textarea>
 			</div>
 		</div>
 		<div class="panel-footer"></div>
