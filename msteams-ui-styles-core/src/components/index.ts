@@ -9,6 +9,7 @@ export * from './label';
 export * from './panel';
 export * from './primary-button';
 export * from './radio-button';
+export * from './radio-button-group';
 export * from './secondary-button';
 export * from './surface';
 export * from './tab';

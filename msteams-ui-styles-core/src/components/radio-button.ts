@@ -1,4 +1,5 @@
 import { chooseStyle, Context } from '../context';
+import { hiddenInput } from './hidden-input';
 
 interface RadioButtonColors {
   rest: {
@@ -29,11 +30,14 @@ interface RadioButtonColors {
 function base(context: Context, colors: RadioButtonColors) {
   const names = {
     container: 'radio-container',
+    input: 'radio-input',
     button: 'radio-button',
     label: 'radio-label',
   };
   const { css, rem, font } = context;
   const { sizes } = font;
+
+  const inputClass = hiddenInput(context);
 
   return {
     container: css(names.container, {
@@ -85,14 +89,10 @@ function base(context: Context, colors: RadioButtonColors) {
           boxShadow: `0 0 0 ${rem(0.2)} ${colors.focus.outline}`,
           outline: 'none',
         },
-        '&-selected': {
+        [`.${inputClass}:checked + &`]: {
           borderColor: colors.selected.border,
           background: colors.selected.background,
           $nest: {
-            '&:hover': {
-              borderColor: colors.selected.border,
-              background: colors.selected.background,
-            },
             '& + label': {
               color: colors.selected.text,
             },

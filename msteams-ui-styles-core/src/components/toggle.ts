@@ -1,4 +1,5 @@
 import { chooseStyle, Context } from '../context';
+import { hiddenInput } from './hidden-input';
 
 interface ToggleColors {
   sliderBackground: string;
@@ -22,9 +23,7 @@ function base(context: Context, colors: ToggleColors) {
   const { css, rem } = context;
   const delta = width - ballDeltaX * 2 - ballSize;
 
-  const inputClass = css(names.input, {
-    display: 'none',
-  });
+  const inputClass = hiddenInput(context);
 
   return {
     container: css(names.container, {

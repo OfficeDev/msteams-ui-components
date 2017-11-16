@@ -30,7 +30,7 @@ interface InputColors {
 }
 
 function base(context: Context, colors: InputColors) {
-  baseStyle(iconWeights.light);
+  baseStyle(iconWeights.Light);
   const names = {
     container: 'input-container',
     input: 'input-field',
@@ -107,7 +107,7 @@ function base(context: Context, colors: InputColors) {
       $nest: {
         '&:after': {
           fontFamily: 'MSTeamsIcons-Light',
-          content: iconTypes.error,
+          content: iconTypes.FieldError,
           position: 'absolute',
           color: colors.errorLabel,
           right: rem(1.2),

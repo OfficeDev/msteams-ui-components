@@ -5,7 +5,7 @@ module.exports = () => {
   const { Colors } = require('./lib/colors')
   const { createTypeStyle } = require('typestyle')
   const fs = require('fs')
-  const { surface, panel, primaryButton, secondaryButton, radioButton, toggle, tab, fontSizes, fontWeights } = require('./lib');
+  const { surface, panel, primaryButton, secondaryButton, radioButton, radioButtonGroup, toggle, tab, fontSizes, fontWeights } = require('./lib');
 
   const themeConfigs = [{
     filename: 'msteams-16-light.css',
@@ -47,12 +47,12 @@ module.exports = () => {
 
   themeConfigs.forEach(themeConfig => {
     // Setup
-    const nameMapping = {};  
+    const nameMapping = {};
     const ts = createTypeStyle();
     const cssFunction = (name, ...styles) => {
       const hashedName = ts.style(...styles);
-      if (nameMapping[hashedName]) {
-        throw new Error('Found duplicate hashed names for \'' + nameMapping[hashedName] + '\' and \'' + name + '\'');
+      if (nameMapping[hashedName] && nameMapping[hashedName] !== name) {
+        throw new Error("Duplicate class generated for '" + nameMapping[hashedName] + "' and '" + name + "'");
       }
       nameMapping[hashedName] = name;
       return hashedName;
@@ -71,6 +71,7 @@ module.exports = () => {
     primaryButton(context);
     secondaryButton(context);
     radioButton(context);
+    radioButtonGroup(context);
     tab(context);
     toggle(context);
     fontSizes(context);

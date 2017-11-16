@@ -29,7 +29,7 @@ interface CheckboxColors {
 }
 
 function base(context: Context, colors: CheckboxColors) {
-  baseStyle(iconWeights.light);
+  baseStyle(iconWeights.Light);
   const names = {
     container: 'check-container',
     checkbox: 'check-box',
@@ -102,7 +102,7 @@ function base(context: Context, colors: CheckboxColors) {
             },
             '&::before': {
               fontFamily: 'MSTeamsIcons-Light',
-              content: iconTypes.checkmark,
+              content: iconTypes.Ok,
               color: colors.checkmark,
               position: 'absolute',
               fontSize: rem(1.2),

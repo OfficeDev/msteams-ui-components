@@ -55,23 +55,19 @@ class TabInternal extends React.Component<TabProps & InjectedTeamsProps> {
       }
 
       return (
-        <div
-          className={styles.itemContainer}
+        <button
           key={item.id}
+          data-component-type="Tab"
+          onClick={item.onSelect}
+          className={classes.join(' ')}
+          ref={(ref) => {
+            if (ref) {
+              this.itemButtons.push(ref);
+            }
+          }}
         >
-          <button
-            data-component-type="Tab"
-            onClick={item.onSelect}
-            className={classes.join(' ')}
-            ref={(ref) => {
-              if (ref) {
-                this.itemButtons.push(ref);
-              }
-            }}
-          >
-            {item.text}
-          </button>
-        </div>
+          {item.text}
+        </button>
       );
     };
 

@@ -30,7 +30,7 @@ interface TextAreaColors {
 }
 
 function base(context: Context, colors: TextAreaColors) {
-  baseStyle(iconWeights.light);
+  baseStyle(iconWeights.Light);
   const names = {
     container: 'textarea-container',
     textarea: 'textarea-field',
@@ -110,7 +110,7 @@ function base(context: Context, colors: TextAreaColors) {
       $nest: {
         '&:after': {
           fontFamily: 'MSTeamsIcons-Light',
-          content: iconTypes.error,
+          content: iconTypes.FieldError,
           position: 'absolute',
           color: colors.errorLabel,
           right: rem(1.2),

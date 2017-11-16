@@ -44,19 +44,16 @@ class RadiobuttonInner extends React.Component<RadiobuttonProps & InjectedTeamsP
 
     const actuallySelected = this.isSelected();
     const themeClassNames = radioButton(context);
-    let radioClassName = themeClassNames.radio;
-    if (actuallySelected) {
-      radioClassName = classes(themeClassNames.radio, themeClassNames.radio + '-selected');
-    }
 
     return (
       <div
         data-component-type="RadioButton"
         className={classes(themeClassNames.container, className)}
         {...rest}>
+        <input type="radio" className={themeClassNames.input} checked={selected} />
         <button
           onClick={this.handleSelect}
-          className={radioClassName}
+          className={themeClassNames.radio}
           disabled={disabled} />
         {this.props.label ?
           <label htmlFor={this.state.id} className={themeClassNames.label}>{this.props.label}</label> : null}
