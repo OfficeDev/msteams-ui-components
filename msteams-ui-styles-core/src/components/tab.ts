@@ -34,7 +34,7 @@ function base(context: Context, colors: TabColors) {
       [`.${containerClass} &`]: {
         display: 'inline-block',
         marginRight: rem(2),
-        padding: `${spacing.xxxSmall} ${spacing.xxxSmall}`,
+        padding: spacing.xxSmall,
         outline: 'none',
         background: 0,
         border: 0,
@@ -49,6 +49,7 @@ function base(context: Context, colors: TabColors) {
           },
           '&:focus': {
             color: colors.focus,
+            backgroundColor: colors.focusBg,
           },
         },
       },
@@ -81,7 +82,7 @@ function light(context: Context) {
     containerUnderline: colors.light.gray12,
     hoverUnderline: colors.light.brand00SemiTransparent,
     focus: colors.light.white,
-    focusBg: colors.light.brand00,
+    focusBg: colors.light.brand00Dark,
   });
 }
 

@@ -52,6 +52,7 @@ function base(context: Context, colors: RadioButtonColors) {
         },
       },
     }),
+    input: inputClass,
     radio: css(names.button, {
       position: 'relative',
       ['-webkit-user-select']: 'none',

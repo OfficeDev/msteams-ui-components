@@ -1,5 +1,6 @@
 import { baseStyle, iconTypes, iconWeights } from 'msteams-ui-icons-core';
 import { chooseStyle, Context } from '../context';
+import { hiddenInput } from './hidden-input';
 
 interface CheckboxColors {
   rest: {
@@ -38,6 +39,8 @@ function base(context: Context, colors: CheckboxColors) {
   const { css, rem, font } = context;
   const { sizes } = font;
 
+  const inputClass = hiddenInput(context);
+
   return {
     container: css(names.container, {
       border: 'none',
@@ -51,6 +54,7 @@ function base(context: Context, colors: CheckboxColors) {
         },
       },
     }),
+    input: inputClass,
     checkbox: css(names.checkbox, {
       position: 'relative',
       ['-webkit-user-select']: 'none',
@@ -89,14 +93,10 @@ function base(context: Context, colors: CheckboxColors) {
           boxShadow: `0 0 0 ${rem(0.2)} ${colors.focus.outline}`,
           outline: 'none',
         },
-        '&-checked': {
+        [`.${inputClass}:checked + &`]: {
           borderColor: colors.checked.border,
           background: colors.checked.background,
           $nest: {
-            '&:hover': {
-              borderColor: colors.checked.border,
-              background: colors.checked.background,
-            },
             '& + label': {
               color: colors.checked.text,
             },

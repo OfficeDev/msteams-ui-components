@@ -7,6 +7,7 @@ import uniqueId from '../utils/uniqueId';
 
 export interface CheckboxProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
   onChecked?: (checked: boolean, value: any) => void;
+  name?: string;
   value: any;
   checked?: boolean;
   label?: string;
@@ -39,7 +40,7 @@ class CheckboxInner extends React.Component<CheckboxProps & InjectedTeamsProps, 
   state = { id: uniqueId('ts-cb-') };
 
   render() {
-    const { context, disabled, className, onChecked, value, checked, label, ...rest } = this.props;
+    const { id, name, context, disabled, className, onChecked, value, checked, label, ...rest } = this.props;
 
     const actuallyChecked = this.isChecked();
     const themeClassNames = checkbox(context);
@@ -53,6 +54,13 @@ class CheckboxInner extends React.Component<CheckboxProps & InjectedTeamsProps, 
         data-component-type="Checkbox"
         className={classes(themeClassNames.container, className)}
         {...rest} >
+        <input
+          id={id}
+          name={name}
+          type="checkbox"
+          className={themeClassNames.input}
+          checked={actuallyChecked}
+          readOnly/>
         <button
           id={this.state.id}
           className={checkboxClassNames}

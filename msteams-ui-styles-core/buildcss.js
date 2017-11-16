@@ -5,7 +5,7 @@ module.exports = () => {
   const { Colors } = require('./lib/colors')
   const { createTypeStyle } = require('typestyle')
   const fs = require('fs')
-  const { surface, panel, primaryButton, secondaryButton, radioButton, radioButtonGroup, toggle, tab, fontSizes, fontWeights } = require('./lib');
+  const { input, textArea, surface, panel, primaryButton, secondaryButton, radioButton, radioButtonGroup, toggle, tab, fontSizes, fontWeights } = require('./lib');
 
   const themeConfigs = [{
     filename: 'msteams-16-light.css',
@@ -76,6 +76,8 @@ module.exports = () => {
     toggle(context);
     fontSizes(context);
     fontWeights(context);
+    input(context);
+    textArea(context);
 
     // Build stylesheet
     let stylesheet = ts.getStyles();

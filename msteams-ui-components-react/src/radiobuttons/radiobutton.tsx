@@ -8,6 +8,7 @@ import uniqueId from '../utils/uniqueId';
 export interface RadiobuttonProps
   extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
   onSelected?: (selected: boolean, value: any) => void;
+  name?: string;
   value: any;
   selected?: boolean;
   label?: string;
@@ -40,7 +41,7 @@ class RadiobuttonInner extends React.Component<RadiobuttonProps & InjectedTeamsP
   state = { id: uniqueId('ts-rb-') };
 
   render() {
-    const { context, disabled, className, onSelected, value, selected, label, ...rest } = this.props;
+    const { id, name, context, disabled, className, onSelected, value, selected, label, ...rest } = this.props;
 
     const actuallySelected = this.isSelected();
     const themeClassNames = radioButton(context);
@@ -50,8 +51,15 @@ class RadiobuttonInner extends React.Component<RadiobuttonProps & InjectedTeamsP
         data-component-type="RadioButton"
         className={classes(themeClassNames.container, className)}
         {...rest}>
-        <input type="radio" className={themeClassNames.input} checked={selected} />
+        <input
+          id={id}
+          name={name}
+          type="radio"
+          className={themeClassNames.input}
+          checked={actuallySelected}
+          readOnly/>
         <button
+          id={this.state.id}
           onClick={this.handleSelect}
           className={themeClassNames.radio}
           disabled={disabled} />

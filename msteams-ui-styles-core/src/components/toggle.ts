@@ -27,24 +27,19 @@ function base(context: Context, colors: ToggleColors) {
 
   return {
     container: css(names.container, {
-      position: 'relative',
       display: 'inline-block',
-      width: rem(width),
-      height: rem(height),
+      lineHeight: 1,
     }),
     input: inputClass,
     slider: css(names.slider, {
-      position: 'absolute',
+      position: 'relative',
       cursor: 'pointer',
       border: 0,
-      top: 0,
-      left: rem(0.4),
-      right: 0,
-      bottom: 0,
-      width: '100%',
-      height: '100%',
+      margin: rem(0.2),
+      padding: 0,
+      width: rem(width),
+      height: rem(height),
       backgroundColor: colors.sliderBackground,
-      transition: '0.4s',
       borderRadius: rem(height),
       outline: 'none',
       $nest: {
@@ -56,7 +51,7 @@ function base(context: Context, colors: ToggleColors) {
           left: rem(ballDeltaX),
           top: rem((height - ballSize) / 2),
           backgroundColor: colors.sliderBall,
-          transition: '0.4s',
+          transition: '0.2s',
           borderRadius: '50%',
           $nest: {
             [`.${inputClass}:checked + &`]: {
@@ -65,15 +60,9 @@ function base(context: Context, colors: ToggleColors) {
             },
           },
         },
-        '&:focus:after': {
-          content: '""',
-          position: 'absolute',
-          top: rem(-0.1),
-          bottom: rem(-0.1),
-          left: rem(-0.1),
-          right: rem(-0.1),
-          borderRadius: rem(height),
-          border: `${rem(0.2)} solid ${colors.sliderFocus}`,
+        '&:focus': {
+          boxShadow: `0 0 0 ${rem(0.2)} ${colors.sliderFocus}`,
+          outline: 'none',
         },
         [`.${inputClass}:checked + &`]: {
           backgroundColor: colors.sliderBackgroundChecked,

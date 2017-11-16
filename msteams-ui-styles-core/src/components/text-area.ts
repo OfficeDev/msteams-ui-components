@@ -1,5 +1,6 @@
-import { baseStyle, iconTypes, iconWeights } from 'msteams-ui-icons-core';
 import { chooseStyle, Context } from '../context';
+import { errorLabel } from './error-label';
+import { label } from './label';
 
 interface TextAreaColors {
   rest: {
@@ -30,7 +31,6 @@ interface TextAreaColors {
 }
 
 function base(context: Context, colors: TextAreaColors) {
-  baseStyle(iconWeights.Light);
   const names = {
     container: 'textarea-container',
     textarea: 'textarea-field',
@@ -38,15 +38,16 @@ function base(context: Context, colors: TextAreaColors) {
     error: 'textarea-error',
     errorIcon: 'textarea-error-icon',
   };
-  const { css, font, rem } = context;
-  const { sizes, weights } = font;
+  const { css, rem } = context;
+
+  const labelClass = label(context);
+  const errorLabelClass = errorLabel(context);
 
   return {
     container: css(names.container, {
       position: 'relative',
       overflow: 'hidden',
       display: 'flex',
-      flexAlign: 'stretch',
       flexDirection: 'column',
     }),
     textArea: css(names.textarea, {
@@ -63,6 +64,7 @@ function base(context: Context, colors: TextAreaColors) {
       ['-moz-box-sizing']: 'border-box',
       boxSizing: 'border-box',
       resize: 'none',
+      minHeight: rem(6),
     }, {
         $nest: {
           '&:active:enabled': {
@@ -84,39 +86,13 @@ function base(context: Context, colors: TextAreaColors) {
           },
         },
       }),
-    label: css(names.label,
-      sizes.caption, weights.regular, {
-      display: 'inline-block',
-      padding: 0,
-      border: 0,
-      marginBottom: rem(0.8),
-      marginLeft: 0,
-      marginRight: 0,
-      marginTop: 0,
-      color: colors.label,
-    }),
-    errorLabel: css(names.error,
-      sizes.caption, weights.regular, {
-      color: colors.errorLabel,
-      padding: 0,
-      border: 0,
-      marginBottom: rem(0.8),
-      marginLeft: 0,
-      marginRight: 0,
-      marginTop: 0,
-      float: 'right',
-    }),
+    label: labelClass,
+    errorLabel: errorLabelClass,
     errorIcon: css(names.errorIcon, {
-      $nest: {
-        '&:after': {
-          fontFamily: 'MSTeamsIcons-Light',
-          content: iconTypes.FieldError,
-          position: 'absolute',
-          color: colors.errorLabel,
-          right: rem(1.2),
-          bottom: rem(1),
-        },
-      },
+      position: 'absolute',
+      color: colors.errorLabel,
+      right: rem(1.2),
+      top: '50%',
     }),
   };
 }

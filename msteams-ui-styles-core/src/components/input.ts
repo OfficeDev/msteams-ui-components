@@ -1,5 +1,6 @@
-import { baseStyle, iconTypes, iconWeights } from 'msteams-ui-icons-core';
 import { chooseStyle, Context } from '../context';
+import { errorLabel } from '../index';
+import { label } from './label';
 
 interface InputColors {
   rest: {
@@ -25,12 +26,10 @@ interface InputColors {
     background: string;
     underline: string;
   };
-  label: string;
-  errorLabel: string;
+  errorIcon: string;
 }
 
 function base(context: Context, colors: InputColors) {
-  baseStyle(iconWeights.Light);
   const names = {
     container: 'input-container',
     input: 'input-field',
@@ -38,8 +37,10 @@ function base(context: Context, colors: InputColors) {
     error: 'input-error',
     errorIcon: 'input-error-icon',
   };
-  const { css, font, rem } = context;
-  const { sizes, weights } = font;
+  const { css, rem } = context;
+
+  const labelClass = label(context);
+  const errorLabelClass = errorLabel(context);
 
   return {
     container: css(names.container, {
@@ -81,39 +82,13 @@ function base(context: Context, colors: InputColors) {
           },
         },
       }),
-    label: css(names.label,
-      sizes.caption, weights.regular, {
-      display: 'inline-block',
-      padding: 0,
-      border: 0,
-      marginBottom: rem(0.8),
-      marginLeft: 0,
-      marginRight: 0,
-      marginTop: 0,
-      color: colors.label,
-    }),
-    errorLabel: css(names.error,
-      sizes.caption, weights.regular, {
-      color: colors.errorLabel,
-      padding: 0,
-      border: 0,
-      marginBottom: rem(0.8),
-      marginLeft: 0,
-      marginRight: 0,
-      marginTop: 0,
-      float: 'right',
-    }),
+    label: labelClass,
+    errorLabel: errorLabelClass,
     errorIcon: css(names.errorIcon, {
-      $nest: {
-        '&:after': {
-          fontFamily: 'MSTeamsIcons-Light',
-          content: iconTypes.FieldError,
-          position: 'absolute',
-          color: colors.errorLabel,
-          right: rem(1.2),
-          bottom: rem(1),
-        },
-      },
+      position: 'absolute',
+      color: colors.errorIcon,
+      right: rem(1.2),
+      bottom: rem(0.9),
     }),
   };
 }
@@ -144,8 +119,7 @@ function light(context: Context) {
       background: colors.light.gray10,
       underline: colors.light.brand00,
     },
-    label: colors.light.gray01,
-    errorLabel: colors.light.red,
+    errorIcon: colors.light.red,
   });
 }
 
@@ -175,8 +149,7 @@ function dark(context: Context) {
       background: colors.dark.black,
       underline: colors.dark.brand00,
     },
-    label: colors.dark.white,
-    errorLabel: colors.dark.red,
+    errorIcon: colors.dark.red,
   });
 }
 
@@ -206,8 +179,7 @@ function highContrast(context: Context) {
       background: colors.highContrast.black,
       underline: colors.highContrast.yellow,
     },
-    label: colors.highContrast.white,
-    errorLabel: colors.highContrast.yellow,
+    errorIcon: colors.highContrast.yellow,
   });
 }
 

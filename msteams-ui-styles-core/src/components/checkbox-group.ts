@@ -1,4 +1,6 @@
 import { chooseStyle, Context } from '../context';
+import { errorLabel } from './error-label';
+import { label } from './label';
 
 interface CheckboxGroupColors {
   label: string;
@@ -11,35 +13,16 @@ function base(context: Context, colors: CheckboxGroupColors) {
     label: 'check-group-label',
     error: 'check-group-error',
   };
-  const { css, font, rem } = context;
-  const { sizes, weights } = font;
+  const { css } = context;
+  const labelClass = label(context);
+  const errorLabelClass = errorLabel(context);
 
   return {
     container: css(names.container, {
       display: 'inline-block',
     }),
-    label: css(names.label,
-      sizes.caption, weights.regular, {
-      display: 'inline-block',
-      padding: 0,
-      border: 0,
-      marginBottom: rem(0.8),
-      marginLeft: 0,
-      marginRight: 0,
-      marginTop: 0,
-      color: colors.label,
-    }),
-    errorLabel: css(names.error,
-      sizes.caption, weights.regular, {
-      color: colors.errorLabel,
-      padding: 0,
-      border: 0,
-      marginBottom: rem(0.8),
-      marginLeft: 0,
-      marginRight: 0,
-      marginTop: 0,
-      float: 'right',
-    }),
+    label: labelClass,
+    errorLabel: errorLabelClass,
   };
 }
 

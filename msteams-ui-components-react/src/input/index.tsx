@@ -1,3 +1,4 @@
+import { MSTeamsIcon, MSTeamsIconType, MSTeamsIconWeight } from 'msteams-ui-icons-react';
 import { input } from 'msteams-ui-styles-core/lib/components/input';
 import * as React from 'react';
 import { connectTeamsComponent, InjectedTeamsProps } from '../index';
@@ -14,23 +15,33 @@ class InputInternal extends React.Component<InputProps & InjectedTeamsProps> {
   state = { id: uniqueId('ts-i-') };
 
   render() {
-    const { context, style, className, label, errorLabel, id, ...rest } = this.props;
+    const { name, context, style, className, label, errorLabel, id, ...rest } = this.props;
     const themeClassNames = input(context);
+    const actualId = id || this.state.id;
 
     return (
       <div
         data-component-type="Input"
         style={style}
-        className={classes(themeClassNames.container, errorLabel ? themeClassNames.errorIcon : null, className)}>
+        className={classes(themeClassNames.container, className)}>
         {label || errorLabel ?
           <div>
             {label ?
-              <label className={themeClassNames.label} htmlFor={this.state.id}>{label}</label> : null}
+              <label className={themeClassNames.label} htmlFor={actualId}>{label}</label> : null}
             {errorLabel ?
               <label className={themeClassNames.errorLabel}>{errorLabel}</label> : null}
           </div>
           : null}
-        <input className={themeClassNames.input} id={this.state.id} {...rest} />
+        <input
+          className={themeClassNames.input}
+          name={name}
+          id={actualId}
+          {...rest} />
+        {errorLabel ?
+          <MSTeamsIcon
+            className={themeClassNames.errorIcon}
+            iconType={MSTeamsIconType.FieldError}
+            iconWeight={MSTeamsIconWeight.Light} /> : null}
       </div>
     );
   }

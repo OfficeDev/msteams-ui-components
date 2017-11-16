@@ -5,6 +5,7 @@ export * from './dropdown';
 export * from './font-sizes';
 export * from './font-weights';
 export * from './input';
+export * from './error-label';
 export * from './label';
 export * from './panel';
 export * from './primary-button';
