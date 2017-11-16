@@ -1,4 +1,4 @@
-import { ColorPalate } from './color-palate';
+import { ColorPalate } from './colors';
 import { ThemeStyle } from './theme-style';
 
 export interface ThemeConfig {

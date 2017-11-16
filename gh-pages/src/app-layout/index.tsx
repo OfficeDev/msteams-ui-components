@@ -3,8 +3,8 @@ import * as React from 'react';
 import * as styles from './styles';
 
 interface AppLayoutProps {
-  sidebar: React.ComponentClass | React.StatelessComponent;
-  main: React.ComponentClass | React.StatelessComponent;
+  sidebar: React.ComponentType;
+  main: React.ComponentType;
 }
 
 const AppLayoutInner: React.StatelessComponent<AppLayoutProps & InjectedTeamsProps> = (props) => {

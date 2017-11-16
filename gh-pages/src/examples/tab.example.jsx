@@ -1,17 +1,17 @@
 class TabExample extends React.Component {
   constructor() {
     super();
-    this.selectTabA = this.selectTabA.bind(this);
-    this.selectTabB = this.selectTabB.bind(this);
-    this.state = {selectedTab: 'a'};
+    this.state = {
+      selectedTab: 'a',
+    };
   }
 
   selectTabA() {
-    this.setState({selectedTab: 'a'});
+    this.setState({ selectedTab: 'a' });
   }
 
   selectTabB() {
-    this.setState({selectedTab: 'b'});
+    this.setState({ selectedTab: 'b' });
   }
 
   render() {
@@ -21,8 +21,8 @@ class TabExample extends React.Component {
       const { sizes, weights } = font;
 
       const styles = {
-        header: {...sizes.title, ...weights.semibold},
-        section: {...sizes.title2, marginTop: rem(1.4), marginBottom: rem(1.4)}
+        header: { ...sizes.title, ...weights.semibold },
+        section: { ...sizes.title2, marginTop: rem(1.4), marginBottom: rem(1.4) }
       }
 
       return <Panel>
@@ -31,10 +31,21 @@ class TabExample extends React.Component {
         </PanelHeader>
         <PanelBody>
           <div style={styles.section}></div>
-          <TabGroup selectedTabId={this.state.selectedTab}>
-            <Tab tabId="a" onTabSelect={this.selectTabA}>Tab A</Tab>
-            <Tab tabId="b" onTabSelect={this.selectTabB}>Tab B</Tab>
-          </TabGroup>
+          <Tab
+            selectedTabId={this.state.selectedTab}
+            tabs={[
+              {
+                text: 'Tab A',
+                onSelect: () => this.selectTabA(),
+                id: 'a',
+              },
+              {
+                text: 'Tab B',
+                onSelect: () => this.selectTabB(),
+                id: 'b',
+              }
+            ]}
+          />
         </PanelBody>
         <PanelFooter>
         </PanelFooter>

@@ -1,5 +1,6 @@
-import { TypeStyle } from 'typestyle';
+import { MemoizedFunction } from 'lodash';
 import memoize = require('lodash.memoize');
+import { TypeStyle } from 'typestyle';
 
 export const iconWeights = {
   regular: 0,
@@ -38,9 +39,9 @@ export const iconTypes = {
   checkedbulb: '"\\f201"',
 };
 
-const regularFontFaceTS = new TypeStyle({autoGenerateTag: true});
-const lightFontFaceTS = new TypeStyle({autoGenerateTag: true});
-const iconTS = new TypeStyle({autoGenerateTag: true});
+const regularFontFaceTS = new TypeStyle({ autoGenerateTag: true });
+const lightFontFaceTS = new TypeStyle({ autoGenerateTag: true });
+const iconTS = new TypeStyle({ autoGenerateTag: true });
 
 export const baseStyle = memoize((iconWeight?: number): string => {
   let fontName;

@@ -1,4 +1,4 @@
-import { ColorPalate } from './color-palate';
+import { ColorPalate } from './colors';
 import { FontSizePalate } from './font-size-palate';
 import { FontSizes } from './font-sizes';
 import { FontWeightPalate } from './font-weight-palate';
