@@ -1,7 +1,6 @@
-import { classes, style } from 'typestyle';
 import { chooseStyle, Context } from '../context';
-import { fontSizes } from './font-sizes';
-import { fontWeights } from './font-weights';
+import { errorLabel } from './error-label';
+import { label } from './label';
 
 interface CheckboxGroupColors {
   label: string;
@@ -9,34 +8,21 @@ interface CheckboxGroupColors {
 }
 
 function base(context: Context, colors: CheckboxGroupColors) {
-  const { rem } = context;
-  const sizes = fontSizes(context);
-  const weights = fontWeights(context);
+  const names = {
+    container: 'check-group',
+    label: 'check-group-label',
+    error: 'check-group-error',
+  };
+  const { css } = context;
+  const labelClass = label(context);
+  const errorLabelClass = errorLabel(context);
 
   return {
-    container: style({
+    container: css(names.container, {
       display: 'inline-block',
     }),
-    label: classes(style({
-      display: 'inline-block',
-      padding: 0,
-      border: 0,
-      marginBottom: rem(0.8),
-      marginLeft: 0,
-      marginRight: 0,
-      marginTop: 0,
-      color: colors.label,
-    }), sizes.caption, weights.regular),
-    errorLabel: classes(style({
-      color: colors.errorLabel,
-      padding: 0,
-      border: 0,
-      marginBottom: rem(0.8),
-      marginLeft: 0,
-      marginRight: 0,
-      marginTop: 0,
-      float: 'right',
-    }), sizes.caption, weights.regular),
+    label: labelClass,
+    errorLabel: errorLabelClass,
   };
 }
 

@@ -1,11 +1,18 @@
-import { style } from 'typestyle';
 import { Context } from '../context';
 
 export function fontWeights(context: Context) {
+  const names = {
+    semilight: 'font-semilight',
+    regular: 'font-regular',
+    semibold: 'font-semibold',
+    bold: 'font-bold',
+  };
+  const { css, font } = context;
+  const { weights } = font;
   return {
-    semilight: style(context.font.weights.semilight),
-    regular: style(context.font.weights.regular),
-    semibold: style(context.font.weights.semibold),
-    bold: style(context.font.weights.bold),
+    semilight: css(names.semilight, weights.semilight),
+    regular: css(names.regular, weights.regular),
+    semibold: css(names.semibold, weights.semibold),
+    bold: css(names.bold, weights.bold),
   };
 }

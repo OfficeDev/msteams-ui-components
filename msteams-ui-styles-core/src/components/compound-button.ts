@@ -1,7 +1,4 @@
-import { classes, style } from 'typestyle';
 import { chooseStyle, Context } from '../context';
-import { fontSizes } from './font-sizes';
-import { fontWeights } from './font-weights';
 
 interface CompoundButtonColors {
   rest: {
@@ -33,12 +30,18 @@ interface CompoundButtonColors {
 }
 
 function base(context: Context, colors: CompoundButtonColors) {
-  const { rem } = context;
-  const sizes = fontSizes(context);
-  const weights = fontWeights(context);
+  const names = {
+    container: 'btn-compound',
+    icon: 'btn-compound-icon',
+    primaryText: 'btn-compound-txt1',
+    secondaryText: 'btn-compound-txt2',
+  };
+
+  const { css, font, rem } = context;
+  const { sizes, weights } = font;
 
   return {
-    container: style({
+    container: css(names.container, {
       minWidth: rem(4.8),
       minHeight: rem(4.8),
       display: 'inline-flex',
@@ -77,23 +80,26 @@ function base(context: Context, colors: CompoundButtonColors) {
         },
       },
     }),
-    icon: style({
+    icon: css(names.icon, {
       width: rem(4.4),
       height: rem(4.4),
       display: 'flex',
       alignItems: 'center',
       overflow: 'hidden',
     }),
-    primaryText: classes(style({
+    primaryText: css(names.primaryText,
+      sizes.base, weights.semibold, {
       textAlign: 'left',
       paddingLeft: rem(1.2),
       paddingRight: rem(1.2),
-    }), sizes.base, weights.semibold),
-    secondaryText: classes(style({
+    }),
+    secondaryText: css(names.secondaryText,
+      sizes.caption, weights.regular,
+      {
       textAlign: 'left',
       paddingLeft: rem(1.2),
       paddingRight: rem(1.2),
-    }), sizes.caption, weights.regular),
+    }),
   };
 }
 

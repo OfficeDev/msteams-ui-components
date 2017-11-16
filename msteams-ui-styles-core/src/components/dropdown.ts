@@ -1,6 +1,4 @@
-import { classes, style } from 'typestyle';
 import { chooseStyle, Context } from '../context';
-import { fontSizes } from './font-sizes';
 
 interface DropdownColors {
   mainButton: {
@@ -19,10 +17,26 @@ interface DropdownColors {
 }
 
 function base(context: Context, colors: DropdownColors) {
-  const { rem } = context;
-  const sizes = fontSizes(context);
+  const names = {
+    container: '',
+    label: '',
+    button: {
+      container: '',
+      text: '',
+      icon: '',
+    },
+    item: {
+      container: '',
+      caret: '',
+      showItems: '',
+      content: '',
+    },
+  };
 
-  const itemContainerClass = style({
+  const { css, font, rem } = context;
+  const { sizes } = font;
+
+  const itemContainerClass = css(names.item.container, {
     backgroundColor: colors.itemContainerBg,
     position: 'absolute',
     left: 0,
@@ -37,12 +51,13 @@ function base(context: Context, colors: DropdownColors) {
   });
 
   return {
-    container: style({
+    container: css(names.container, {
       position: 'relative',
       display: 'inline-block',
       minWidth: rem(2.2),
     }),
-    label: classes(style({
+    label: css(names.label,
+      sizes.caption, {
       display: 'inline-block',
       padding: 0,
       border: 0,
@@ -51,9 +66,9 @@ function base(context: Context, colors: DropdownColors) {
       marginRight: 0,
       marginTop: 0,
       color: colors.label,
-    }), sizes.caption),
+    }),
     mainButton: {
-      container: style({
+      container: css(names.button.container, {
         height: rem(3.2),
         display: 'inline-flex',
         alignItems: 'center',
@@ -80,18 +95,18 @@ function base(context: Context, colors: DropdownColors) {
           },
         },
       }),
-      text: style({
+      text: css(names.button.text, {
         flex: '1 1 auto',
         paddingLeft: rem(0.4),
         paddingRight: rem(0.8),
       }),
-      icon: style({
+      icon: css(names.button.icon, {
         flex: '0 0 auto',
         color: colors.mainButton.icon,
       }),
     },
     itemContainer: itemContainerClass,
-    itemContainerRight: style({
+    itemContainerRight: css(names.item.caret, {
       $nest: {
         [`&.${itemContainerClass}`]: {
           right: 0,
@@ -99,7 +114,7 @@ function base(context: Context, colors: DropdownColors) {
         },
       },
     }),
-    showItems: style({
+    showItems: css(names.item.showItems, {
       $nest: {
         [`&.${itemContainerClass}`]: {
           minWidth: '100%',
@@ -107,7 +122,7 @@ function base(context: Context, colors: DropdownColors) {
         },
       },
     }),
-    item: style({
+    item: css(names.item.content, {
       width: '100%',
       position: 'relative',
       height: rem(3.2),

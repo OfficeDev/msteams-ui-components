@@ -1,6 +1,6 @@
 import { baseStyle, iconTypes, iconWeights } from 'msteams-ui-icons-core';
-import { style } from 'typestyle';
 import { chooseStyle, Context } from '../context';
+import { hiddenInput } from './hidden-input';
 
 interface CheckboxColors {
   rest: {
@@ -30,12 +30,19 @@ interface CheckboxColors {
 }
 
 function base(context: Context, colors: CheckboxColors) {
-  baseStyle(iconWeights.light);
-  const { rem, font } = context;
+  baseStyle(iconWeights.Light);
+  const names = {
+    container: 'check-container',
+    checkbox: 'check-box',
+    label: 'check-label',
+  };
+  const { css, rem, font } = context;
   const { sizes } = font;
 
+  const inputClass = hiddenInput(context);
+
   return {
-    container: style({
+    container: css(names.container, {
       border: 'none',
       background: colors.container,
       display: 'flex',
@@ -47,7 +54,8 @@ function base(context: Context, colors: CheckboxColors) {
         },
       },
     }),
-    checkbox: style({
+    input: inputClass,
+    checkbox: css(names.checkbox, {
       position: 'relative',
       ['-webkit-user-select']: 'none',
       ['-moz-user-select']: 'none',
@@ -85,20 +93,16 @@ function base(context: Context, colors: CheckboxColors) {
           boxShadow: `0 0 0 ${rem(0.2)} ${colors.focus.outline}`,
           outline: 'none',
         },
-        '&-checked': {
+        [`.${inputClass}:checked + &`]: {
           borderColor: colors.checked.border,
           background: colors.checked.background,
           $nest: {
-            '&:hover': {
-              borderColor: colors.checked.border,
-              background: colors.checked.background,
-            },
             '& + label': {
               color: colors.checked.text,
             },
             '&::before': {
               fontFamily: 'MSTeamsIcons-Light',
-              content: iconTypes.checkmark,
+              content: iconTypes.Ok,
               color: colors.checkmark,
               position: 'absolute',
               fontSize: rem(1.2),
@@ -113,7 +117,7 @@ function base(context: Context, colors: CheckboxColors) {
         },
       },
     }),
-    label: style(sizes.caption, {
+    label: css(names.label, sizes.caption, {
       marginLeft: rem(1),
       cursor: 'pointer',
       color: colors.rest.text,

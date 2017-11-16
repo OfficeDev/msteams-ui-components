@@ -1,5 +1,5 @@
-import { style } from 'typestyle';
 import { chooseStyle, Context } from '../context';
+import { hiddenInput } from './hidden-input';
 
 interface RadioButtonColors {
   rest: {
@@ -28,11 +28,19 @@ interface RadioButtonColors {
 }
 
 function base(context: Context, colors: RadioButtonColors) {
-  const { rem, font } = context;
+  const names = {
+    container: 'radio-container',
+    input: 'radio-input',
+    button: 'radio-button',
+    label: 'radio-label',
+  };
+  const { css, rem, font } = context;
   const { sizes } = font;
 
+  const inputClass = hiddenInput(context);
+
   return {
-    container: style({
+    container: css(names.container, {
       border: 'none',
       background: colors.container,
       display: 'flex',
@@ -44,12 +52,12 @@ function base(context: Context, colors: RadioButtonColors) {
         },
       },
     }),
-    radio: style({
+    input: inputClass,
+    radio: css(names.button, {
       position: 'relative',
       ['-webkit-user-select']: 'none',
       ['-moz-user-select']: 'none',
       ['-ms-user-select']: 'none',
-      userSelect: 'none',
       display: 'inline-block',
       cursor: 'pointer',
       width: rem(1.2),
@@ -82,14 +90,10 @@ function base(context: Context, colors: RadioButtonColors) {
           boxShadow: `0 0 0 ${rem(0.2)} ${colors.focus.outline}`,
           outline: 'none',
         },
-        '&-selected': {
+        [`.${inputClass}:checked + &`]: {
           borderColor: colors.selected.border,
           background: colors.selected.background,
           $nest: {
-            '&:hover': {
-              borderColor: colors.selected.border,
-              background: colors.selected.background,
-            },
             '& + label': {
               color: colors.selected.text,
             },
@@ -97,7 +101,7 @@ function base(context: Context, colors: RadioButtonColors) {
         },
       },
     }),
-    label: style(sizes.caption, {
+    label: css(names.label, sizes.caption, {
       color: colors.rest.text,
       cursor: 'pointer',
       marginLeft: rem(1),

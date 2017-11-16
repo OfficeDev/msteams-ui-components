@@ -1,4 +1,3 @@
-import { style } from 'typestyle';
 import { chooseStyle, Context } from '../context';
 
 interface AnchorColors {
@@ -23,7 +22,8 @@ interface AnchorColors {
 }
 
 function base(context: Context, colors: AnchorColors) {
-  return style({
+  const name = 'anchor';
+  return context.css(name, {
     textDecoration: 'none',
     color: colors.rest.text,
     outline: 'none',

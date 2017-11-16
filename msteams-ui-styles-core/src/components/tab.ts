@@ -1,4 +1,3 @@
-import { style } from 'typestyle';
 import { chooseStyle, Context } from '../context';
 import { getReturnType } from '../get-return-type';
 
@@ -17,25 +16,31 @@ export const _extractingTabStyles = getReturnType(base);
 export type TabStyles = typeof _extractingTabStyles;
 
 function base(context: Context, colors: TabColors) {
-  const { rem, spacing } = context;
-  const containerClass = style({
+  const names = {
+    container: 'tab-group',
+    normal: 'tab',
+    active: 'tab-active',
+  };
+  const { css, rem, spacing } = context;
+  const containerClass = css(names.container, {
     width: '100%',
     borderBottom: `${rem(0.1)} solid ${colors.containerUnderline}`,
     padding: 0,
     margin: 0,
   });
 
-  const normalClass = style({
+  const normalClass = css(names.normal, {
     $nest: {
       [`.${containerClass} &`]: {
+        display: 'inline-block',
+        marginRight: rem(2),
+        padding: spacing.xxSmall,
         outline: 'none',
         background: 0,
         border: 0,
         font: 'inherit',
         margin: 0,
-        padding: `${spacing.xxxSmall} ${spacing.xSmall}`,
         cursor: 'pointer',
-        display: 'inline-block',
         borderBottom: `transparent ${rem(0.4)} solid`,
         color: colors.text,
         $nest: {
@@ -44,6 +49,7 @@ function base(context: Context, colors: TabColors) {
           },
           '&:focus': {
             color: colors.focus,
+            backgroundColor: colors.focusBg,
           },
         },
       },
@@ -53,25 +59,14 @@ function base(context: Context, colors: TabColors) {
   return {
     container: containerClass,
     normal: normalClass,
-    active: style({
+    active: css(names.active, {
       $nest: {
         [`.${containerClass} &`]: {
           borderBottomColor: colors.underline,
           color: colors.textActive,
         },
-        '&&:focus': {
+        '&:focus': {
           borderBottomColor: colors.focus,
-        },
-      },
-    }),
-    itemContainer: style({
-      display: 'inline-block',
-      marginRight: rem(2),
-      padding: `0 ${spacing.xxSmall}`,
-      outline: 'none',
-      $nest: {
-        '&:focus-within': {
-          backgroundColor: colors.focusBg,
         },
       },
     }),
@@ -87,7 +82,7 @@ function light(context: Context) {
     containerUnderline: colors.light.gray12,
     hoverUnderline: colors.light.brand00SemiTransparent,
     focus: colors.light.white,
-    focusBg: colors.light.brand00,
+    focusBg: colors.light.brand00Dark,
   });
 }
 

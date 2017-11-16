@@ -1,12 +1,20 @@
-import { style } from 'typestyle';
 import { Context } from '../context';
 
 export function fontSizes(context: Context) {
+  const names = {
+    title: 'font-title',
+    title2: 'font-title2',
+    base: 'font-base',
+    caption: 'font-caption',
+    xsmall: 'font-xsmall',
+  };
+  const { css, font } = context;
+  const { sizes } = font;
   return {
-    title: style(context.font.sizes.title),
-    title2: style(context.font.sizes.title2),
-    base: style(context.font.sizes.base),
-    caption: style(context.font.sizes.caption),
-    xsmall: style(context.font.sizes.xsmall),
+    title: css(names.title, sizes.title),
+    title2: css(names.title2, sizes.title2),
+    base: css(names.base, sizes.base),
+    caption: css(names.caption, sizes.caption),
+    xsmall: css(names.xsmall, sizes.xsmall),
   };
 }

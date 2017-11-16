@@ -53,7 +53,7 @@ class DropdownExample extends React.Component {
       label="Customized item content"
       items={[
         {
-          render: () => <MSTeamsIcon iconWeight={MSTeamsIconWeight.light} iconType={MSTeamsIconType.monkey} />,
+          render: () => <MSTeamsIcon iconWeight={MSTeamsIconWeight.Light} iconType={MSTeamsIconType.IllustrationMonkey} />,
           onClick: () => alert('hello'),
         }
       ]}

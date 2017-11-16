@@ -91,8 +91,8 @@ class DropdownInternal extends React.Component<DropdownProps & InjectedTeamsProp
             </span> : null}
           <MSTeamsIcon
             className={themeClassNames.mainButton.icon}
-            iconType={MSTeamsIconType.downCaret}
-            iconWeight={MSTeamsIconWeight.light} />
+            iconType={MSTeamsIconType.ChevronDown}
+            iconWeight={MSTeamsIconWeight.Light} />
         </button>
         {state.show ? <div className={itemContainerClass.join(' ')}>
           {items.map(renderItem)}

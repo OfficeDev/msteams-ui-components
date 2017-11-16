@@ -1,4 +1,3 @@
-import { style } from 'typestyle';
 import { chooseStyle, Context } from '../context';
 
 interface TableColors {
@@ -18,27 +17,35 @@ interface TableColors {
 }
 
 function base(c: Context, colors: TableColors) {
-  const { rem, font } = c;
+  const names = {
+    table: 'table',
+    thead: 'thead',
+    tbody: 'tbody',
+    td: 'td',
+    tr: 'tr',
+    th: 'th',
+  };
+  const { css, rem, font } = c;
   const { sizes, weights } = font;
 
   return {
-    table: style({
+    table: css(names.table, {
       backgroundColor: colors.table.background,
       color: colors.table.text,
       borderCollapse: 'collapse',
       padding: 0,
     }),
-    thead: style({
+    thead: css(names.thead, {
       backgroundColor: colors.head.background,
     }),
-    tbody: style({
+    tbody: css(names.tbody, {
       backgroundColor: colors.body.background,
     }),
-    td: style({
+    td: css(names.td, {
       paddingTop: rem(1.4),
       paddingBottom: rem(1.4),
     }),
-    tr: style({
+    tr: css(names.tr, {
       borderTop: `${colors.row.border} ${rem(0.2)} solid`,
       borderBottom: `${colors.row.border} ${rem(0.2)} solid`,
     }, {
@@ -51,7 +58,8 @@ function base(c: Context, colors: TableColors) {
         },
       },
     }),
-    th: style(sizes.caption, weights.regular, {
+    th: css(names.th,
+      sizes.caption, weights.regular, {
       textAlign: 'left',
       paddingBottom: rem(0.6),
     }),

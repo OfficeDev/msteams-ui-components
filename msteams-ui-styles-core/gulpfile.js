@@ -5,6 +5,7 @@ const filter = require('gulp-filter');
 const tslint = require('tslint');
 const gulpTsLint = require('gulp-tslint');
 const del = require('del');
+const buildcss = require('./buildcss');
 
 const src = ['src/**/*.{ts,tsx}'];
 
@@ -13,7 +14,7 @@ gulp.task('default', () => {
 });
 
 gulp.task('clean', () => {
-  del(['lib']);
+  del(['lib', 'css']);
 }); 
 
 gulp.task('lint', () => {
@@ -44,5 +45,6 @@ function createBuildTask(crashOnError) {
     .pipe(f)
     .pipe(babel())
     .pipe(f.restore)
-    .pipe(gulp.dest('lib'));
+    .pipe(gulp.dest('lib'))
+    .once('finish', buildcss);
 }

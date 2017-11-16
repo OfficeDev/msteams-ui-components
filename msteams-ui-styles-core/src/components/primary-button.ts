@@ -1,4 +1,3 @@
-import { style } from 'typestyle';
 import { chooseStyle, Context } from '../context';
 
 interface PrimaryButtonColors {
@@ -31,9 +30,12 @@ interface PrimaryButtonColors {
 }
 
 function base(context: Context, colors: PrimaryButtonColors) {
-  const { rem } = context;
+  const names = {
+    button: 'button-primary',
+  };
+  const { css, rem } = context;
 
-  return style({
+  return css(names.button, {
     height: rem(3.2),
     minWidth: rem(9.6),
     border: rem(0.2) + ' solid',
