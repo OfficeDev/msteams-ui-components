@@ -129,7 +129,7 @@ function dark(context: Context) {
       border: colors.transparent,
     },
     focus: {
-      background: colors.dark.gray04,
+      background: colors.dark.brand00,
       text: colors.dark.black,
       outline: colors.dark.black,
       border: colors.transparent,

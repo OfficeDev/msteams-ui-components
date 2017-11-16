@@ -97,7 +97,7 @@ function dark(context: Context) {
     text: colors.dark.gray02,
     textActive: colors.dark.brand00,
     underline: colors.dark.brand00,
-    containerUnderline: colors.dark.gray12,
+    containerUnderline: colors.highContrast.black,
     hoverUnderline: colors.dark.brand00SemiTransparent,
     focus: colors.dark.white,
     focusBg: colors.dark.brand00Light,
