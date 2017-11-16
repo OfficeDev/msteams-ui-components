@@ -28,7 +28,7 @@ export class MSTeamsIcon extends React.PureComponent<MSTeamsIconProps, MSTeamsIc
   };
 
   static defaultProps = {
-    iconWeight: iconWeights.regular,
+    iconWeight: iconWeights.Regular,
   };
 
   render() {

@@ -1,7 +1,4 @@
-import { classes, style } from 'typestyle';
 import { chooseStyle, Context } from '../context';
-import { fontSizes } from './font-sizes';
-import { fontWeights } from './font-weights';
 
 interface SurfaceColors {
   background: string;
@@ -9,13 +6,15 @@ interface SurfaceColors {
 }
 
 function base(context: Context, colors: SurfaceColors) {
-  const weights = fontWeights(context);
-  const sizes = fontSizes(context);
+  const name = 'surface';
+  const { css, font } = context;
+  const { sizes, weights } = font;
 
-  return classes(style({
+  return css(name,
+    weights.regular, sizes.base, {
     color: colors.font,
     backgroundColor: colors.background,
-  }), weights.regular, sizes.base);
+  });
 }
 
 function light(context: Context) {

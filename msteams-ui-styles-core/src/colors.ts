@@ -1,6 +1,6 @@
-import { ColorPalate } from './color-palate';
+export type ColorPalate = typeof Colors;
 
-export const Colors: ColorPalate = {
+export const Colors = {
   transparent: 'transparent',
   light: {
     black: '#16233A',

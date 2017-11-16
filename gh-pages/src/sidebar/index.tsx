@@ -4,8 +4,8 @@ import {
   connectTeamsComponent,
   InjectedTeamsProps,
   Panel,
-  PanelHeader,
-  PanelBody
+  PanelBody,
+  PanelHeader
 } from 'msteams-ui-components-react';
 import { MSTeamsIcon, MSTeamsIconType, MSTeamsIconWeight } from 'msteams-ui-icons-react';
 import * as React from 'react';
@@ -13,70 +13,70 @@ import { RouteComponentProps, withRouter } from 'react-router';
 import { Routes } from '../routes';
 import { sidebar } from './styles';
 
-interface SidebarViewProps  { }
+interface SidebarViewProps { }
 
 class SidebarInner extends React.Component<SidebarViewProps & InjectedTeamsProps & RouteComponentProps<{}>> {
   static buttons = [{
     location: Routes.buttons,
     name: 'Buttons',
     description: 'Event triggering',
-    icon: () => SidebarInner.icon(MSTeamsIconType.fingerPress),
+    icon: () => SidebarInner.icon(MSTeamsIconType.Click),
   }, {
     location: Routes.dropdowns,
     name: 'Dropdowns',
     description: 'Condensed event triggering',
-    icon: () => SidebarInner.icon(MSTeamsIconType.sublist),
+    icon: () => SidebarInner.icon(MSTeamsIconType.Outline),
   }, {
     location: Routes.checkboxes,
     name: 'Checkboxes',
     description: 'Multi-selection',
-    icon: () => SidebarInner.icon(MSTeamsIconType.checkbox),
+    icon: () => SidebarInner.icon(MSTeamsIconType.ToDo),
   }, {
     location: Routes.radiobuttons,
     name: 'RadioButtons',
     description: 'Single-selection',
-    icon: () => SidebarInner.icon(MSTeamsIconType.circle),
+    icon: () => SidebarInner.icon(MSTeamsIconType.CircleBig),
   }, {
     location: Routes.toggles,
     name: 'Toggles',
     description: 'Turning things on and off',
-    icon: () => SidebarInner.icon(MSTeamsIconType.checkedbulb),
+    icon: () => SidebarInner.icon(MSTeamsIconType.Insert),
   }, {
     location: Routes.inputs,
     name: 'Inputs',
     description: 'Text input',
-    icon: () => SidebarInner.icon(MSTeamsIconType.pencil),
+    icon: () => SidebarInner.icon(MSTeamsIconType.Topic),
   }, {
     location: Routes.textareas,
     name: 'TextAreas',
     description: 'Long text input',
-    icon: () => SidebarInner.icon(MSTeamsIconType.book),
+    icon: () => SidebarInner.icon(MSTeamsIconType.Glossary),
   }, {
     location: Routes.links,
     name: 'Links',
     description: 'Inline navigation',
-    icon: () => SidebarInner.icon(MSTeamsIconType.link),
+    icon: () => SidebarInner.icon(MSTeamsIconType.Link),
   }, {
     location: Routes.tabs,
     name: 'Tabs',
     description: 'Page navigation',
-    icon: () => SidebarInner.icon(MSTeamsIconType.folder),
+    icon: () => SidebarInner.icon(MSTeamsIconType.Tab),
   }, {
     location: Routes.tables,
     name: 'Tables',
     description: 'Data presentation',
-    icon: () => SidebarInner.icon(MSTeamsIconType.grid),
+    icon: () => SidebarInner.icon(MSTeamsIconType.GVCGrid),
   }, {
     location: Routes.icons,
     name: 'Icons',
     description: 'Glyphs; logos, objects, monkey',
-    icon: () => SidebarInner.icon(MSTeamsIconType.monkey),
+    icon: () => SidebarInner.icon(MSTeamsIconType.IllustrationMonkey),
   }];
 
   private static icon = (type: string) => {
-   return <MSTeamsIcon
-    style={{ margin: 'auto', fontSize: '28px' }}
-    iconWeight={MSTeamsIconWeight.light} iconType={type} />;
+    return <MSTeamsIcon
+      style={{ margin: 'auto', fontSize: '28px' }}
+      iconWeight={MSTeamsIconWeight.Light} iconType={type} />;
   }
 
   render() {
@@ -113,8 +113,8 @@ class SidebarInner extends React.Component<SidebarViewProps & InjectedTeamsProps
   private onClick = (location: string) => {
     return () => {
       this.props.history.push(location);
-    }
+    };
   }
-};
+}
 
-export const Sidebar = withRouter(connectTeamsComponent(SidebarInner));
+export const Sidebar = withRouter<{}>(connectTeamsComponent(SidebarInner));

@@ -1,14 +1,13 @@
-import { baseStyle, iconTypes, iconWeights } from 'msteams-ui-icons-core';
-import { classes, style } from 'typestyle';
 import { chooseStyle, Context } from '../context';
-import { fontSizes } from './font-sizes';
-import { fontWeights } from './font-weights';
+import { errorLabel } from '../index';
+import { label } from './label';
 
 interface InputColors {
   rest: {
     background: string;
     border: string;
     underline: string;
+    text: string;
   };
   active: {
     background: string;
@@ -17,6 +16,7 @@ interface InputColors {
   disabled: {
     background: string;
     underline: string;
+    text: string;
   };
   hover: {
     background: string;
@@ -26,23 +26,28 @@ interface InputColors {
     background: string;
     underline: string;
   };
-  label: string;
-  errorLabel: string;
+  errorIcon: string;
 }
 
 function base(context: Context, colors: InputColors) {
-  baseStyle(iconWeights.light);
+  const names = {
+    container: 'input-container',
+    input: 'input-field',
+    label: 'input-label',
+    error: 'input-error',
+    errorIcon: 'input-error-icon',
+  };
+  const { css, rem } = context;
 
-  const { rem } = context;
-  const sizes = fontSizes(context);
-  const weights = fontWeights(context);
+  const labelClass = label(context);
+  const errorLabelClass = errorLabel(context);
 
   return {
-    container: style({
+    container: css(names.container, {
       position: 'relative',
       overflow: 'hidden',
     }),
-    input: style({
+    input: css(names.input, {
       height: rem(3.2),
       width: '100%',
       borderRadius: rem(0.3),
@@ -50,7 +55,7 @@ function base(context: Context, colors: InputColors) {
       background: colors.rest.background,
       padding: `${rem(0.8)} ${rem(1.2)}`,
       margin: 0,
-      color: 'inherit',
+      color: colors.rest.text,
       font: 'inherit',
       outline: 'none',
       ['-webkit-box-sizing']: 'border-box',
@@ -69,6 +74,7 @@ function base(context: Context, colors: InputColors) {
           '&:disabled': {
             background: colors.disabled.background,
             borderBottomColor: colors.disabled.underline,
+            color: colors.disabled.text,
           },
           '&:focus': {
             borderBottomColor: colors.active.underline,
@@ -76,37 +82,13 @@ function base(context: Context, colors: InputColors) {
           },
         },
       }),
-    label: classes(style({
-      display: 'inline-block',
-      padding: 0,
-      border: 0,
-      marginBottom: rem(0.8),
-      marginLeft: 0,
-      marginRight: 0,
-      marginTop: 0,
-      color: colors.label,
-    }), sizes.caption, weights.regular),
-    errorLabel: classes(style({
-      color: colors.errorLabel,
-      padding: 0,
-      border: 0,
-      marginBottom: rem(0.8),
-      marginLeft: 0,
-      marginRight: 0,
-      marginTop: 0,
-      float: 'right',
-    }), sizes.caption, weights.regular),
-    errorIcon: style({
-      $nest: {
-        '&:after': {
-          fontFamily: 'MSTeamsIcons-Light',
-          content: iconTypes.error,
-          position: 'absolute',
-          color: colors.errorLabel,
-          right: rem(1.2),
-          bottom: rem(1),
-        },
-      },
+    label: labelClass,
+    errorLabel: errorLabelClass,
+    errorIcon: css(names.errorIcon, {
+      position: 'absolute',
+      color: colors.errorIcon,
+      right: rem(1.2),
+      bottom: rem(0.9),
     }),
   };
 }
@@ -118,14 +100,16 @@ function light(context: Context) {
       background: colors.light.gray10,
       border: colors.transparent,
       underline: colors.transparent,
+      text: colors.light.gray02,
     },
     active: {
       background: colors.light.gray10,
       underline: colors.light.brand00,
     },
     disabled: {
-      background: colors.light.gray06,
+      background: colors.light.gray12,
       underline: colors.transparent,
+      text: colors.light.gray08,
     },
     hover: {
       background: colors.light.gray10,
@@ -135,8 +119,7 @@ function light(context: Context) {
       background: colors.light.gray10,
       underline: colors.light.brand00,
     },
-    label: colors.light.gray01,
-    errorLabel: colors.light.red,
+    errorIcon: colors.light.red,
   });
 }
 
@@ -147,14 +130,16 @@ function dark(context: Context) {
       background: colors.dark.black,
       border: colors.transparent,
       underline: colors.transparent,
+      text: colors.dark.gray02,
     },
     active: {
       background: colors.dark.black,
       underline: colors.dark.brand00,
     },
     disabled: {
-      background: colors.dark.gray10,
+      background: colors.dark.gray12,
       underline: colors.transparent,
+      text: colors.dark.gray08,
     },
     hover: {
       background: colors.dark.black,
@@ -164,8 +149,7 @@ function dark(context: Context) {
       background: colors.dark.black,
       underline: colors.dark.brand00,
     },
-    label: colors.dark.white,
-    errorLabel: colors.dark.red,
+    errorIcon: colors.dark.red,
   });
 }
 
@@ -176,6 +160,7 @@ function highContrast(context: Context) {
       background: colors.highContrast.black,
       border: colors.highContrast.white,
       underline: colors.transparent,
+      text: colors.highContrast.white,
     },
     active: {
       background: colors.highContrast.black,
@@ -184,6 +169,7 @@ function highContrast(context: Context) {
     disabled: {
       background: colors.highContrast.green,
       underline: colors.highContrast.white,
+      text: colors.highContrast.white,
     },
     hover: {
       background: colors.highContrast.black,
@@ -193,8 +179,7 @@ function highContrast(context: Context) {
       background: colors.highContrast.black,
       underline: colors.highContrast.yellow,
     },
-    label: colors.highContrast.white,
-    errorLabel: colors.highContrast.yellow,
+    errorIcon: colors.highContrast.yellow,
   });
 }
 

@@ -1,4 +1,6 @@
-import { ColorPalate } from './color-palate';
+import { style } from 'typestyle/lib';
+import { NestedCSSProperties } from 'typestyle/lib/types';
+import { ColorPalate } from './colors';
 import { FontSizePalate } from './font-size-palate';
 import { FontSizes } from './font-sizes';
 import { FontWeightPalate } from './font-weight-palate';
@@ -12,12 +14,17 @@ export interface RemFunction {
   (n: number): string;
 }
 
+export interface CSSFunction {
+  (name: string, ...objects: Array<false | NestedCSSProperties | null | undefined>): string;
+}
+
 export interface StyleFunction<T> {
   (context: Context): T;
 }
 
 export interface Context {
   rem: RemFunction;
+  css: CSSFunction;
   style: ThemeStyle;
   colors: ColorPalate;
   spacing: SpacingPalate;
@@ -41,10 +48,15 @@ export function chooseStyle<T>(
   }
 }
 
+function typestyleStyle(name: string, ...objects: Array<false | NestedCSSProperties | null | undefined>): string {
+  return style(...objects);
+}
+
 export function getContext(config: ThemeConfig): Context {
   const rem = (n: number) => `${n * 10.0 / config.baseFontSize}rem`;
   return {
     rem,
+    css: config.css || typestyleStyle,
     style: config.style,
     colors: config.colors!,
     spacing: Spacing(rem),

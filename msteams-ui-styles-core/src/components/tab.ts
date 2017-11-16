@@ -1,5 +1,5 @@
-import { style } from 'typestyle';
 import { chooseStyle, Context } from '../context';
+import { getReturnType } from '../get-return-type';
 
 export interface TabColors {
   text: string;
@@ -7,38 +7,49 @@ export interface TabColors {
   textActive: string;
   containerUnderline: string;
   hoverUnderline: string;
+  focus: string;
+  focusBg: string;
 }
 
+// tslint:disable-next-line:variable-name
+export const _extractingTabStyles = getReturnType(base);
+export type TabStyles = typeof _extractingTabStyles;
+
 function base(context: Context, colors: TabColors) {
-  const { rem } = context;
-  const containerClass = style({
+  const names = {
+    container: 'tab-group',
+    normal: 'tab',
+    active: 'tab-active',
+  };
+  const { css, rem, spacing } = context;
+  const containerClass = css(names.container, {
     width: '100%',
     borderBottom: `${rem(0.1)} solid ${colors.containerUnderline}`,
     padding: 0,
     margin: 0,
   });
 
-  const normalClass = style({
+  const normalClass = css(names.normal, {
     $nest: {
       [`.${containerClass} &`]: {
+        display: 'inline-block',
+        marginRight: rem(2),
+        padding: spacing.xxSmall,
         outline: 'none',
         background: 0,
         border: 0,
         font: 'inherit',
         margin: 0,
-        marginRight: rem(2),
-        paddingLeft: 0,
-        paddingRight: 0,
         cursor: 'pointer',
-        display: 'inline-block',
-        borderBottom: `transparent ${rem(0.3)} solid`,
+        borderBottom: `transparent ${rem(0.4)} solid`,
         color: colors.text,
         $nest: {
-          '&:last-child': {
-            marginRight: 0,
-          },
           '&:hover': {
             borderBottomColor: colors.hoverUnderline,
+          },
+          '&:focus': {
+            color: colors.focus,
+            backgroundColor: colors.focusBg,
           },
         },
       },
@@ -48,11 +59,14 @@ function base(context: Context, colors: TabColors) {
   return {
     container: containerClass,
     normal: normalClass,
-    active: style({
+    active: css(names.active, {
       $nest: {
-        [`.${containerClass} &.${normalClass}`]: {
+        [`.${containerClass} &`]: {
           borderBottomColor: colors.underline,
           color: colors.textActive,
+        },
+        '&:focus': {
+          borderBottomColor: colors.focus,
         },
       },
     }),
@@ -62,22 +76,26 @@ function base(context: Context, colors: TabColors) {
 function light(context: Context) {
   const { colors } = context;
   return base(context, {
-    text: colors.light.black,
+    text: colors.light.gray02,
     textActive: colors.light.brand00,
     underline: colors.light.brand00,
-    containerUnderline: colors.light.gray06,
+    containerUnderline: colors.light.gray12,
     hoverUnderline: colors.light.brand00SemiTransparent,
+    focus: colors.light.white,
+    focusBg: colors.light.brand00Dark,
   });
 }
 
 function dark(context: Context) {
   const { colors } = context;
   return base(context, {
-    text: colors.dark.white,
+    text: colors.dark.gray02,
     textActive: colors.dark.brand00,
     underline: colors.dark.brand00,
-    containerUnderline: colors.dark.white,
+    containerUnderline: colors.highContrast.black,
     hoverUnderline: colors.dark.brand00SemiTransparent,
+    focus: colors.dark.white,
+    focusBg: colors.dark.brand00Light,
   });
 }
 
@@ -89,6 +107,8 @@ function highContrast(context: Context) {
     underline: colors.highContrast.blue,
     containerUnderline: colors.highContrast.green,
     hoverUnderline: colors.highContrast.yellow,
+    focus: colors.highContrast.black,
+    focusBg: colors.highContrast.yellow,
   });
 }
 

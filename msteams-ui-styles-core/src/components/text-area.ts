@@ -1,14 +1,13 @@
-import { baseStyle, iconTypes, iconWeights } from 'msteams-ui-icons-core';
-import { classes, style } from 'typestyle';
 import { chooseStyle, Context } from '../context';
-import { fontSizes } from './font-sizes';
-import { fontWeights } from './font-weights';
+import { errorLabel } from './error-label';
+import { label } from './label';
 
 interface TextAreaColors {
   rest: {
     background: string;
     border: string;
     underline: string;
+    text: string;
   };
   active: {
     background: string;
@@ -17,6 +16,7 @@ interface TextAreaColors {
   disabled: {
     background: string;
     underline: string;
+    text: string;
   };
   hover: {
     background: string;
@@ -31,33 +31,40 @@ interface TextAreaColors {
 }
 
 function base(context: Context, colors: TextAreaColors) {
-  baseStyle(iconWeights.light);
-  const { rem } = context;
-  const sizes = fontSizes(context);
-  const weights = fontWeights(context);
+  const names = {
+    container: 'textarea-container',
+    textarea: 'textarea-field',
+    label: 'textarea-label',
+    error: 'textarea-error',
+    errorIcon: 'textarea-error-icon',
+  };
+  const { css, rem } = context;
+
+  const labelClass = label(context);
+  const errorLabelClass = errorLabel(context);
 
   return {
-    container: style({
+    container: css(names.container, {
       position: 'relative',
       overflow: 'hidden',
       display: 'flex',
-      flexAlign: 'stretch',
       flexDirection: 'column',
     }),
-    textArea: style({
+    textArea: css(names.textarea, {
       flex: 1,
       borderRadius: rem(0.3),
       border: `${rem(0.2)} solid ${colors.rest.border}`,
       background: colors.rest.background,
       padding: `${rem(0.8)} ${rem(1.2)}`,
       margin: 0,
-      color: 'inherit',
+      color: colors.rest.text,
       font: 'inherit',
       outline: 'none',
       ['-webkit-box-sizing']: 'border-box',
       ['-moz-box-sizing']: 'border-box',
       boxSizing: 'border-box',
       resize: 'none',
+      minHeight: rem(6),
     }, {
         $nest: {
           '&:active:enabled': {
@@ -71,6 +78,7 @@ function base(context: Context, colors: TextAreaColors) {
           '&:disabled': {
             background: colors.disabled.background,
             borderBottomColor: colors.disabled.underline,
+            color: colors.disabled.text,
           },
           '&:focus': {
             borderBottomColor: colors.active.underline,
@@ -78,37 +86,13 @@ function base(context: Context, colors: TextAreaColors) {
           },
         },
       }),
-    label: classes(style({
-      display: 'inline-block',
-      padding: 0,
-      border: 0,
-      marginBottom: rem(0.8),
-      marginLeft: 0,
-      marginRight: 0,
-      marginTop: 0,
-      color: colors.label,
-    }), sizes.caption, weights.regular),
-    errorLabel: classes(style({
+    label: labelClass,
+    errorLabel: errorLabelClass,
+    errorIcon: css(names.errorIcon, {
+      position: 'absolute',
       color: colors.errorLabel,
-      padding: 0,
-      border: 0,
-      marginBottom: rem(0.8),
-      marginLeft: 0,
-      marginRight: 0,
-      marginTop: 0,
-      float: 'right',
-    }), sizes.caption, weights.regular),
-    errorIcon: style({
-      $nest: {
-        '&:after': {
-          fontFamily: 'MSTeamsIcons-Light',
-          content: iconTypes.error,
-          position: 'absolute',
-          color: colors.errorLabel,
-          right: rem(1.2),
-          bottom: rem(1),
-        },
-      },
+      right: rem(1.2),
+      top: '50%',
     }),
   };
 }
@@ -120,14 +104,16 @@ function light(context: Context) {
       background: colors.light.gray10,
       border: colors.transparent,
       underline: colors.transparent,
+      text: colors.light.gray02,
     },
     active: {
       background: colors.light.gray10,
       underline: colors.light.brand00,
     },
     disabled: {
-      background: colors.light.gray06,
+      background: colors.light.gray12,
       underline: colors.transparent,
+      text: colors.light.gray08,
     },
     hover: {
       background: colors.light.gray10,
@@ -149,14 +135,16 @@ function dark(context: Context) {
       background: colors.dark.black,
       border: colors.transparent,
       underline: colors.transparent,
+      text: colors.dark.gray02,
     },
     active: {
       background: colors.dark.black,
       underline: colors.dark.brand00,
     },
     disabled: {
-      background: colors.dark.gray10,
+      background: colors.dark.gray12,
       underline: colors.transparent,
+      text: colors.dark.gray08,
     },
     hover: {
       background: colors.dark.black,
@@ -178,6 +166,7 @@ function highContrast(context: Context) {
       background: colors.highContrast.black,
       border: colors.highContrast.white,
       underline: colors.transparent,
+      text: colors.highContrast.white,
     },
     active: {
       background: colors.highContrast.black,
@@ -186,6 +175,7 @@ function highContrast(context: Context) {
     disabled: {
       background: colors.highContrast.green,
       underline: colors.highContrast.white,
+      text: colors.highContrast.white,
     },
     hover: {
       background: colors.highContrast.black,

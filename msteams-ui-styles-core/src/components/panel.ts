@@ -1,4 +1,3 @@
-import { style } from 'typestyle';
 import { chooseStyle, Context } from '../context';
 
 interface PanelColors {
@@ -7,9 +6,15 @@ interface PanelColors {
 }
 
 function base(context: Context, colors: PanelColors) {
-  const { rem, spacing } = context;
+  const names = {
+    container: 'panel',
+    header: 'panel-header',
+    body: 'panel-body',
+    footer: 'panel-footer',
+  };
+  const { css, rem, spacing } = context;
   return {
-    container: style({
+    container: css(names.container, {
       backgroundColor: colors.background,
       borderStyle: 'solid',
       borderWidth: rem(0.2),
@@ -22,19 +27,19 @@ function base(context: Context, colors: PanelColors) {
       overflow: 'hidden',
       flexDirection: 'column',
     }),
-    header: style({
+    header: css(names.header, {
       flex: '0 0 auto',
       marginTop: spacing.xxxLarge,
       marginLeft: spacing.xxxLarge,
       marginRight: spacing.xxxLarge,
     }),
-    body: style({
+    body: css(names.body, {
       marginLeft: spacing.xxxLarge,
       marginRight: spacing.xxxLarge,
       flex: '1 1 auto',
       overflow: 'auto',
     }),
-    footer: style({
+    footer: css(names.footer, {
       marginBottom: spacing.xxxLarge,
       marginLeft: spacing.xxxLarge,
       marginRight: spacing.xxxLarge,

@@ -1,7 +1,7 @@
 {
   "name": "msteams-ui-icons-react",
   "description": "MSTeams UI Icon Library for React",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "repository": {
@@ -24,29 +24,29 @@
     "link:deps": "npm link msteams-ui-icons-core"
   },
   "dependencies": {
-    "msteams-ui-icons-core": "^0.1.2"
+    "msteams-ui-icons-core": "^0.2.0"
   },
   "devDependencies": {
     "@types/lodash.memoize": "^4.1.3",
     "@types/prop-types": "^15.5.2",
-    "@types/react": "^16.0.15",
+    "@types/react": "^16.0.22",
     "babel-core": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "del": "^3.0.0",
     "gulp": "^3.9.1",
     "gulp-babel": "^7.0.0",
     "gulp-filter": "^5.0.1",
-    "gulp-typescript": "^3.2.2",
+    "gulp-typescript": "^3.2.3",
     "prop-types": "^15.6.0",
-    "react": "^16.0.0",
-    "typescript": "^2.5.3",
-    "typestyle": "^1.4.3"
+    "react": "^16.1.0",
+    "typescript": "^2.6.1",
+    "typestyle": "^1.5.1"
   },
   "peerDependencies": {
     "@types/prop-types": "^15.5.2",
-    "@types/react": "^16.0.15",
-    "react": "^16.0.0",
+    "@types/react": "^16.0.22",
+    "react": "^16.1.0",
     "prop-types": "^15.6.0",
-    "typestyle": "^1.4.3"
+    "typestyle": "^1.5.1"
   }
 }

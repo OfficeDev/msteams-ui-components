@@ -1,11 +1,12 @@
 import { baseStyle, iconTypes, iconWeights } from 'msteams-ui-icons-core';
-import { style } from 'typestyle';
 import { chooseStyle, Context } from '../context';
+import { hiddenInput } from './hidden-input';
 
 interface CheckboxColors {
   rest: {
     border: string;
     background: string;
+    text: string;
   };
   hover: {
     background: string;
@@ -14,6 +15,7 @@ interface CheckboxColors {
   disabled: {
     background: string;
     border: string;
+    text: string;
   };
   focus: {
     outline: string;
@@ -21,16 +23,26 @@ interface CheckboxColors {
   checked: {
     background: string;
     border: string;
+    text: string;
   };
   checkmark: string;
   container: string;
 }
 
 function base(context: Context, colors: CheckboxColors) {
-  baseStyle(iconWeights.light);
-  const { rem } = context;
+  baseStyle(iconWeights.Light);
+  const names = {
+    container: 'check-container',
+    checkbox: 'check-box',
+    label: 'check-label',
+  };
+  const { css, rem, font } = context;
+  const { sizes } = font;
+
+  const inputClass = hiddenInput(context);
+
   return {
-    container: style({
+    container: css(names.container, {
       border: 'none',
       background: colors.container,
       display: 'flex',
@@ -38,11 +50,12 @@ function base(context: Context, colors: CheckboxColors) {
       outline: 'none',
       $nest: {
         '& + &' : {
-          marginTop: rem(0.8),
+          marginTop: rem(0.4),
         },
       },
     }),
-    checkbox: style({
+    input: inputClass,
+    checkbox: css(names.checkbox, {
       position: 'relative',
       ['-webkit-user-select']: 'none',
       ['-moz-user-select']: 'none',
@@ -50,14 +63,15 @@ function base(context: Context, colors: CheckboxColors) {
       userSelect: 'none',
       display: 'inline-block',
       cursor: 'pointer',
-      width: rem(2),
-      height: rem(2),
       padding: 0,
       font: 'inherit',
-      margin: 0,
-      border: `${rem(0.2)} solid`,
+      margin: rem(0.2),
+      width: rem(1.6),
+      height: rem(1.6),
+      border: `${rem(0.1)} solid`,
       borderColor: colors.rest.border,
       background: colors.rest.background,
+      borderRadius: rem(0.3),
     }, {
       $nest: {
         '&:hover': {
@@ -67,33 +81,46 @@ function base(context: Context, colors: CheckboxColors) {
         '&:disabled': {
           background: colors.disabled.background,
           borderColor: colors.disabled.border,
+          cursor: 'default',
+          $nest: {
+            '& + label': {
+              color: colors.disabled.text,
+              cursor: 'default',
+            },
+          },
         },
         '&:focus': {
-          outline: `${rem(0.4)} solid ${colors.focus.outline}`,
+          boxShadow: `0 0 0 ${rem(0.2)} ${colors.focus.outline}`,
+          outline: 'none',
         },
-        '&-checked': {
+        [`.${inputClass}:checked + &`]: {
           borderColor: colors.checked.border,
           background: colors.checked.background,
           $nest: {
-            '&:hover': {
-              borderColor: colors.checked.border,
-              background: colors.checked.background,
+            '& + label': {
+              color: colors.checked.text,
             },
             '&::before': {
               fontFamily: 'MSTeamsIcons-Light',
-              content: iconTypes.checkmark,
+              content: iconTypes.Ok,
               color: colors.checkmark,
               position: 'absolute',
-              fontSize: rem(1.4),
-              top: `-${rem(0.1)}`,
-              left: rem(0.05),
+              fontSize: rem(1.2),
+              top: rem(0.1),
+              left: rem(0.1),
+              width: rem(1.2),
+              height: rem(1.2),
+              padding: 0,
+              lineHeight: rem(1),
             },
           },
         },
       },
     }),
-    label: style({
-      marginLeft: rem(1.2),
+    label: css(names.label, sizes.caption, {
+      marginLeft: rem(1),
+      cursor: 'pointer',
+      color: colors.rest.text,
     }),
   };
 }
@@ -102,16 +129,18 @@ function light(context: Context) {
   const { colors } = context;
   return base(context, {
     rest: {
-      border: colors.light.gray03,
-      background: colors.light.white,
+      border: colors.light.gray02,
+      background: colors.transparent,
+      text: colors.light.gray02,
     },
     hover: {
-      background: colors.light.white,
-      border: colors.light.gray03,
+      border: colors.light.gray02,
+      background: colors.transparent,
     },
     disabled: {
+      border: colors.light.gray06,
       background: colors.light.gray10,
-      border: colors.light.gray12,
+      text: colors.light.gray06,
     },
     focus: {
       outline: colors.light.brand00Dark,
@@ -119,6 +148,7 @@ function light(context: Context) {
     checked: {
       background: colors.light.brand00,
       border: colors.light.brand00,
+      text : colors.light.black,
     },
     checkmark: colors.light.white,
     container: colors.transparent,
@@ -129,16 +159,18 @@ function dark(context: Context) {
   const { colors } = context;
   return base(context, {
     rest: {
-      border: colors.dark.gray03,
-      background: colors.dark.black,
+      border: colors.dark.gray02,
+      background: colors.transparent,
+      text: colors.dark.gray02,
     },
     hover: {
-      background: colors.dark.black,
-      border: colors.dark.gray03,
+      border: colors.dark.gray02,
+      background: colors.transparent,
     },
     disabled: {
+      border: colors.dark.gray06,
       background: colors.dark.gray10,
-      border: colors.dark.gray12,
+      text: colors.dark.gray06,
     },
     focus: {
       outline: colors.dark.brand00Light,
@@ -146,6 +178,7 @@ function dark(context: Context) {
     checked: {
       background: colors.dark.brand00,
       border: colors.dark.brand00,
+      text : colors.dark.white,
     },
     checkmark: colors.dark.black,
     container: colors.transparent,
@@ -157,22 +190,25 @@ function highContrast(context: Context) {
   return base(context, {
     rest: {
       border: colors.highContrast.white,
-      background: colors.highContrast.black,
+      background: colors.transparent,
+      text : colors.highContrast.white,
     },
     hover: {
-      background: colors.highContrast.black,
       border: colors.highContrast.white,
+      background: colors.transparent,
     },
     disabled: {
-      background: colors.highContrast.green,
-      border: colors.highContrast.white,
+      background: colors.transparent,
+      border: colors.highContrast.green,
+      text: colors.highContrast.green,
     },
     focus: {
       outline: colors.highContrast.yellow,
     },
     checked: {
-      background: colors.highContrast.yellow,
-      border: colors.highContrast.yellow,
+      background: colors.highContrast.blue,
+      border: colors.highContrast.blue,
+      text : colors.highContrast.white,
     },
     checkmark: colors.highContrast.black,
     container: colors.transparent,
