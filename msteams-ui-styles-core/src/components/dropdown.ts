@@ -14,8 +14,8 @@ interface DropdownColors {
   itemHover: string;
   label: string;
   underline: string;
-  bgShadow:string;
-  border:string;
+  bgShadow: string;
+  border: string;
 }
 
 function base(context: Context, colors: DropdownColors) {
@@ -50,8 +50,8 @@ function base(context: Context, colors: DropdownColors) {
     display: 'inline-block',
     overflow: 'hidden',
     marginTop: rem(0.3),
-    boxShadow:colors.bgShadow,
-    marginLeft:rem(0.1),
+    boxShadow: colors.bgShadow,
+    marginLeft: rem(0.1),
     border: colors.border,
   });
 
@@ -170,7 +170,7 @@ function light(context: Context) {
     itemHoverBg: colors.light.brand00,
     label: colors.light.gray02,
     underline: colors.light.brand00,
-    bgShadow:`0 2px 12px rgba(22, 36, 59, 0.36)`,
+    bgShadow: `0 2px 12px rgba(22, 36, 59, 0.36)`,
     border: `0`,
   });
 }
@@ -191,7 +191,7 @@ function dark(context: Context) {
     itemHoverBg: colors.dark.brand00,
     label: colors.dark.gray02,
     underline: colors.dark.brand00,
-    bgShadow:`0 2px 12px rgba(0, 0, 0, 0.4)`,
+    bgShadow: `0 2px 12px rgba(0, 0, 0, 0.4)`,
     border: `0`,
   });
 }
@@ -212,7 +212,7 @@ function highContrast(context: Context) {
     itemHoverBg: colors.highContrast.yellow,
     label: colors.highContrast.black,
     underline: colors.highContrast.white,
-    bgShadow:`0 0 0 0`,
+    bgShadow: `0 0 0 0`,
     border: `1px solid`,
   });
 }
