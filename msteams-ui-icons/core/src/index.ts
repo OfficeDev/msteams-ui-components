@@ -569,12 +569,14 @@ export const baseStyle = memoize((iconWeight?: number): string => {
   }
 
   return iconTS.style({
-    fontFamily: fontName,
-    fontStyle: 'normal',
+    fontFamily: fontName + ' !important',
+    display: 'block',
     speak: 'none',
+    fontStyle: 'normal',
     fontWeight: 'normal',
+    fontVariant: 'normal',
     fontSize: '16px',
-    lineHeight: '16px',
+    lineHeight: 1,
     textRendering: 'optimizeLegibility',
     ['-webkit-font-smoothing']: 'antialiased',
     ['-moz-osx-font-smoothing']: 'grayscale',
@@ -589,10 +591,8 @@ export const iconStyle = memoize((iconType?: string): string | null => {
     $nest: {
       '&::before': {
         content: iconType,
-        position: 'relative',
         bottom: '1px',
-        lineHeight: '16px',
-        display: 'inherit',
+        position: 'relative',
       },
     },
   });
