@@ -50,8 +50,7 @@ function base(context: Context, colors: DropdownColors) {
     display: 'inline-block',
     overflow: 'hidden',
     marginTop: rem(0.3),
-    boxShadow: colors.bgShadow,
-    marginLeft: rem(0.1),
+    boxShadow: `0px ${rem(0.2)} ${rem(1.2)} 0px ${colors.bgShadow}`,
     border: colors.border,
   });
 
@@ -79,7 +78,7 @@ function base(context: Context, colors: DropdownColors) {
         alignItems: 'center',
         color: colors.mainButton.text,
         backgroundColor: colors.mainButton.background,
-        border: `${rem(0.1)} solid`,
+        border: `${rem(0.2)} solid`,
         borderColor: colors.mainButton.border,
         paddingLeft: rem(0.6),
         paddingRight: rem(0.6),
@@ -122,7 +121,7 @@ function base(context: Context, colors: DropdownColors) {
     showItems: css(names.item.showItems, {
       $nest: {
         [`&.${itemContainerClass}`]: {
-          minWidth: `calc(100% - ${rem(0.19)})`,
+          minWidth: `100%`,
           transform: 'scaleY(1)',
         },
       },
@@ -170,8 +169,8 @@ function light(context: Context) {
     itemHoverBg: colors.light.brand00,
     label: colors.light.gray02,
     underline: colors.light.brand00,
-    bgShadow: `0 2px 12px rgba(22, 36, 59, 0.36)`,
-    border: `0`,
+    bgShadow: 'rgba(22, 35, 58, 0.36)',
+    border: 'none',
   });
 }
 
@@ -191,13 +190,13 @@ function dark(context: Context) {
     itemHoverBg: colors.dark.brand00,
     label: colors.dark.gray02,
     underline: colors.dark.brand00,
-    bgShadow: `0 2px 12px rgba(0, 0, 0, 0.4)`,
-    border: `0`,
+    bgShadow: 'rgba(0, 0, 0, 0.4)',
+    border: 'none',
   });
 }
 
 function highContrast(context: Context) {
-  const { colors } = context;
+  const { colors, rem } = context;
   return base(context, {
     mainButton: {
       text: colors.highContrast.white,
@@ -211,9 +210,9 @@ function highContrast(context: Context) {
     itemHover: colors.highContrast.black,
     itemHoverBg: colors.highContrast.yellow,
     label: colors.highContrast.black,
-    underline: colors.highContrast.white,
-    bgShadow: `0 0 0 0`,
-    border: `1px solid`,
+    underline: colors.highContrast.yellow,
+    bgShadow: colors.transparent,
+    border: `${rem(0.1)} solid ${colors.highContrast.white}`,
   });
 }
 
