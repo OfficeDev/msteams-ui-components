@@ -538,12 +538,13 @@ export const baseStyle = memoize((iconWeight?: number): string => {
 
     lightFontFaceTS.fontFace({
       fontFamily: fontName,
-      src: `url("${eotFile}"),
-    url('${woff2File}') format('woff2'),
-    url('${woffFile}') format('woff'),
-    url('${ttfFile}') format('truetype'),
-    url('${svgFile}#${fontName}') format('svg'),
-    url('${eotFile}?#iefix') format('embedded-opentype')`,
+      src: [
+        `url('${eotFile}')`,
+        `url('${eotFile}?#iefix') format('embedded-opentype'),
+url('${ttfFile}') format('truetype'),
+url('${woff2File}') format('woff2'),
+url('${woffFile}') format('woff'),
+url('${svgFile}#${fontName}') format('svg')`],
       fontWeight: 'normal',
       fontStyle: 'normal',
     });
@@ -557,12 +558,13 @@ export const baseStyle = memoize((iconWeight?: number): string => {
 
     regularFontFaceTS.fontFace({
       fontFamily: fontName,
-      src: `url("${eotFile}"),
-    url('${woff2File}') format('woff2'),
-    url('${woffFile}') format('woff'),
-    url('${ttfFile}') format('truetype'),
-    url('${svgFile}#${fontName}') format('svg'),
-    url('${eotFile}?#iefix') format('embedded-opentype')`,
+      src: [
+        `url('${eotFile}')`,
+        `url('${eotFile}?#iefix') format('embedded-opentype'),
+url('${ttfFile}') format('truetype'),
+url('${woff2File}') format('woff2'),
+url('${woffFile}') format('woff'),
+url('${svgFile}#${fontName}') format('svg')`],
       fontWeight: 'normal',
       fontStyle: 'normal',
     });
