@@ -14,6 +14,8 @@ interface DropdownColors {
   itemHover: string;
   label: string;
   underline: string;
+  bgShadow:string;
+  border:string;
 }
 
 function base(context: Context, colors: DropdownColors) {
@@ -48,6 +50,9 @@ function base(context: Context, colors: DropdownColors) {
     display: 'inline-block',
     overflow: 'hidden',
     marginTop: rem(0.3),
+    boxShadow:colors.bgShadow,
+    marginLeft:rem(0.1),
+    border: colors.border,
   });
 
   return {
@@ -117,7 +122,7 @@ function base(context: Context, colors: DropdownColors) {
     showItems: css(names.item.showItems, {
       $nest: {
         [`&.${itemContainerClass}`]: {
-          minWidth: '100%',
+          minWidth: `calc(100% - ${rem(0.19)})`,
           transform: 'scaleY(1)',
         },
       },
@@ -159,12 +164,14 @@ function light(context: Context) {
       border: colors.transparent,
     },
     item: colors.light.black,
-    itemBg: colors.light.gray12,
+    itemBg: colors.light.white,
     itemContainerBg: colors.light.gray12,
     itemHover: colors.light.white,
     itemHoverBg: colors.light.brand00,
     label: colors.light.gray02,
     underline: colors.light.brand00,
+    bgShadow:`0 2px 12px rgba(22, 36, 59, 0.36)`,
+    border: `0`,
   });
 }
 
@@ -177,13 +184,15 @@ function dark(context: Context) {
       background: colors.dark.black,
       border: colors.transparent,
     },
-    itemBg: colors.dark.black,
+    itemBg: colors.dark.gray10,
     item: colors.dark.white,
     itemContainerBg: colors.dark.black,
     itemHover: colors.dark.white,
     itemHoverBg: colors.dark.brand00,
     label: colors.dark.gray02,
     underline: colors.dark.brand00,
+    bgShadow:`0 2px 12px rgba(0, 0, 0, 0.4)`,
+    border: `0`,
   });
 }
 
@@ -198,11 +207,13 @@ function highContrast(context: Context) {
     },
     item: colors.highContrast.white,
     itemBg: colors.highContrast.black,
-    itemContainerBg: colors.highContrast.yellow,
-    itemHover: colors.highContrast.white,
-    itemHoverBg: colors.highContrast.green,
-    label: colors.highContrast.white,
-    underline: colors.highContrast.yellow,
+    itemContainerBg: colors.highContrast.black,
+    itemHover: colors.highContrast.black,
+    itemHoverBg: colors.highContrast.yellow,
+    label: colors.highContrast.black,
+    underline: colors.highContrast.white,
+    bgShadow:`0 0 0 0`,
+    border: `1px solid`,
   });
 }
 
