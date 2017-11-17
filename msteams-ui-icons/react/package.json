@@ -1,7 +1,7 @@
 {
   "name": "msteams-ui-icons-react",
   "description": "MSTeams UI Icon Library for React",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "repository": {
@@ -24,7 +24,7 @@
     "link:deps": "npm link msteams-ui-icons-core"
   },
   "dependencies": {
-    "msteams-ui-icons-core": "^0.2.0"
+    "msteams-ui-icons-core": "^0.2.1"
   },
   "devDependencies": {
     "@types/lodash.memoize": "^4.1.3",
