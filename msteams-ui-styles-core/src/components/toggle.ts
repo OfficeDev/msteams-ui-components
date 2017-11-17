@@ -9,7 +9,7 @@ interface ToggleColors {
   sliderBallChecked: string;
 }
 
-const width = 6;
+const width = 4;
 const height = 2;
 const ballSize = 1.4;
 const ballDeltaX = 0.3;
@@ -42,6 +42,7 @@ function base(context: Context, colors: ToggleColors) {
       backgroundColor: colors.sliderBackground,
       borderRadius: rem(height),
       outline: 'none',
+      boxShadow: `0 0 0 ${rem(0.1)} ${colors.sliderBall}`,
       $nest: {
         '&:before': {
           position: 'absolute',
@@ -97,11 +98,11 @@ function dark(context: Context) {
 function highContrast(context: Context) {
   const { colors } = context;
   return base(context, {
-    sliderBackground: colors.highContrast.white,
-    sliderBall: colors.highContrast.yellow,
-    sliderFocus: colors.highContrast.green,
-    sliderBackgroundChecked: colors.light.green,
-    sliderBallChecked: colors.light.brand04,
+    sliderBackground: colors.highContrast.black,
+    sliderBall: colors.highContrast.white,
+    sliderFocus: colors.highContrast.yellow,
+    sliderBackgroundChecked: colors.highContrast.blue,
+    sliderBallChecked: colors.light.black,
   });
 }
 
