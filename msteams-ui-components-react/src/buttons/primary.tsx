@@ -6,7 +6,6 @@ import classes from '../utils/classes';
 
 export interface PrimaryButtonProps
   extends React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
-  disabled?: boolean;
 }
 
 const PrimaryButtonView: React.StatelessComponent<PrimaryButtonProps & InjectedTeamsProps> =
