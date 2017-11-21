@@ -5,13 +5,11 @@ import { connectTeamsComponent, InjectedTeamsProps } from '../index';
 import classes from '../utils/classes';
 import uniqueId from '../utils/uniqueId';
 
-export interface CheckboxProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
-  onChecked?: (checked: boolean, value: any) => void;
-  name?: string;
-  value: any;
-  checked?: boolean;
+export interface CheckboxProps
+  extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
   label?: string;
-  disabled?: boolean;
+  checked?: boolean;
+  onChecked?: (checked: boolean, value: any) => void;
 }
 
 interface CheckboxState {
@@ -23,7 +21,9 @@ interface CheckboxContext {
   values?: any[];
 }
 
-class CheckboxInner extends React.Component<CheckboxProps & InjectedTeamsProps, CheckboxState> {
+type ConnectedProps = CheckboxProps & InjectedTeamsProps;
+
+class CheckboxInner extends React.Component<ConnectedProps, CheckboxState> {
   static propTypes = {
     onChecked: PropTypes.func,
     value: PropTypes.any.isRequired,
@@ -40,7 +40,7 @@ class CheckboxInner extends React.Component<CheckboxProps & InjectedTeamsProps, 
   state = { id: uniqueId('ts-cb-') };
 
   render() {
-    const { id, name, context, disabled, className, onChecked, value, checked, label, ...rest } = this.props;
+    const { id, name, context, className, style, value, checked, label, ...rest } = this.props;
 
     const actuallyChecked = this.isChecked();
     const themeClassNames = checkbox(context);
@@ -53,19 +53,22 @@ class CheckboxInner extends React.Component<CheckboxProps & InjectedTeamsProps, 
       <div
         data-component-type="Checkbox"
         className={classes(themeClassNames.container, className)}
-        {...rest} >
+        style={style}>
         <input
           id={id}
           name={name}
           type="checkbox"
           className={themeClassNames.input}
           checked={actuallyChecked}
+          value={value}
           readOnly/>
         <button
+          role="checkbox"
+          aria-checked={actuallyChecked}
           id={this.state.id}
           className={checkboxClassNames}
-          disabled={disabled}
-          onClick={this.handleCheck} />
+          onClick={this.click}
+          {...rest} />
         {this.props.label ?
           <label htmlFor={this.state.id} className={themeClassNames.label}>{this.props.label}</label> : null}
         {this.props.children}
@@ -80,7 +83,7 @@ class CheckboxInner extends React.Component<CheckboxProps & InjectedTeamsProps, 
     return this.props.checked || false;
   }
 
-  private handleCheck = () => {
+  private click = (e: React.MouseEvent<HTMLButtonElement>) => {
     const checked = this.isChecked();
     if (this.context.onChecked) {
       this.context.onChecked(!checked, this.props.value);
@@ -88,6 +91,8 @@ class CheckboxInner extends React.Component<CheckboxProps & InjectedTeamsProps, 
     if (this.props.onChecked) {
       this.props.onChecked(!checked, this.props.value);
     }
+
+    return this.props.onClick && this.props.onClick(e);
   }
 }
 
