@@ -6,13 +6,10 @@ import classes from '../utils/classes';
 import uniqueId from '../utils/uniqueId';
 
 export interface RadiobuttonProps
-  extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
+  extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
   onSelected?: (selected: boolean, value: any) => void;
-  name?: string;
-  value: any;
   selected?: boolean;
   label?: string;
-  disabled?: boolean;
 }
 
 interface RadiobuttonState {
@@ -41,7 +38,7 @@ class RadiobuttonInner extends React.Component<RadiobuttonProps & InjectedTeamsP
   state = { id: uniqueId('ts-rb-') };
 
   render() {
-    const { id, name, context, disabled, className, onSelected, value, selected, label, ...rest } = this.props;
+    const { id, name, context, className, style, value, label, onSelected, ...rest } = this.props;
 
     const actuallySelected = this.isSelected();
     const themeClassNames = radioButton(context);
@@ -50,19 +47,22 @@ class RadiobuttonInner extends React.Component<RadiobuttonProps & InjectedTeamsP
       <div
         data-component-type="RadioButton"
         className={classes(themeClassNames.container, className)}
-        {...rest}>
+        style={style}>
         <input
           id={id}
           name={name}
           type="radio"
           className={themeClassNames.input}
           checked={actuallySelected}
+          value={value}
           readOnly/>
         <button
+          role="radio"
+          aria-checked={actuallySelected}
           id={this.state.id}
-          onClick={this.handleSelect}
+          onClick={this.click}
           className={themeClassNames.radio}
-          disabled={disabled} />
+          {...rest} />
         {this.props.label ?
           <label htmlFor={this.state.id} className={themeClassNames.label}>{this.props.label}</label> : null}
         {this.props.children}
@@ -77,13 +77,15 @@ class RadiobuttonInner extends React.Component<RadiobuttonProps & InjectedTeamsP
     return this.props.selected || false;
   }
 
-  private handleSelect = () => {
+  private click = (e: React.MouseEvent<HTMLButtonElement>) => {
     if (this.context.onSelected) {
       this.context.onSelected(true, this.props.value);
     }
     if (this.props.onSelected) {
       this.props.onSelected(true, this.props.value);
     }
+
+    return this.props.onClick && this.props.onClick(e);
   }
 }
 
