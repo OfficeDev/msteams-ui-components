@@ -40,7 +40,7 @@ class CheckboxInner extends React.Component<ConnectedProps, CheckboxState> {
   state = { id: uniqueId('ts-cb-') };
 
   render() {
-    const { id, name, context, className, style, value, checked, label, ...rest } = this.props;
+    const { id, name, context, className, style, value, checked, onChecked, label, ...rest } = this.props;
 
     const actuallyChecked = this.isChecked();
     const themeClassNames = checkbox(context);

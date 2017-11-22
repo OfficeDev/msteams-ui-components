@@ -38,7 +38,7 @@ class RadiobuttonInner extends React.Component<RadiobuttonProps & InjectedTeamsP
   state = { id: uniqueId('ts-rb-') };
 
   render() {
-    const { id, name, context, className, style, value, label, ...rest } = this.props;
+    const { id, name, context, className, style, value, label, onSelected, ...rest } = this.props;
 
     const actuallySelected = this.isSelected();
     const themeClassNames = radioButton(context);
