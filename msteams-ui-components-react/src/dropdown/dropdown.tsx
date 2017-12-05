@@ -38,6 +38,7 @@ class DropdownInternal extends React.Component<DropdownProps & InjectedTeamsProp
 
   componentDidMount() {
     this.mousetrap = new Mousetrap(this.dropdown);
+    this.trapKeyboard();
   }
 
   componentWillUnmount() {
@@ -84,6 +85,7 @@ class DropdownInternal extends React.Component<DropdownProps & InjectedTeamsProp
           {...rest}
           id={state.id}
           ref={(ref) => this.mainButton = ref!}
+          role="combobox"
         >
           {mainButtonText ?
             <span className={themeClassNames.mainButton.text}>
@@ -94,7 +96,7 @@ class DropdownInternal extends React.Component<DropdownProps & InjectedTeamsProp
             iconType={MSTeamsIconType.ChevronDown}
             iconWeight={MSTeamsIconWeight.Light} />
         </button>
-        {state.show ? <div className={itemContainerClass.join(' ')}>
+        {state.show ? <div className={itemContainerClass.join(' ')} role="listbox">
           {items.map(renderItem)}
         </div> : null}
       </div>
@@ -105,13 +107,11 @@ class DropdownInternal extends React.Component<DropdownProps & InjectedTeamsProp
     if (!this.state.show) {
       this.setState({ show: !this.state.show });
       document.addEventListener('click', this.close);
-      this.trapKeyboard();
     }
   }
 
   private close = () => {
     document.removeEventListener('click', this.close);
-    this.untrapKeyboard();
     this.setState({ show: false });
   }
 
@@ -127,6 +127,7 @@ class DropdownInternal extends React.Component<DropdownProps & InjectedTeamsProp
         className={className}
         ref={(ref) => this.itemButtons.push(ref!)}
         onClick={item.onClick}
+        role="option"
       >
         {item.text ? item.text : null}
         {item.render ? item.render() : null}
@@ -143,38 +144,56 @@ class DropdownInternal extends React.Component<DropdownProps & InjectedTeamsProp
     this.mousetrap.bind('down', this.onDownKey);
   }
 
-  private untrapKeyboard = () => {
-    this.mousetrap.reset();
-  }
-
   private onTabKey = (e: ExtendedKeyboardEvent) => {
-    e.preventDefault();
-    const current = this.currentIndex();
-    const next = (current + 1) % this.itemButtons.length;
-    this.itemButtons[next].focus();
+    if (this.state.show) {
+      e.preventDefault();
+      const current = this.currentIndex();
+      const next = (current + 1) % this.itemButtons.length;
+      this.itemButtons[next].focus();
+    }
   }
 
   private onUpKey = (e: ExtendedKeyboardEvent) => {
     e.preventDefault();
-    const current = this.currentIndex();
-    const next = current - 1 < 0 ? 0 : current - 1;
-    this.itemButtons[next].focus();
+    if (!this.state.show) {
+      this.setState({
+        show: true,
+      }, this.focusPrevious);
+    } else {
+      this.focusPrevious();
+    }
   }
 
   private onDownKey = (e: ExtendedKeyboardEvent) => {
     e.preventDefault();
+    if (!this.state.show) {
+      this.setState({
+        show: true,
+      }, this.focusNext);
+    } else {
+      this.focusNext();
+    }
+  }
+
+  private onEscKey = (e: ExtendedKeyboardEvent) => {
+    if (this.state.show) {
+      e.preventDefault();
+      this.mainButton.focus();
+      this.close();
+    }
+  }
+
+  private currentIndex = () => this.itemButtons.findIndex((elm) => elm === document.activeElement);
+  private focusNext = () => {
     const current = this.currentIndex();
     const next = current + 1 > this.itemButtons.length - 1 ? this.itemButtons.length - 1 : current + 1;
     this.itemButtons[next].focus();
   }
-
-  private onEscKey = (e: ExtendedKeyboardEvent) => {
-    e.preventDefault();
-    this.mainButton.focus();
-    this.close();
+  private focusPrevious = () => {
+    const current = this.currentIndex();
+    const next = current - 1 < 0 ? 0 : current - 1;
+    this.itemButtons[next].focus();
   }
-
-  private currentIndex = () => this.itemButtons.findIndex((elm) => elm === document.activeElement);
 }
 
 export const Dropdown = connectTeamsComponent<DropdownProps>(DropdownInternal);
