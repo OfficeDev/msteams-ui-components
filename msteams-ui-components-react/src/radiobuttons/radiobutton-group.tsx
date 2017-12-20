@@ -31,6 +31,7 @@ class RadiobuttonGroupInner extends React.Component<RadiobuttonGroupProps & Inje
     return (
       <div
         data-component-type="RadioButtonGroup"
+        role="radiogroup"
         className={classes(themeClassNames.container, className)}
         {...rest}>
         {label || errorLabel ?

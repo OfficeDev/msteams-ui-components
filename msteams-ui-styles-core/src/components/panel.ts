@@ -29,20 +29,20 @@ function base(context: Context, colors: PanelColors) {
     }),
     header: css(names.header, {
       flex: '0 0 auto',
-      marginTop: spacing.xxxLarge,
-      marginLeft: spacing.xxxLarge,
-      marginRight: spacing.xxxLarge,
+      paddingTop: spacing.xxxLarge,
+      paddingLeft: spacing.xxxLarge,
+      paddingRight: spacing.xxxLarge,
     }),
     body: css(names.body, {
-      marginLeft: spacing.xxxLarge,
-      marginRight: spacing.xxxLarge,
+      paddingLeft: spacing.xxxLarge,
+      paddingRight: spacing.xxxLarge,
       flex: '1 1 auto',
       overflow: 'auto',
     }),
     footer: css(names.footer, {
-      marginBottom: spacing.xxxLarge,
-      marginLeft: spacing.xxxLarge,
-      marginRight: spacing.xxxLarge,
+      paddingBottom: spacing.xxxLarge,
+      paddingLeft: spacing.xxxLarge,
+      paddingRight: spacing.xxxLarge,
       flex: '0 0 auto',
     }),
   };

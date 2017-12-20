@@ -14,6 +14,8 @@ interface DropdownColors {
   itemHover: string;
   label: string;
   underline: string;
+  bgShadow: string;
+  border: string;
 }
 
 function base(context: Context, colors: DropdownColors) {
@@ -48,6 +50,8 @@ function base(context: Context, colors: DropdownColors) {
     display: 'inline-block',
     overflow: 'hidden',
     marginTop: rem(0.3),
+    boxShadow: `0px ${rem(0.2)} ${rem(1.2)} 0px ${colors.bgShadow}`,
+    border: colors.border,
   });
 
   return {
@@ -74,7 +78,7 @@ function base(context: Context, colors: DropdownColors) {
         alignItems: 'center',
         color: colors.mainButton.text,
         backgroundColor: colors.mainButton.background,
-        border: `${rem(0.1)} solid`,
+        border: `${rem(0.2)} solid`,
         borderColor: colors.mainButton.border,
         paddingLeft: rem(0.6),
         paddingRight: rem(0.6),
@@ -117,7 +121,7 @@ function base(context: Context, colors: DropdownColors) {
     showItems: css(names.item.showItems, {
       $nest: {
         [`&.${itemContainerClass}`]: {
-          minWidth: '100%',
+          minWidth: `100%`,
           transform: 'scaleY(1)',
         },
       },
@@ -159,12 +163,14 @@ function light(context: Context) {
       border: colors.transparent,
     },
     item: colors.light.black,
-    itemBg: colors.light.gray12,
+    itemBg: colors.light.white,
     itemContainerBg: colors.light.gray12,
     itemHover: colors.light.white,
     itemHoverBg: colors.light.brand00,
     label: colors.light.gray02,
     underline: colors.light.brand00,
+    bgShadow: 'rgba(22, 35, 58, 0.36)',
+    border: 'none',
   });
 }
 
@@ -177,18 +183,20 @@ function dark(context: Context) {
       background: colors.dark.black,
       border: colors.transparent,
     },
-    itemBg: colors.dark.black,
+    itemBg: colors.dark.gray10,
     item: colors.dark.white,
     itemContainerBg: colors.dark.black,
     itemHover: colors.dark.white,
     itemHoverBg: colors.dark.brand00,
     label: colors.dark.gray02,
     underline: colors.dark.brand00,
+    bgShadow: 'rgba(0, 0, 0, 0.4)',
+    border: 'none',
   });
 }
 
 function highContrast(context: Context) {
-  const { colors } = context;
+  const { colors, rem } = context;
   return base(context, {
     mainButton: {
       text: colors.highContrast.white,
@@ -198,11 +206,13 @@ function highContrast(context: Context) {
     },
     item: colors.highContrast.white,
     itemBg: colors.highContrast.black,
-    itemContainerBg: colors.highContrast.yellow,
-    itemHover: colors.highContrast.white,
-    itemHoverBg: colors.highContrast.green,
-    label: colors.highContrast.white,
+    itemContainerBg: colors.highContrast.black,
+    itemHover: colors.highContrast.black,
+    itemHoverBg: colors.highContrast.yellow,
+    label: colors.highContrast.black,
     underline: colors.highContrast.yellow,
+    bgShadow: colors.transparent,
+    border: `${rem(0.1)} solid ${colors.highContrast.white}`,
   });
 }
 

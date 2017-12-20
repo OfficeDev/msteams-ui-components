@@ -1,22 +1,49 @@
 import { primaryButton } from 'msteams-ui-styles-core/lib/components/primary-button';
 import * as React from 'react';
+import { Focusable } from '../focusable';
 import { InjectedTeamsProps } from '../index';
 import { connectTeamsComponent } from '../teams-context';
 import classes from '../utils/classes';
 
 export interface PrimaryButtonProps
   extends React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
-  disabled?: boolean;
+  onRef?: (ref: React.Component & Focusable | null) => void;
 }
 
-const PrimaryButtonView: React.StatelessComponent<PrimaryButtonProps & InjectedTeamsProps> =
-  (props: PrimaryButtonProps & InjectedTeamsProps) => {
-    const { context, className, ...rest } = props;
+class PrimaryButtonView
+  extends React.Component<PrimaryButtonProps & InjectedTeamsProps>
+  implements Focusable {
+  private button: HTMLButtonElement | null;
+
+  componentDidMount() {
+    if (this.props.onRef) {
+      this.props.onRef(this);
+    }
+  }
+
+  componentWillUnmount() {
+    if (this.props.onRef) {
+      this.props.onRef(null);
+    }
+  }
+
+  focus() {
+    if (this.button) {
+      this.button.focus();
+    }
+  }
+
+  render() {
+    const { context, className, children, onRef, ...rest } = this.props;
     const themeClassName = primaryButton(context);
 
     return <button
       data-component-type="PrimaryButton"
-      className={classes(themeClassName, className)} {...rest}>{props.children}</button>;
-  };
+      className={classes(themeClassName, className)}
+      ref={(ref) => this.button = ref}
+      {...rest}
+    >{children}</button>;
+  }
+}
 
 export const PrimaryButton = connectTeamsComponent(PrimaryButtonView);

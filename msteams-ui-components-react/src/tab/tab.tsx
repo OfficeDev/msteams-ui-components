@@ -40,6 +40,7 @@ class TabInternal extends React.Component<TabProps & InjectedTeamsProps> {
         data-component-type="Tab"
         className={styles.container}
         ref={(ref) => this.tab = ref!}
+        role="tablist"
       >
         {tabs.map(renderTab)}
       </div>
@@ -65,6 +66,7 @@ class TabInternal extends React.Component<TabProps & InjectedTeamsProps> {
               this.itemButtons.push(ref);
             }
           }}
+          role="tab"
         >
           {item.text}
         </button>
