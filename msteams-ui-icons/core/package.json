@@ -16,11 +16,11 @@
   },
   "license": "MIT",
   "scripts": {
-    "prepublishOnly": "npm run clean && npm install && npm run build",
+    "prepublishOnly": "yarn clean && yarn && yarn build",
     "clean": "gulp clean",
     "build": "gulp",
     "build:watch": "gulp watch",
-    "link:self": "npm link"
+    "link:self": "yarn link"
   },
   "peerDependencies": {
     "typestyle": "^1.4.2",

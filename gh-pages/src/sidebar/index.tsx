@@ -117,4 +117,4 @@ class SidebarInner extends React.Component<SidebarViewProps & InjectedTeamsProps
   }
 }
 
-export const Sidebar = withRouter<{}>(connectTeamsComponent(SidebarInner));
+export const Sidebar = withRouter<{} & RouteComponentProps<any>>(connectTeamsComponent(SidebarInner));
