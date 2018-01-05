@@ -1,27 +1,27 @@
 cd msteams-ui-icons/core
-npm install
-npm run clean
-npm run link:self
-npm run build
+yarn
+yarn clean
+yarn link:self
+yarn build
 cd ../react
-npm install
-npm run clean
-npm run link:self
-npm run link:deps
-npm run build
+yarn
+yarn clean
+yarn link:self
+yarn link:deps
+yarn build
 cd ../../msteams-ui-styles-core
-npm install
-npm run clean
-npm run link:self
-npm run link:deps
-npm run build
+yarn
+yarn clean
+yarn link:self
+yarn link:deps
+yarn build
 cd ../msteams-ui-components-react
-npm install
-npm run clean
-npm run link:self
-npm run link:deps
-npm run build
+yarn
+yarn clean
+yarn link:self
+yarn link:deps
+yarn build
 cd ../gh-pages
-npm install
-npm run link:deps
-npm run build
+yarn
+yarn link:deps
+yarn build
