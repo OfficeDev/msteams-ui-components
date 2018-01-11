@@ -1,6 +1,6 @@
 import { style } from 'typestyle/lib';
 import { NestedCSSProperties } from 'typestyle/lib/types';
-import { ColorPalate } from './colors';
+import { ColorPalate, Colors } from './colors';
 import { FontSizePalate } from './font-size-palate';
 import { FontSizes } from './font-sizes';
 import { FontWeightPalate } from './font-weight-palate';
@@ -58,7 +58,7 @@ export function getContext(config: ThemeConfig): Context {
     rem,
     css: config.css || typestyleStyle,
     style: config.style,
-    colors: config.colors!,
+    colors: config.colors || Colors,
     spacing: Spacing(rem),
     font: {
       weights: FontWeights(rem),
