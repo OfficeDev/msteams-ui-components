@@ -16,20 +16,28 @@ By default, this package relies on typestyle to produce its css styles and to in
 To use this package directly, you will need to setup a context object:
 ```javascript
 const { Colors, Context, getContext, ThemeStyle } = require('msteams-ui-styles-core')
-const { style } = require('typestyle/lib') // This is the styling function from typestyle
+// This is the styling function from typestyle
+const { style } = require('typestyle/lib')
 
 // This function is optional. The default one will use Typestyle.
 // 'name' is the advised potential name of the class, your function can ignore this and return anything.
 // 'cssProperties' is the object containing the css properties to generate the class from.
 const cssFunction = (name, cssProperties) => {
-  return style(...cssProperties); // default typestyle styling function.
+  // default typestyle styling function.
+  return style(...cssProperties);
 }
 
 const config = {
-  baseFontSize: 16, // This is the root font size in pixels specified at the HTML element.
-  style: ThemeStyle.Light, // Other options: ThemeStyle.Dark, ThemeStyle.HighContrast
-  colors: Colors, // Optional; default = Teams colors; You can customize the colors here, however changing this will deviate from the MS Teams guidelines.
-  css: cssFunction, // Optional; default = typestyle; This function takes a style object compatible with Typestyle, should perform whatever is required to materialize the CSS style, and return the name of the CSS class generated.
+   // This is the root font size in pixels specified at the HTML element.
+  baseFontSize: 16,
+  // Other options: ThemeStyle.Dark, ThemeStyle.HighContrast
+  style: ThemeStyle.Light,
+  // Optional; default = Teams colors; You can customize the colors here, however changing this will deviate from
+  // the MS Teams guidelines.
+  colors: Colors,
+  // Optional; default = typestyle; This function takes a style object compatible with Typestyle, should perform
+  // whatever is required to materialize the CSS style, and return the name of the CSS class generated.
+  css: cssFunction,
 };
 const context = getContext(config);
 ```
@@ -44,7 +52,9 @@ var newElement = document.createElement('button');
 
 // Here is the magic.
 newElement.className = primaryButton(context);
-// Note: some of the style functions return an object with different class names for different elements. For example, checkbox is usually built by hiding a real input checkbox element and adding a properly styled div element (multiple class names for all of these elements are produced).
+// Note: some of the style functions return an object with different class names for different elements.
+// For example, checkbox is usually built by hiding a real input checkbox element and adding a properly styled div
+// element (multiple class names for all of these elements are produced).
 
 newElement.textContent = "Styled Button";
 bodyElement.appendChild(newElement);

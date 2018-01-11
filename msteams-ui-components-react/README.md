@@ -17,7 +17,8 @@ The React bindings get the context in which to render the components from a top 
 const React = require('react')
 const { PrimaryButton, TeamsComponentContext, ThemeStyle } = require('msteams-ui-components-react')
 
-var mountPoint = ... // Wherever you want to mount the React page in your HTML.
+// Wherever you want to mount the React page in your HTML.
+var mountPoint = ...
 
 class SimplePage extends React.Component {
   state = {
@@ -26,13 +27,16 @@ class SimplePage extends React.Component {
   };
 
   componentWillMount() {
-    // If you are deploying your site as a MS Teams static or configurable tab, you should add ?theme={theme} to your tabs URL in the manifest. That way you will get the current theme on start up (calling getContext on the MS Teams SDK has a delay and may cause the default theme to flash before the real one is returned).
+    // If you are deploying your site as a MS Teams static or configurable tab, you should add ?theme={theme} to
+    // your tabs URL in the manifest. That way you will get the current theme on start up (calling getContext on
+    // the MS Teams SDK has a delay and may cause the default theme to flash before the real one is returned).
     this.updateTheme(this.getQueryVariable('theme'));
     this.setState({
       fontSize: this.pageFontSize(),
     });
 
-    // If you are not using the MS Teams web SDK, you can remove this entire if block, otherwise if you want theme changes in the MS Teams client to propogate to the page, you should leave this here.
+    // If you are not using the MS Teams web SDK, you can remove this entire if block, otherwise if you want theme
+    // changes in the MS Teams client to propogate to the page, you should leave this here.
     if (this.inTeams()) {
       microsoftTeams.initialize();
       microsoftTeams.registerOnThemeChangeHandler(this.updateTheme);
@@ -203,7 +207,7 @@ class SimplePage extends React.Component {
 }
 ```
 
-As you can see the only difference is where the render code is places. Using method (1) lets you organize your subcomponents for re-use whereas (2) is a quick way to get at the context. (The code for (1) actually uses (2) under the covers.)
+As you can see the only difference is where the render code is placed. Using method (1) lets you organize your subcomponents for re-use whereas (2) is a quick way to get at the context. (The code for (1) actually uses (2) under the covers.)
 
 # Contributing
 
