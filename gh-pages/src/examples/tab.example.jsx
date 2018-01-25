@@ -32,6 +32,7 @@ class TabExample extends React.Component {
         <PanelBody>
           <div style={styles.section}></div>
           <Tab
+            autoFocus
             selectedTabId={this.state.selectedTab}
             tabs={[
               {

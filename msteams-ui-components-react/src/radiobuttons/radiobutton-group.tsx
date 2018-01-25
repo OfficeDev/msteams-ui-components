@@ -4,6 +4,7 @@ import * as React from 'react';
 import { connectTeamsComponent } from '../teams-context/connect-teams-component';
 import { InjectedTeamsProps } from '../teams-context/connected-component';
 import classes from '../utils/classes';
+import uniqueId from '../utils/uniqueId';
 
 export interface RadiobuttonGroupProps
   extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
@@ -24,25 +25,37 @@ class RadiobuttonGroupInner extends React.Component<RadiobuttonGroupProps & Inje
     value: PropTypes.any,
   };
 
+  state = {
+    groupId: uniqueId('ts-rg'),
+  };
+
   render() {
-    const {context, className, onSelected, value, label, errorLabel, ...rest} = this.props;
+    const {
+      context, children, className,
+      onSelected, value, label, errorLabel,
+      ...rest } = this.props;
     const themeClassNames = radioButtonGroup(context);
+    const actualId = this.state.groupId;
 
     return (
-      <div
-        data-component-type="RadioButtonGroup"
-        role="radiogroup"
-        className={classes(themeClassNames.container, className)}
-        {...rest}>
-        {label || errorLabel ?
-          <div>
-            {label ?
-              <label className={themeClassNames.label}>{label}</label> : null}
-            {errorLabel ?
-              <label className={themeClassNames.errorLabel}>{errorLabel}</label> : null}
-          </div>
-          : null}
-        {this.props.children}
+      <div {...rest}>
+        <label
+          hidden={!!label}
+          tabIndex={-1}
+          className={themeClassNames.label}
+          htmlFor={actualId}>{label}</label>
+        <label
+          hidden={!!errorLabel}
+          aria-live="polite"
+          tabIndex={-1}
+          className={themeClassNames.errorLabel}
+          htmlFor={actualId}>{errorLabel}</label>
+        <div
+          id={actualId}
+          role="radiogroup"
+          className={classes(themeClassNames.container, className)}
+          aria-invalid={!!errorLabel}>
+          {children}</div>
       </div>
     );
   }

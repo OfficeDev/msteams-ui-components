@@ -1,8 +1,5 @@
 class ButtonExample extends React.Component {
   render() {
-    this.primaryButton = null;
-    this.secondaryButton = null;
-
     return <ConnectedComponent render={(props) => {
       const { context } = props;
       const { rem, font } = context;
@@ -10,7 +7,8 @@ class ButtonExample extends React.Component {
 
       const styles = {
         header: { ...sizes.title, ...weights.semibold },
-        section: { ...sizes.title2, marginTop: rem(1.4), marginBottom: rem(1.4) }
+        section: { ...sizes.title2, marginTop: rem(1.4), marginBottom: rem(1.4) },
+        button: {marginRight: rem(0.5) }
       }
 
       return <Panel>
@@ -19,33 +17,22 @@ class ButtonExample extends React.Component {
         </PanelHeader>
         <PanelBody>
           <div style={styles.section}>Primary</div>
-          <PrimaryButton onRef={(ref) => this.primaryButton = ref}>Enabled</PrimaryButton>
-          <PrimaryButton onClick={() => this.focusPrimaryButton()}>Focus previous button</PrimaryButton>
-          <PrimaryButton disabled>Disabled</PrimaryButton>
+          <PrimaryButton
+            autoFocus
+            style={styles.button}>Enabled</PrimaryButton>
+          <PrimaryButton
+            style={styles.button}
+            disabled>Disabled</PrimaryButton>
           <div style={styles.section}>Secondary</div>
-          <SecondaryButton onRef={(ref) => this.secondaryButton = ref}>Enabled</SecondaryButton>
-          <SecondaryButton onClick={() => this.focusSecondaryButton()}>Focus previous button</SecondaryButton>
-          <SecondaryButton disabled>Disabled</SecondaryButton>
+          <SecondaryButton
+            style={styles.button}>Enabled</SecondaryButton>
+          <SecondaryButton
+            style={styles.button}
+            disabled>Disabled</SecondaryButton>
         </PanelBody>
         <PanelFooter>
         </PanelFooter>
       </Panel>;
     }} />;
-  }
-
-  renderIcon() {
-    return (
-      <div style={{ margin: 'auto' }}>
-        <MSTeamsIcon iconType={MSTeamsIconType.monkey} />
-      </div>
-    );
-  }
-
-  focusPrimaryButton() {
-    this.primaryButton.focus();
-  }
-
-  focusSecondaryButton() {
-    this.secondaryButton.focus();
   }
 }

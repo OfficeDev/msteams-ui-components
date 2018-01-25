@@ -13,7 +13,6 @@ const PanelFooterView: React.StatelessComponent<PanelFooterProps & InjectedTeams
     const classNames = panel(context);
     return (
       <div
-        data-component-type="PanelFooter"
         className={classes(classNames.footer, className)}
         {...rest}>
         {props.children}

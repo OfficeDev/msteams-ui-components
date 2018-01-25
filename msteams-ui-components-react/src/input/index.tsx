@@ -15,7 +15,9 @@ export interface InputProps extends
 
 class InputInternal extends React.Component<InputProps & InjectedTeamsProps>
 implements Focusable {
-  state = { id: uniqueId('ts-i-') };
+  state = {
+    inputId: uniqueId('ts-i'),
+  };
 
   private input: HTMLInputElement | null;
 
@@ -38,28 +40,39 @@ implements Focusable {
   }
 
   render() {
-    const { name, context, style, className, label, onRef, errorLabel, id, ...rest } = this.props;
+    const {
+      name, context, style,
+      className, label, onRef,
+      id, errorLabel, required,
+      ...rest } = this.props;
     const themeClassNames = input(context);
-    const actualId = id || this.state.id;
+    const actualId = id || this.state.inputId;
 
     return (
       <div
-        data-component-type="Input"
         style={style}
         className={classes(themeClassNames.container, className)}>
-        {label || errorLabel ?
-          <div>
-            {label ?
-              <label className={themeClassNames.label} htmlFor={actualId}>{label}</label> : null}
-            {errorLabel ?
-              <label className={themeClassNames.errorLabel}>{errorLabel}</label> : null}
-          </div>
-          : null}
+        <label
+          hidden={!!label}
+          tabIndex={-1}
+          className={themeClassNames.label}
+          htmlFor={actualId}>{label}</label>
+        <label
+          hidden={!!errorLabel}
+          aria-live="polite"
+          tabIndex={-1}
+          className={themeClassNames.errorLabel}
+          htmlFor={actualId}>{errorLabel}</label>
         <input
+          id={actualId}
           ref={(ref) => this.input = ref}
+          role="textbox"
+          aria-multiline="false"
+          aria-invalid={!!errorLabel}
+          aria-required={required}
+          required={required}
           className={themeClassNames.input}
           name={name}
-          id={actualId}
           {...rest} />
         {errorLabel ?
           <MSTeamsIcon

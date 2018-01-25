@@ -1,41 +1,79 @@
 import { MSTeamsIcon, MSTeamsIconType, MSTeamsIconWeight } from 'msteams-ui-icons-react';
 import { textArea } from 'msteams-ui-styles-core/lib/components/text-area';
 import * as React from 'react';
+import { Focusable } from '../focusable';
 import { connectTeamsComponent, InjectedTeamsProps } from '../index';
 import classes from '../utils/classes';
 import uniqueId from '../utils/uniqueId';
 
 export interface TextAreaProps
   extends React.DetailedHTMLProps<React.TextareaHTMLAttributes<HTMLTextAreaElement>, HTMLTextAreaElement> {
+  onRef?: (ref: React.Component & Focusable | null) => void;
   label?: string;
   errorLabel?: string;
 }
 
-class TextAreaInternal extends React.Component<TextAreaProps & InjectedTeamsProps> {
-  state = { id: uniqueId('ts-ta-') };
+class TextAreaInternal extends React.Component<TextAreaProps & InjectedTeamsProps> implements Focusable {
+  state = {
+    inputId: uniqueId('ts-ta'),
+    labelId: uniqueId('ts-ta-l'),
+    errorLabelId: uniqueId('ts-ta-e'),
+  };
+
+  private textarea: HTMLTextAreaElement | null;
+
+  componentDidMount() {
+    if (this.props.onRef) {
+      this.props.onRef(this);
+    }
+  }
+
+  componentWillUnmount() {
+    if (this.props.onRef) {
+      this.props.onRef(null);
+    }
+  }
+
+  focus() {
+    if (this.textarea) {
+      this.textarea.focus();
+    }
+  }
 
   render() {
-    const { name, context, style, className, label, errorLabel, id, children, ...rest } = this.props;
+    const {
+      name, context, style,
+      className, label, errorLabel,
+      id, children, required,
+      ...rest } = this.props;
     const themeClassNames = textArea(context);
-    const actualId = id || this.state.id;
+    const actualId = id || this.state.inputId;
 
     return (
       <div
-        data-component-type="TextArea"
         style={style}
         className={classes(themeClassNames.container, className)}>
-        {label || errorLabel ?
-          <div>
-          {label ?
-            <label className={themeClassNames.label} htmlFor={actualId}>{label}</label> : null}
-          {errorLabel ?
-            <label className={themeClassNames.errorLabel}>{errorLabel}</label> : null}
-        </div>
-        : null}
+        <label id={this.state.labelId}
+          hidden={!!label}
+          tabIndex={-1}
+          className={themeClassNames.label}
+          htmlFor={actualId}>{label}</label>
+        <label id={this.state.errorLabelId}
+          hidden={!!errorLabel}
+          aria-live="polite"
+          tabIndex={-1}
+          className={themeClassNames.errorLabel}
+          htmlFor={actualId}>{errorLabel}</label>
         <textarea
+          id={actualId}
+          ref={(ref) => this.textarea = ref}
+          role="textbox"
+          aria-multiline="true"
+          aria-invalid={!!errorLabel}
+          aria-required={required}
+          required={required}
           className={themeClassNames.textArea}
           name={name}
-          id={actualId}
           {...rest}>{children}</textarea>
         {errorLabel ?
           <MSTeamsIcon

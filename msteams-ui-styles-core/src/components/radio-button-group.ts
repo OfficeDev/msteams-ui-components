@@ -20,7 +20,7 @@ function base(context: Context, colors: RadioButtonColors) {
 
   return {
     container: css(names.container, {
-      display: 'inline-block',
+      clear: 'both',
     }),
     label: labelClass,
     errorLabel: errorLabelClass,
