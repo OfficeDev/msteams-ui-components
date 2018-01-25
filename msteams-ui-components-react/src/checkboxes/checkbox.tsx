@@ -19,6 +19,7 @@ interface CheckboxState {
 interface CheckboxContext {
   onChecked?: (checked: boolean, value: any) => void;
   values?: any[];
+  invalid: boolean;
 }
 
 type ConnectedProps = CheckboxProps & InjectedTeamsProps;
@@ -40,7 +41,7 @@ class CheckboxInner extends React.Component<ConnectedProps, CheckboxState> {
   state = { id: uniqueId('ts-cb-') };
 
   render() {
-    const { id, name, context, className, style, value, checked, onChecked, label, ...rest } = this.props;
+    const { id, required, name, context, className, style, value, checked, onChecked, label, ...rest } = this.props;
 
     const actuallyChecked = this.isChecked();
     const themeClassNames = checkbox(context);
@@ -51,10 +52,10 @@ class CheckboxInner extends React.Component<ConnectedProps, CheckboxState> {
 
     return (
       <div
-        data-component-type="Checkbox"
         className={classes(themeClassNames.container, className)}
         style={style}>
         <input
+          aria-hidden="true"
           id={id}
           name={name}
           type="checkbox"
@@ -63,14 +64,15 @@ class CheckboxInner extends React.Component<ConnectedProps, CheckboxState> {
           value={value}
           readOnly/>
         <button
-          role="checkbox"
-          aria-checked={actuallyChecked}
           id={this.state.id}
+          role="checkbox"
+          name={name}
+          aria-required={required}
+          aria-checked={actuallyChecked}
           className={checkboxClassNames}
           onClick={this.click}
           {...rest} />
-        {this.props.label ?
-          <label htmlFor={this.state.id} className={themeClassNames.label}>{this.props.label}</label> : null}
+        <label hidden={!label} htmlFor={this.state.id} className={themeClassNames.label}>{label}</label>
         {this.props.children}
       </div>
     );

@@ -6,6 +6,7 @@ import { connectTeamsComponent, InjectedTeamsProps } from '../index';
 export interface TabProps {
   tabs: TabItem[];
   selectedTabId: any;
+  autoFocus: boolean;
 }
 
 export interface TabItem {
@@ -37,11 +38,9 @@ class TabInternal extends React.Component<TabProps & InjectedTeamsProps> {
 
     return (
       <div
-        data-component-type="Tab"
         className={styles.container}
         ref={(ref) => this.tab = ref!}
-        role="tablist"
-      >
+        role="tablist">
         {tabs.map(renderTab)}
       </div>
     );
@@ -49,16 +48,18 @@ class TabInternal extends React.Component<TabProps & InjectedTeamsProps> {
 
   private renderTabWithStyle = (styles: TabStyles) => {
     const renderTab = (item: TabItem) => {
-      const classes = [styles.normal];
+      const selected = this.props.selectedTabId === item.id;
 
-      if (this.props.selectedTabId === item.id) {
+      const classes = [styles.normal];
+      if (selected) {
         classes.push(styles.active);
       }
 
       return (
         <button
+          tabIndex={selected ? 0 : -1}
+          autoFocus={this.props.autoFocus && selected}
           key={item.id}
-          data-component-type="Tab"
           onClick={item.onSelect}
           className={classes.join(' ')}
           ref={(ref) => {
@@ -66,8 +67,7 @@ class TabInternal extends React.Component<TabProps & InjectedTeamsProps> {
               this.itemButtons.push(ref);
             }
           }}
-          role="tab"
-        >
+          role="tab">
           {item.text}
         </button>
       );

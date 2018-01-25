@@ -1,4 +1,10 @@
 class InputExample extends React.Component {
+  constructor() {
+    super();
+    this.onValueChanged = this.onValueChanged.bind(this);
+    this.state = {value: ""};
+  }
+
   render() {
     return <ConnectedComponent render={(props) => {
       const { context } = props;
@@ -7,11 +13,8 @@ class InputExample extends React.Component {
 
       const styles = {
         header: {...sizes.title, ...weights.semibold},
-        section: {...sizes.title2, marginTop: rem(1.4), marginBottom: rem(1.4)},
         input: {
-          paddingLeft: rem(0.5),
-          paddingRight: rem(0.5),
-          display: 'inline-block',
+          paddingTop: rem(0.5),
           width: '50%'},
       }
 
@@ -20,22 +23,28 @@ class InputExample extends React.Component {
           <div style={styles.header}>Inputs</div>
         </PanelHeader>
         <PanelBody>
-          <div style={styles.section}>No Label or Error</div>
-          <Input style={styles.input} placeholder="Enabled" />
-          <Input style={styles.input}  placeholder="Disabled" disabled/>
-          <div style={styles.section}>With a label</div>
-          <Input style={styles.input} placeholder="Enabled" label="With a label" />
-          <Input style={styles.input} placeholder="Disabled" label="With a label" disabled />
-          <div style={styles.section}>With an error</div>
-          <Input style={styles.input} placeholder="Enabled" errorLabel="With an error " />
-          <Input style={styles.input} placeholder="Disabled" errorLabel="With an error" disabled />
-          <div style={styles.section}>With a label and error</div>
-          <Input style={styles.input} placeholder="Enabled" label="With a label" errorLabel="With an error" />
-          <Input style={styles.input} placeholder="Disabled" label="With a label" errorLabel="With an error" disabled />
+          <Input
+            autoFocus
+            style={styles.input}
+            placeholder="Enabled"
+            label="Enabled text box"
+            errorLabel={!this.state.value ? "This value is required" : null}
+            value={this.state.value}
+            onChange={this.onValueChanged}
+            required />
+          <Input
+            style={styles.input}
+            placeholder="Disabled"
+            label="Disabled text box"
+            disabled />
         </PanelBody>
         <PanelFooter>
         </PanelFooter>
       </Panel>;
     }} />;
+  }
+
+  onValueChanged(event) {
+    this.setState(Object.assign({}, this.state, {value: event.target.value}));
   }
 }

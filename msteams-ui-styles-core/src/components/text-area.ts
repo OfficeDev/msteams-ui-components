@@ -8,15 +8,18 @@ interface TextAreaColors {
     border: string;
     underline: string;
     text: string;
+    placeholder: string;
   };
   active: {
     background: string;
     underline: string;
   };
   disabled: {
+    border: string;
     background: string;
     underline: string;
     text: string;
+    placeholder: string;
   };
   hover: {
     background: string;
@@ -27,7 +30,7 @@ interface TextAreaColors {
     underline: string;
   };
   label: string;
-  errorLabel: string;
+  errorIcon: string;
 }
 
 function base(context: Context, colors: TextAreaColors) {
@@ -45,13 +48,12 @@ function base(context: Context, colors: TextAreaColors) {
 
   return {
     container: css(names.container, {
-      position: 'relative',
       overflow: 'hidden',
-      display: 'flex',
-      flexDirection: 'column',
+      position: 'relative',
     }),
     textArea: css(names.textarea, {
-      flex: 1,
+      clear: 'both',
+      width: '100%',
       borderRadius: rem(0.3),
       border: `${rem(0.2)} solid ${colors.rest.border}`,
       background: colors.rest.background,
@@ -64,7 +66,6 @@ function base(context: Context, colors: TextAreaColors) {
       ['-moz-box-sizing']: 'border-box',
       boxSizing: 'border-box',
       resize: 'none',
-      minHeight: rem(6),
     }, {
         $nest: {
           '&:active:enabled': {
@@ -76,13 +77,54 @@ function base(context: Context, colors: TextAreaColors) {
             borderBottomColor: colors.hover.underline,
           },
           '&:disabled': {
+            borderColor: colors.disabled.border,
             background: colors.disabled.background,
             borderBottomColor: colors.disabled.underline,
             color: colors.disabled.text,
+            $nest: {
+              '&::placeholder': {
+                color: colors.disabled.placeholder,
+                opacity: 1,
+              },
+              '&::-webkit-input-placeholder': {
+                color: colors.disabled.placeholder,
+              },
+              '&::-moz-placeholder': {
+                color: colors.disabled.placeholder,
+              },
+              '&:-ms-input-placeholder': {
+                color: colors.disabled.placeholder,
+              },
+              '&::-ms-input-placeholder': {
+                color: colors.disabled.placeholder,
+              },
+              '&:-moz-placeholder': {
+                color: colors.disabled.placeholder,
+              },
+            },
           },
           '&:focus': {
             borderBottomColor: colors.active.underline,
             background: colors.focus.background,
+          },
+          '&::placeholder': {
+            color: colors.rest.placeholder,
+            opacity: 1,
+          },
+          '&::-webkit-input-placeholder': {
+            color: colors.rest.placeholder,
+          },
+          '&::-moz-placeholder': {
+            color: colors.rest.placeholder,
+          },
+          '&:-ms-input-placeholder': {
+            color: colors.rest.placeholder,
+          },
+          '&::-ms-input-placeholder': {
+            color: colors.rest.placeholder,
+          },
+          '&:-moz-placeholder': {
+            color: colors.rest.placeholder,
           },
         },
       }),
@@ -90,9 +132,9 @@ function base(context: Context, colors: TextAreaColors) {
     errorLabel: errorLabelClass,
     errorIcon: css(names.errorIcon, {
       position: 'absolute',
-      color: colors.errorLabel,
+      color: colors.errorIcon,
       right: rem(1.2),
-      top: '50%',
+      bottom: rem(2.5),
     }),
   };
 }
@@ -104,16 +146,19 @@ function light(context: Context) {
       background: colors.light.gray10,
       border: colors.transparent,
       underline: colors.transparent,
-      text: colors.light.gray02,
+      text: colors.light.black,
+      placeholder: colors.light.gray02,
     },
     active: {
       background: colors.light.gray10,
       underline: colors.light.brand00,
     },
     disabled: {
+      border: colors.transparent,
       background: colors.light.gray12,
       underline: colors.transparent,
       text: colors.light.gray08,
+      placeholder: colors.light.gray06,
     },
     hover: {
       background: colors.light.gray10,
@@ -124,7 +169,7 @@ function light(context: Context) {
       underline: colors.light.brand00,
     },
     label: colors.light.gray01,
-    errorLabel: colors.light.red,
+    errorIcon: colors.light.red,
   });
 }
 
@@ -135,16 +180,19 @@ function dark(context: Context) {
       background: colors.dark.black,
       border: colors.transparent,
       underline: colors.transparent,
-      text: colors.dark.gray02,
+      text: colors.dark.white,
+      placeholder: colors.dark.gray02,
     },
     active: {
       background: colors.dark.black,
       underline: colors.dark.brand00,
     },
     disabled: {
+      border: colors.transparent,
       background: colors.dark.gray12,
       underline: colors.transparent,
       text: colors.dark.gray08,
+      placeholder: colors.dark.gray06,
     },
     hover: {
       background: colors.dark.black,
@@ -155,7 +203,7 @@ function dark(context: Context) {
       underline: colors.dark.brand00,
     },
     label: colors.dark.white,
-    errorLabel: colors.dark.red,
+    errorIcon: colors.dark.red,
   });
 }
 
@@ -167,15 +215,18 @@ function highContrast(context: Context) {
       border: colors.highContrast.white,
       underline: colors.transparent,
       text: colors.highContrast.white,
+      placeholder: colors.highContrast.white,
     },
     active: {
       background: colors.highContrast.black,
       underline: colors.highContrast.yellow,
     },
     disabled: {
-      background: colors.highContrast.green,
+      border: colors.highContrast.green,
+      background: colors.highContrast.black,
       underline: colors.highContrast.white,
       text: colors.highContrast.white,
+      placeholder: colors.highContrast.green,
     },
     hover: {
       background: colors.highContrast.black,
@@ -186,7 +237,7 @@ function highContrast(context: Context) {
       underline: colors.highContrast.yellow,
     },
     label: colors.highContrast.white,
-    errorLabel: colors.highContrast.yellow,
+    errorIcon: colors.highContrast.yellow,
   });
 }
 

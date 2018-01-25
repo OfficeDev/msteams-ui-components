@@ -12,13 +12,14 @@ function base(context: Context, colors: LabelColors) {
   return css(name,
     sizes.caption, weights.regular, {
     display: 'inline-block',
+    color: colors.text,
     padding: 0,
     border: 0,
     marginBottom: rem(0.8),
     marginLeft: 0,
     marginRight: 0,
     marginTop: 0,
-    color: colors.text,
+    float: 'left',
   });
 }
 

@@ -18,6 +18,7 @@ class DropdownExample extends React.Component {
   <div>
     <div style={styles.section}>No Label</div>
     <Dropdown
+      autoFocus
       mainButtonText="left dropdown"
       style={{ width: '100%' }}
       items={[

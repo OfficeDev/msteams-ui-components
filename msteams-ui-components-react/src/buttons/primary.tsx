@@ -38,9 +38,9 @@ class PrimaryButtonView
     const themeClassName = primaryButton(context);
 
     return <button
-      data-component-type="PrimaryButton"
-      className={classes(themeClassName, className)}
       ref={(ref) => this.button = ref}
+      role="button"
+      className={classes(themeClassName, className)}
       {...rest}
     >{children}</button>;
   }

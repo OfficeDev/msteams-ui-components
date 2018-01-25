@@ -21,7 +21,7 @@ class TextAreaExample extends React.Component {
         </PanelHeader>
         <PanelBody>
           <div style={styles.section}></div>
-          <Anchor href="#" onClick={(e) => e.preventDefault()}>a link</Anchor>
+          <Anchor autoFocus href="#" onClick={(e) => e.preventDefault()}>a link</Anchor>
         </PanelBody>
         <PanelFooter>
         </PanelFooter>
