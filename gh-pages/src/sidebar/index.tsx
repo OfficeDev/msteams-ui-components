@@ -29,12 +29,12 @@ class SidebarInner extends React.Component<SidebarViewProps & InjectedTeamsProps
   }, {
     location: Routes.checkboxes,
     name: 'Checkboxes',
-    description: 'Multi-selection',
+    description: 'Multi-item selection',
     icon: () => SidebarInner.icon(MSTeamsIconType.ToDo),
   }, {
     location: Routes.radiobuttons,
     name: 'RadioButtons',
-    description: 'Single-selection',
+    description: 'Single-item selection',
     icon: () => SidebarInner.icon(MSTeamsIconType.CircleBig),
   }, {
     location: Routes.toggles,
