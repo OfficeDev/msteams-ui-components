@@ -6,7 +6,7 @@ import { connectTeamsComponent, InjectedTeamsProps } from '../index';
 export interface TabProps {
   tabs: TabItem[];
   selectedTabId: any;
-  autoFocus: boolean;
+  autoFocus?: boolean;
 }
 
 export interface TabItem {
