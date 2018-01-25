@@ -11,14 +11,14 @@
     "url": "https://github.com/OfficeDev/msteams-ui-components/issues"
   },
   "scripts": {
-    "prepublishOnly": "npm run clean && npm install && npm run build",
+    "prepublishOnly": "yarn clean && yarn && yarn build",
     "clean": "gulp clean",
     "build": "gulp",
     "build:watch": "gulp watch",
     "build:crash": "gulp build-crash-on-error",
     "lint": "gulp lint",
-    "link:self": "npm link",
-    "link:deps": "npm link msteams-ui-styles-core && npm link msteams-ui-icons-react"
+    "link:self": "yarn link",
+    "link:deps": "yarn link msteams-ui-styles-core && yarn link msteams-ui-icons-react"
   },
   "author": {
     "name": "Microsoft Corporation"

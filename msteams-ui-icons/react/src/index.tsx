@@ -35,7 +35,7 @@ export class MSTeamsIcon extends React.PureComponent<MSTeamsIconProps, MSTeamsIc
     const { iconWeight, iconType, className, children, ...rest } = this.props;
     const classNames = classes(baseStyle(this.props.iconWeight), iconStyle(this.props.iconType), className);
 
-    return <i className={classNames} {...rest}>{children}</i>;
+    return <i aria-hidden={true} className={classNames} {...rest}>{children}</i>;
   }
 }
 

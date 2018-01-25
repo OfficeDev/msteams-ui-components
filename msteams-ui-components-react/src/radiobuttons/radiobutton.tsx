@@ -38,17 +38,17 @@ class RadiobuttonInner extends React.Component<RadiobuttonProps & InjectedTeamsP
   state = { id: uniqueId('ts-rb-') };
 
   render() {
-    const { id, name, context, className, style, value, label, onSelected, ...rest } = this.props;
+    const { id, required, name, context, className, style, value, label, onSelected, ...rest } = this.props;
 
     const actuallySelected = this.isSelected();
     const themeClassNames = radioButton(context);
 
     return (
       <div
-        data-component-type="RadioButton"
         className={classes(themeClassNames.container, className)}
         style={style}>
         <input
+          aria-hidden="true"
           id={id}
           name={name}
           type="radio"
@@ -57,14 +57,15 @@ class RadiobuttonInner extends React.Component<RadiobuttonProps & InjectedTeamsP
           value={value}
           readOnly/>
         <button
-          role="radio"
-          aria-checked={actuallySelected}
           id={this.state.id}
+          role="radio"
+          name={name}
+          aria-required={required}
+          aria-checked={actuallySelected}
           onClick={this.click}
           className={themeClassNames.radio}
           {...rest} />
-        {this.props.label ?
-          <label htmlFor={this.state.id} className={themeClassNames.label}>{this.props.label}</label> : null}
+        <label hidden={!label} htmlFor={this.state.id} className={themeClassNames.label}>{this.props.label}</label>
         {this.props.children}
       </div>
     );

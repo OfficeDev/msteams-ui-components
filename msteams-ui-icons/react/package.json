@@ -16,12 +16,12 @@
   },
   "license": "MIT",
   "scripts": {
-    "prepublishOnly": "npm run clean && npm install && npm run build",
+    "prepublishOnly": "yarn clean && yarn && yarn build",
     "clean": "gulp clean",
     "build": "gulp",
     "build:watch": "gulp watch",
-    "link:self": "npm link",
-    "link:deps": "npm link msteams-ui-icons-core"
+    "link:self": "yarn link",
+    "link:deps": "yarn link msteams-ui-icons-core"
   },
   "dependencies": {
     "msteams-ui-icons-core": "^0.2.1"

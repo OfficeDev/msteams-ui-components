@@ -1,7 +1,7 @@
 module.exports = () => {
   const { ThemeConfig } = require('./lib/theme-config')
   const { ThemeStyle } = require('./lib/theme-style')
-  const { Context, getContext } = require('./lib/context')
+  const { getContext } = require('./lib/context')
   const { Colors } = require('./lib/colors')
   const { createTypeStyle } = require('typestyle')
   const fs = require('fs')

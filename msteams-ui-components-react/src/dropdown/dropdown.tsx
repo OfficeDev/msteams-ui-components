@@ -74,18 +74,18 @@ class DropdownInternal extends React.Component<DropdownProps & InjectedTeamsProp
 
     return (
       <div
+        ref={(ref) => this.dropdown = ref!}
         className={classes(themeClassNames.container, className)}
         style={style}
-        ref={(ref) => this.dropdown = ref!}
       >
         {label ? <label className={themeClassNames.label} htmlFor={state.id}>{label}</label> : null}
         <button
+          ref={(ref) => this.mainButton = ref!}
+          role="combobox"
           className={themeClassNames.mainButton.container}
           onClick={this.open}
           {...rest}
           id={state.id}
-          ref={(ref) => this.mainButton = ref!}
-          role="combobox"
         >
           {mainButtonText ?
             <span className={themeClassNames.mainButton.text}>

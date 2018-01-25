@@ -37,9 +37,9 @@ class SecondaryButtonView extends React.Component<SecondaryButtonProps & Injecte
     const themeClassName = secondaryButton(context);
 
     return <button
-      data-component-type="SecondaryButton"
-      className={classes(themeClassName, className)}
       ref={(ref) => this.button = ref}
+      role="button"
+      className={classes(themeClassName, className)}
       {...rest}
     >
       {children}

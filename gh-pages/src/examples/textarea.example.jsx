@@ -1,4 +1,10 @@
 class TextAreaExample extends React.Component {
+  constructor() {
+    super();
+    this.onValueChanged = this.onValueChanged.bind(this);
+    this.state = {value: ""};
+  }
+
   render() {
     return <ConnectedComponent render={(props) => {
       const { context } = props;
@@ -6,17 +12,10 @@ class TextAreaExample extends React.Component {
       const { sizes, weights } = font;
 
       const styles = {
-        header: { ...sizes.title, ...weights.semibold },
-        section: { ...sizes.title2, marginTop: rem(1.4), marginBottom: rem(1.4) },
-        textArea: {
-          paddingLeft: rem(0.5),
-          paddingRight: rem(0.5),
-          flex: 1,
-        },
-        textAreaContainer: {
-          display: 'flex',
-          flexDirection: 'row',
-        },
+        header: {...sizes.title, ...weights.semibold},
+        input: {
+          paddingTop: rem(0.5),
+          width: '50%'},
       }
 
       return <Panel>
@@ -24,30 +23,28 @@ class TextAreaExample extends React.Component {
           <div style={styles.header}>TextAreas</div>
         </PanelHeader>
         <PanelBody>
-          <div style={styles.section}>No Label or Error</div>
-          <div style={styles.textAreaContainer}>
-            <TextArea style={styles.textArea} placeholder="Enabled" />
-            <TextArea style={styles.textArea} placeholder="Disabled" disabled />
-          </div>
-          <div style={styles.section}>With a label</div>
-          <div style={styles.textAreaContainer}>
-            <TextArea style={styles.textArea} placeholder="Enabled" label="With a label" />
-            <TextArea style={styles.textArea} placeholder="Disabled" label="With a label" disabled />
-          </div>
-          <div style={styles.section}>With an error</div>
-          <div style={styles.textAreaContainer}>
-            <TextArea style={styles.textArea} placeholder="Enabled" errorLabel="With an error " />
-            <TextArea style={styles.textArea} placeholder="Disabled" errorLabel="With an error" disabled />
-          </div>
-          <div style={styles.section}>With a label and error</div>
-          <div style={styles.textAreaContainer}>
-            <TextArea style={styles.textArea} placeholder="Enabled" label="With a label" errorLabel="With an error" />
-            <TextArea style={styles.textArea} placeholder="Disabled" label="With a label" errorLabel="With an error" disabled />
-          </div>
+          <TextArea
+            autoFocus
+            style={styles.input}
+            placeholder="Enabled"
+            label="Enabled text box"
+            errorLabel={!this.state.value ? "This value is required" : null}
+            value={this.state.value}
+            onChange={this.onValueChanged}
+            required />
+          <TextArea
+            style={styles.input}
+            placeholder="Disabled"
+            label="Disabled text box"
+            disabled />
         </PanelBody>
         <PanelFooter>
         </PanelFooter>
       </Panel>;
     }} />;
+  }
+
+  onValueChanged(event) {
+    this.setState(Object.assign({}, this.state, {value: event.target.value}));
   }
 }

@@ -37,7 +37,8 @@ class RadiobuttonExample extends React.Component {
         </PanelHeader>
         <PanelBody>
           <div style={styles.section}>Enabled</div>
-          <Radiobutton value={1} label="Enabled"
+          <Radiobutton autoFocus value={1}
+            label="Enabled"
             selected={this.state.one}
             onSelected={this.onOneSelected} />
           <div style={styles.section}>Disabled</div>
@@ -49,11 +50,11 @@ class RadiobuttonExample extends React.Component {
           <RadiobuttonGroup
             style={styles.radiobuttonGroup}
             label="Group label"
-            errorLabel="Error label"
+            errorLabel={this.state.groupValue != 2 ? "Must choose Option 2" : null}
             value={this.state.groupValue}
             onSelected={this.onGroupSelected} >
-            <Radiobutton value={1} label="Option 1" />
-            <Radiobutton value={2} label="Option 2" />
+            <Radiobutton name="grouped" value={1} label="Option 1" />
+            <Radiobutton name="grouped" value={2} label="Option 2" />
           </RadiobuttonGroup>
         </PanelBody>
         <PanelFooter>

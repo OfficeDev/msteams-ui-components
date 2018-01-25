@@ -13,7 +13,6 @@ const PanelHeaderView: React.StatelessComponent<PanelHeaderProps & InjectedTeams
     const classNames = panel(context);
     return (
       <div
-        data-component-type="PanelHeader"
         className={classes(classNames.header, className)}
         {...rest}>
         {props.children}

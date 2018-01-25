@@ -11,6 +11,7 @@ function base(context: Context, colors: ErrorLabelColors) {
 
   return css(name,
     sizes.caption, weights.regular, {
+    display: 'inline-block',
     color: colors.text,
     padding: 0,
     border: 0,

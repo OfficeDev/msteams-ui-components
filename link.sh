@@ -1,17 +1,17 @@
 cd msteams-ui-icons/core
-npm run link:self
+yarn link:self
 cd ../react
-npm run link:self
+yarn link:self
 cd ../../msteams-ui-styles-core
-npm run link:self
+yarn link:self
 cd ../msteams-ui-components-react
-npm run link:self
+yarn link:self
 
 cd ../msteams-ui-icons/react
-npm run link:deps
+yarn link:deps
 cd ../../msteams-ui-styles-core
-npm run link:deps
+yarn link:deps
 cd ../msteams-ui-components-react
-npm run link:deps
+yarn link:deps
 cd ../gh-pages
-npm run link:deps
+yarn link:deps

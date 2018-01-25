@@ -37,7 +37,7 @@ class CheckboxExample extends React.Component {
         </PanelHeader>
         <PanelBody>
           <div style={styles.section}>Enabled</div>
-          <Checkbox value={1} label="Enabled"
+          <Checkbox autoFocus value={1} label="Enabled"
             checked={this.state.one}
             onChecked={this.onOneChecked} />
           <div style={styles.section}>Disabled</div>
@@ -49,7 +49,7 @@ class CheckboxExample extends React.Component {
           <CheckboxGroup
             style={styles.checkboxGroup}
             label="Group label"
-            errorLabel="Error label"
+            errorLabel={this.state.groupValues.length == 0 ? "Must choose one" : null}
             values={this.state.groupValues}
             onChecked={this.onGroupChecked} >
             <Checkbox value={1} label="Option 1" />
