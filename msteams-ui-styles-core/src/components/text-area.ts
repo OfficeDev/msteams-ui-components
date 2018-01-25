@@ -37,6 +37,7 @@ function base(context: Context, colors: TextAreaColors) {
   const names = {
     container: 'textarea-container',
     textarea: 'textarea-field',
+    labelContainer: 'textarea-label-container',
     label: 'textarea-label',
     error: 'textarea-error',
     errorIcon: 'textarea-error-icon',
@@ -50,9 +51,11 @@ function base(context: Context, colors: TextAreaColors) {
     container: css(names.container, {
       overflow: 'hidden',
       position: 'relative',
+      display: 'flex',
+      flexDirection: 'column',
     }),
     textArea: css(names.textarea, {
-      clear: 'both',
+      flex: `1 1 auto`,
       width: '100%',
       borderRadius: rem(0.3),
       border: `${rem(0.2)} solid ${colors.rest.border}`,
@@ -128,6 +131,9 @@ function base(context: Context, colors: TextAreaColors) {
           },
         },
       }),
+    labelContainer: css(names.labelContainer, {
+      flex: '0 0 auto',
+    }),
     label: labelClass,
     errorLabel: errorLabelClass,
     errorIcon: css(names.errorIcon, {
