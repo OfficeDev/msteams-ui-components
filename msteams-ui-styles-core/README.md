@@ -1,6 +1,6 @@
 # Microsoft Teams UI Styles - Core
 
-This library provides styles styled according to the [Microsoft Teams](https://products.office.com/en-US/microsoft-teams/group-chat-software) design guidelines found [here](http://msteamsdesignguidelines.azurewebsites.net/).
+This library provides styles styled according to the [Microsoft Teams](https://products.office.com/en-US/microsoft-teams/group-chat-software) design guidelines found [here](https://aka.ms/msteamsdesignguidelines).
 
 # Installation
 
