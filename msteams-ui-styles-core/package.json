@@ -1,6 +1,6 @@
 {
   "name": "msteams-ui-styles-core",
-  "version": "0.3.3",
+  "version": "0.4.0",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "repository": {
@@ -42,6 +42,6 @@
     "typestyle": "^1.5.1"
   },
   "dependencies": {
-    "msteams-ui-icons-core": "^0.2.1"
+    "msteams-ui-icons-core": "^0.2.2"
   }
 }
