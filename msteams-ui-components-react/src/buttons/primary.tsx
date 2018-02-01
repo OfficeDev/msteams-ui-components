@@ -40,6 +40,7 @@ class PrimaryButtonView
     return <button
       ref={(ref) => this.button = ref}
       role="button"
+      onMouseDown={(e) => e.preventDefault()}
       className={classes(themeClassName, className)}
       {...rest}
     >{children}</button>;

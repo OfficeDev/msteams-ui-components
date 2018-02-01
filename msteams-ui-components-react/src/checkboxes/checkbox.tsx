@@ -67,12 +67,18 @@ class CheckboxInner extends React.Component<ConnectedProps, CheckboxState> {
           id={this.state.id}
           role="checkbox"
           name={name}
+          onMouseDown={(e) => e.preventDefault()}
           aria-required={required}
           aria-checked={actuallyChecked}
           className={checkboxClassNames}
           onClick={this.click}
           {...rest} />
-        <label hidden={!label} htmlFor={this.state.id} className={themeClassNames.label}>{label}</label>
+        <label
+          hidden={!label}
+          htmlFor={this.state.id}
+          className={themeClassNames.label}>
+          {label}
+        </label>
         {this.props.children}
       </div>
     );

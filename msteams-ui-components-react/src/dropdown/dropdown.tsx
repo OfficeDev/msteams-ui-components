@@ -86,6 +86,7 @@ class DropdownInternal extends React.Component<DropdownProps & InjectedTeamsProp
         <button
           ref={(ref) => this.mainButton = ref!}
           role="combobox"
+          onMouseDown={(e) => e.preventDefault()}
           aria-controls={this.state.expandableRegionId}
           aria-expanded={this.state.show}
           className={themeClassNames.mainButton.container}

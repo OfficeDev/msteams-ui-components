@@ -27,6 +27,7 @@ class ToggleExample extends React.Component {
         <PanelBody>
           <div style={styles.section}></div>
           <Toggle autoFocus checked={this.state.toggle} onToggle={this.onToggle} />
+          <Toggle autoFocus disabled checked={this.state.toggle} onToggle={this.onToggle} />
         </PanelBody>
         <PanelFooter>
         </PanelFooter>
