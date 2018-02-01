@@ -29,6 +29,30 @@ class ButtonExample extends React.Component {
           <SecondaryButton
             style={styles.button}
             disabled>Disabled</SecondaryButton>
+          <div style={styles.section}>Icon</div>
+          <IconButton
+            style={styles.button}
+            iconType={MSTeamsIconType.MoreFilled} />
+          <IconButton
+            style={styles.button}
+            iconType={MSTeamsIconType.MoreFilled}
+            disabled />
+          <br/>
+          <IconButton
+            style={styles.button}
+            iconType={MSTeamsIconType.ChromeClose} />
+          <IconButton
+            style={styles.button}
+            iconType={MSTeamsIconType.ChromeClose}
+            disabled />
+          <br/>
+          <IconButton
+            style={styles.button}
+            iconType={MSTeamsIconType.IllustrationMonkey} />
+          <IconButton
+            style={styles.button}
+            iconType={MSTeamsIconType.IllustrationMonkey}
+            disabled />
         </PanelBody>
         <PanelFooter>
         </PanelFooter>
