@@ -1,6 +1,6 @@
 {
   "name": "msteams-ui-styles-core",
-  "version": "0.4.4",
+  "version": "0.4.5",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "repository": {
