@@ -1,6 +1,6 @@
+import { MSTeamsIcon, MSTeamsIconWeight } from 'msteams-ui-icons-react';
 import { iconButton } from 'msteams-ui-styles-core/lib/components/icon-button';
 import * as React from 'react';
-import { MSTeamsIcon, MSTeamsIconType, MSTeamsIconWeight } from '../../../msteams-ui-icons/react/lib/index';
 import { Focusable } from '../focusable';
 import { InjectedTeamsProps } from '../index';
 import { connectTeamsComponent } from '../teams-context';
