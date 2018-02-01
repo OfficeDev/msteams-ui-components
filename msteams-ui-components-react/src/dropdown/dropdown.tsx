@@ -5,16 +5,17 @@ import * as React from 'react';
 import { connectTeamsComponent, InjectedTeamsProps } from '../index';
 import classes from '../utils/classes';
 import uniqueId from '../utils/uniqueId';
+import { DropdownItem } from './item';
 
 export interface DropdownProps
   extends React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
   menuRightAlign?: boolean;
   mainButtonText?: string;
   label?: string;
-  items: DropdownItem[];
+  items: DropdownItemProps[];
 }
 
-export interface DropdownItem {
+export interface DropdownItemProps {
   text?: string;
   render?: () => string | JSX.Element;
   onClick: () => void;
@@ -23,27 +24,32 @@ export interface DropdownItem {
 interface DropdownState {
   show: boolean;
   id: string;
+  expandableRegionId: string;
 }
 
 class DropdownInternal extends React.Component<DropdownProps & InjectedTeamsProps, DropdownState> {
   state = {
     show: false,
     id: uniqueId('ts-dd-'),
+    expandableRegionId: uniqueId('ts-dd-e-'),
   };
 
+  private mounted: boolean;
   private dropdown: HTMLDivElement;
   private mousetrap: MousetrapInstance;
   private mainButton: HTMLButtonElement;
-  private itemButtons: HTMLButtonElement[];
+  private itemButtons: DropdownItem[];
 
   componentDidMount() {
     this.mousetrap = new Mousetrap(this.dropdown);
+    this.mounted = true;
     this.trapKeyboard();
   }
 
   componentWillUnmount() {
-    document.removeEventListener('click', this.close);
-    this.mousetrap.reset();
+    this.untrapKeyboard();
+    this.close();
+    this.mounted = false;
   }
 
   render() {
@@ -70,8 +76,6 @@ class DropdownInternal extends React.Component<DropdownProps & InjectedTeamsProp
       itemContainerClass.push(themeClassNames.showItems);
     }
 
-    const renderItem = this.renderItemWithClass(themeClassNames.item);
-
     return (
       <div
         ref={(ref) => this.dropdown = ref!}
@@ -82,6 +86,8 @@ class DropdownInternal extends React.Component<DropdownProps & InjectedTeamsProp
         <button
           ref={(ref) => this.mainButton = ref!}
           role="combobox"
+          aria-controls={this.state.expandableRegionId}
+          aria-expanded={this.state.show}
           className={themeClassNames.mainButton.container}
           onClick={this.open}
           {...rest}
@@ -96,69 +102,60 @@ class DropdownInternal extends React.Component<DropdownProps & InjectedTeamsProp
             iconType={MSTeamsIconType.ChevronDown}
             iconWeight={MSTeamsIconWeight.Light} />
         </button>
-        {state.show ? <div className={itemContainerClass.join(' ')} role="listbox">
-          {items.map(renderItem)}
-        </div> : null}
+        <div
+          id={this.state.expandableRegionId}
+          role="listbox"
+          aria-hidden={!this.state.show}
+          style={{display: this.state.show ? null : 'none'}}
+          className={itemContainerClass.join(' ')}>
+          {items.map((item, idx) => (
+            <DropdownItem
+              key={idx}
+              role="option"
+              context={context}
+              tabIndex={-1}
+              text={item.text}
+              render={item.render}
+              onClick={item.onClick}
+              ref={(ref: any) => ref && this.itemButtons.push(ref)}>
+              {item.text}
+            </DropdownItem>
+          ))}
+        </div>
       </div>
     );
   }
 
   private open = () => {
-    if (!this.state.show) {
-      this.setState({ show: !this.state.show });
+    if (this.mounted) {
+      this.setState({ show: true }, this.focusNext);
       document.addEventListener('click', this.close);
     }
   }
 
   private close = () => {
-    document.removeEventListener('click', this.close);
-    this.setState({ show: false });
-  }
-
-  private renderItemWithClass = (className: string) => {
-    const renderItem = (item: DropdownItem, index: number) => {
-      if ((item.render && item.text) || (!item.render && !item.text)) {
-        throw new Error('DropdownItem needs to have at one and only one of text and render property.');
-      }
-
-      return <button
-        tabIndex={-1}
-        key={index}
-        className={className}
-        ref={(ref) => this.itemButtons.push(ref!)}
-        onClick={item.onClick}
-        role="option"
-      >
-        {item.text ? item.text : null}
-        {item.render ? item.render() : null}
-      </button>;
-    };
-
-    return renderItem;
+    if (this.mounted) {
+      document.removeEventListener('click', this.close);
+      this.setState({ show: false });
+    }
   }
 
   private trapKeyboard = () => {
-    this.mousetrap.bind('tab', this.onTabKey);
+    this.mousetrap.bind('shift+tab', this.onTabUpKey);
+    this.mousetrap.bind('tab', this.onTabDownKey);
     this.mousetrap.bind('esc', this.onEscKey);
     this.mousetrap.bind('up', this.onUpKey);
     this.mousetrap.bind('down', this.onDownKey);
   }
 
-  private onTabKey = (e: ExtendedKeyboardEvent) => {
-    if (this.state.show) {
-      e.preventDefault();
-      const current = this.currentIndex();
-      const next = (current + 1) % this.itemButtons.length;
-      this.itemButtons[next].focus();
-    }
+  private untrapKeyboard = () => {
+    this.mousetrap.reset();
   }
 
   private onUpKey = (e: ExtendedKeyboardEvent) => {
     e.preventDefault();
     if (!this.state.show) {
-      this.setState({
-        show: true,
-      }, this.focusPrevious);
+      this.setState({ show: true }, this.focusPrevious);
     } else {
       this.focusPrevious();
     }
@@ -167,10 +164,22 @@ class DropdownInternal extends React.Component<DropdownProps & InjectedTeamsProp
   private onDownKey = (e: ExtendedKeyboardEvent) => {
     e.preventDefault();
     if (!this.state.show) {
-      this.setState({
-        show: true,
-      }, this.focusNext);
+      this.setState({ show: true }, this.focusNext);
     } else {
+      this.focusNext();
+    }
+  }
+
+  private onTabUpKey = (e: ExtendedKeyboardEvent) => {
+    if (this.state.show) {
+      e.preventDefault();
+      this.focusPrevious();
+    }
+  }
+
+  private onTabDownKey = (e: ExtendedKeyboardEvent) => {
+    if (this.state.show) {
+      e.preventDefault();
       this.focusNext();
     }
   }
@@ -183,15 +192,16 @@ class DropdownInternal extends React.Component<DropdownProps & InjectedTeamsProp
     }
   }
 
-  private currentIndex = () => this.itemButtons.findIndex((elm) => elm === document.activeElement);
+  private currentIndex = () => this.itemButtons.findIndex((elm) => elm.hasFocus());
+
   private focusNext = () => {
     const current = this.currentIndex();
-    const next = current + 1 > this.itemButtons.length - 1 ? this.itemButtons.length - 1 : current + 1;
+    const next = current + 1 > this.itemButtons.length - 1 ? 0 : current + 1;
     this.itemButtons[next].focus();
   }
   private focusPrevious = () => {
     const current = this.currentIndex();
-    const next = current - 1 < 0 ? 0 : current - 1;
+    const next = current - 1 < 0 ? this.itemButtons.length - 1 : current - 1;
     this.itemButtons[next].focus();
   }
 }
