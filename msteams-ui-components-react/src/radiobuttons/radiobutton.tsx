@@ -60,12 +60,18 @@ class RadiobuttonInner extends React.Component<RadiobuttonProps & InjectedTeamsP
           id={this.state.id}
           role="radio"
           name={name}
+          onMouseDown={(e) => e.preventDefault()}
           aria-required={required}
           aria-checked={actuallySelected}
           onClick={this.click}
           className={themeClassNames.radio}
           {...rest} />
-        <label hidden={!label} htmlFor={this.state.id} className={themeClassNames.label}>{this.props.label}</label>
+        <label
+          hidden={!label}
+          htmlFor={this.state.id}
+          className={themeClassNames.label}>
+          {label}
+        </label>
         {this.props.children}
       </div>
     );

@@ -6,6 +6,13 @@ interface DropdownColors {
     background: string;
     icon: string;
     border: string;
+    disabled: {
+      border: string;
+      background: string;
+      underline: string;
+      text: string;
+      placeholder: string;
+    },
   };
   itemContainerBg: string;
   itemBg: string;
@@ -93,9 +100,16 @@ function base(context: Context, colors: DropdownColors) {
         textAlign: 'left',
         outline: 'none',
         $nest: {
-          '&:focus': {
+          '&:focus:enabled': {
             borderBottomWidth: rem(0.2),
             borderBottomColor: colors.underline,
+          },
+          '&:disabled': {
+            borderColor: colors.mainButton.disabled.border,
+            background: colors.mainButton.disabled.background,
+            borderBottomColor: colors.mainButton.disabled.underline,
+            color: colors.mainButton.disabled.text,
+            cursor: 'default',
           },
         },
       }),
@@ -106,7 +120,11 @@ function base(context: Context, colors: DropdownColors) {
       }),
       icon: css(names.button.icon, {
         flex: '0 0 auto',
-        color: colors.mainButton.icon,
+        $nest: {
+          '&:enabled': {
+            color: colors.mainButton.icon,
+          },
+        },
       }),
     },
     itemContainer: itemContainerClass,
@@ -161,6 +179,13 @@ function light(context: Context) {
       icon: colors.light.gray02,
       background: colors.light.gray10,
       border: colors.transparent,
+      disabled: {
+        border: colors.transparent,
+        background: colors.light.gray12,
+        underline: colors.transparent,
+        text: colors.light.gray08,
+        placeholder: colors.light.gray06,
+      },
     },
     item: colors.light.black,
     itemBg: colors.light.white,
@@ -182,6 +207,13 @@ function dark(context: Context) {
       icon: colors.dark.gray02,
       background: colors.dark.black,
       border: colors.transparent,
+      disabled: {
+        border: colors.transparent,
+        background: colors.dark.gray12,
+        underline: colors.transparent,
+        text: colors.dark.gray08,
+        placeholder: colors.dark.gray06,
+      },
     },
     itemBg: colors.dark.gray10,
     item: colors.dark.white,
@@ -203,6 +235,13 @@ function highContrast(context: Context) {
       icon: colors.highContrast.white,
       background: colors.highContrast.black,
       border: colors.highContrast.white,
+      disabled: {
+        border: colors.highContrast.green,
+        background: colors.highContrast.black,
+        underline: colors.highContrast.white,
+        text: colors.highContrast.green,
+        placeholder: colors.highContrast.green,
+      },
     },
     item: colors.highContrast.white,
     itemBg: colors.highContrast.black,

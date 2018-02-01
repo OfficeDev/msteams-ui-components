@@ -72,11 +72,14 @@ function base(context: Context, colors: CheckboxColors) {
       borderColor: colors.rest.border,
       background: colors.rest.background,
       borderRadius: rem(0.3),
-    }, {
       $nest: {
-        '&:hover': {
+        '&:hover:enabled': {
           background: colors.hover.background,
           borderColor: colors.hover.border,
+        },
+        '&:focus:enabled': {
+          boxShadow: `0 0 0 ${rem(0.2)} ${colors.focus.outline}`,
+          outline: 'none',
         },
         '&:disabled': {
           background: colors.disabled.background,
@@ -88,10 +91,6 @@ function base(context: Context, colors: CheckboxColors) {
               cursor: 'default',
             },
           },
-        },
-        '&:focus': {
-          boxShadow: `0 0 0 ${rem(0.2)} ${colors.focus.outline}`,
-          outline: 'none',
         },
         [`.${inputClass}:checked + &`]: {
           borderColor: colors.checked.border,

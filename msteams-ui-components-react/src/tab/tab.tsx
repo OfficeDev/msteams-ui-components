@@ -60,6 +60,7 @@ class TabInternal extends React.Component<TabProps & InjectedTeamsProps> {
           tabIndex={selected ? 0 : -1}
           autoFocus={this.props.autoFocus && selected}
           key={item.id}
+          onMouseDown={(e) => e.preventDefault()}
           onClick={item.onSelect}
           className={classes.join(' ')}
           ref={(ref) => {

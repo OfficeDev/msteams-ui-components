@@ -39,17 +39,22 @@ function base(context: Context, colors: IconButtonColors) {
         color: colors.hover.text,
         borderColor: colors.hover.border,
       },
-      '&:active': {
+      '&:active:hover:enabled': {
         color: colors.down.text,
         borderColor: colors.down.border,
       },
-      '&:disabled': {
-        color: colors.disabled.text,
+      '&:active:enabled': {
+        color: colors.down.text,
+        borderColor: colors.down.border,
       },
-      '&:focus': {
+      '&:focus:enabled': {
         color: colors.focus.text,
         borderRadius: '50%',
         border: `${rem(0.2)} solid ${colors.focus.border}`,
+      },
+      '&:disabled': {
+        color: colors.disabled.text,
+        cursor: 'default',
       },
     },
   });
@@ -59,8 +64,8 @@ function light(context: Context) {
   const { colors } = context;
   return base(context, {
     hover: {
-      text: colors.light.brand06,
-      border: colors.light.brand06,
+      text: colors.light.brand04,
+      border: colors.light.brand04,
     },
     down: {
       text: colors.light.brand06,
@@ -80,8 +85,8 @@ function dark(context: Context) {
   const { colors } = context;
   return base(context, {
     hover: {
-      text: colors.dark.brand06,
-      border: colors.dark.brand06,
+      text: colors.dark.brand04,
+      border: colors.dark.brand04,
     },
     down: {
       text: colors.dark.brand06,
