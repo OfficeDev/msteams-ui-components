@@ -53,19 +53,14 @@ class TextAreaInternal extends React.Component<TextAreaProps & InjectedTeamsProp
       <div
         style={style}
         className={classes(themeClassNames.container, className)}>
-        <div className={themeClassNames.labelContainer} >
-          <label id={this.state.labelId}
-            hidden={!!label}
-            tabIndex={-1}
-            className={themeClassNames.label}
-            htmlFor={actualId}>{label}</label>
-          <label id={this.state.errorLabelId}
-            hidden={!!errorLabel}
-            aria-live="polite"
-            tabIndex={-1}
-            className={themeClassNames.errorLabel}
-            htmlFor={actualId}>{errorLabel}</label>
-        </div>
+        <label
+          className={themeClassNames.labelContainer}
+          aria-live="assertive"
+          tabIndex={-1}
+          htmlFor={actualId}>
+          <span hidden={!!label} className={themeClassNames.label}>{label}</span>
+          <span hidden={!!errorLabel} className={themeClassNames.errorLabel}>{errorLabel}</span>
+        </label>
         <textarea
           id={actualId}
           ref={(ref) => this.textarea = ref}

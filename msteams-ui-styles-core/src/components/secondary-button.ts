@@ -54,22 +54,28 @@ function base(context: Context, colors: SecondaryButtonColors) {
         color: colors.hover.text,
         borderColor: colors.hover.border,
       },
-      '&:active': {
+      '&:active:hover:enabled': {
         background: colors.down.background,
         color: colors.down.text,
         borderColor: colors.down.border,
+      },
+      '&:active:enabled': {
+        background: colors.down.background,
+        color: colors.down.text,
+        borderColor: colors.down.border,
+      },
+      '&:focus:enabled': {
+        outline: `${rem(0.2)} solid ${colors.focus.outline}`,
+        outlineOffset: `-${rem(0.4)}`,
+        color: colors.focus.text,
+        borderColor: colors.focus.border,
+        background: colors.focus.background,
       },
       '&:disabled': {
         background: colors.disabled.background,
         color: colors.disabled.text,
         borderColor: colors.disabled.border,
-      },
-      '&:focus': {
-        color: colors.focus.text,
-        borderColor: colors.focus.border,
-        background: colors.focus.background,
-        outline: `${rem(0.2)} solid ${colors.focus.outline}`,
-        outlineOffset: `-${rem(0.4)}`,
+        cursor: 'default',
       },
     },
   });

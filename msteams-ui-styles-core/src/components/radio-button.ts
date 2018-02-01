@@ -70,25 +70,25 @@ function base(context: Context, colors: RadioButtonColors) {
       border: `${rem(0.1)} solid`,
       borderColor: colors.rest.border,
       background: colors.rest.background,
-    }, {
       $nest: {
-        '&:hover': {
+        '&:hover:enabled': {
           background: colors.hover.background,
           borderColor: colors.hover.border,
+        },
+        '&:focus:enabled': {
+          boxShadow: `0 0 0 ${rem(0.2)} ${colors.focus.outline}`,
+          outline: 'none',
         },
         '&:disabled': {
           background: colors.disabled.background,
           borderColor: colors.disabled.border,
+          cursor: 'default',
           $nest: {
             '& + label': {
               color: colors.disabled.text,
               cursor: 'default',
             },
           },
-        },
-        '&:focus': {
-          boxShadow: `0 0 0 ${rem(0.2)} ${colors.focus.outline}`,
-          outline: 'none',
         },
         [`.${inputClass}:checked + &`]: {
           borderColor: colors.selected.border,

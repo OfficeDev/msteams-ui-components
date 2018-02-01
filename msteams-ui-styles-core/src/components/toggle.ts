@@ -2,11 +2,23 @@ import { chooseStyle, Context } from '../context';
 import { hiddenInput } from './hidden-input';
 
 interface ToggleColors {
-  sliderBackground: string;
-  sliderFocus: string;
-  sliderBall: string;
-  sliderBackgroundChecked: string;
-  sliderBallChecked: string;
+  rest: {
+    background: string;
+    ball: string;
+    border: string;
+  };
+  focus: {
+    border: string;
+  };
+  disabled: {
+    background: string;
+    ball: string;
+    border: string;
+  };
+  checked: {
+    background: string;
+    ball: string;
+  };
 }
 
 const width = 4;
@@ -39,34 +51,58 @@ function base(context: Context, colors: ToggleColors) {
       padding: 0,
       width: rem(width),
       height: rem(height),
-      backgroundColor: colors.sliderBackground,
+      backgroundColor: colors.rest.background,
       borderRadius: rem(height),
       outline: 'none',
-      boxShadow: `0 0 0 ${rem(0.1)} ${colors.sliderBall}`,
+      boxShadow: `0 0 0 ${rem(0.1)} ${colors.rest.border}`,
       $nest: {
-        '&:before': {
+        '&:enabled:before': {
           position: 'absolute',
           content: '""',
           height: rem(ballSize),
           width: rem(ballSize),
           left: rem(ballDeltaX),
           top: rem((height - ballSize) / 2),
-          backgroundColor: colors.sliderBall,
+          backgroundColor: colors.rest.ball,
           transition: '0.2s',
           borderRadius: '50%',
           $nest: {
             [`.${inputClass}:checked + &`]: {
-              backgroundColor: colors.sliderBallChecked,
+              backgroundColor: colors.checked.ball,
+              transform: `translateX(${rem(delta)})`,
+            },
+            '&:disabled': {
+              backgroundColor: colors.disabled.ball,
+            },
+          },
+        },
+        '&:disabled:before': {
+          position: 'absolute',
+          content: '""',
+          height: rem(ballSize),
+          width: rem(ballSize),
+          left: rem(ballDeltaX),
+          top: rem((height - ballSize) / 2),
+          backgroundColor: colors.disabled.ball,
+          transition: '0.2s',
+          borderRadius: '50%',
+          $nest: {
+            [`.${inputClass}:checked + &`]: {
               transform: `translateX(${rem(delta)})`,
             },
           },
         },
-        '&:focus': {
-          boxShadow: `0 0 0 ${rem(0.2)} ${colors.sliderFocus}`,
+        '&:focus:enabled': {
+          boxShadow: `0 0 0 ${rem(0.2)} ${colors.focus.border}`,
           outline: 'none',
         },
-        [`.${inputClass}:checked + &`]: {
-          backgroundColor: colors.sliderBackgroundChecked,
+        '&:disabled': {
+          cursor: 'default',
+          backgroundColor: colors.disabled.background,
+          boxShadow: `0 0 0 ${rem(0.2)} ${colors.disabled.border}`,
+        },
+        [`.${inputClass}:checked + &:enabled`]: {
+          backgroundColor: colors.checked.background,
         },
       },
     }),
@@ -76,33 +112,69 @@ function base(context: Context, colors: ToggleColors) {
 function light(context: Context) {
   const { colors } = context;
   return base(context, {
-    sliderBackground: colors.light.gray10,
-    sliderBall: colors.light.brand06,
-    sliderFocus: colors.light.brand00,
-    sliderBackgroundChecked: colors.light.green,
-    sliderBallChecked: colors.light.brand04,
+    rest: {
+      background: colors.light.gray10,
+      ball: colors.light.gray02,
+      border: colors.transparent,
+    },
+    focus: {
+      border: colors.light.brand00,
+    },
+    disabled: {
+      background: colors.light.gray12,
+      ball: colors.light.gray06,
+      border: colors.transparent,
+    },
+    checked: {
+      background: colors.light.green,
+      ball: colors.light.white,
+    },
   });
 }
 
 function dark(context: Context) {
   const { colors } = context;
   return base(context, {
-    sliderBackground: colors.dark.black,
-    sliderBall: colors.dark.gray02,
-    sliderFocus: colors.dark.brand00,
-    sliderBackgroundChecked: colors.dark.green,
-    sliderBallChecked: colors.dark.white,
+    rest: {
+      background: colors.dark.black,
+      ball: colors.dark.gray02,
+      border: colors.transparent,
+    },
+    focus: {
+      border: colors.dark.brand00,
+    },
+    disabled: {
+      background: colors.dark.gray12,
+      ball: colors.dark.gray06,
+      border: colors.transparent,
+    },
+    checked: {
+      background: colors.dark.green,
+      ball: colors.dark.white,
+    },
   });
 }
 
 function highContrast(context: Context) {
   const { colors } = context;
   return base(context, {
-    sliderBackground: colors.highContrast.black,
-    sliderBall: colors.highContrast.white,
-    sliderFocus: colors.highContrast.yellow,
-    sliderBackgroundChecked: colors.highContrast.blue,
-    sliderBallChecked: colors.light.black,
+    rest: {
+      background: colors.highContrast.black,
+      ball: colors.highContrast.white,
+      border: colors.highContrast.white,
+    },
+    focus: {
+      border: colors.highContrast.yellow,
+    },
+    disabled: {
+      background: colors.highContrast.black,
+      ball: colors.highContrast.green,
+      border: colors.highContrast.green,
+    },
+    checked: {
+      background: colors.highContrast.blue,
+      ball: colors.highContrast.black,
+    },
   });
 }
 

@@ -19,7 +19,7 @@ class ButtonExample extends React.Component {
           <div style={styles.section}>Primary</div>
           <PrimaryButton
             autoFocus
-            style={styles.button}>Enabled</PrimaryButton>
+            style={styles.button} {...props}>Enabled</PrimaryButton>
           <PrimaryButton
             style={styles.button}
             disabled>Disabled</PrimaryButton>

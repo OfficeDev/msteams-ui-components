@@ -51,6 +51,7 @@ implements Focusable {
           role="button"
           aria-required={required}
           aria-pressed={checked}
+          onMouseDown={(e) => e.preventDefault()}
           onClick={this.click}
           className={classes(themeClassNames.slider, className)}
           {...rest}>{children}</button>

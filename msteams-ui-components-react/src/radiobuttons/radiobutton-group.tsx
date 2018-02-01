@@ -40,16 +40,12 @@ class RadiobuttonGroupInner extends React.Component<RadiobuttonGroupProps & Inje
     return (
       <div {...rest}>
         <label
-          hidden={!!label}
+          aria-live="assertive"
           tabIndex={-1}
-          className={themeClassNames.label}
-          htmlFor={actualId}>{label}</label>
-        <label
-          hidden={!!errorLabel}
-          aria-live="polite"
-          tabIndex={-1}
-          className={themeClassNames.errorLabel}
-          htmlFor={actualId}>{errorLabel}</label>
+          htmlFor={actualId}>
+          <span hidden={!!label} className={themeClassNames.label}>{label}</span>
+          <span hidden={!!errorLabel} className={themeClassNames.errorLabel}>{errorLabel}</span>
+        </label>
         <div
           id={actualId}
           role="radiogroup"
