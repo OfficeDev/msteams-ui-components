@@ -28,7 +28,7 @@
     "csx": "^8.5.0",
     "file-loader": "^1.1.5",
     "html-webpack-plugin": "^2.30.1",
-    "msteams-ui-components-react": "^0.4.3",
+    "msteams-ui-components-react": "^0.4.6",
     "msteams-ui-icons-react": "^0.2.2",
     "prop-types": "^15.6.0",
     "raw-loader": "^0.5.1",
