@@ -1,5 +1,44 @@
 <html style="font-size: 16px">
 <head>
+<style>
+@font-face {
+	font-family: MSTeamsIcons-Light;
+	font-style: normal;
+	font-weight: normal;
+	src: url('TeamsAssets-Light.eot');
+	src: url('TeamsAssets-Light.eot?#iefix') format('embedded-opentype'),
+		url('TeamsAssets-Light.ttf') format('truetype'),
+		url('TeamsAssets-Light.woff2') format('woff2'),
+		url('TeamsAssets-Light.woff') format('woff'),
+		url('TeamsAssets-Light.svg#MSTeamsIcons-Light') format('svg')
+}
+
+.icon-base {
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
+	display: block;
+	font-family: MSTeamsIcons-Light !important;
+	font-size: 16px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: normal;
+	line-height: 1;
+	speak: none;
+	text-rendering: optimizeLegibility;
+}
+
+.icon-more-filled::before {
+    bottom: 1px;
+    content: "\e94f";
+    position: relative;
+}
+
+.icon-monkey::before {
+    bottom: 1px;
+    content: "\e633";
+    position: relative;
+}
+</style>
 <link rel="stylesheet" type="text/css" href="msteams-16.css" />
 <script src="https://statics.teams.microsoft.com/sdk/v1.0/js/MicrosoftTeams.min.js"></script>
 <script type="application/javascript">
@@ -85,7 +124,9 @@ function toggle() {
 			<div class="font-title2" style="margin-top: 10px; margin-bottom: 10px">Buttons:</div>
 			<button class="button-primary">Primary</button>
 			<button class="button-secondary">Secondary</button>
-
+			<br/>
+			<button class="button-icon"><i class="icon-base icon-more-filled" aria-hidden="true"></i></button>
+			<button class="button-icon"><i class="icon-base icon-monkey" aria-hidden="true"></i></button>
 			<div class="font-title2" style="margin-top: 10px; margin-bottom: 10px">Tabs:</div>
 			<div class="tab-group">
 				<button class="tab tab-active">Tab 1</button>
@@ -94,25 +135,28 @@ function toggle() {
 
 			<div class="font-title2" style="margin-top: 10px; margin-bottom: 10px">Radios:</div>
 			<div class="radio-container">
-				<input id="radio-single" type="radio" class="hidden-input" />
-				<button id="radio-single-real" class="radio-button" onClick="radio('radio-single')"></button>
+				<input id="radio-single" aria-hidden="true" type="radio" class="hidden-input" />
+				<button id="radio-single-real" role="radio" class="radio-button" onClick="radio('radio-single')"></button>
 				<label for="radio-single-real" class="radio-label">Radio 1</label>
 			</div>
-			<div class="radio-group" style="width:200px">
-				<label class="label">Radio Group</label>
-				<label class="error-label">with an error</label>
-				<div class="radio-container">
-					<input id="radio1" type="radio" class="hidden-input" />
-					<button id="radio1-real" onClick="radio('radio1')" class="radio-button"></button>
-					<label for="radio1-real" class="radio-label">Radio 1</label>
-				</div>
-				<div class="radio-container">
-					<input id="radio2" type="radio" class="hidden-input" />
-					<button id="radio2-real" onClick="radio('radio2')" class="radio-button"></button>
-					<label for="radio2-real" class="radio-label">Radio 2</label>
+			<div style="width:200px">
+				<label aria-live="assertive" for="radio-group">
+				  <span class="label">Radio Group</span>
+				  <span class="error-label">with an error</span>
+				</label>
+				<div id="radio-group" role="radiogroup" class="radio-group">
+					<div class="radio-container">
+						<input id="radio1" aria-hidden="true" type="radio" class="hidden-input" />
+						<button id="radio1-real" role="radio" class="radio-button" onClick="radio('radio1')"></button>
+						<label for="radio1-real" class="radio-label">Radio 1</label>
+					</div>
+					<div class="radio-container">
+						<input id="radio2" aria-hidden="true" type="radio" class="hidden-input" />
+						<button id="radio2-real" role="radio" class="radio-button" onClick="radio('radio2')"></button>
+						<label for="radio2-real" class="radio-label">Radio 2</label>
+					</div>
 				</div>
 			</div>
-
 			<div class="font-title2" style="margin-top: 10px; margin-bottom: 10px">Toggle:</div>
 			<div class="toggle">
 				<input id="toggle1" type="checkbox" class="hidden-input"></input>
@@ -121,13 +165,19 @@ function toggle() {
 
 			<div class="font-title2" style="margin-top: 10px; margin-bottom: 10px">Input Fields:</div>
 			<div class="input-container" style="width: 50%">
-				<label for="input1" class="label">Label</label>
+				<label aria-live="assertive" for="input1">
+					<span class="label">Input field</span>
+					<span class="error-label">with an error</span>
+				</label>
 				<input id="input1" class="input-field" placeholder="Placeholder text"></input>
 			</div>
 
 			<div class="font-title2" style="margin-top: 10px; margin-bottom: 10px">Text Fields:</div>
 			<div class="textarea-container" style="width: 50%">
-				<label for="textarea1" class="label">Label</label>
+				<label class="textarea-label-container" aria-live="assertive" for="textarea1">
+					<span class="label">Text area</span>
+					<span class="error-label">with an error</span>
+				</label>
 				<textarea id="textarea1" class="textarea-field" placeholder="Placeholder text"></textarea>
 			</div>
 		</div>
