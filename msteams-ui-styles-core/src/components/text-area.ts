@@ -38,8 +38,6 @@ function base(context: IContext, colors: ITextAreaColors) {
     container: 'textarea-container',
     textarea: 'textarea-field',
     labelContainer: 'textarea-label-container',
-    label: 'textarea-label',
-    error: 'textarea-error',
     errorIcon: 'textarea-error-icon',
   };
   const { css, rem } = context;
