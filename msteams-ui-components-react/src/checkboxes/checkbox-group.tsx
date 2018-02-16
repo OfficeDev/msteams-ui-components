@@ -2,13 +2,13 @@ import { checkboxGroup } from 'msteams-ui-styles-core/lib/components/checkbox-gr
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import { connectTeamsComponent } from '../teams-context/connect-teams-component';
-import { InjectedTeamsProps } from '../teams-context/connected-component';
+import { IInjectedTeamsProps } from '../teams-context/connected-component';
 import add from '../utils/add';
 import classes from '../utils/classes';
 import remove from '../utils/remove';
 import uniqueId from '../utils/uniqueId';
 
-export interface CheckboxGroupProps
+export interface ICheckboxGroupProps
   extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
   label?: string;
   errorLabel?: string;
@@ -16,7 +16,7 @@ export interface CheckboxGroupProps
   values?: any[];
 }
 
-class CheckboxGroupInner extends React.Component<CheckboxGroupProps & InjectedTeamsProps> {
+class CheckboxGroupInner extends React.Component<ICheckboxGroupProps & IInjectedTeamsProps> {
   static childContextTypes = {
     onChecked: PropTypes.func,
     values: PropTypes.array,

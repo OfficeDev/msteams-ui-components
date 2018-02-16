@@ -1,6 +1,6 @@
-import { chooseStyle, Context } from '../context';
+import { chooseStyle, IContext } from '../context';
 
-interface TableColors {
+interface ITableColors {
   table: {
     background: string;
     text: string;
@@ -16,7 +16,7 @@ interface TableColors {
   };
 }
 
-function base(c: Context, colors: TableColors) {
+function base(c: IContext, colors: ITableColors) {
   const names = {
     table: 'table',
     thead: 'thead',
@@ -66,7 +66,7 @@ function base(c: Context, colors: TableColors) {
   };
 }
 
-function light(context: Context) {
+function light(context: IContext) {
   const { colors } = context;
   return base(context, {
     table: {
@@ -85,7 +85,7 @@ function light(context: Context) {
   });
 }
 
-function dark(context: Context) {
+function dark(context: IContext) {
   const { colors } = context;
   return base(context, {
     table: {
@@ -104,7 +104,7 @@ function dark(context: Context) {
   });
 }
 
-function highContrast(context: Context) {
+function highContrast(context: IContext) {
   const { colors } = context;
   return base(context, {
     table: {
@@ -123,6 +123,6 @@ function highContrast(context: Context) {
   });
 }
 
-export function table(context: Context) {
+export function table(context: IContext) {
   return chooseStyle(context, light, dark, highContrast);
 }

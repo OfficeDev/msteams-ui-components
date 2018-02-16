@@ -1,44 +1,44 @@
 import { style } from 'typestyle/lib';
 import { NestedCSSProperties } from 'typestyle/lib/types';
 import { ColorPalate, Colors } from './colors';
-import { FontSizePalate } from './font-size-palate';
+import { IFontSizePalate } from './font-size-palate';
 import { FontSizes } from './font-sizes';
-import { FontWeightPalate } from './font-weight-palate';
+import { IFontWeightPalate } from './font-weight-palate';
 import { FontWeights } from './font-weights';
 import { Spacing } from './spacing';
-import { SpacingPalate } from './spacing-palate';
-import { ThemeConfig } from './theme-config';
+import { ISpacingPalate } from './spacing-palate';
+import { IThemeConfig } from './theme-config';
 import { ThemeStyle } from './theme-style';
 
-export interface RemFunction {
+export interface IRemFunction {
   (n: number): string;
 }
 
-export interface CSSFunction {
+export interface ICSSFunction {
   (name: string, ...objects: Array<false | NestedCSSProperties | null | undefined>): string;
 }
 
-export interface StyleFunction<T> {
-  (context: Context): T;
+export interface IStyleFunction<T> {
+  (context: IContext): T;
 }
 
-export interface Context {
-  rem: RemFunction;
-  css: CSSFunction;
+export interface IContext {
+  rem: IRemFunction;
+  css: ICSSFunction;
   style: ThemeStyle;
   colors: ColorPalate;
-  spacing: SpacingPalate;
+  spacing: ISpacingPalate;
   font: {
-    weights: FontWeightPalate;
-    sizes: FontSizePalate;
+    weights: IFontWeightPalate;
+    sizes: IFontSizePalate;
   };
 }
 
 export function chooseStyle<T>(
-  context: Context,
-  light: StyleFunction<T>,
-  dark: StyleFunction<T>,
-  highContrast: StyleFunction<T>): T {
+  context: IContext,
+  light: IStyleFunction<T>,
+  dark: IStyleFunction<T>,
+  highContrast: IStyleFunction<T>): T {
   if (context.style === ThemeStyle.HighContrast) {
     return highContrast(context);
   } else if (context.style === ThemeStyle.Dark) {
@@ -52,7 +52,7 @@ function typestyleStyle(name: string, ...objects: Array<false | NestedCSSPropert
   return style(...objects);
 }
 
-export function getContext(config: ThemeConfig): Context {
+export function getContext(config: IThemeConfig): IContext {
   const rem = (n: number) => `${n * 10.0 / config.baseFontSize}rem`;
   return {
     rem,

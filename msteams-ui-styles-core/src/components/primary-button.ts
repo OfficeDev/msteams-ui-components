@@ -1,6 +1,6 @@
-import { chooseStyle, Context } from '../context';
+import { chooseStyle, IContext } from '../context';
 
-interface PrimaryButtonColors {
+interface IPrimaryButtonColors {
   rest: {
     background: string;
     text: string;
@@ -29,7 +29,7 @@ interface PrimaryButtonColors {
   };
 }
 
-function base(context: Context, colors: PrimaryButtonColors) {
+function base(context: IContext, colors: IPrimaryButtonColors) {
   const names = {
     button: 'button-primary',
   };
@@ -81,7 +81,7 @@ function base(context: Context, colors: PrimaryButtonColors) {
   });
 }
 
-function light(context: Context) {
+function light(context: IContext) {
   const { colors } = context;
   return base(context, {
     rest: {
@@ -113,7 +113,7 @@ function light(context: Context) {
   });
 }
 
-function dark(context: Context) {
+function dark(context: IContext) {
   const { colors } = context;
   return base(context, {
     rest: {
@@ -145,7 +145,7 @@ function dark(context: Context) {
   });
 }
 
-function highContrast(context: Context) {
+function highContrast(context: IContext) {
   const { colors } = context;
   return base(context, {
     rest: {
@@ -177,6 +177,6 @@ function highContrast(context: Context) {
   });
 }
 
-export function primaryButton(context: Context) {
+export function primaryButton(context: IContext) {
   return chooseStyle(context, light, dark, highContrast);
 }

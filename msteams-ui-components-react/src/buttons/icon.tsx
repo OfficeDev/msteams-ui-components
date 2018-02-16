@@ -1,21 +1,21 @@
 import { MSTeamsIcon, MSTeamsIconWeight } from 'msteams-ui-icons-react';
 import { iconButton } from 'msteams-ui-styles-core/lib/components/icon-button';
 import * as React from 'react';
-import { Focusable } from '../focusable';
-import { InjectedTeamsProps } from '../index';
+import { IFocusable } from '../focusable';
+import { IInjectedTeamsProps } from '../index';
 import { connectTeamsComponent } from '../teams-context';
 import classes from '../utils/classes';
 
-export interface IconButtonProps
+export interface IIconButtonProps
   extends React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
-  onRef?: (ref: React.Component & Focusable | null) => void;
+  onRef?: (ref: React.Component & IFocusable | null) => void;
   iconType: string;
   iconWeight?: number;
 }
 
 class IconButtonView
-  extends React.Component<IconButtonProps & InjectedTeamsProps>
-  implements Focusable {
+  extends React.Component<IIconButtonProps & IInjectedTeamsProps>
+  implements IFocusable {
   private button: HTMLButtonElement | null;
 
   componentDidMount() {

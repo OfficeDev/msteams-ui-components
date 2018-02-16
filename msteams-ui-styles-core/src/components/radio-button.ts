@@ -1,7 +1,7 @@
-import { chooseStyle, Context } from '../context';
+import { chooseStyle, IContext } from '../context';
 import { hiddenInput } from './hidden-input';
 
-interface RadioButtonColors {
+interface IRadioButtonColors {
   rest: {
     border: string;
     background: string;
@@ -27,7 +27,7 @@ interface RadioButtonColors {
   container: string;
 }
 
-function base(context: Context, colors: RadioButtonColors) {
+function base(context: IContext, colors: IRadioButtonColors) {
   const names = {
     container: 'radio-container',
     input: 'radio-input',
@@ -109,7 +109,7 @@ function base(context: Context, colors: RadioButtonColors) {
   };
 }
 
-function light(context: Context) {
+function light(context: IContext) {
   const { colors } = context;
   return base(context, {
     rest: {
@@ -138,7 +138,7 @@ function light(context: Context) {
   });
 }
 
-function dark(context: Context) {
+function dark(context: IContext) {
   const { colors } = context;
   return base(context, {
     rest: {
@@ -167,7 +167,7 @@ function dark(context: Context) {
   });
 }
 
-function highContrast(context: Context) {
+function highContrast(context: IContext) {
   const { colors } = context;
   return base(context, {
     rest: {
@@ -196,6 +196,6 @@ function highContrast(context: Context) {
   });
 }
 
-export function radioButton(context: Context) {
+export function radioButton(context: IContext) {
   return chooseStyle(context, light, dark, highContrast);
 }

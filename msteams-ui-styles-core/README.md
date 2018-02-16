@@ -15,7 +15,7 @@ By default, this package relies on typestyle to produce its css styles and to in
 
 To use this package directly, you will need to setup a context object:
 ```javascript
-const { Colors, Context, getContext, ThemeStyle } = require('msteams-ui-styles-core')
+const { Colors, IContext, getContext, ThemeStyle } = require('msteams-ui-styles-core')
 // This is the styling function from typestyle
 const { style } = require('typestyle/lib')
 

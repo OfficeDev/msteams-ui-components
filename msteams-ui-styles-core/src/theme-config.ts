@@ -1,10 +1,10 @@
 import { ColorPalate } from './colors';
-import { CSSFunction } from './context';
+import { ICSSFunction } from './context';
 import { ThemeStyle } from './theme-style';
 
-export interface ThemeConfig {
+export interface IThemeConfig {
   baseFontSize: number;
   style: ThemeStyle;
   colors?: ColorPalate;
-  css?: CSSFunction;
+  css?: ICSSFunction;
 }

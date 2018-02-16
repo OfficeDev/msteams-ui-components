@@ -1,11 +1,11 @@
-import { chooseStyle, Context } from '../context';
+import { chooseStyle, IContext } from '../context';
 
-interface PanelColors {
+interface IPanelColors {
   background: string;
   border: string;
 }
 
-function base(context: Context, colors: PanelColors) {
+function base(context: IContext, colors: IPanelColors) {
   const names = {
     container: 'panel',
     header: 'panel-header',
@@ -48,7 +48,7 @@ function base(context: Context, colors: PanelColors) {
   };
 }
 
-function light(context: Context) {
+function light(context: IContext) {
   const { colors } = context;
   return base(context, {
     background: colors.light.white,
@@ -56,7 +56,7 @@ function light(context: Context) {
    });
 }
 
-function dark(context: Context) {
+function dark(context: IContext) {
   const { colors } = context;
   return base(context, {
     background: context.colors.dark.gray10,
@@ -64,7 +64,7 @@ function dark(context: Context) {
    });
 }
 
-function highContrast(context: Context) {
+function highContrast(context: IContext) {
   const { colors } = context;
   return base(context, {
     background: context.colors.highContrast.black,
@@ -72,6 +72,6 @@ function highContrast(context: Context) {
    });
 }
 
-export function panel(context: Context) {
+export function panel(context: IContext) {
   return chooseStyle(context, light, dark, highContrast);
 }

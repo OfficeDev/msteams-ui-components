@@ -2,11 +2,11 @@ import { radioButtonGroup } from 'msteams-ui-styles-core/lib/components/radio-bu
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import { connectTeamsComponent } from '../teams-context/connect-teams-component';
-import { InjectedTeamsProps } from '../teams-context/connected-component';
+import { IInjectedTeamsProps } from '../teams-context/connected-component';
 import classes from '../utils/classes';
 import uniqueId from '../utils/uniqueId';
 
-export interface RadiobuttonGroupProps
+export interface IRadiobuttonGroupProps
   extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
   label?: string;
   errorLabel?: string;
@@ -14,7 +14,7 @@ export interface RadiobuttonGroupProps
   value?: any;
 }
 
-class RadiobuttonGroupInner extends React.Component<RadiobuttonGroupProps & InjectedTeamsProps> {
+class RadiobuttonGroupInner extends React.Component<IRadiobuttonGroupProps & IInjectedTeamsProps> {
   static childContextTypes = {
     onSelected: PropTypes.func,
     value: PropTypes.any,

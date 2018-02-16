@@ -1,6 +1,6 @@
-import { chooseStyle, Context } from '../context';
+import { chooseStyle, IContext } from '../context';
 
-interface CompoundButtonColors {
+interface ICompoundButtonColors {
   rest: {
     background: string;
     text: string;
@@ -29,7 +29,7 @@ interface CompoundButtonColors {
   };
 }
 
-function base(context: Context, colors: CompoundButtonColors) {
+function base(context: IContext, colors: ICompoundButtonColors) {
   const names = {
     container: 'btn-compound',
     icon: 'btn-compound-icon',
@@ -103,7 +103,7 @@ function base(context: Context, colors: CompoundButtonColors) {
   };
 }
 
-function light(context: Context) {
+function light(context: IContext) {
   const { colors } = context;
   return base(context, {
     rest: {
@@ -135,7 +135,7 @@ function light(context: Context) {
   });
 }
 
-function dark(context: Context) {
+function dark(context: IContext) {
   const { colors } = context;
   return base(context, {
     rest: {
@@ -167,7 +167,7 @@ function dark(context: Context) {
   });
 }
 
-function highContrast(context: Context) {
+function highContrast(context: IContext) {
   const { colors } = context;
   return base(context, {
     rest: {
@@ -199,6 +199,6 @@ function highContrast(context: Context) {
   });
 }
 
-export function compoundButton(context: Context) {
+export function compoundButton(context: IContext) {
   return chooseStyle(context, light, dark, highContrast);
 }

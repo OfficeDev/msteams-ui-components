@@ -1,7 +1,7 @@
-import { Context } from 'msteams-ui-components-react';
+import { IContext } from 'msteams-ui-components-react';
 import { style } from 'typestyle';
 
-export function content(context: Context) {
+export function content(context: IContext) {
   const { rem } = context;
   return {
     container: style({

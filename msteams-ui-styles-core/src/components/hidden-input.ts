@@ -1,6 +1,6 @@
-import { Context } from '../context';
+import { IContext } from '../context';
 
-export function hiddenInput(context: Context) {
+export function hiddenInput(context: IContext) {
   const { css } = context;
   const name = 'hidden-input';
   return css(name, {

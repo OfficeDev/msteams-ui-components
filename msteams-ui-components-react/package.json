@@ -41,7 +41,7 @@
     "prop-types": "^15.6.0",
     "react": "^16.1.0",
     "tslint": "^5.8.0",
-    "typescript": "^2.6.1",
+    "typescript": "~2.6.1",
     "typestyle": "^1.5.1"
   },
   "peerDependencies": {

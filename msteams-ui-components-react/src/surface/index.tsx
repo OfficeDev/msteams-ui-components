@@ -1,12 +1,12 @@
 import { surface } from 'msteams-ui-styles-core/lib/components/surface';
 import * as React from 'react';
-import { connectTeamsComponent, InjectedTeamsProps } from '../teams-context';
+import { connectTeamsComponent, IInjectedTeamsProps } from '../teams-context';
 import classes from '../utils/classes';
 
-export interface SurfaceProps
+export interface ISurfaceProps
   extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> { }
 
-const SurfaceView: React.StatelessComponent<SurfaceProps & InjectedTeamsProps> =
+const SurfaceView: React.StatelessComponent<ISurfaceProps & IInjectedTeamsProps> =
   (props) => {
     const { context, className, ...rest } = props;
     const themeClassName = surface(context);
@@ -18,4 +18,4 @@ const SurfaceView: React.StatelessComponent<SurfaceProps & InjectedTeamsProps> =
     );
   };
 
-export const Surface = connectTeamsComponent<SurfaceProps>(SurfaceView);
+export const Surface = connectTeamsComponent<ISurfaceProps>(SurfaceView);

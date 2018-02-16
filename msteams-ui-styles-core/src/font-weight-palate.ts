@@ -1,4 +1,4 @@
-export interface FontWeightPalate {
+export interface IFontWeightPalate {
   semilight: {
     fontFamily: string;
     fontWeight: number;

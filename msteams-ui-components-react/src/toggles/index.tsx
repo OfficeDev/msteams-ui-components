@@ -1,18 +1,18 @@
 import { toggle } from 'msteams-ui-styles-core/lib/components/toggle';
 import * as React from 'react';
-import { Focusable } from '../focusable';
-import { connectTeamsComponent, InjectedTeamsProps } from '../index';
+import { IFocusable } from '../focusable';
+import { connectTeamsComponent, IInjectedTeamsProps } from '../index';
 import classes from '../utils/classes';
 
-export interface ToggleProps
+export interface IToggleProps
   extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
-  onRef?: (ref: React.Component & Focusable | null) => void;
+  onRef?: (ref: React.Component & IFocusable | null) => void;
   checked: boolean;
   onToggle: (checked: boolean) => void;
 }
 
-class ToggleView extends React.Component<ToggleProps & InjectedTeamsProps>
-implements Focusable {
+class ToggleView extends React.Component<IToggleProps & IInjectedTeamsProps>
+implements IFocusable {
   private button: HTMLButtonElement | null;
 
   componentDidMount() {

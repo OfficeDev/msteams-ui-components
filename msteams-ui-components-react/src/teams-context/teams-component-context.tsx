@@ -1,29 +1,29 @@
-import { Colors, Context, getContext, ThemeStyle } from 'msteams-ui-styles-core';
+import { Colors, IContext, getContext, ThemeStyle } from 'msteams-ui-styles-core';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import uniqueId from '../utils/uniqueId';
-import { ComponentContext, ContextProps, ThemeObserver, Unsubscribe } from './shared';
+import { IComponentContext, ContextProps, IThemeObserver, IUnsubscribe } from './shared';
 
-export interface TeamsComponentProps {
+export interface ITeamsComponentProps {
   theme: ThemeStyle;
   fontSize: number;
 }
 
-export interface TeamsComponentState {
-  context: Context;
+export interface ITeamsComponentState {
+  context: IContext;
 }
 
-export class TeamsComponentContext extends React.Component<TeamsComponentProps, TeamsComponentState> {
+export class TeamsComponentContext extends React.Component<ITeamsComponentProps, ITeamsComponentState> {
   static childContextTypes = ContextProps;
   static propTypes = {
     theme: PropTypes.number.isRequired,
     fontSize: PropTypes.number.isRequired,
     children: PropTypes.element.isRequired,
   };
-  private themeContext: Context;
-  private subscribers = new Map<string, ThemeObserver>();
+  private themeContext: IContext;
+  private subscribers = new Map<string, IThemeObserver>();
 
-  constructor(props: TeamsComponentProps) {
+  constructor(props: ITeamsComponentProps) {
     super(props);
     this.themeContext = getContext({
       baseFontSize: this.props.fontSize,
@@ -32,7 +32,7 @@ export class TeamsComponentContext extends React.Component<TeamsComponentProps, 
     });
   }
 
-  componentWillReceiveProps(nextProps: TeamsComponentProps) {
+  componentWillReceiveProps(nextProps: ITeamsComponentProps) {
     if (nextProps.fontSize !== this.props.fontSize || nextProps.theme !== this.props.theme) {
       this.themeContext = getContext({
         baseFontSize: nextProps.fontSize,
@@ -49,13 +49,13 @@ export class TeamsComponentContext extends React.Component<TeamsComponentProps, 
     return React.Children.only(this.props.children);
   }
 
-  protected getChildContext(): ComponentContext {
+  protected getChildContext(): IComponentContext {
     return {
       subscribe: this.subscribe,
     };
   }
 
-  private subscribe = (observer: ThemeObserver): Unsubscribe => {
+  private subscribe = (observer: IThemeObserver): IUnsubscribe => {
     const id = uniqueId();
     this.subscribers.set(id, observer);
     observer(this.themeContext);

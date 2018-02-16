@@ -1,12 +1,12 @@
 import { anchor } from 'msteams-ui-styles-core/lib/components/anchor';
 import * as React from 'react';
-import { connectTeamsComponent, InjectedTeamsProps } from '../index';
+import { connectTeamsComponent, IInjectedTeamsProps } from '../index';
 import classes from '../utils/classes';
 
-export interface AnchorProps
+export interface IAnchorProps
   extends React.DetailedHTMLProps<React.AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement> { }
 
-const AnchorInternal: React.StatelessComponent<AnchorProps & InjectedTeamsProps> = (props) => {
+const AnchorInternal: React.StatelessComponent<IAnchorProps & IInjectedTeamsProps> = (props) => {
   const { context, className, ...rest } = props;
   const themeClassName = anchor(context);
 
@@ -15,4 +15,4 @@ const AnchorInternal: React.StatelessComponent<AnchorProps & InjectedTeamsProps>
   );
 };
 
-export const Anchor = connectTeamsComponent<AnchorProps>(AnchorInternal);
+export const Anchor = connectTeamsComponent<IAnchorProps>(AnchorInternal);

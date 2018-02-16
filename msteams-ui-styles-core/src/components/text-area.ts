@@ -1,8 +1,8 @@
-import { chooseStyle, Context } from '../context';
+import { chooseStyle, IContext } from '../context';
 import { errorLabel } from './error-label';
 import { label } from './label';
 
-interface TextAreaColors {
+interface ITextAreaColors {
   rest: {
     background: string;
     border: string;
@@ -33,7 +33,7 @@ interface TextAreaColors {
   errorIcon: string;
 }
 
-function base(context: Context, colors: TextAreaColors) {
+function base(context: IContext, colors: ITextAreaColors) {
   const names = {
     container: 'textarea-container',
     textarea: 'textarea-field',
@@ -145,7 +145,7 @@ function base(context: Context, colors: TextAreaColors) {
   };
 }
 
-function light(context: Context) {
+function light(context: IContext) {
   const { colors } = context;
   return base(context, {
     rest: {
@@ -179,7 +179,7 @@ function light(context: Context) {
   });
 }
 
-function dark(context: Context) {
+function dark(context: IContext) {
   const { colors } = context;
   return base(context, {
     rest: {
@@ -213,7 +213,7 @@ function dark(context: Context) {
   });
 }
 
-function highContrast(context: Context) {
+function highContrast(context: IContext) {
   const { colors } = context;
   return base(context, {
     rest: {
@@ -247,6 +247,6 @@ function highContrast(context: Context) {
   });
 }
 
-export function textArea(context: Context) {
+export function textArea(context: IContext) {
   return chooseStyle(context, light, dark, highContrast);
 }

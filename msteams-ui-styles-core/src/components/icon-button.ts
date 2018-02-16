@@ -1,6 +1,6 @@
-import { chooseStyle, Context } from '../context';
+import { chooseStyle, IContext } from '../context';
 
-interface IconButtonColors {
+interface IIconButtonColors {
   hover: {
     text: string;
     border: string;
@@ -18,7 +18,7 @@ interface IconButtonColors {
   };
 }
 
-function base(context: Context, colors: IconButtonColors) {
+function base(context: IContext, colors: IIconButtonColors) {
   const names = {
     button: 'button-icon',
   };
@@ -60,7 +60,7 @@ function base(context: Context, colors: IconButtonColors) {
   });
 }
 
-function light(context: Context) {
+function light(context: IContext) {
   const { colors } = context;
   return base(context, {
     hover: {
@@ -81,7 +81,7 @@ function light(context: Context) {
   });
 }
 
-function dark(context: Context) {
+function dark(context: IContext) {
   const { colors } = context;
   return base(context, {
     hover: {
@@ -102,7 +102,7 @@ function dark(context: Context) {
   });
 }
 
-function highContrast(context: Context) {
+function highContrast(context: IContext) {
   const { colors } = context;
   return base(context, {
     hover: {
@@ -123,6 +123,6 @@ function highContrast(context: Context) {
   });
 }
 
-export function iconButton(context: Context) {
+export function iconButton(context: IContext) {
   return chooseStyle(context, light, dark, highContrast);
 }

@@ -116,7 +116,7 @@ You can also render your own custom components using the MS Teams context in two
 1. You can wrap them using the connectTeamsComponent function.
 ```javascript
 const React = require('react')
-const { connectTeamsComponent, ThemeStyle, InjectedTeamsProps } = require('msteams-ui-components-react')
+const { connectTeamsComponent, ThemeStyle, IIInjectedTeamsProps } = require('msteams-ui-components-react')
 
 const CustomComponentInternal: React.StatelessComponent = (props) => {
   const { context, ...rest } = props;

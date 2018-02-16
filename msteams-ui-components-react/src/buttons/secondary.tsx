@@ -1,17 +1,17 @@
 import { secondaryButton } from 'msteams-ui-styles-core/lib/components/secondary-button';
 import * as React from 'react';
-import { Focusable } from '../focusable';
-import { InjectedTeamsProps } from '../index';
+import { IFocusable } from '../focusable';
+import { IInjectedTeamsProps } from '../index';
 import { connectTeamsComponent } from '../teams-context';
 import classes from '../utils/classes';
 
-export interface SecondaryButtonProps
+export interface ISecondaryButtonProps
   extends React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
   disabled?: boolean;
-  onRef?: (ref: React.Component & Focusable | null) => void;
+  onRef?: (ref: React.Component & IFocusable | null) => void;
 }
 
-class SecondaryButtonView extends React.Component<SecondaryButtonProps & InjectedTeamsProps> implements Focusable {
+class SecondaryButtonView extends React.Component<ISecondaryButtonProps & IInjectedTeamsProps> implements IFocusable {
   private button: HTMLButtonElement | null;
 
   componentDidMount() {

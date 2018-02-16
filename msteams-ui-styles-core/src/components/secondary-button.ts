@@ -1,6 +1,6 @@
-import { chooseStyle, Context } from '../context';
+import { chooseStyle, IContext } from '../context';
 
-interface SecondaryButtonColors {
+interface ISecondaryButtonColors {
   rest: {
     background: string;
     text: string;
@@ -29,7 +29,7 @@ interface SecondaryButtonColors {
   };
 }
 
-function base(context: Context, colors: SecondaryButtonColors) {
+function base(context: IContext, colors: ISecondaryButtonColors) {
   const names = {
     button: 'button-secondary',
   };
@@ -81,7 +81,7 @@ function base(context: Context, colors: SecondaryButtonColors) {
   });
 }
 
-function light(context: Context) {
+function light(context: IContext) {
   const { colors } = context;
   return base(context, {
     rest: {
@@ -113,7 +113,7 @@ function light(context: Context) {
   });
 }
 
-function dark(context: Context) {
+function dark(context: IContext) {
   const { colors } = context;
   return base(context, {
     rest: {
@@ -145,7 +145,7 @@ function dark(context: Context) {
   });
 }
 
-function highContrast(context: Context) {
+function highContrast(context: IContext) {
   const { colors } = context;
   return base(context, {
     rest: {
@@ -177,7 +177,7 @@ function highContrast(context: Context) {
   });
 }
 
-export function secondaryButton(context: Context) {
+export function secondaryButton(context: IContext) {
   return chooseStyle(context, light, dark, highContrast);
 }
 
