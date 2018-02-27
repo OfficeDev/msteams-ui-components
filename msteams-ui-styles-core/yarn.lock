@@ -1849,9 +1849,9 @@ ms@2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.0.0.tgz#5608aeadfc00be6c2901df5f9861788de0d597c8"
 
-msteams-ui-icons-core@^0.2.2:
-  version "0.2.2"
-  resolved "https://registry.yarnpkg.com/msteams-ui-icons-core/-/msteams-ui-icons-core-0.2.2.tgz#29d3a05fb9a26ca695304a79d67f1c43fa947e52"
+msteams-ui-icons-core@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/msteams-ui-icons-core/-/msteams-ui-icons-core-0.3.0.tgz#60726d56c8c4db8ea9e423053c56102e9010a020"
   dependencies:
     lodash.memoize "^4.1.2"
 
