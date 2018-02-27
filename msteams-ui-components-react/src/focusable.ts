@@ -1,3 +1,3 @@
-export interface Focusable {
+export interface IFocusable {
   focus: () => void;
 }

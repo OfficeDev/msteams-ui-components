@@ -11,17 +11,17 @@ function values(obj: {[key: string]: string|number}): Array<string|number> {
   return vals;
 }
 
-export interface MSTeamsIconProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> {
+export interface IMSTeamsIconProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> {
   iconType?: string;
   iconWeight?: number;
 }
 
-export interface MSTeamsIconState {
+export interface IMSTeamsIconState {
   baseClass: string;
   iconClass: string | null;
 }
 
-export class MSTeamsIcon extends React.PureComponent<MSTeamsIconProps, MSTeamsIconState> {
+export class MSTeamsIcon extends React.PureComponent<IMSTeamsIconProps, IMSTeamsIconState> {
   static propTypes = {
     iconType: PropTypes.oneOf(values(iconTypes)),
     iconWeight: PropTypes.oneOf(values(iconWeights)),

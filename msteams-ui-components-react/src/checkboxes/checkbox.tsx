@@ -1,30 +1,30 @@
 import { checkbox } from 'msteams-ui-styles-core/lib/components/checkbox';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-import { connectTeamsComponent, InjectedTeamsProps } from '../index';
+import { connectTeamsComponent, IInjectedTeamsProps } from '../index';
 import classes from '../utils/classes';
 import uniqueId from '../utils/uniqueId';
 
-export interface CheckboxProps
+export interface ICheckboxProps
   extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
   label?: string;
   checked?: boolean;
   onChecked?: (checked: boolean, value: any) => void;
 }
 
-interface CheckboxState {
+interface ICheckboxState {
   id: string;
 }
 
-interface CheckboxContext {
+interface ICheckboxContext {
   onChecked?: (checked: boolean, value: any) => void;
   values?: any[];
   invalid: boolean;
 }
 
-type ConnectedProps = CheckboxProps & InjectedTeamsProps;
+type ConnectedProps = ICheckboxProps & IInjectedTeamsProps;
 
-class CheckboxInner extends React.Component<ConnectedProps, CheckboxState> {
+class CheckboxInner extends React.Component<ConnectedProps, ICheckboxState> {
   static propTypes = {
     onChecked: PropTypes.func,
     value: PropTypes.any.isRequired,
@@ -36,7 +36,7 @@ class CheckboxInner extends React.Component<ConnectedProps, CheckboxState> {
     onChecked: PropTypes.func,
     values: PropTypes.array,
   };
-  context: CheckboxContext;
+  context: ICheckboxContext;
 
   state = { id: uniqueId('ts-cb-') };
 

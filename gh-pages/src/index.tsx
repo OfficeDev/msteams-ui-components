@@ -12,12 +12,12 @@ const mountPoint = 'root';
 normalize();
 setupPage(`#${mountPoint}`);
 
-export interface ContentState {
+export interface IContentState {
   fontSize: number;
   theme: ThemeStyle;
 }
 
-export class GHPages extends React.Component<{}, ContentState> {
+export class GHPages extends React.Component<{}, IContentState> {
   state = {
     theme: ThemeStyle.Light,
     fontSize: 16,

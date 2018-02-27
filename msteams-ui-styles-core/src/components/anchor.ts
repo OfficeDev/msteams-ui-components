@@ -1,6 +1,6 @@
-import { chooseStyle, Context } from '../context';
+import { chooseStyle, IContext } from '../context';
 
-interface AnchorColors {
+interface IAnchorColors {
   rest: {
     text: string;
   };
@@ -21,7 +21,7 @@ interface AnchorColors {
   };
 }
 
-function base(context: Context, colors: AnchorColors) {
+function base(context: IContext, colors: IAnchorColors) {
   const name = 'anchor';
   return context.css(name, {
     textDecoration: 'none',
@@ -56,7 +56,7 @@ function base(context: Context, colors: AnchorColors) {
   });
 }
 
-function light(context: Context) {
+function light(context: IContext) {
   return base(context, {
     rest: {
       text: context.colors.light.brand00,
@@ -79,7 +79,7 @@ function light(context: Context) {
   });
 }
 
-function dark(context: Context) {
+function dark(context: IContext) {
   return base(context, {
     rest: {
       text: context.colors.dark.brand00,
@@ -102,7 +102,7 @@ function dark(context: Context) {
   });
 }
 
-function highContrast(context: Context) {
+function highContrast(context: IContext) {
   return base(context, {
     rest: {
       text: context.colors.highContrast.yellow,
@@ -125,7 +125,7 @@ function highContrast(context: Context) {
   });
 }
 
-export function anchor(context: Context) {
+export function anchor(context: IContext) {
   return chooseStyle(context, light, dark, highContrast);
 }
 

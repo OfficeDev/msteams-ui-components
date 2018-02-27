@@ -1,10 +1,10 @@
-import { chooseStyle, Context } from '../context';
+import { chooseStyle, IContext } from '../context';
 
-interface LabelColors {
+interface ILabelColors {
   text: string;
 }
 
-function base(context: Context, colors: LabelColors) {
+function base(context: IContext, colors: ILabelColors) {
   const name = 'label';
   const { css, font, rem } = context;
   const { sizes, weights } = font;
@@ -23,27 +23,27 @@ function base(context: Context, colors: LabelColors) {
   });
 }
 
-function light(context: Context) {
+function light(context: IContext) {
   const { colors } = context;
   return base(context, {
     text: colors.light.gray01,
   });
 }
 
-function dark(context: Context) {
+function dark(context: IContext) {
   const { colors } = context;
   return base(context, {
     text: colors.dark.white,
   });
 }
 
-function highContrast(context: Context) {
+function highContrast(context: IContext) {
   const { colors } = context;
   return base(context, {
     text: colors.highContrast.white,
   });
 }
 
-export function label(context: Context) {
+export function label(context: IContext) {
   return chooseStyle(context, light, dark, highContrast);
 }

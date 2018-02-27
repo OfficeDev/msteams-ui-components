@@ -1,10 +1,10 @@
-import { chooseStyle, Context } from '../context';
+import { chooseStyle, IContext } from '../context';
 
-interface ErrorLabelColors {
+interface IErrorLabelColors {
   text: string;
 }
 
-function base(context: Context, colors: ErrorLabelColors) {
+function base(context: IContext, colors: IErrorLabelColors) {
   const name = 'error-label';
   const { css, font, rem } = context;
   const { sizes, weights } = font;
@@ -23,27 +23,27 @@ function base(context: Context, colors: ErrorLabelColors) {
   });
 }
 
-function light(context: Context) {
+function light(context: IContext) {
   const { colors } = context;
   return base(context, {
     text: colors.light.red,
   });
 }
 
-function dark(context: Context) {
+function dark(context: IContext) {
   const { colors } = context;
   return base(context, {
     text: colors.dark.red,
   });
 }
 
-function highContrast(context: Context) {
+function highContrast(context: IContext) {
   const { colors } = context;
   return base(context, {
     text: colors.highContrast.yellow,
   });
 }
 
-export function errorLabel(context: Context) {
+export function errorLabel(context: IContext) {
   return chooseStyle(context, light, dark, highContrast);
 }

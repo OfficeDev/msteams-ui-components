@@ -1,6 +1,6 @@
-import { Context } from '../context';
+import { IContext } from '../context';
 
-export function fontWeights(context: Context) {
+export function fontWeights(context: IContext) {
   const names = {
     semilight: 'font-semilight',
     regular: 'font-regular',

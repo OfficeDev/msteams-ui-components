@@ -1,20 +1,20 @@
 import { MSTeamsIcon, MSTeamsIconType, MSTeamsIconWeight } from 'msteams-ui-icons-react';
 import { input } from 'msteams-ui-styles-core/lib/components/input';
 import * as React from 'react';
-import { Focusable } from '../focusable';
-import { connectTeamsComponent, InjectedTeamsProps } from '../index';
+import { IFocusable } from '../focusable';
+import { connectTeamsComponent, IInjectedTeamsProps } from '../index';
 import classes from '../utils/classes';
 import uniqueId from '../utils/uniqueId';
 
-export interface InputProps extends
+export interface IInputProps extends
   React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
-  onRef?: (ref: React.Component & Focusable | null) => void;
+  onRef?: (ref: React.Component & IFocusable | null) => void;
   label?: string;
   errorLabel?: string;
 }
 
-class InputInternal extends React.Component<InputProps & InjectedTeamsProps>
-implements Focusable {
+class InputInternal extends React.Component<IInputProps & IInjectedTeamsProps>
+implements IFocusable {
   state = {
     inputId: uniqueId('ts-i'),
   };

@@ -1,7 +1,7 @@
-import { chooseStyle, Context } from '../context';
+import { chooseStyle, IContext } from '../context';
 import { hiddenInput } from './hidden-input';
 
-interface ToggleColors {
+interface IToggleColors {
   rest: {
     background: string;
     ball: string;
@@ -26,7 +26,7 @@ const height = 2;
 const ballSize = 1.4;
 const ballDeltaX = 0.3;
 
-function base(context: Context, colors: ToggleColors) {
+function base(context: IContext, colors: IToggleColors) {
   const names = {
     container: 'toggle',
     input: 'toggle-input',
@@ -109,7 +109,7 @@ function base(context: Context, colors: ToggleColors) {
   };
 }
 
-function light(context: Context) {
+function light(context: IContext) {
   const { colors } = context;
   return base(context, {
     rest: {
@@ -132,7 +132,7 @@ function light(context: Context) {
   });
 }
 
-function dark(context: Context) {
+function dark(context: IContext) {
   const { colors } = context;
   return base(context, {
     rest: {
@@ -155,7 +155,7 @@ function dark(context: Context) {
   });
 }
 
-function highContrast(context: Context) {
+function highContrast(context: IContext) {
   const { colors } = context;
   return base(context, {
     rest: {
@@ -178,6 +178,6 @@ function highContrast(context: Context) {
   });
 }
 
-export function toggle(context: Context) {
+export function toggle(context: IContext) {
   return chooseStyle(context, light, dark, highContrast);
 }

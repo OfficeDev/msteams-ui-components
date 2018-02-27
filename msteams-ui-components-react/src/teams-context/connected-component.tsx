@@ -1,24 +1,24 @@
-import { Context } from 'msteams-ui-styles-core';
+import { IContext } from 'msteams-ui-styles-core';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-import { ComponentContext, ContextProps, Unsubscribe } from './shared';
+import { IComponentContext, ContextProps, IUnsubscribe } from './shared';
 
-export interface InjectedTeamsProps {
-  readonly context: Context;
+export interface IInjectedTeamsProps {
+  readonly context: IContext;
 }
 
-export interface ConnectedComponentProps {
-  component?: React.ComponentType<InjectedTeamsProps | {}>;
-  render?: ((props: InjectedTeamsProps) => React.ReactNode);
-  children?: ((props: InjectedTeamsProps) => React.ReactNode) | React.ReactNode;
+export interface IConnectedComponentProps {
+  component?: React.ComponentType<IInjectedTeamsProps | {}>;
+  render?: ((props: IInjectedTeamsProps) => React.ReactNode);
+  children?: ((props: IInjectedTeamsProps) => React.ReactNode) | React.ReactNode;
 }
 
-export interface ConnectedComponentState {
-  context: Context;
+export interface IConnectedComponentState {
+  context: IContext;
 }
 
 export class ConnectedComponent
-  extends React.Component<any, ConnectedComponentState> {
+  extends React.Component<any, IConnectedComponentState> {
   static propTypes = {
     component: PropTypes.func,
     render: PropTypes.func,
@@ -29,8 +29,8 @@ export class ConnectedComponent
   };
   static contextTypes = ContextProps;
 
-  context: ComponentContext;
-  private unsubscribe: Unsubscribe;
+  context: IComponentContext;
+  private unsubscribe: IUnsubscribe;
 
   componentWillMount() {
     this.unsubscribe = this.context.subscribe(this.contextUpdate);
@@ -66,7 +66,7 @@ export class ConnectedComponent
     return null;
   }
 
-  private contextUpdate = (context: Context) => {
+  private contextUpdate = (context: IContext) => {
     this.setState({context});
   }
 }

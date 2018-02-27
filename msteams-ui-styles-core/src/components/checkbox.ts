@@ -1,8 +1,8 @@
 import { baseStyle, iconTypes, iconWeights } from 'msteams-ui-icons-core';
-import { chooseStyle, Context } from '../context';
+import { chooseStyle, IContext } from '../context';
 import { hiddenInput } from './hidden-input';
 
-interface CheckboxColors {
+interface ICheckboxColors {
   rest: {
     border: string;
     background: string;
@@ -29,7 +29,7 @@ interface CheckboxColors {
   container: string;
 }
 
-function base(context: Context, colors: CheckboxColors) {
+function base(context: IContext, colors: ICheckboxColors) {
   baseStyle(iconWeights.Light);
   const names = {
     container: 'check-container',
@@ -124,7 +124,7 @@ function base(context: Context, colors: CheckboxColors) {
   };
 }
 
-function light(context: Context) {
+function light(context: IContext) {
   const { colors } = context;
   return base(context, {
     rest: {
@@ -154,7 +154,7 @@ function light(context: Context) {
   });
 }
 
-function dark(context: Context) {
+function dark(context: IContext) {
   const { colors } = context;
   return base(context, {
     rest: {
@@ -184,7 +184,7 @@ function dark(context: Context) {
   });
 }
 
-function highContrast(context: Context) {
+function highContrast(context: IContext) {
   const { colors } = context;
   return base(context, {
     rest: {
@@ -214,6 +214,6 @@ function highContrast(context: Context) {
   });
 }
 
-export function checkbox(context: Context) {
+export function checkbox(context: IContext) {
   return chooseStyle(context, light, dark, highContrast);
 }

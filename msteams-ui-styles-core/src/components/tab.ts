@@ -1,7 +1,7 @@
-import { chooseStyle, Context } from '../context';
+import { chooseStyle, IContext } from '../context';
 import { getReturnType } from '../get-return-type';
 
-export interface TabColors {
+export interface ITabColors {
   text: string;
   underline: string;
   textActive: string;
@@ -15,7 +15,7 @@ export interface TabColors {
 export const _extractingTabStyles = getReturnType(base);
 export type TabStyles = typeof _extractingTabStyles;
 
-function base(context: Context, colors: TabColors) {
+function base(context: IContext, colors: ITabColors) {
   const names = {
     container: 'tab-group',
     normal: 'tab',
@@ -73,7 +73,7 @@ function base(context: Context, colors: TabColors) {
   };
 }
 
-function light(context: Context) {
+function light(context: IContext) {
   const { colors } = context;
   return base(context, {
     text: colors.light.gray02,
@@ -86,7 +86,7 @@ function light(context: Context) {
   });
 }
 
-function dark(context: Context) {
+function dark(context: IContext) {
   const { colors } = context;
   return base(context, {
     text: colors.dark.gray02,
@@ -99,7 +99,7 @@ function dark(context: Context) {
   });
 }
 
-function highContrast(context: Context) {
+function highContrast(context: IContext) {
   const { colors } = context;
   return base(context, {
     text: colors.highContrast.white,
@@ -112,6 +112,6 @@ function highContrast(context: Context) {
   });
 }
 
-export function tab(context: Context) {
+export function tab(context: IContext) {
   return chooseStyle(context, light, dark, highContrast);
 }

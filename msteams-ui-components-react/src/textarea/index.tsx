@@ -1,19 +1,19 @@
 import { MSTeamsIcon, MSTeamsIconType, MSTeamsIconWeight } from 'msteams-ui-icons-react';
 import { textArea } from 'msteams-ui-styles-core/lib/components/text-area';
 import * as React from 'react';
-import { Focusable } from '../focusable';
-import { connectTeamsComponent, InjectedTeamsProps } from '../index';
+import { IFocusable } from '../focusable';
+import { connectTeamsComponent, IInjectedTeamsProps } from '../index';
 import classes from '../utils/classes';
 import uniqueId from '../utils/uniqueId';
 
-export interface TextAreaProps
+export interface ITextAreaProps
   extends React.DetailedHTMLProps<React.TextareaHTMLAttributes<HTMLTextAreaElement>, HTMLTextAreaElement> {
-  onRef?: (ref: React.Component & Focusable | null) => void;
+  onRef?: (ref: React.Component & IFocusable | null) => void;
   label?: string;
   errorLabel?: string;
 }
 
-class TextAreaInternal extends React.Component<TextAreaProps & InjectedTeamsProps> implements Focusable {
+class TextAreaInternal extends React.Component<ITextAreaProps & IInjectedTeamsProps> implements IFocusable {
   state = {
     inputId: uniqueId('ts-ta'),
     labelId: uniqueId('ts-ta-l'),

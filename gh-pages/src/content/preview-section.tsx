@@ -4,17 +4,17 @@ import * as React from 'react';
 import { LiveEditor, LiveError, LivePreview, LiveProvider } from 'react-live';
 import * as styles from './styles';
 
-export interface PreviewSectionProps {
+export interface IPreviewSectionProps {
    code: string;
 }
 
-export interface PreviewSectionState {
+export interface IPreviewSectionState {
   codeHidden: boolean;
 }
 
-type ConnectedProps = PreviewSectionProps & Components.InjectedTeamsProps;
+type ConnectedProps = IPreviewSectionProps & Components.IInjectedTeamsProps;
 
-export class PreviewSectionInner extends React.Component<ConnectedProps, PreviewSectionState> {
+export class PreviewSectionInner extends React.Component<ConnectedProps, IPreviewSectionState> {
   state = {
     codeHidden: true,
   };
