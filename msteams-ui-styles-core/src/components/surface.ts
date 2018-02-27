@@ -1,11 +1,11 @@
-import { chooseStyle, Context } from '../context';
+import { chooseStyle, IContext } from '../context';
 
-interface SurfaceColors {
+interface ISurfaceColors {
   background: string;
   font: string;
 }
 
-function base(context: Context, colors: SurfaceColors) {
+function base(context: IContext, colors: ISurfaceColors) {
   const name = 'surface';
   const { css, font } = context;
   const { sizes, weights } = font;
@@ -17,7 +17,7 @@ function base(context: Context, colors: SurfaceColors) {
   });
 }
 
-function light(context: Context) {
+function light(context: IContext) {
   const { colors } = context;
   return base(context, {
     background: colors.light.gray10,
@@ -25,7 +25,7 @@ function light(context: Context) {
   });
 }
 
-function dark(context: Context) {
+function dark(context: IContext) {
   const { colors } = context;
   return base(context, {
     background: colors.dark.black,
@@ -33,7 +33,7 @@ function dark(context: Context) {
   });
 }
 
-function highContrast(context: Context) {
+function highContrast(context: IContext) {
   const { colors } = context;
   return base(context, {
     background: colors.highContrast.black,
@@ -41,6 +41,6 @@ function highContrast(context: Context) {
   });
 }
 
-export function surface(context: Context) {
+export function surface(context: IContext) {
   return chooseStyle(context, light, dark, highContrast);
 }

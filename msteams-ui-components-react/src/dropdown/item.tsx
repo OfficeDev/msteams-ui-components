@@ -2,20 +2,20 @@ import 'mousetrap';
 import { MSTeamsIcon, MSTeamsIconType, MSTeamsIconWeight } from 'msteams-ui-icons-react';
 import { dropdown } from 'msteams-ui-styles-core/lib/components/dropdown';
 import * as React from 'react';
-import { Focusable } from '../focusable';
-import { Context } from '../index';
+import { IFocusable } from '../focusable';
+import { IContext } from '../index';
 import classes from '../utils/classes';
 import uniqueId from '../utils/uniqueId';
 
-export interface DropdownItemProps
+export interface IDropdownItemProps
   extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
-    context: Context;
+    context: IContext;
     text?: string;
     render?: () => string | JSX.Element;
 }
 
-export class DropdownItem extends React.Component<DropdownItemProps>
-  implements Focusable {
+export class DropdownItem extends React.Component<IDropdownItemProps>
+  implements IFocusable {
   private button: HTMLButtonElement | null;
 
   hasFocus = (): boolean => {

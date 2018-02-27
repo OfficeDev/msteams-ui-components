@@ -1,6 +1,6 @@
-import { Context } from '../context';
+import { IContext } from '../context';
 
-export function fontSizes(context: Context) {
+export function fontSizes(context: IContext) {
   const names = {
     title: 'font-title',
     title2: 'font-title2',

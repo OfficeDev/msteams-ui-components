@@ -1,13 +1,13 @@
 import { panel } from 'msteams-ui-styles-core/lib/components/panel';
 import * as React from 'react';
-import { connectTeamsComponent, InjectedTeamsProps } from '../teams-context';
+import { connectTeamsComponent, IInjectedTeamsProps } from '../teams-context';
 import classes from '../utils/classes';
 
-export interface PanelFooterProps
+export interface IPanelFooterProps
   extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
 }
 
-const PanelFooterView: React.StatelessComponent<PanelFooterProps & InjectedTeamsProps> =
+const PanelFooterView: React.StatelessComponent<IPanelFooterProps & IInjectedTeamsProps> =
   (props) => {
     const { context, className, ...rest } = props;
     const classNames = panel(context);

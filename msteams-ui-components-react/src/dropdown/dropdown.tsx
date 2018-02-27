@@ -2,32 +2,32 @@ import 'mousetrap';
 import { MSTeamsIcon, MSTeamsIconType, MSTeamsIconWeight } from 'msteams-ui-icons-react';
 import { dropdown } from 'msteams-ui-styles-core/lib/components/dropdown';
 import * as React from 'react';
-import { connectTeamsComponent, InjectedTeamsProps } from '../index';
+import { connectTeamsComponent, IInjectedTeamsProps } from '../index';
 import classes from '../utils/classes';
 import uniqueId from '../utils/uniqueId';
 import { DropdownItem } from './item';
 
-export interface DropdownProps
+export interface IDropdownProps
   extends React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
   menuRightAlign?: boolean;
   mainButtonText?: string;
   label?: string;
-  items: DropdownItemProps[];
+  items: IDropdownItemProps[];
 }
 
-export interface DropdownItemProps {
+export interface IDropdownItemProps {
   text?: string;
   render?: () => string | JSX.Element;
   onClick: () => void;
 }
 
-interface DropdownState {
+interface IDropdownState {
   show: boolean;
   id: string;
   expandableRegionId: string;
 }
 
-class DropdownInternal extends React.Component<DropdownProps & InjectedTeamsProps, DropdownState> {
+class DropdownInternal extends React.Component<IDropdownProps & IInjectedTeamsProps, IDropdownState> {
   state = {
     show: false,
     id: uniqueId('ts-dd-'),
@@ -207,4 +207,4 @@ class DropdownInternal extends React.Component<DropdownProps & InjectedTeamsProp
   }
 }
 
-export const Dropdown = connectTeamsComponent<DropdownProps>(DropdownInternal);
+export const Dropdown = connectTeamsComponent<IDropdownProps>(DropdownInternal);

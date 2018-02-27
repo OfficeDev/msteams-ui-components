@@ -1,12 +1,12 @@
 import { table } from 'msteams-ui-styles-core/lib/components/table';
 import * as React from 'react';
-import { connectTeamsComponent, InjectedTeamsProps } from '../index';
+import { connectTeamsComponent, IInjectedTeamsProps } from '../index';
 import classes from '../utils/classes';
 
-export interface TrProps
+export interface ITrProps
   extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLTableRowElement>, HTMLTableRowElement> { }
 
-const TrInternal: React.StatelessComponent<TrProps & InjectedTeamsProps> = (props) => {
+const TrInternal: React.StatelessComponent<ITrProps & IInjectedTeamsProps> = (props) => {
   const { context, className, ...rest } = props;
   const themeClassNames = table(context);
   return <tr
@@ -14,4 +14,4 @@ const TrInternal: React.StatelessComponent<TrProps & InjectedTeamsProps> = (prop
     className={classes(themeClassNames.tr, className)} {...rest}>{props.children}</tr>;
 };
 
-export const Tr = connectTeamsComponent<TrProps>(TrInternal);
+export const Tr = connectTeamsComponent<ITrProps>(TrInternal);

@@ -1,27 +1,27 @@
 import { radioButton } from 'msteams-ui-styles-core/lib/components/radio-button';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-import { connectTeamsComponent, InjectedTeamsProps } from '../index';
+import { connectTeamsComponent, IInjectedTeamsProps } from '../index';
 import classes from '../utils/classes';
 import uniqueId from '../utils/uniqueId';
 
-export interface RadiobuttonProps
+export interface IRadiobuttonProps
   extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
   onSelected?: (selected: boolean, value: any) => void;
   selected?: boolean;
   label?: string;
 }
 
-interface RadiobuttonState {
+interface IRadiobuttonState {
   id: string;
 }
 
-interface RadiobuttonContext {
+interface IRadiobuttonContext {
   onSelected?: (selected: boolean, value: any) => void;
   value?: any;
 }
 
-class RadiobuttonInner extends React.Component<RadiobuttonProps & InjectedTeamsProps, RadiobuttonState> {
+class RadiobuttonInner extends React.Component<IRadiobuttonProps & IInjectedTeamsProps, IRadiobuttonState> {
   static propTypes = {
     onSelected: PropTypes.func,
     value: PropTypes.any.isRequired,
@@ -33,7 +33,7 @@ class RadiobuttonInner extends React.Component<RadiobuttonProps & InjectedTeamsP
     onSelected: PropTypes.func,
     value: PropTypes.any,
   };
-  context: RadiobuttonContext;
+  context: IRadiobuttonContext;
 
   state = { id: uniqueId('ts-rb-') };
 

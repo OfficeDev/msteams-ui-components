@@ -1,8 +1,8 @@
-import { chooseStyle, Context } from '../context';
+import { chooseStyle, IContext } from '../context';
 import { errorLabel } from '../index';
 import { label } from './label';
 
-interface InputColors {
+interface IInputColors {
   rest: {
     background: string;
     border: string;
@@ -32,7 +32,7 @@ interface InputColors {
   errorIcon: string;
 }
 
-function base(context: Context, colors: InputColors) {
+function base(context: IContext, colors: IInputColors) {
   const names = {
     container: 'input-container',
     input: 'input-field',
@@ -139,7 +139,7 @@ function base(context: Context, colors: InputColors) {
   };
 }
 
-function light(context: Context) {
+function light(context: IContext) {
   const { colors } = context;
   return base(context, {
     rest: {
@@ -172,7 +172,7 @@ function light(context: Context) {
   });
 }
 
-function dark(context: Context) {
+function dark(context: IContext) {
   const { colors } = context;
   return base(context, {
     rest: {
@@ -205,7 +205,7 @@ function dark(context: Context) {
   });
 }
 
-function highContrast(context: Context) {
+function highContrast(context: IContext) {
   const { colors } = context;
   return base(context, {
     rest: {
@@ -238,6 +238,6 @@ function highContrast(context: Context) {
   });
 }
 
-export function input(context: Context) {
+export function input(context: IContext) {
   return chooseStyle(context, light, dark, highContrast);
 }

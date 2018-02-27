@@ -1,7 +1,7 @@
-import { Context } from 'msteams-ui-components-react';
+import { IContext } from 'msteams-ui-components-react';
 import { style } from 'typestyle';
 
-export function sidebar(context: Context) {
+export function sidebar(context: IContext) {
   const { rem, font } = context;
   const { sizes, weights } = font;
 
