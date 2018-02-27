@@ -2719,31 +2719,31 @@ ms@2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.0.0.tgz#5608aeadfc00be6c2901df5f9861788de0d597c8"
 
-msteams-ui-components-react@^0.4.6:
-  version "0.4.6"
-  resolved "https://registry.yarnpkg.com/msteams-ui-components-react/-/msteams-ui-components-react-0.4.6.tgz#4c8aca39b88ef2fa9873136cf877fb842701db10"
+msteams-ui-components-react@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/msteams-ui-components-react/-/msteams-ui-components-react-0.5.0.tgz#54b6012d97a3b2c0f425da8c0736fed94dcd784b"
   dependencies:
     mousetrap "^1.6.1"
-    msteams-ui-icons-react "^0.2.2"
-    msteams-ui-styles-core "^0.4.5"
+    msteams-ui-icons-react "^0.3.0"
+    msteams-ui-styles-core "^0.5.0"
 
-msteams-ui-icons-core@^0.2.2:
-  version "0.2.2"
-  resolved "https://registry.yarnpkg.com/msteams-ui-icons-core/-/msteams-ui-icons-core-0.2.2.tgz#29d3a05fb9a26ca695304a79d67f1c43fa947e52"
+msteams-ui-icons-core@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/msteams-ui-icons-core/-/msteams-ui-icons-core-0.3.0.tgz#60726d56c8c4db8ea9e423053c56102e9010a020"
   dependencies:
     lodash.memoize "^4.1.2"
 
-msteams-ui-icons-react@^0.2.2:
-  version "0.2.2"
-  resolved "https://registry.yarnpkg.com/msteams-ui-icons-react/-/msteams-ui-icons-react-0.2.2.tgz#114d855640a6b56ebb7bfcefa0f5d9ceac6f9cc1"
+msteams-ui-icons-react@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/msteams-ui-icons-react/-/msteams-ui-icons-react-0.3.0.tgz#c337803c9c94026aee868842a0c1619c9b8710c1"
   dependencies:
-    msteams-ui-icons-core "^0.2.2"
+    msteams-ui-icons-core "^0.3.0"
 
-msteams-ui-styles-core@^0.4.5:
-  version "0.4.5"
-  resolved "https://registry.yarnpkg.com/msteams-ui-styles-core/-/msteams-ui-styles-core-0.4.5.tgz#40dd542a854d484c27bb8b36dcce1fb5b247d3b3"
+msteams-ui-styles-core@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/msteams-ui-styles-core/-/msteams-ui-styles-core-0.5.0.tgz#51e0d700052cf8951f68d804132307b2af741694"
   dependencies:
-    msteams-ui-icons-core "^0.2.2"
+    msteams-ui-icons-core "^0.3.0"
 
 multicast-dns-service-types@^1.1.0:
   version "1.1.0"
