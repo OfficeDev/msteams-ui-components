@@ -45,15 +45,11 @@
 function themeChanged(theme) {
 	var bodyElement = document.getElementById("body");
 	var lightTab = document.getElementById("light-tab");
-	var lightV2Tab = document.getElementById("light-v2-tab");
 	var darkTab = document.getElementById("dark-tab");
-	var darkV2Tab = document.getElementById("dark-v2-tab");
 	var contrastTab = document.getElementById("contrast-tab");
 
 	lightTab.className = "tab";
-	lightV2Tab.className = "tab";
 	darkTab.className = "tab";
-	darkV2Tab.className = "tab";
 	contrastTab.className = "tab";
 	switch (theme) {
 		case "dark":
@@ -63,14 +59,6 @@ function themeChanged(theme) {
 		case "contrast": 
 			contrastTab.className = "tab tab-active";
 			bodyElement.className = "theme-contrast";
-			break;
-		case "light-v2": 
-			lightV2Tab.className = "tab tab-active";
-			bodyElement.className = "theme-light-v2";
-			break;
-		case "dark-v2": 
-			darkV2Tab.className = "tab tab-active";
-			bodyElement.className = "theme-dark-v2";
 			break;
 		case "default":
 		case "light":
@@ -115,9 +103,7 @@ function toggle() {
 			</div>
 			<div class="tab-group">
 				<button id="light-tab" class="tab tab-active" onClick="themeChanged('light')">Light</button>
-				<button id="light-v2-tab" class="tab" onClick="themeChanged('light-v2')">Light V2</button>
 				<button id="dark-tab" class="tab" onClick="themeChanged('dark')">Dark</button>
-				<button id="dark-v2-tab" class="tab" onClick="themeChanged('dark-v2')">Dark V2</button>
 				<button id="contrast-tab" class="tab" onClick="themeChanged('contrast')">High Contrast</button>
 			</div>
 		</div>
