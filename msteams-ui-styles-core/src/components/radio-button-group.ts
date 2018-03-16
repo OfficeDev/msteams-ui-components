@@ -10,8 +10,6 @@ interface IRadioButtonColors {
 function base(context: IContext, colors: IRadioButtonColors) {
   const names = {
     container: 'radio-group',
-    label: 'radio-group-label',
-    error: 'radio-group-error',
   };
   const { css } = context;
 
