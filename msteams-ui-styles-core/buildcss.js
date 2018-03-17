@@ -5,17 +5,20 @@ module.exports = () => {
   const { Colors } = require('./lib/colors')
   const { createTypeStyle } = require('typestyle')
   const fs = require('fs')
-  const { input, textArea, surface, panel, primaryButton, secondaryButton, radioButton, radioButtonGroup, toggle, tab, fontSizes, fontWeights } = require('./lib');
+  const { input, textArea, surface, panel, primaryButton, secondaryButton, iconButton, radioButton, radioButtonGroup, toggle, tab, fontSizes, fontWeights } = require('./lib');
 
   const themeConfigs = [{
     prefix: 'theme-light',
-    style: ThemeStyle.Light
+    style: ThemeStyle.Light,
+    colors: Colors
   }, {
     prefix: 'theme-dark',
-    style: ThemeStyle.Dark
+    style: ThemeStyle.Dark,
+    colors: Colors
    }, {
      prefix: 'theme-contrast',
-     style: ThemeStyle.HighContrast
+     style: ThemeStyle.HighContrast,
+     colors: Colors
    }];
 
   const sizeConfigs = [{
@@ -47,7 +50,7 @@ module.exports = () => {
       const config = {
         baseFontSize: sizeConfig.baseFontSize,
         style: themeConfig.style,
-        colors: Colors,
+        colors: themeConfig.colors,
         css: cssFunction,
       };
       const context = getContext(config);
@@ -57,6 +60,7 @@ module.exports = () => {
       panel(context);
       primaryButton(context);
       secondaryButton(context);
+      iconButton(context);
       radioButton(context);
       radioButtonGroup(context);
       tab(context);

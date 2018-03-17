@@ -23,44 +23,60 @@ class IconExample extends React.Component {
             <Td style={{textAlign: 'right', paddingRight: rem(3.2)}}>{first}</Td>
             <Td style={{textAlign: 'center'}}>
               <MSTeamsIcon
+                tabIndex={0}
+                aria-label={first}
                 iconWeight={MSTeamsIconWeight.Regular} 
                 iconType={MSTeamsIconType[first]} />
             </Td>
             <Td style={{textAlign: 'center'}}>
               <MSTeamsIcon
+                tabIndex={0}
+                aria-label={first}
                 iconWeight={MSTeamsIconWeight.Light} 
                 iconType={MSTeamsIconType[first]} />
             </Td>
             <Td style={{textAlign: 'right', paddingRight: rem(3.2)}}>{second}</Td>
             <Td style={{textAlign: 'center'}}>
               <MSTeamsIcon
+                tabIndex={0}
+                aria-label={second}
                 iconWeight={MSTeamsIconWeight.Regular} 
                 iconType={MSTeamsIconType[second]} />
             </Td>
             <Td style={{textAlign: 'center'}}>
               <MSTeamsIcon
+                tabIndex={0}
+                aria-label={second}
                 iconWeight={MSTeamsIconWeight.Light} 
                 iconType={MSTeamsIconType[second]} />
             </Td>
             <Td style={{textAlign: 'right', paddingRight: rem(3.2)}}>{third}</Td>
             <Td style={{textAlign: 'center'}}>
               <MSTeamsIcon
+                tabIndex={0}
+                aria-label={third}
                 iconWeight={MSTeamsIconWeight.Regular} 
                 iconType={MSTeamsIconType[third]} />
             </Td>
             <Td style={{textAlign: 'center'}}>
               <MSTeamsIcon
+                tabIndex={0}
+                aria-label={third}
                 iconWeight={MSTeamsIconWeight.Light} 
                 iconType={MSTeamsIconType[third]} />
             </Td>
             <Td style={{textAlign: 'right', paddingRight: rem(3.2)}}>{fourth}</Td>
             <Td style={{textAlign: 'center'}}>
               <MSTeamsIcon
+                tabIndex={0}
+                aria-label={fourth}
                 iconWeight={MSTeamsIconWeight.Regular} 
                 iconType={MSTeamsIconType[fourth]} />
             </Td>
             <Td style={{textAlign: 'center'}}>
               <MSTeamsIcon
+                tabIndex={0}
+                aria-label={fourth}
                 iconWeight={MSTeamsIconWeight.Light} 
                 iconType={MSTeamsIconType[fourth]} />
             </Td>

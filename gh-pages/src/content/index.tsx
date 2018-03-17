@@ -2,6 +2,7 @@ import { Panel, PanelBody, PanelFooter, PanelHeader } from 'msteams-ui-component
 import * as React from 'react';
 import { Redirect, Route, Switch } from 'react-router';
 import { Routes } from '../routes';
+import { Description } from './description';
 import { PreviewSection } from './preview-section';
 
 // tslint:disable:no-var-requires
@@ -54,7 +55,7 @@ export const Content: React.StatelessComponent = () => {
       <Route path={Routes.icons} render={() =>
         <PreviewSection code={IconsSection} />
       } />
-      <Redirect to={Routes.buttons} />
+      <Route path={Routes.index} component={Description} />
     </Switch>
   );
 };

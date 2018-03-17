@@ -1,4 +1,5 @@
 export const Routes = {
+  index: '/',
   buttons: '/buttons',
   checkboxes: '/checkboxes',
   radiobuttons: '/radiobuttons',

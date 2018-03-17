@@ -80,7 +80,7 @@ function light(context: IContext) {
     textActive: colors.light.brand00,
     underline: colors.light.brand00,
     containerUnderline: colors.light.gray12,
-    hoverUnderline: colors.light.brand00SemiTransparent,
+    hoverUnderline: colors.light.brand06,
     focus: colors.light.white,
     focusBg: colors.light.brand00Dark,
   });
@@ -93,7 +93,7 @@ function dark(context: IContext) {
     textActive: colors.dark.brand00,
     underline: colors.dark.brand00,
     containerUnderline: colors.highContrast.black,
-    hoverUnderline: colors.dark.brand00SemiTransparent,
+    hoverUnderline: colors.dark.brand06,
     focus: colors.dark.white,
     focusBg: colors.dark.brand00Light,
   });

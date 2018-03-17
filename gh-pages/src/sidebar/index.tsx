@@ -17,6 +17,11 @@ interface ISidebarViewProps { }
 
 class SidebarInner extends React.Component<ISidebarViewProps & IInjectedTeamsProps & RouteComponentProps<{}>> {
   static buttons = [{
+    location: Routes.index,
+    name: 'Home',
+    description: 'Useful usage information',
+    icon: () => SidebarInner.icon(MSTeamsIconType.Home),
+  }, {
     location: Routes.buttons,
     name: 'Buttons',
     description: 'Event triggering',
