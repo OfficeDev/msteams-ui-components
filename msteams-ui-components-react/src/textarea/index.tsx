@@ -20,7 +20,7 @@ class TextAreaInternal extends React.Component<ITextAreaProps & IInjectedTeamsPr
     errorLabelId: uniqueId('ts-ta-e'),
   };
 
-  private textarea: HTMLTextAreaElement | null;
+  private textarea: HTMLTextAreaElement | null = null;
 
   componentDidMount() {
     if (this.props.onRef) {
@@ -49,24 +49,25 @@ class TextAreaInternal extends React.Component<ITextAreaProps & IInjectedTeamsPr
     const themeClassNames = textArea(context);
     const actualId = id || this.state.inputId;
 
+    const hasLabel = !!label;
+    const hasError = !!errorLabel;
+
     return (
       <div
         style={style}
         className={classes(themeClassNames.container, className)}>
         <label
           className={themeClassNames.labelContainer}
-          aria-live="assertive"
-          tabIndex={-1}
           htmlFor={actualId}>
-          <span hidden={!!label} className={themeClassNames.label}>{label}</span>
-          <span hidden={!!errorLabel} className={themeClassNames.errorLabel}>{errorLabel}</span>
+          {hasLabel ? <span className={themeClassNames.label}>{label}</span> : null}
+          {hasError ? <span className={themeClassNames.errorLabel}>{errorLabel}</span> : null}
         </label>
         <textarea
           id={actualId}
           ref={(ref) => this.textarea = ref}
           role="textbox"
           aria-multiline="true"
-          aria-invalid={!!errorLabel}
+          aria-invalid={hasError}
           aria-required={required}
           required={required}
           className={themeClassNames.textArea}

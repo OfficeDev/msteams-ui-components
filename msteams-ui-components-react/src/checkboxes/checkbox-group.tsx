@@ -28,6 +28,7 @@ class CheckboxGroupInner extends React.Component<ICheckboxGroupProps & IInjected
   };
 
   state = {
+    labelId: uniqueId('ts-rgl'),
     groupId: uniqueId('ts-cg-'),
   };
 
@@ -39,20 +40,23 @@ class CheckboxGroupInner extends React.Component<ICheckboxGroupProps & IInjected
     const themeClassNames = checkboxGroup(context);
     const actualId = this.state.groupId;
 
+    const hasLabel = !!label;
+    const hasError = !!errorLabel;
+
     return (
       <div {...rest}>
         <label
-          aria-live="assertive"
-          tabIndex={-1}
-          htmlFor={actualId}>
-          <span hidden={!!label} className={themeClassNames.label}>{label}</span>
-          <span hidden={!!errorLabel} className={themeClassNames.errorLabel}>{errorLabel}</span>
+          id={this.state.labelId}
+          aria-live="polite">
+          {hasLabel ? <span className={themeClassNames.label}>{label}</span> : null}
+          {hasError ? <span className={themeClassNames.errorLabel}>{errorLabel}</span> : null}
         </label>
         <div
           id={actualId}
           role="group"
+          aria-labeledby={this.state.labelId}
           className={classes(themeClassNames.container, className)}
-          aria-invalid={!!errorLabel}>
+          aria-invalid={hasError}>
           {children}</div>
       </div>
     );

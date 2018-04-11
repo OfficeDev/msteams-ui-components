@@ -13,7 +13,7 @@ export interface IPrimaryButtonProps
 class PrimaryButtonView
   extends React.Component<IPrimaryButtonProps & IInjectedTeamsProps>
   implements IFocusable {
-  private button: HTMLButtonElement | null;
+  private button: HTMLButtonElement | null = null;
 
   componentDidMount() {
     if (this.props.onRef) {

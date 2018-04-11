@@ -13,7 +13,7 @@ export interface IToggleProps
 
 class ToggleView extends React.Component<IToggleProps & IInjectedTeamsProps>
 implements IFocusable {
-  private button: HTMLButtonElement | null;
+  private button: HTMLButtonElement | null = null;
 
   componentDidMount() {
     if (this.props.onRef) {

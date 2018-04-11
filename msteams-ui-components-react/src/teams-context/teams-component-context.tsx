@@ -1,8 +1,8 @@
-import { Colors, IContext, getContext, ThemeStyle } from 'msteams-ui-styles-core';
+import { Colors, getContext, IContext, ThemeStyle } from 'msteams-ui-styles-core';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import uniqueId from '../utils/uniqueId';
-import { IComponentContext, ContextProps, IThemeObserver, IUnsubscribe } from './shared';
+import { ContextProps, IComponentContext, IThemeObserver, IUnsubscribe } from './shared';
 
 export interface ITeamsComponentProps {
   theme: ThemeStyle;
