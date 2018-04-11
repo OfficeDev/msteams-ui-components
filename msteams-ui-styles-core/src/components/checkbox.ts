@@ -39,66 +39,77 @@ function base(context: IContext, colors: ICheckboxColors) {
   const { css, rem, font } = context;
   const { sizes } = font;
 
-  const inputClass = hiddenInput(context);
+  const labelClass = css(names.label);
+  const checkboxClass = css(names.checkbox, {
+    position: 'absolute',
+    top: rem(0.2),
+    left: rem(0.2),
+    width: rem(1.6),
+    height: rem(1.6),
+    border: `${rem(0.1)} solid`,
+    borderColor: colors.rest.border,
+    background: colors.rest.background,
+    borderRadius: rem(0.3),
+  });
 
   return {
-    container: css(names.container, {
-      border: 'none',
-      background: colors.container,
-      display: 'flex',
-      alignItems: 'center',
-      outline: 'none',
-      $nest: {
-        '& + &' : {
-          marginTop: rem(0.4),
-        },
-      },
-    }),
-    input: inputClass,
-    checkbox: css(names.checkbox, {
+    container: css(names.container, sizes.caption, {
+      display: 'block',
       position: 'relative',
       ['-webkit-user-select']: 'none',
       ['-moz-user-select']: 'none',
       ['-ms-user-select']: 'none',
       userSelect: 'none',
-      display: 'inline-block',
-      cursor: 'pointer',
-      padding: 0,
-      font: 'inherit',
-      margin: rem(0.2),
-      width: rem(1.6),
-      height: rem(1.6),
-      border: `${rem(0.1)} solid`,
-      borderColor: colors.rest.border,
-      background: colors.rest.background,
-      borderRadius: rem(0.3),
+      padding: rem(0.2),
+      paddingLeft: rem(3.0),
       $nest: {
-        '&:hover:enabled': {
+        '& + &': {
+          marginTop: rem(0.4),
+        },
+        '& input': {
+          position: 'absolute',
+          width: 0,
+          height: 0,
+          opacity: 0,
+        },
+        [`& input ~ .${labelClass}`]: {
+          cursor: 'pointer',
+          color: colors.rest.text,
+        },
+        [`& input:disabled ~ .${labelClass}`]: {
+          cursor: 'default',
+          color: colors.disabled.text,
+        },
+        [`& input:checked ~ .${labelClass}`]: {
+          cursor: 'default',
+          color: colors.checked.text,
+        },
+        [`& input ~ .${checkboxClass}`]: {
+          cursor: 'pointer',
+          color: colors.rest.text,
+        },
+        [`& input:disabled ~ .${checkboxClass}`]: {
+          cursor: 'default',
+          color: colors.disabled.text,
+          background: colors.disabled.background,
+          borderColor: colors.disabled.border,
+        },
+        [`& input:enabled:hover ~ .${checkboxClass}`]: {
           background: colors.hover.background,
           borderColor: colors.hover.border,
         },
-        '&:focus:enabled': {
+        [`& input:checked:hover ~ .${checkboxClass}`]: {
+          borderColor: colors.checked.border,
+          background: colors.checked.background,
+        },
+        [`& input:enabled:focus ~ .${checkboxClass}`]: {
           boxShadow: `0 0 0 ${rem(0.2)} ${colors.focus.outline}`,
           outline: 'none',
         },
-        '&:disabled': {
-          background: colors.disabled.background,
-          borderColor: colors.disabled.border,
-          cursor: 'default',
-          $nest: {
-            '& + label': {
-              color: colors.disabled.text,
-              cursor: 'default',
-            },
-          },
-        },
-        [`.${inputClass}:checked + &`]: {
+        [`& input:checked ~ .${checkboxClass}`]: {
           borderColor: colors.checked.border,
           background: colors.checked.background,
           $nest: {
-            '& + label': {
-              color: colors.checked.text,
-            },
             '&::before': {
               fontFamily: 'MSTeamsIcons-Light',
               content: iconTypes.Ok,
@@ -116,11 +127,8 @@ function base(context: IContext, colors: ICheckboxColors) {
         },
       },
     }),
-    label: css(names.label, sizes.caption, {
-      marginLeft: rem(1),
-      cursor: 'pointer',
-      color: colors.rest.text,
-    }),
+    checkbox: checkboxClass,
+    label: labelClass,
   };
 }
 

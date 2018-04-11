@@ -1,7 +1,7 @@
 import { IContext } from 'msteams-ui-styles-core';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-import { IComponentContext, ContextProps, IUnsubscribe } from './shared';
+import { ContextProps, IComponentContext, IUnsubscribe } from './shared';
 
 export interface IInjectedTeamsProps {
   readonly context: IContext;
@@ -30,7 +30,7 @@ export class ConnectedComponent
   static contextTypes = ContextProps;
 
   context: IComponentContext;
-  private unsubscribe: IUnsubscribe;
+  private unsubscribe: IUnsubscribe | null = null;
 
   componentWillMount() {
     this.unsubscribe = this.context.subscribe(this.contextUpdate);

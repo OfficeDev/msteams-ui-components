@@ -6,7 +6,7 @@ import classes from '../utils/classes';
 import uniqueId from '../utils/uniqueId';
 
 export interface IRadiobuttonProps
-  extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
+  extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
   onSelected?: (selected: boolean, value: any) => void;
   selected?: boolean;
   label?: string;
@@ -33,8 +33,8 @@ class RadiobuttonInner extends React.Component<IRadiobuttonProps & IInjectedTeam
     onSelected: PropTypes.func,
     value: PropTypes.any,
   };
-  context: IRadiobuttonContext;
 
+  context: IRadiobuttonContext = {};
   state = { id: uniqueId('ts-rb-') };
 
   render() {
@@ -44,36 +44,26 @@ class RadiobuttonInner extends React.Component<IRadiobuttonProps & IInjectedTeam
     const themeClassNames = radioButton(context);
 
     return (
-      <div
+      <label
+        id={this.state.id}
+        role="radio"
+        aria-required={required}
+        aria-checked={actuallySelected}
         className={classes(themeClassNames.container, className)}
         style={style}>
         <input
-          aria-hidden="true"
           id={id}
+          aria-hidden
           name={name}
           type="radio"
-          className={themeClassNames.input}
           checked={actuallySelected}
-          value={value}
-          readOnly/>
-        <button
-          id={this.state.id}
-          role="radio"
-          name={name}
-          onMouseDown={(e) => e.preventDefault()}
-          aria-required={required}
-          aria-checked={actuallySelected}
           onClick={this.click}
-          className={themeClassNames.radio}
-          {...rest} />
-        <label
-          hidden={!label}
-          htmlFor={this.state.id}
-          className={themeClassNames.label}>
-          {label}
-        </label>
-        {this.props.children}
-      </div>
+          required={required}
+          readOnly
+          {...rest}/>
+        <span className={themeClassNames.label}>{label}</span>
+        <span className={themeClassNames.radio}></span>
+      </label>
     );
   }
 
@@ -84,7 +74,7 @@ class RadiobuttonInner extends React.Component<IRadiobuttonProps & IInjectedTeam
     return this.props.selected || false;
   }
 
-  private click = (e: React.MouseEvent<HTMLButtonElement>) => {
+  private click = (e: React.MouseEvent<HTMLInputElement>) => {
     if (this.context.onSelected) {
       this.context.onSelected(true, this.props.value);
     }

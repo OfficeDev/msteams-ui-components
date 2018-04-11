@@ -19,7 +19,7 @@ implements IFocusable {
     inputId: uniqueId('ts-i'),
   };
 
-  private input: HTMLInputElement | null;
+  private input: HTMLInputElement | null = null;
 
   componentDidMount() {
     if (this.props.onRef) {
@@ -53,8 +53,6 @@ implements IFocusable {
         style={style}
         className={classes(themeClassNames.container, className)}>
         <label
-          aria-live="assertive"
-          tabIndex={-1}
           htmlFor={actualId}>
           <span hidden={!!label} className={themeClassNames.label}>{label}</span>
           <span hidden={!!errorLabel} className={themeClassNames.errorLabel}>{errorLabel}</span>

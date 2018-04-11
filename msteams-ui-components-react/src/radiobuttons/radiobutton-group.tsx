@@ -26,6 +26,7 @@ class RadiobuttonGroupInner extends React.Component<IRadiobuttonGroupProps & IIn
   };
 
   state = {
+    labelId: uniqueId('ts-rgl'),
     groupId: uniqueId('ts-rg'),
   };
 
@@ -40,8 +41,8 @@ class RadiobuttonGroupInner extends React.Component<IRadiobuttonGroupProps & IIn
     return (
       <div {...rest}>
         <label
-          aria-live="assertive"
-          tabIndex={-1}
+          id={this.state.labelId}
+          aria-live="polite"
           htmlFor={actualId}>
           <span hidden={!!label} className={themeClassNames.label}>{label}</span>
           <span hidden={!!errorLabel} className={themeClassNames.errorLabel}>{errorLabel}</span>
@@ -49,6 +50,7 @@ class RadiobuttonGroupInner extends React.Component<IRadiobuttonGroupProps & IIn
         <div
           id={actualId}
           role="radiogroup"
+          aria-labeledby={this.state.labelId}
           className={classes(themeClassNames.container, className)}
           aria-invalid={!!errorLabel}>
           {children}</div>
