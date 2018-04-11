@@ -81,7 +81,6 @@ function base(context: IContext, colors: ICheckboxColors) {
           color: colors.disabled.text,
         },
         [`& input:checked ~ .${labelClass}`]: {
-          cursor: 'default',
           color: colors.checked.text,
         },
         [`& input ~ .${checkboxClass}`]: {

@@ -48,21 +48,24 @@ implements IFocusable {
     const themeClassNames = input(context);
     const actualId = id || this.state.inputId;
 
+    const hasLabel = !!label;
+    const hasError = !!errorLabel;
+
     return (
       <div
         style={style}
         className={classes(themeClassNames.container, className)}>
         <label
           htmlFor={actualId}>
-          <span hidden={!!label} className={themeClassNames.label}>{label}</span>
-          <span hidden={!!errorLabel} className={themeClassNames.errorLabel}>{errorLabel}</span>
+          {hasLabel ? <span className={themeClassNames.label}>{label}</span> : null}
+          {hasError ? <span className={themeClassNames.errorLabel}>{errorLabel}</span> : null}
         </label>
         <input
           id={actualId}
           ref={(ref) => this.input = ref}
           role="textbox"
           aria-multiline="false"
-          aria-invalid={!!errorLabel}
+          aria-invalid={hasError}
           aria-required={required}
           required={required}
           className={themeClassNames.input}

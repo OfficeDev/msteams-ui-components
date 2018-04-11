@@ -34,6 +34,8 @@ export interface IContext {
   };
 }
 
+// This function accepts three style functions and based on context,
+// calls the right one for the right theme.
 export function chooseStyle<T>(
   context: IContext,
   light: IStyleFunction<T>,
@@ -48,15 +50,39 @@ export function chooseStyle<T>(
   }
 }
 
+// Adds the base styles that all components require.
+function baseStyleWrapper(styleFunction: ICSSFunction): ICSSFunction {
+  return (name: string, ...objects: Array<false | NestedCSSProperties | null | undefined>) => {
+    const baseStyles: NestedCSSProperties = {
+      boxSizing: 'border-box',
+    };
+    return styleFunction(name, baseStyles, ...objects);
+  };
+}
+
+// Wrapper for the typestyle style function that ignores the name parameter.
 function typestyleStyle(name: string, ...objects: Array<false | NestedCSSProperties | null | undefined>): string {
   return style(...objects);
 }
 
+// Returns the context object based on a config.
 export function getContext(config: IThemeConfig): IContext {
+  // rem is a function that ensures we size the teams components properly
+  // based on all possible page font sizes. Users configure the baseFontSize
+  // and we normalize it to a base of 10 so that our components are drawn
+  // at a consistent size.
   const rem = (n: number) => `${n * 10.0 / config.baseFontSize}rem`;
+
+  // css is the function used to inject the styles into whatever form we
+  // want to distribute (directly into webpage, or into a CSS file, etc).
+  // We use baseStyleWrapper to add the base styles to all of our
+  // components.
+  const css = baseStyleWrapper(config.css || typestyleStyle);
+
+  // Create and return the context object.
   return {
     rem,
-    css: config.css || typestyleStyle,
+    css,
     style: config.style,
     colors: config.colors || Colors,
     spacing: Spacing(rem),

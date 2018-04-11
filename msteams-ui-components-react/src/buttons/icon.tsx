@@ -16,7 +16,7 @@ export interface IIconButtonProps
 class IconButtonView
   extends React.Component<IIconButtonProps & IInjectedTeamsProps>
   implements IFocusable {
-  private button: HTMLButtonElement | null;
+  private button: HTMLButtonElement | null = null;
 
   componentDidMount() {
     if (this.props.onRef) {

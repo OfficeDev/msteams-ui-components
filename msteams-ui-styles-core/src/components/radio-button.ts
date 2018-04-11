@@ -79,7 +79,6 @@ function base(context: IContext, colors: IRadioButtonColors) {
           color: colors.disabled.text,
         },
         [`& input:checked ~ .${labelClass}`]: {
-          cursor: 'default',
           color: colors.selected.text,
         },
         [`& input ~ .${radioClass}`]: {

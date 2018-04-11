@@ -12,7 +12,7 @@ export interface ISecondaryButtonProps
 }
 
 class SecondaryButtonView extends React.Component<ISecondaryButtonProps & IInjectedTeamsProps> implements IFocusable {
-  private button: HTMLButtonElement | null;
+  private button: HTMLButtonElement | null = null;
 
   componentDidMount() {
     if (this.props.onRef) {

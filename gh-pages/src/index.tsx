@@ -1,4 +1,3 @@
-import { normalize, setupPage } from 'csstips';
 import { Panel, Surface, Tab, TeamsComponentContext, ThemeStyle } from 'msteams-ui-components-react';
 import * as React from 'react';
 import { render } from 'react-dom';
@@ -6,11 +5,6 @@ import { HashRouter } from 'react-router-dom';
 import { AppLayout } from './app-layout';
 import { Content } from './content';
 import { Sidebar } from './sidebar';
-
-const mountPoint = 'root';
-
-normalize();
-setupPage(`#${mountPoint}`);
 
 export interface IContentState {
   fontSize: number;
@@ -96,5 +90,5 @@ export class GHPages extends React.Component<{}, IContentState> {
 
 render(
   <GHPages />,
-  document.getElementById(mountPoint)
+  document.getElementById('root')
 );

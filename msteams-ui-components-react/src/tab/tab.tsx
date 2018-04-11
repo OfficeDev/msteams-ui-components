@@ -16,17 +16,21 @@ export interface ITabItem {
 }
 
 class TabInternal extends React.Component<ITabProps & IInjectedTeamsProps> {
-  private tab: HTMLDivElement;
-  private mousetrap: MousetrapInstance;
-  private itemButtons: HTMLButtonElement[];
+  private tab: HTMLDivElement | null = null;
+  private mousetrap: MousetrapInstance | null = null;
+  private itemButtons: HTMLButtonElement[] = [];
 
   componentDidMount() {
-    this.mousetrap = new Mousetrap(this.tab);
+    if (this.tab) {
+      this.mousetrap = new Mousetrap(this.tab);
+    }
     this.handleKeyboard();
   }
 
   componentWillUnmount() {
-    this.mousetrap.reset();
+    if (this.mousetrap) {
+      this.mousetrap.reset();
+    }
   }
 
   render() {
@@ -78,8 +82,10 @@ class TabInternal extends React.Component<ITabProps & IInjectedTeamsProps> {
   }
 
   private handleKeyboard = () => {
-    this.mousetrap.bind('left', this.onLeftKey);
-    this.mousetrap.bind('right', this.onRightKey);
+    if (this.mousetrap) {
+      this.mousetrap.bind('left', this.onLeftKey);
+      this.mousetrap.bind('right', this.onRightKey);
+    }
   }
 
   private onRightKey = (e: ExtendedKeyboardEvent) => {

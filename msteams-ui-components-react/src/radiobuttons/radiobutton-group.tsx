@@ -38,21 +38,24 @@ class RadiobuttonGroupInner extends React.Component<IRadiobuttonGroupProps & IIn
     const themeClassNames = radioButtonGroup(context);
     const actualId = this.state.groupId;
 
+    const hasLabel = !!label;
+    const hasError = !!errorLabel;
+
     return (
       <div {...rest}>
         <label
           id={this.state.labelId}
           aria-live="polite"
           htmlFor={actualId}>
-          <span hidden={!!label} className={themeClassNames.label}>{label}</span>
-          <span hidden={!!errorLabel} className={themeClassNames.errorLabel}>{errorLabel}</span>
+          {hasLabel ? <span className={themeClassNames.label}>{label}</span> : null}
+          {hasError ? <span className={themeClassNames.errorLabel}>{errorLabel}</span> : null}
         </label>
         <div
           id={actualId}
           role="radiogroup"
           aria-labeledby={this.state.labelId}
           className={classes(themeClassNames.container, className)}
-          aria-invalid={!!errorLabel}>
+          aria-invalid={hasError}>
           {children}</div>
       </div>
     );
