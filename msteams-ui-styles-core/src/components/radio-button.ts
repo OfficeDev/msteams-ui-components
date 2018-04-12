@@ -36,75 +36,81 @@ function base(context: IContext, colors: IRadioButtonColors) {
   const { css, rem, font } = context;
   const { sizes } = font;
 
-  const inputClass = hiddenInput(context);
+  const labelClass = css(names.label);
+  const radioClass = css(names.button, {
+    position: 'absolute',
+    top: rem(0.4),
+    left: rem(0.2),
+    width: rem(1.2),
+    height: rem(1.2),
+    border: `${rem(0.1)} solid`,
+    borderColor: colors.rest.border,
+    background: colors.rest.background,
+    borderRadius: '50%',
+  });
 
   return {
-    container: css(names.container, {
-      border: 'none',
-      background: colors.container,
-      display: 'flex',
-      alignItems: 'center',
-      outline: 'none',
-      $nest: {
-        '& + &' : {
-          marginTop: rem(0.8),
-        },
-      },
-    }),
-    input: inputClass,
-    radio: css(names.button, {
+    container: css(names.container, sizes.caption, {
+      display: 'block',
       position: 'relative',
       ['-webkit-user-select']: 'none',
       ['-moz-user-select']: 'none',
       ['-ms-user-select']: 'none',
-      display: 'inline-block',
-      cursor: 'pointer',
-      width: rem(1.2),
-      height: rem(1.2),
-      margin: rem(0.2),
-      marginLeft: rem(0.6),
-      font: 'inherit',
-      padding: 0,
-      borderRadius: '100%',
-      border: `${rem(0.1)} solid`,
-      borderColor: colors.rest.border,
-      background: colors.rest.background,
+      userSelect: 'none',
+      marginLeft: rem(0),
+      padding: rem(0.2),
+      paddingLeft: rem(2.6),
       $nest: {
-        '&:hover:enabled': {
+        '& + &': {
+          marginTop: rem(0.4),
+        },
+        '& input': {
+          position: 'absolute',
+          width: 0,
+          height: 0,
+          opacity: 0,
+        },
+        [`& input ~ .${labelClass}`]: {
+          cursor: 'pointer',
+          color: colors.rest.text,
+        },
+        [`& input:disabled ~ .${labelClass}`]: {
+          cursor: 'default',
+          color: colors.disabled.text,
+        },
+        [`& input:checked ~ .${labelClass}`]: {
+          color: colors.selected.text,
+        },
+        [`& input ~ .${radioClass}`]: {
+          cursor: 'pointer',
+          color: colors.rest.text,
+        },
+        [`& input:disabled ~ .${radioClass}`]: {
+          cursor: 'default',
+          color: colors.disabled.text,
+          background: colors.disabled.background,
+          borderColor: colors.disabled.border,
+        },
+        [`& input:enabled:hover ~ .${radioClass}`]: {
           background: colors.hover.background,
           borderColor: colors.hover.border,
         },
-        '&:focus:enabled': {
+        [`& input:checked:hover ~ .${radioClass}`]: {
+          borderColor: colors.selected.border,
+          background: colors.selected.background,
+        },
+        [`& input:enabled:focus ~ .${radioClass}`]: {
           boxShadow: `0 0 0 ${rem(0.2)} ${colors.focus.outline}`,
           outline: 'none',
         },
-        '&:disabled': {
-          background: colors.disabled.background,
-          borderColor: colors.disabled.border,
-          cursor: 'default',
-          $nest: {
-            '& + label': {
-              color: colors.disabled.text,
-              cursor: 'default',
-            },
-          },
-        },
-        [`.${inputClass}:checked + &`]: {
+        [`& input:checked ~ .${radioClass}`]: {
           borderColor: colors.selected.border,
           background: colors.selected.background,
-          $nest: {
-            '& + label': {
-              color: colors.selected.text,
-            },
-          },
         },
       },
     }),
-    label: css(names.label, sizes.caption, {
-      color: colors.rest.text,
-      cursor: 'pointer',
-      marginLeft: rem(1),
-    }),
+    radio: radioClass,
+    label: labelClass,
   };
 }
 

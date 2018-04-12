@@ -1918,9 +1918,9 @@ msteams-ui-icons-react@^0.3.0:
   dependencies:
     msteams-ui-icons-core "^0.3.0"
 
-msteams-ui-styles-core@^0.5.2:
-  version "0.5.2"
-  resolved "https://registry.yarnpkg.com/msteams-ui-styles-core/-/msteams-ui-styles-core-0.5.2.tgz#605aff2eb416903a0386f838435e406898d91396"
+msteams-ui-styles-core@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/msteams-ui-styles-core/-/msteams-ui-styles-core-0.6.0.tgz#cc3a5718485f7444d448c6143fd9df11c62a6a3d"
   dependencies:
     msteams-ui-icons-core "^0.3.0"
 

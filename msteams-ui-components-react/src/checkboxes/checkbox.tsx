@@ -6,7 +6,7 @@ import classes from '../utils/classes';
 import uniqueId from '../utils/uniqueId';
 
 export interface ICheckboxProps
-  extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
+  extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
   label?: string;
   checked?: boolean;
   onChecked?: (checked: boolean, value: any) => void;
@@ -19,7 +19,6 @@ interface ICheckboxState {
 interface ICheckboxContext {
   onChecked?: (checked: boolean, value: any) => void;
   values?: any[];
-  invalid: boolean;
 }
 
 type ConnectedProps = ICheckboxProps & IInjectedTeamsProps;
@@ -36,7 +35,7 @@ class CheckboxInner extends React.Component<ConnectedProps, ICheckboxState> {
     onChecked: PropTypes.func,
     values: PropTypes.array,
   };
-  context: ICheckboxContext;
+  context: ICheckboxContext = {};
 
   state = { id: uniqueId('ts-cb-') };
 
@@ -45,42 +44,28 @@ class CheckboxInner extends React.Component<ConnectedProps, ICheckboxState> {
 
     const actuallyChecked = this.isChecked();
     const themeClassNames = checkbox(context);
-    let checkboxClassNames = themeClassNames.checkbox;
-    if (actuallyChecked) {
-      checkboxClassNames = classes(themeClassNames.checkbox, themeClassNames.checkbox + '-checked');
-    }
 
     return (
-      <div
+      <label
+        id={this.state.id}
+        role="checkbox"
+        aria-required={required}
+        aria-checked={actuallyChecked}
         className={classes(themeClassNames.container, className)}
         style={style}>
         <input
-          aria-hidden="true"
           id={id}
+          aria-hidden
           name={name}
           type="checkbox"
-          className={themeClassNames.input}
           checked={actuallyChecked}
-          value={value}
-          readOnly/>
-        <button
-          id={this.state.id}
-          role="checkbox"
-          name={name}
-          onMouseDown={(e) => e.preventDefault()}
-          aria-required={required}
-          aria-checked={actuallyChecked}
-          className={checkboxClassNames}
           onClick={this.click}
-          {...rest} />
-        <label
-          hidden={!label}
-          htmlFor={this.state.id}
-          className={themeClassNames.label}>
-          {label}
-        </label>
-        {this.props.children}
-      </div>
+          required={required}
+          readOnly
+          {...rest}/>
+        <span className={themeClassNames.label}>{label}</span>
+        <span className={themeClassNames.checkbox}></span>
+      </label>
     );
   }
 
@@ -91,7 +76,7 @@ class CheckboxInner extends React.Component<ConnectedProps, ICheckboxState> {
     return this.props.checked || false;
   }
 
-  private click = (e: React.MouseEvent<HTMLButtonElement>) => {
+  private click = (e: React.MouseEvent<HTMLInputElement>) => {
     const checked = this.isChecked();
     if (this.context.onChecked) {
       this.context.onChecked(!checked, this.props.value);

@@ -36,21 +36,28 @@ class RadiobuttonExample extends React.Component {
           <div style={styles.header}>RadioButtons</div>
         </PanelHeader>
         <PanelBody>
-          <div style={styles.section}>Enabled</div>
-          <Radiobutton autoFocus value={1}
-            label="Enabled"
-            selected={this.state.one}
-            onSelected={this.onOneSelected} />
-          <div style={styles.section}>Disabled</div>
-          <Radiobutton value={2} label="Disabled"
-            selected={this.state.two}
-            onSelected={this.onTwoSelected}
-            disabled />
+          <div>
+            <div style={styles.section}>Enabled</div>
+            <Radiobutton autoFocus value={1}
+              label="Enabled"
+              name="enabled"
+              selected={this.state.one}
+              onSelected={this.onOneSelected} />
+          </div>
+          <div>
+            <div style={styles.section}>Disabled</div>
+            <Radiobutton value={2}
+              label="Disabled"
+              name="disabled"
+              selected={this.state.two}
+              onSelected={this.onTwoSelected}
+              disabled />
+          </div>
           <div style={styles.section}>Grouped</div>
           <RadiobuttonGroup
             style={styles.radiobuttonGroup}
             label="Group label"
-            errorLabel={this.state.groupValue != 2 ? "Must choose Option 2" : null}
+            errorLabel={this.state.groupValue != 2 ? "Must choose 'Option 2'" : null}
             value={this.state.groupValue}
             onSelected={this.onGroupSelected} >
             <Radiobutton name="grouped" value={1} label="Option 1" />

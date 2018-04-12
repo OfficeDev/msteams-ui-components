@@ -5,7 +5,7 @@ module.exports = () => {
   const { Colors } = require('./lib/colors')
   const { createTypeStyle } = require('typestyle')
   const fs = require('fs')
-  const { input, textArea, surface, panel, primaryButton, secondaryButton, iconButton, radioButton, radioButtonGroup, toggle, tab, fontSizes, fontWeights } = require('./lib');
+  const { anchor, input, textArea, surface, panel, primaryButton, secondaryButton, iconButton, radioButton, radioButtonGroup, toggle, tab, fontSizes, fontWeights } = require('./lib');
 
   const themeConfigs = [{
     prefix: 'theme-light',
@@ -56,6 +56,7 @@ module.exports = () => {
       const context = getContext(config);
   
       // Generate styles
+      anchor(context);
       surface(context);
       panel(context);
       primaryButton(context);

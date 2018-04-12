@@ -34,14 +34,16 @@ class DropdownInternal extends React.Component<IDropdownProps & IInjectedTeamsPr
     expandableRegionId: uniqueId('ts-dd-e-'),
   };
 
-  private mounted: boolean;
-  private dropdown: HTMLDivElement;
-  private mousetrap: MousetrapInstance;
-  private mainButton: HTMLButtonElement;
-  private itemButtons: DropdownItem[];
+  private mounted: boolean = false;
+  private dropdown: HTMLDivElement | null = null;
+  private mousetrap: MousetrapInstance | null = null;
+  private mainButton: HTMLButtonElement | null = null;
+  private itemButtons: DropdownItem[] = [];
 
   componentDidMount() {
-    this.mousetrap = new Mousetrap(this.dropdown);
+    if (this.dropdown) {
+      this.mousetrap = new Mousetrap(this.dropdown);
+    }
     this.mounted = true;
     this.trapKeyboard();
   }
@@ -142,15 +144,19 @@ class DropdownInternal extends React.Component<IDropdownProps & IInjectedTeamsPr
   }
 
   private trapKeyboard = () => {
-    this.mousetrap.bind('shift+tab', this.onTabUpKey);
-    this.mousetrap.bind('tab', this.onTabDownKey);
-    this.mousetrap.bind('esc', this.onEscKey);
-    this.mousetrap.bind('up', this.onUpKey);
-    this.mousetrap.bind('down', this.onDownKey);
+    if (this.mousetrap) {
+      this.mousetrap.bind('shift+tab', this.onTabUpKey);
+      this.mousetrap.bind('tab', this.onTabDownKey);
+      this.mousetrap.bind('esc', this.onEscKey);
+      this.mousetrap.bind('up', this.onUpKey);
+      this.mousetrap.bind('down', this.onDownKey);
+    }
   }
 
   private untrapKeyboard = () => {
-    this.mousetrap.reset();
+    if (this.mousetrap) {
+      this.mousetrap.reset();
+    }
   }
 
   private onUpKey = (e: ExtendedKeyboardEvent) => {
@@ -188,7 +194,9 @@ class DropdownInternal extends React.Component<IDropdownProps & IInjectedTeamsPr
   private onEscKey = (e: ExtendedKeyboardEvent) => {
     if (this.state.show) {
       e.preventDefault();
-      this.mainButton.focus();
+      if (this.mainButton) {
+        this.mainButton.focus();
+      }
       this.close();
     }
   }

@@ -2719,13 +2719,13 @@ ms@2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.0.0.tgz#5608aeadfc00be6c2901df5f9861788de0d597c8"
 
-msteams-ui-components-react@^0.5.0:
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/msteams-ui-components-react/-/msteams-ui-components-react-0.5.0.tgz#54b6012d97a3b2c0f425da8c0736fed94dcd784b"
+msteams-ui-components-react@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/msteams-ui-components-react/-/msteams-ui-components-react-0.6.0.tgz#13547c019b555b6083755de6019cf1e45f7dee63"
   dependencies:
     mousetrap "^1.6.1"
     msteams-ui-icons-react "^0.3.0"
-    msteams-ui-styles-core "^0.5.0"
+    msteams-ui-styles-core "^0.6.0"
 
 msteams-ui-icons-core@^0.3.0:
   version "0.3.0"
@@ -2739,9 +2739,9 @@ msteams-ui-icons-react@^0.3.0:
   dependencies:
     msteams-ui-icons-core "^0.3.0"
 
-msteams-ui-styles-core@^0.5.0:
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/msteams-ui-styles-core/-/msteams-ui-styles-core-0.5.0.tgz#51e0d700052cf8951f68d804132307b2af741694"
+msteams-ui-styles-core@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/msteams-ui-styles-core/-/msteams-ui-styles-core-0.6.0.tgz#cc3a5718485f7444d448c6143fd9df11c62a6a3d"
   dependencies:
     msteams-ui-icons-core "^0.3.0"
 
