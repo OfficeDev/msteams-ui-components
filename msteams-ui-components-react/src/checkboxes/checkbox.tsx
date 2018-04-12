@@ -37,7 +37,7 @@ class CheckboxInner extends React.Component<ConnectedProps, ICheckboxState> {
   };
   context: ICheckboxContext = {};
 
-  state = { id: uniqueId('ts-cb-') };
+  state = { id: uniqueId('ts-cb-'), labelId: uniqueId('ts-cbl-') };
 
   render() {
     const { id, required, name, context, className, style, value, checked, onChecked, label, ...rest } = this.props;
@@ -48,23 +48,25 @@ class CheckboxInner extends React.Component<ConnectedProps, ICheckboxState> {
     return (
       <label
         id={this.state.id}
-        role="checkbox"
-        aria-required={required}
-        aria-checked={actuallyChecked}
         className={classes(themeClassNames.container, className)}
         style={style}>
+        <span
+          id={this.state.labelId}
+          aria-hidden
+          className={themeClassNames.label}>{label}</span>
         <input
           id={id}
-          aria-hidden
           name={name}
           type="checkbox"
+          aria-labelledby={this.state.labelId}
+          aria-required={required}
+          aria-checked={actuallyChecked}
           checked={actuallyChecked}
           onClick={this.click}
           required={required}
           readOnly
           {...rest}/>
-        <span className={themeClassNames.label}>{label}</span>
-        <span className={themeClassNames.checkbox}></span>
+        <span aria-hidden className={themeClassNames.checkbox}></span>
       </label>
     );
   }
