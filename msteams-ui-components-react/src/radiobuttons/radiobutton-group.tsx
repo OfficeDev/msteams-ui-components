@@ -53,7 +53,7 @@ class RadiobuttonGroupInner extends React.Component<IRadiobuttonGroupProps & IIn
         <div
           id={actualId}
           role="radiogroup"
-          aria-labeledby={this.state.labelId}
+          aria-labelledby={this.state.labelId}
           className={classes(themeClassNames.container, className)}
           aria-invalid={hasError}>
           {children}</div>
