@@ -54,7 +54,7 @@ class CheckboxGroupInner extends React.Component<ICheckboxGroupProps & IInjected
         <div
           id={actualId}
           role="group"
-          aria-labeledby={this.state.labelId}
+          aria-labelledby={this.state.labelId}
           className={classes(themeClassNames.container, className)}
           aria-invalid={hasError}>
           {children}</div>

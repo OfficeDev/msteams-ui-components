@@ -2719,9 +2719,9 @@ ms@2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.0.0.tgz#5608aeadfc00be6c2901df5f9861788de0d597c8"
 
-msteams-ui-components-react@^0.6.0:
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/msteams-ui-components-react/-/msteams-ui-components-react-0.6.0.tgz#13547c019b555b6083755de6019cf1e45f7dee63"
+msteams-ui-components-react@^0.6.1:
+  version "0.6.1"
+  resolved "https://registry.yarnpkg.com/msteams-ui-components-react/-/msteams-ui-components-react-0.6.1.tgz#b1120001725c4b17e7cd896506bbc02305d17dad"
   dependencies:
     mousetrap "^1.6.1"
     msteams-ui-icons-react "^0.3.0"
