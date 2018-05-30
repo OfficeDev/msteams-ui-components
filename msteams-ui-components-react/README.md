@@ -14,6 +14,7 @@ npm install msteams-ui-components-react
 The React bindings get the context in which to render the components from a top level Context component. All MS Teams components in this package must be children (direct or indirect) of this top level component. Here is how you would setup a simple React page:
 
 ```javascript
+const microsoftTeams = require('@microsoft/teams-js');
 const React = require('react')
 const { PrimaryButton, TeamsComponentContext, ThemeStyle } = require('msteams-ui-components-react')
 
