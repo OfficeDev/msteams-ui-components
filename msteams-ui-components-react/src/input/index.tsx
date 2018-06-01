@@ -11,10 +11,11 @@ export interface IInputProps extends
   onRef?: (ref: React.Component & IFocusable | null) => void;
   label?: string;
   errorLabel?: string;
+  status?: 'updating' | 'updated';
 }
 
 class InputInternal extends React.Component<IInputProps & IInjectedTeamsProps>
-implements IFocusable {
+  implements IFocusable {
   state = {
     inputId: uniqueId('ts-i'),
   };
@@ -44,6 +45,7 @@ implements IFocusable {
       name, context, style,
       className, label, onRef,
       id, errorLabel, required,
+      status,
       ...rest } = this.props;
     const themeClassNames = input(context);
     const actualId = id || this.state.inputId;
@@ -76,6 +78,12 @@ implements IFocusable {
             className={themeClassNames.errorIcon}
             iconType={MSTeamsIconType.FieldError}
             iconWeight={MSTeamsIconWeight.Light} /> : null}
+        {status === 'updated' ?
+          <MSTeamsIcon
+            className={themeClassNames.successIcon}
+            iconType={MSTeamsIconType.FieldSuccess}
+            iconWeight={MSTeamsIconWeight.Light} /> : null}
+        {status === 'updating' ? <span className={themeClassNames.spinner} /> : null}
       </div>
     );
   }
