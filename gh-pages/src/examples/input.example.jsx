@@ -2,7 +2,7 @@ class InputExample extends React.Component {
   constructor() {
     super();
     this.onValueChanged = this.onValueChanged.bind(this);
-    this.state = {value: ""};
+    this.state = { value: "" };
   }
 
   render() {
@@ -12,10 +12,11 @@ class InputExample extends React.Component {
       const { sizes, weights } = font;
 
       const styles = {
-        header: {...sizes.title, ...weights.semibold},
+        header: { ...sizes.title, ...weights.semibold },
         input: {
           paddingTop: rem(0.5),
-          width: '50%'},
+          width: '50%'
+        },
       }
 
       return <Panel>
@@ -37,6 +38,14 @@ class InputExample extends React.Component {
             placeholder="Disabled"
             label="Disabled text box"
             disabled />
+          <Input
+            label="Status is updated (icon will automatically disappear)"
+            status="updated"
+            style={styles.input} />
+          <Input
+            label="Status is updating"
+            status="updating"
+            style={styles.input} />
         </PanelBody>
         <PanelFooter>
         </PanelFooter>
@@ -45,6 +54,6 @@ class InputExample extends React.Component {
   }
 
   onValueChanged(event) {
-    this.setState(Object.assign({}, this.state, {value: event.target.value}));
+    this.setState(Object.assign({}, this.state, { value: event.target.value }));
   }
 }
