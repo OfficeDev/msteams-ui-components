@@ -1,3 +1,4 @@
+import { keyframes } from 'typestyle';
 import { chooseStyle, IContext } from '../context';
 import { errorLabel } from '../index';
 import { label } from './label';
@@ -30,6 +31,8 @@ interface IInputColors {
     underline: string;
   };
   errorIcon: string;
+  successIcon: string;
+  spinner: string;
 }
 
 function base(context: IContext, colors: IInputColors) {
@@ -39,11 +42,24 @@ function base(context: IContext, colors: IInputColors) {
     label: 'input-label',
     error: 'input-error',
     errorIcon: 'input-error-icon',
+    successIcon: 'input-success-icon',
+    spinner: 'input-spinner',
   };
   const { css, rem } = context;
 
   const labelClass = label(context);
   const errorLabelClass = errorLabel(context);
+
+  const hideSuccessIconAnimationName = keyframes({
+    '0%': { opacity: 1 },
+    '99%': { opacity: 1 },
+    '100%': { opacity: 0 },
+  });
+
+  const spinAnimationName = keyframes({
+    '0%': { transform: 'rotate(0deg)' },
+    '100%': { transform: 'rotate(360deg)' },
+  });
 
   return {
     container: css(names.container, {
@@ -136,6 +152,26 @@ function base(context: IContext, colors: IInputColors) {
       right: rem(1.2),
       bottom: rem(0.9),
     }),
+    successIcon: css(names.successIcon, {
+      position: 'absolute',
+      color: colors.successIcon,
+      right: rem(1.2),
+      bottom: rem(0.9),
+      opacity: 0,
+      animationName: hideSuccessIconAnimationName,
+      animationDuration: '5s',
+    }),
+    spinner: css(names.spinner, {
+      position: 'absolute',
+      border: `solid ${rem(0.2)} transparent`,
+      borderTop: `solid ${rem(0.2)} ${colors.spinner}`,
+      borderRadius: '50%',
+      width: rem(1.6),
+      height: rem(1.6),
+      right: rem(1.2),
+      bottom: rem(0.9),
+      animation: `${spinAnimationName} 2s linear infinite`,
+    }),
   };
 }
 
@@ -169,6 +205,8 @@ function light(context: IContext) {
       underline: colors.light.brand00,
     },
     errorIcon: colors.light.red,
+    successIcon: colors.light.green,
+    spinner: colors.light.brand00,
   });
 }
 
@@ -202,6 +240,8 @@ function dark(context: IContext) {
       underline: colors.dark.brand00,
     },
     errorIcon: colors.dark.red,
+    successIcon: colors.dark.green,
+    spinner: colors.dark.brand00,
   });
 }
 
@@ -235,6 +275,8 @@ function highContrast(context: IContext) {
       underline: colors.highContrast.yellow,
     },
     errorIcon: colors.highContrast.yellow,
+    successIcon: colors.highContrast.green,
+    spinner: colors.highContrast.blue,
   });
 }
 

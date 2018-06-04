@@ -25,3 +25,4 @@ cd ../gh-pages
 yarn
 yarn link:deps
 yarn build
+cd ..
