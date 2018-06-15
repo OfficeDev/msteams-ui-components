@@ -7,11 +7,9 @@ export interface ITdProps
   extends React.DetailedHTMLProps<React.TdHTMLAttributes<HTMLTableDataCellElement>, HTMLTableDataCellElement> { }
 
 const TdInternal: React.StatelessComponent<ITdProps & IInjectedTeamsProps> = (props) => {
-  const { context, className, ...rest } = props;
+  const { context, className,  ...rest } = props;
   const themeClassNames = table(context);
-  return <td
-    data-component-type="Td"
-    className={classes(themeClassNames.td, className)} {...rest}>{props.children}</td>;
+  return <td className={classes(themeClassNames.td, className)} {...rest}>{props.children}</td>;
 };
 
 export const Td = connectTeamsComponent<ITdProps>(TdInternal);

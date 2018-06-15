@@ -30,38 +30,67 @@ function base(c: IContext, colors: ITableColors) {
 
   return {
     table: css(names.table, {
+      display: 'flex',
+      flexFlow: 'column nowrap',
+      justifyContent: 'space-between',
       backgroundColor: colors.table.background,
       color: colors.table.text,
       borderCollapse: 'collapse',
       padding: 0,
     }),
     thead: css(names.thead, {
+      display: 'flex',
+      flexFlow: 'column nowrap',
+      flex: '1 1 auto',
       backgroundColor: colors.head.background,
     }),
     tbody: css(names.tbody, {
+      display: 'flex',
+      flexFlow: 'column nowrap',
+      flex: '1 1 auto',
       backgroundColor: colors.body.background,
     }),
-    td: css(names.td, {
-      paddingTop: rem(1.4),
-      paddingBottom: rem(1.4),
-    }),
     tr: css(names.tr, {
-      borderTop: `${colors.row.border} ${rem(0.2)} solid`,
+      flex: '1 1 auto',
+      overflow: 'hidden',
+      display: 'flex',
       borderBottom: `${colors.row.border} ${rem(0.2)} solid`,
-    }, {
       $nest: {
-        '&:first-child': {
-          borderTop: 0,
-        },
         '&:last-child': {
           borderBottom: 0,
         },
       },
     }),
-    th: css(names.th,
-      sizes.caption, weights.regular, {
+    th: css(names.th, sizes.caption, weights.regular, {
       textAlign: 'left',
+      display: 'flex',
+      flexFlow: 'row nowrap',
+      flex: '1 1 auto',
+      overflow: 'hidden',
+      paddingLeft: rem(1.6),
+      paddingRight: rem(1.6),
+      paddingTop: rem(1.4),
       paddingBottom: rem(0.6),
+      $nest: {
+        '&:last-child:not(:only-child)': {
+          paddingLeft: 0,
+        },
+      },
+    }),
+    td: css(names.td, {
+      display: 'flex',
+      flexFlow: 'row nowrap',
+      flex: '1 1 auto',
+      overflow: 'hidden',
+      paddingLeft: rem(1.6),
+      paddingRight: rem(1.6),
+      paddingTop: rem(1.4),
+      paddingBottom: rem(1.4),
+      $nest: {
+        '&:last-child:not(:only-child)': {
+          paddingLeft: 0,
+        },
+      },
     }),
   };
 }
