@@ -34,12 +34,12 @@ class TableExample extends React.Component {
           <Table>
             <THead>
               <Tr>
-                <Th>col1</Th><Th>col2</Th>
+                <Th>col1</Th><Th style={{flex: `0 0 ${rem(3.8)}`}}>col2</Th>
               </Tr>
             </THead>
             <TBody>
-              <Tr><Td>a</Td><Td>b</Td></Tr>
-              <Tr><Td>1</Td><Td>2</Td></Tr>
+              <Tr><Td>a</Td><Td style={{flex: `0 0 ${rem(3.8)}`, textAlign: 'center'}}>b</Td></Tr>
+              <Tr><Td>1</Td><Td style={{flex: `0 0 ${rem(3.8)}`, textAlign: 'center'}}>2</Td></Tr>
             </TBody>
           </Table>
         </PanelBody>
