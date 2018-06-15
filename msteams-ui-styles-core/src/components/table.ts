@@ -72,7 +72,7 @@ function base(c: IContext, colors: ITableColors) {
       paddingTop: rem(1.4),
       paddingBottom: rem(0.6),
       $nest: {
-        '&:last-child': {
+        '&:last-child:not(:only-child)': {
           paddingLeft: 0,
         },
       },
@@ -87,7 +87,7 @@ function base(c: IContext, colors: ITableColors) {
       paddingTop: rem(1.4),
       paddingBottom: rem(1.4),
       $nest: {
-        '&:last-child': {
+        '&:last-child:not(:only-child)': {
           paddingLeft: 0,
         },
       },

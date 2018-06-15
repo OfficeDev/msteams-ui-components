@@ -30,7 +30,17 @@ class TableExample extends React.Component {
           <div style={styles.header}>Tables</div>
         </PanelHeader>
         <PanelBody>
-          <div style={styles.section}></div>
+          <div style={styles.section}>Single Column</div>
+          <Table>
+            <THead>
+              <Tr><Th>col1</Th></Tr>
+            </THead>
+            <TBody>
+              <Tr><Td>a</Td></Tr>
+              <Tr><Td>1</Td></Tr>
+            </TBody>
+          </Table>
+          <div style={styles.section}>Multiple Columns</div>
           <Table>
             <THead>
               <Tr>
