@@ -42,18 +42,17 @@ function base(c: IContext, colors: ITableColors) {
       display: 'flex',
       flexFlow: 'column nowrap',
       flex: '1 1 auto',
-      backgroundColor: colors.head.background,
     }),
     tbody: css(names.tbody, {
       display: 'flex',
       flexFlow: 'column nowrap',
       flex: '1 1 auto',
-      backgroundColor: colors.body.background,
     }),
     tr: css(names.tr, {
       flex: '1 1 auto',
       overflow: 'hidden',
       display: 'flex',
+      flexFlow: 'column nowrap',
       borderBottom: `${colors.row.border} ${rem(0.2)} solid`,
       $nest: {
         '&:last-child': {
@@ -71,6 +70,7 @@ function base(c: IContext, colors: ITableColors) {
       paddingRight: rem(1.6),
       paddingTop: rem(1.4),
       paddingBottom: rem(0.6),
+      backgroundColor: colors.head.background,
       $nest: {
         '&:last-child:not(:only-child)': {
           paddingLeft: 0,
@@ -86,6 +86,7 @@ function base(c: IContext, colors: ITableColors) {
       paddingRight: rem(1.6),
       paddingTop: rem(1.4),
       paddingBottom: rem(1.4),
+      backgroundColor: colors.body.background,
       $nest: {
         '&:last-child:not(:only-child)': {
           paddingLeft: 0,

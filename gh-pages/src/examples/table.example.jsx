@@ -32,25 +32,15 @@ class TableExample extends React.Component {
         <PanelBody>
           <div style={styles.section}>Single Column</div>
           <Table>
-            <THead>
-              <Tr><Th>col1</Th></Tr>
-            </THead>
-            <TBody>
-              <Tr><Td>a</Td></Tr>
-              <Tr><Td>1</Td></Tr>
-            </TBody>
+            <Tr><Th>col1</Th></Tr>
+            <Tr><Td>a</Td></Tr>
+            <Tr><Td>1</Td></Tr>
           </Table>
           <div style={styles.section}>Multiple Columns</div>
           <Table>
-            <THead>
-              <Tr>
-                <Th>col1</Th><Th style={{flex: `0 0 ${rem(3.8)}`}}>col2</Th>
-              </Tr>
-            </THead>
-            <TBody>
-              <Tr><Td>a</Td><Td style={{flex: `0 0 ${rem(3.8)}`, textAlign: 'center'}}>b</Td></Tr>
-              <Tr><Td>1</Td><Td style={{flex: `0 0 ${rem(3.8)}`, textAlign: 'center'}}>2</Td></Tr>
-            </TBody>
+            <Tr><Th>col1</Th><Th style={{flex: `0 0 ${rem(3.8)}`}}>col2</Th></Tr>
+            <Tr><Td>a</Td><Td style={{flex: `0 0 ${rem(3.8)}`, textAlign: 'center'}}>b</Td></Tr>
+            <Tr><Td>1</Td><Td style={{flex: `0 0 ${rem(3.8)}`, textAlign: 'center'}}>2</Td></Tr>
           </Table>
         </PanelBody>
         <PanelFooter>
