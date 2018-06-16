@@ -52,7 +52,7 @@ function base(c: IContext, colors: ITableColors) {
       flex: '1 1 auto',
       overflow: 'hidden',
       display: 'flex',
-      flexFlow: 'column nowrap',
+      flexFlow: 'row nowrap',
       borderBottom: `${colors.row.border} ${rem(0.2)} solid`,
       $nest: {
         '&:last-child': {
