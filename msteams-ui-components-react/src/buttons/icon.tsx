@@ -46,7 +46,7 @@ class IconButtonView
       onMouseDown={(e) => e.preventDefault()}
       className={classes(themeClassName, className)}
       {...rest}>
-      <MSTeamsIcon iconType={iconType} iconWeight={ iconWeight } />
+      <MSTeamsIcon iconType={iconType} iconWeight={iconWeight} />
       {children}
     </button>;
   }
