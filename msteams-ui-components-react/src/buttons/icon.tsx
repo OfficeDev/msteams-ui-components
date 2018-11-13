@@ -37,7 +37,7 @@ class IconButtonView
   }
 
   render() {
-    const { context, className, iconType, iconWeight, children, onRef, ...rest } = this.props;
+    const { context, className, iconType, iconWeight = MSTeamsIconWeight.Light, children, onRef, ...rest } = this.props;
     const themeClassName = iconButton(context);
 
     return <button
@@ -46,7 +46,7 @@ class IconButtonView
       onMouseDown={(e) => e.preventDefault()}
       className={classes(themeClassName, className)}
       {...rest}>
-      <MSTeamsIcon iconType={iconType} iconWeight={iconWeight || MSTeamsIconWeight.Light} />
+      <MSTeamsIcon iconType={iconType} iconWeight={ iconWeight } />
       {children}
     </button>;
   }
