@@ -19,7 +19,7 @@ const TextAreaSection = require('../examples/textarea.example.jsx');
 const TogglesSection = require('../examples/toggle.example.jsx');
 // tslint:enable:no-var-requires
 
-export const Content: React.StatelessComponent = () => {
+export const Content: React.FunctionComponent = () => {
   return (
     <Switch>
       <Route path={Routes.buttons} render={() =>

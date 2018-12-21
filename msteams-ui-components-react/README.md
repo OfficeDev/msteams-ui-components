@@ -16,7 +16,7 @@ The React bindings get the context in which to render the components from a top 
 ```javascript
 const microsoftTeams = require('@microsoft/teams-js');
 const React = require('react')
-const { PrimaryButton, TeamsComponentContext, ThemeStyle } = require('msteams-ui-components-react')
+const { getContext, PrimaryButton, TeamsComponentContext, ThemeStyle } = require('msteams-ui-components-react')
 
 // Wherever you want to mount the React page in your HTML.
 var mountPoint = ...
@@ -27,7 +27,7 @@ class SimplePage extends React.Component {
     fontSize: 16,
   };
 
-  componentWillMount() {
+  componentDidMount() {
     // If you are deploying your site as a MS Teams static or configurable tab, you should add ?theme={theme} to
     // your tabs URL in the manifest. That way you will get the current theme on start up (calling getContext on
     // the MS Teams SDK has a delay and may cause the default theme to flash before the real one is returned).
@@ -45,12 +45,15 @@ class SimplePage extends React.Component {
   }
 
   render() {
+    const context = getContext({
+      baseFontSize: this.state.fontSize,
+      style: this.state.theme
+    });
+
     return (
-      <TeamsComponentContext
-        fontSize={this.state.fontSize}
-        theme={this.state.theme}>
+      <TeamsThemeContext.Provider value={context}>
         <PrimaryButton onClick={() => alert("You clicked me!")}>Click Me!</PrimaryButton>
-      </TeamsComponentContext>
+      </TeamsThemeContext.Provider>
     );
   }
 
@@ -117,9 +120,9 @@ You can also render your own custom components using the MS Teams context in two
 1. You can wrap them using the connectTeamsComponent function.
 ```javascript
 const React = require('react')
-const { connectTeamsComponent, ThemeStyle, IIInjectedTeamsProps } = require('msteams-ui-components-react')
+const { connectTeamsComponent, ThemeStyle, IITeamsThemeContextProps } = require('msteams-ui-components-react')
 
-const CustomComponentInternal: React.StatelessComponent = (props) => {
+const CustomComponentInternal: React.FunctionComponent<ICustomComponentProps & ITeamsThemeContextProps> = (props) => {
   const { context, ...rest } = props;
   const { colors, style } = context;
 
@@ -150,12 +153,15 @@ class SimplePage extends React.Component {
   ...
 
   render() {
+    const context = getContext({
+      baseFontSize: this.state.fontSize,
+      style: this.state.theme
+    });
+
     return (
-      <TeamsComponentContext
-        fontSize={this.state.fontSize}
-        theme={this.state.theme}>
+      <TeamsThemeContext.Provider value={context}>
         <CustomComponent>Hello</CustomComponent>
-      </TeamsComponentContext>
+      </TeamsThemeContext.Provider>
     );
   }
 
@@ -176,30 +182,35 @@ class SimplePage extends React.Component {
   ...
 
   render() {
+    const context = getContext({
+      baseFontSize: this.state.fontSize,
+      style: this.state.theme
+    });
+
     return (
-      <TeamsComponentContext
-        fontSize={this.state.fontSize}
-        theme={this.state.theme}>
-        <ConnectedComponent render={(props) => {
-          const { context, ...rest } = props;
-          const { colors, style } = context;
+      <TeamsThemeContext.Provider value={context}>
+        <TeamsThemeContext.Consumer>
+          {(context) => {
+            const { context, ...rest } = props;
+            const { colors, style } = context;
 
-          const styleProps = {};
-          switch(style) {
-            case ThemeStyle.Dark:
-              styleProps.color = colors.dark.brand00;
-              break;
-            case ThemeStyle.HighContrast:
-              styleProps.color = colors.highContrast.white;
-              break;
-            case ThemeStyle.Light:
-            default:
-              styleProps.color = colors.light.brand00;
-          }
+            const styleProps = {};
+            switch(style) {
+              case ThemeStyle.Dark:
+                styleProps.color = colors.dark.brand00;
+                break;
+              case ThemeStyle.HighContrast:
+                styleProps.color = colors.highContrast.white;
+                break;
+              case ThemeStyle.Light:
+              default:
+                styleProps.color = colors.light.brand00;
+            }
 
-          return <div style={styleProps} {...rest}>{props.children}</div>;
-        }} />
-      </TeamsComponentContext>
+            return <div style={styleProps} {...rest}>{props.children}</div>;
+          }}
+        </TeamsThemeContext.Consumer>
+      </TeamsThemeContext.Provider>
     );
   }
 

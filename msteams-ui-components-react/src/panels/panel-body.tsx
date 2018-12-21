@@ -1,13 +1,13 @@
 import { panel } from 'msteams-ui-styles-core/lib/components/panel';
 import * as React from 'react';
-import { connectTeamsComponent, IInjectedTeamsProps } from '../teams-context';
+import { connectTeamsComponent, ITeamsThemeContextProps } from '../teams-context';
 import classes from '../utils/classes';
 
 export interface IPanelBodyProps
   extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
 }
 
-const PanelBodyView: React.StatelessComponent<IPanelBodyProps & IInjectedTeamsProps> =
+const PanelBodyView: React.FunctionComponent<IPanelBodyProps & ITeamsThemeContextProps> =
   (props) => {
     const { context, className, ...rest } = props;
     const classNames = panel(context);

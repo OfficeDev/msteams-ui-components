@@ -1,7 +1,6 @@
 import { compoundButton } from 'msteams-ui-styles-core/lib/components/compound-button';
 import * as React from 'react';
-import { IInjectedTeamsProps } from '../index';
-import { connectTeamsComponent } from '../teams-context';
+import { connectTeamsComponent, ITeamsThemeContextProps } from '../teams-context';
 import classes from '../utils/classes';
 
 export interface ICompoundButtonProps
@@ -12,8 +11,8 @@ export interface ICompoundButtonProps
   secondaryText?: string;
 }
 
-const CompoundButtonView: React.StatelessComponent<ICompoundButtonProps & IInjectedTeamsProps> =
-  (props: ICompoundButtonProps & IInjectedTeamsProps) => {
+const CompoundButtonView: React.FunctionComponent<ICompoundButtonProps & ITeamsThemeContextProps> =
+  (props: ICompoundButtonProps & ITeamsThemeContextProps) => {
     const { context, icon, primaryText, secondaryText, className, ...rest } = props;
 
     const themeClassNames = compoundButton(context);

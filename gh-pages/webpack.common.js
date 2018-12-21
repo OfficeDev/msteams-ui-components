@@ -10,25 +10,7 @@ module.exports = {
     rules: [
       {
         test: /\.tsx?$/,
-        use: [{
-          loader: 'babel-loader',
-          options: {
-            plugins: [
-              "lodash",
-              "transform-runtime",
-              "transform-es2015-template-literals"
-            ],
-            presets: [["env",
-              {
-                "targets": {
-                  "browsers": [
-                    "last 2 versions",
-                    "IE 11"
-                  ]
-                }
-              }]]
-          }
-        }, 'ts-loader'],
+        use: ['babel-loader', 'ts-loader'],
         exclude: /node_modules/,
       },
       {
@@ -37,9 +19,7 @@ module.exports = {
       },
       {
         test: /\.(png|svg|jpg|gif|woff|woff2|eot|ttf|otf)$/,
-        use: [
-          'file-loader',
-        ],
+        use: 'file-loader',
       }
     ],
   },

@@ -12,7 +12,7 @@ export interface IPreviewSectionState {
   codeHidden: boolean;
 }
 
-type ConnectedProps = IPreviewSectionProps & Components.IInjectedTeamsProps;
+type ConnectedProps = IPreviewSectionProps & Components.ITeamsThemeContextProps;
 
 export class PreviewSectionInner extends React.Component<ConnectedProps, IPreviewSectionState> {
   state = {
