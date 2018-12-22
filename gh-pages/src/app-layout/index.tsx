@@ -1,4 +1,4 @@
-import { connectTeamsComponent, IInjectedTeamsProps, Surface } from 'msteams-ui-components-react';
+import { connectTeamsComponent, ITeamsThemeContextProps, Surface } from 'msteams-ui-components-react';
 import * as React from 'react';
 import * as styles from './styles';
 
@@ -7,7 +7,7 @@ interface IAppLayoutProps {
   main: React.ComponentType;
 }
 
-const AppLayoutInner: React.StatelessComponent<IAppLayoutProps & IInjectedTeamsProps> = (props) => {
+const AppLayoutInner: React.FunctionComponent<IAppLayoutProps & ITeamsThemeContextProps> = (props) => {
   const { context } = props;
   const classes = styles.appLayout(context);
   return <Surface className={classes.container}>

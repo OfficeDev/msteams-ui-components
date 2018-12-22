@@ -1,4 +1,3 @@
-import { MemoizedFunction } from 'lodash';
 import memoize = require('lodash.memoize');
 import { TypeStyle } from 'typestyle';
 
@@ -521,7 +520,7 @@ const regularFontFaceTS = new TypeStyle({ autoGenerateTag: true });
 const lightFontFaceTS = new TypeStyle({ autoGenerateTag: true });
 const iconTS = new TypeStyle({ autoGenerateTag: true });
 
-export const baseStyle = memoize((iconWeight?: number): string => {
+const baseStyle: (iconWeight?: number) => string = memoize((iconWeight?: number): string => {
   let fontName;
   let eotFile;
   let woffFile;
@@ -538,13 +537,12 @@ export const baseStyle = memoize((iconWeight?: number): string => {
 
     lightFontFaceTS.fontFace({
       fontFamily: fontName,
-      src: [
-        `url('${eotFile}')`,
-        `url('${eotFile}?#iefix') format('embedded-opentype'),
+      src: `
+url('${eotFile}?#iefix') format('embedded-opentype'),
 url('${ttfFile}') format('truetype'),
 url('${woff2File}') format('woff2'),
 url('${woffFile}') format('woff'),
-url('${svgFile}#${fontName}') format('svg')`],
+url('${svgFile}#${fontName}') format('svg')`,
       fontWeight: 'normal',
       fontStyle: 'normal',
     });
@@ -558,13 +556,12 @@ url('${svgFile}#${fontName}') format('svg')`],
 
     regularFontFaceTS.fontFace({
       fontFamily: fontName,
-      src: [
-        `url('${eotFile}')`,
-        `url('${eotFile}?#iefix') format('embedded-opentype'),
+      src: `
+url('${eotFile}?#iefix') format('embedded-opentype'),
 url('${ttfFile}') format('truetype'),
 url('${woff2File}') format('woff2'),
 url('${woffFile}') format('woff'),
-url('${svgFile}#${fontName}') format('svg')`],
+url('${svgFile}#${fontName}') format('svg')`,
       fontWeight: 'normal',
       fontStyle: 'normal',
     });
@@ -573,19 +570,16 @@ url('${svgFile}#${fontName}') format('svg')`],
   return iconTS.style({
     fontFamily: fontName + ' !important',
     display: 'block',
-    speak: 'none',
     fontStyle: 'normal',
     fontWeight: 'normal',
     fontVariant: 'normal',
     fontSize: '16px',
     lineHeight: 1,
     textRendering: 'optimizeLegibility',
-    ['-webkit-font-smoothing']: 'antialiased',
-    ['-moz-osx-font-smoothing']: 'grayscale',
   });
 });
 
-export const iconStyle = memoize((iconType?: string): string | null => {
+const iconStyle: (iconType?: string) => string | null = memoize((iconType?: string): string | null => {
   if (!iconType) {
     return null;
   }
@@ -599,3 +593,8 @@ export const iconStyle = memoize((iconType?: string): string | null => {
     },
   });
 });
+
+export {
+  baseStyle,
+  iconStyle
+};

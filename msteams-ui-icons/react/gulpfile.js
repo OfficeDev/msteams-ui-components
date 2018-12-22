@@ -11,11 +11,11 @@ gulp.task('default', () => {
 });
 
 gulp.task('clean', () => {
-  del(['lib']);
+  return del(['lib']);
 });
 
-gulp.task('watch', ['default'], () => {
-  gulp.watch(src, ['default']);
+gulp.task('watch', gulp.series('default'), () => {
+  return gulp.watch(src, ['default']);
 });
 
 function createBuildTask(crashOnError) {
@@ -23,6 +23,11 @@ function createBuildTask(crashOnError) {
   const f = filter(['**', '!**/*.d.ts'], { restore: true });
   return gulp.src(src)
     .pipe(tsProject())
+    .once('error', function () {
+      if (crashOnError) {
+        this.once('finish', () => process.exit(1));
+      }
+    })
     .pipe(f)
     .pipe(babel())
     .pipe(f.restore)

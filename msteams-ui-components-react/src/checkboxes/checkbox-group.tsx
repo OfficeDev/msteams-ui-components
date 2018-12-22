@@ -1,8 +1,7 @@
 import { checkboxGroup } from 'msteams-ui-styles-core/lib/components/checkbox-group';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-import { connectTeamsComponent } from '../teams-context/connect-teams-component';
-import { IInjectedTeamsProps } from '../teams-context/connected-component';
+import { connectTeamsComponent, ITeamsThemeContextProps } from '../teams-context';
 import add from '../utils/add';
 import classes from '../utils/classes';
 import remove from '../utils/remove';
@@ -16,7 +15,7 @@ export interface ICheckboxGroupProps
   values?: any[];
 }
 
-class CheckboxGroupInner extends React.Component<ICheckboxGroupProps & IInjectedTeamsProps> {
+class CheckboxGroupInner extends React.Component<ICheckboxGroupProps & ITeamsThemeContextProps> {
   static childContextTypes = {
     onChecked: PropTypes.func,
     values: PropTypes.array,

@@ -1,7 +1,7 @@
 import { checkbox } from 'msteams-ui-styles-core/lib/components/checkbox';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-import { connectTeamsComponent, IInjectedTeamsProps } from '../index';
+import { connectTeamsComponent, ITeamsThemeContextProps } from '../teams-context';
 import classes from '../utils/classes';
 import uniqueId from '../utils/uniqueId';
 
@@ -21,7 +21,7 @@ interface ICheckboxContext {
   values?: any[];
 }
 
-type ConnectedProps = ICheckboxProps & IInjectedTeamsProps;
+type ConnectedProps = ICheckboxProps & ITeamsThemeContextProps;
 
 class CheckboxInner extends React.Component<ConnectedProps, ICheckboxState> {
   static propTypes = {

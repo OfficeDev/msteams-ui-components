@@ -22,7 +22,7 @@ const { style } = require('typestyle/lib')
 // This function is optional. The default one will use Typestyle.
 // 'name' is the advised potential name of the class, your function can ignore this and return anything.
 // 'cssProperties' is the object containing the css properties to generate the class from.
-const cssFunction = (name, cssProperties) => {
+const cssFunction = (name, ...cssProperties) => {
   // default typestyle styling function.
   return style(...cssProperties);
 }

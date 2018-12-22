@@ -1,7 +1,7 @@
 import 'mousetrap';
 import { tab, TabStyles } from 'msteams-ui-styles-core/lib/components/tab';
 import * as React from 'react';
-import { connectTeamsComponent, IInjectedTeamsProps } from '../index';
+import { connectTeamsComponent, ITeamsThemeContextProps } from '../teams-context';
 
 export interface ITabProps {
   tabs: ITabItem[];
@@ -15,7 +15,7 @@ export interface ITabItem {
   id: any;
 }
 
-class TabInternal extends React.Component<ITabProps & IInjectedTeamsProps> {
+class TabInternal extends React.Component<ITabProps & ITeamsThemeContextProps> {
   private tab: HTMLDivElement | null = null;
   private mousetrap: MousetrapInstance | null = null;
   private itemButtons: HTMLButtonElement[] = [];

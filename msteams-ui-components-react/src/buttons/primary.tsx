@@ -1,8 +1,7 @@
 import { primaryButton } from 'msteams-ui-styles-core/lib/components/primary-button';
 import * as React from 'react';
 import { IFocusable } from '../focusable';
-import { IInjectedTeamsProps } from '../index';
-import { connectTeamsComponent } from '../teams-context';
+import { connectTeamsComponent, ITeamsThemeContextProps } from '../teams-context';
 import classes from '../utils/classes';
 
 export interface IPrimaryButtonProps
@@ -11,7 +10,7 @@ export interface IPrimaryButtonProps
 }
 
 class PrimaryButtonView
-  extends React.Component<IPrimaryButtonProps & IInjectedTeamsProps>
+  extends React.Component<IPrimaryButtonProps & ITeamsThemeContextProps>
   implements IFocusable {
   private button: HTMLButtonElement | null = null;
 

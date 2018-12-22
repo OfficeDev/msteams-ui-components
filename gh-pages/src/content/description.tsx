@@ -1,9 +1,9 @@
-import { Anchor, ConnectedComponent, Panel, PanelBody, PanelFooter, PanelHeader } from 'msteams-ui-components-react';
+import { Anchor, Panel, PanelBody, PanelFooter, PanelHeader, TeamsThemeContext } from 'msteams-ui-components-react';
 import * as React from 'react';
 
-export const Description: React.StatelessComponent = () => {
-  return <ConnectedComponent render={(props) => {
-      const { context } = props;
+export const Description: React.FunctionComponent = () => {
+  return <TeamsThemeContext.Consumer>
+    {(context) => {
       const { rem, font } = context;
       const { sizes, weights } = font;
 
@@ -31,6 +31,7 @@ export const Description: React.StatelessComponent = () => {
           </p>
           <p>
           Here they are:
+          </p>
           <ul>
             <li><Anchor
               target="_blank"
@@ -51,7 +52,6 @@ export const Description: React.StatelessComponent = () => {
               </Anchor> - The React binding library for the set of Teams icons.
               It depends on msteams-ui-icons-core and React.</li>
           </ul>
-          </p>
           <p>
           For more information, the links above will take you to npmjs.com and show the usage instructions.
           </p>
@@ -80,5 +80,6 @@ export const Description: React.StatelessComponent = () => {
         <PanelFooter>
         </PanelFooter>
       </Panel>;
-    }} />;
+    }}
+  </TeamsThemeContext.Consumer>;
 };

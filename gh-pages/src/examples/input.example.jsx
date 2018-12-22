@@ -6,51 +6,52 @@ class InputExample extends React.Component {
   }
 
   render() {
-    return <ConnectedComponent render={(props) => {
-      const { context } = props;
-      const { rem, font } = context;
-      const { sizes, weights } = font;
+    return <TeamsThemeContext.Consumer>
+      {(context) => {
+        const { rem, font } = context;
+        const { sizes, weights } = font;
 
-      const styles = {
-        header: { ...sizes.title, ...weights.semibold },
-        input: {
-          paddingTop: rem(0.5),
-          width: '50%'
-        },
-      }
+        const styles = {
+          header: { ...sizes.title, ...weights.semibold },
+          input: {
+            paddingTop: rem(0.5),
+            width: '50%'
+          },
+        }
 
-      return <Panel>
-        <PanelHeader>
-          <div style={styles.header}>Inputs</div>
-        </PanelHeader>
-        <PanelBody>
-          <Input
-            autoFocus
-            style={styles.input}
-            placeholder="Enabled"
-            label="Enabled text box"
-            errorLabel={!this.state.value ? "This value is required" : null}
-            value={this.state.value}
-            onChange={this.onValueChanged}
-            required />
-          <Input
-            style={styles.input}
-            placeholder="Disabled"
-            label="Disabled text box"
-            disabled />
-          <Input
-            label="Status is updated (icon will automatically disappear)"
-            status="updated"
-            style={styles.input} />
-          <Input
-            label="Status is updating"
-            status="updating"
-            style={styles.input} />
-        </PanelBody>
-        <PanelFooter>
-        </PanelFooter>
-      </Panel>;
-    }} />;
+        return <Panel>
+          <PanelHeader>
+            <div style={styles.header}>Inputs</div>
+          </PanelHeader>
+          <PanelBody>
+            <Input
+              autoFocus
+              style={styles.input}
+              placeholder="Enabled"
+              label="Enabled text box"
+              errorLabel={!this.state.value ? "This value is required" : null}
+              value={this.state.value}
+              onChange={this.onValueChanged}
+              required />
+            <Input
+              style={styles.input}
+              placeholder="Disabled"
+              label="Disabled text box"
+              disabled />
+            <Input
+              label="Status is updated (icon will automatically disappear)"
+              status="updated"
+              style={styles.input} />
+            <Input
+              label="Status is updating"
+              status="updating"
+              style={styles.input} />
+          </PanelBody>
+          <PanelFooter>
+          </PanelFooter>
+        </Panel>;
+      }}
+    </TeamsThemeContext.Consumer>
   }
 
   onValueChanged(event) {

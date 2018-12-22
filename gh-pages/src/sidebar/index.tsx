@@ -2,7 +2,7 @@ import { map } from 'lodash';
 import {
   CompoundButton,
   connectTeamsComponent,
-  IInjectedTeamsProps,
+  ITeamsThemeContextProps,
   Panel,
   PanelBody,
   PanelHeader
@@ -15,7 +15,7 @@ import { sidebar } from './styles';
 
 interface ISidebarViewProps { }
 
-class SidebarInner extends React.Component<ISidebarViewProps & IInjectedTeamsProps & RouteComponentProps<{}>> {
+class SidebarInner extends React.Component<ISidebarViewProps & ITeamsThemeContextProps & RouteComponentProps<{}>> {
   static buttons = [{
     location: Routes.index,
     name: 'Home',
