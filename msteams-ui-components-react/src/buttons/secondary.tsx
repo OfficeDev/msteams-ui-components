@@ -1,8 +1,7 @@
 import { secondaryButton } from 'msteams-ui-styles-core/lib/components/secondary-button';
 import * as React from 'react';
 import { IFocusable } from '../focusable';
-import { IInjectedTeamsProps } from '../index';
-import { connectTeamsComponent } from '../teams-context';
+import { connectTeamsComponent, ITeamsThemeContextProps } from '../teams-context';
 import classes from '../utils/classes';
 
 export interface ISecondaryButtonProps
@@ -11,7 +10,8 @@ export interface ISecondaryButtonProps
   onRef?: (ref: React.Component & IFocusable | null) => void;
 }
 
-class SecondaryButtonView extends React.Component<ISecondaryButtonProps & IInjectedTeamsProps> implements IFocusable {
+class SecondaryButtonView extends React.Component<ISecondaryButtonProps & ITeamsThemeContextProps>
+  implements IFocusable {
   private button: HTMLButtonElement | null = null;
 
   componentDidMount() {

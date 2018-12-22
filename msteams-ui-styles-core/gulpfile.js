@@ -14,7 +14,7 @@ gulp.task('default', () => {
 });
 
 gulp.task('clean', () => {
-  del(['lib', 'css']);
+  return del(['lib', 'css']);
 }); 
 
 gulp.task('lint', () => {
@@ -24,11 +24,11 @@ gulp.task('lint', () => {
     .pipe(gulpTsLint.report());
 });
 
-gulp.task('watch', ['default'], () => {
-  gulp.watch(src, ['default']);
+gulp.task('watch', gulp.series('default'), () => {
+  return gulp.watch(src, ['default']);
 });
 
-gulp.task('build-crash-on-error', ['lint'], () => {
+gulp.task('build-crash-on-error', gulp.series('lint'), () => {
   return createBuildTask(true);
 });
 

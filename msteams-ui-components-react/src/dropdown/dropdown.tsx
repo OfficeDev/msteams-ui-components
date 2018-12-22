@@ -2,7 +2,7 @@ import 'mousetrap';
 import { MSTeamsIcon, MSTeamsIconType, MSTeamsIconWeight } from 'msteams-ui-icons-react';
 import { dropdown } from 'msteams-ui-styles-core/lib/components/dropdown';
 import * as React from 'react';
-import { connectTeamsComponent, IInjectedTeamsProps } from '../index';
+import { connectTeamsComponent, ITeamsThemeContextProps } from '../teams-context';
 import classes from '../utils/classes';
 import uniqueId from '../utils/uniqueId';
 import { DropdownItem } from './item';
@@ -27,7 +27,7 @@ interface IDropdownState {
   expandableRegionId: string;
 }
 
-class DropdownInternal extends React.Component<IDropdownProps & IInjectedTeamsProps, IDropdownState> {
+class DropdownInternal extends React.Component<IDropdownProps & ITeamsThemeContextProps, IDropdownState> {
   state = {
     show: false,
     id: uniqueId('ts-dd-'),
@@ -66,7 +66,8 @@ class DropdownInternal extends React.Component<IDropdownProps & IInjectedTeamsPr
       mainButtonText,
       style,
       items,
-      ...rest,
+      // tslint:disable-next-line:trailing-comma
+      ...rest
     } = this.props;
     const themeClassNames = dropdown(context);
 
@@ -109,7 +110,7 @@ class DropdownInternal extends React.Component<IDropdownProps & IInjectedTeamsPr
           id={this.state.expandableRegionId}
           role="listbox"
           aria-hidden={!this.state.show}
-          style={{display: this.state.show ? null : 'none'}}
+          style={{display: this.state.show ? undefined : 'none'}}
           className={itemContainerClass.join(' ')}>
           {items.map((item, idx) => (
             <DropdownItem

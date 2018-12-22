@@ -1,7 +1,7 @@
 import { toggle } from 'msteams-ui-styles-core/lib/components/toggle';
 import * as React from 'react';
 import { IFocusable } from '../focusable';
-import { connectTeamsComponent, IInjectedTeamsProps } from '../index';
+import { connectTeamsComponent, ITeamsThemeContextProps } from '../teams-context';
 import classes from '../utils/classes';
 
 export interface IToggleProps
@@ -11,7 +11,7 @@ export interface IToggleProps
   onToggle: (checked: boolean) => void;
 }
 
-class ToggleView extends React.Component<IToggleProps & IInjectedTeamsProps>
+class ToggleView extends React.Component<IToggleProps & ITeamsThemeContextProps>
 implements IFocusable {
   private button: HTMLButtonElement | null = null;
 
@@ -42,6 +42,7 @@ implements IFocusable {
         <input
           aria-hidden="true"
           type="checkbox"
+          readOnly
           name={name}
           value={value}
           checked={checked}

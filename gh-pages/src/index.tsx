@@ -1,11 +1,15 @@
+import '@babel/polyfill';
 import * as microsoftTeams from '@microsoft/teams-js';
-import { Panel, Surface, Tab, TeamsComponentContext, ThemeStyle } from 'msteams-ui-components-react';
+import * as csstips from 'csstips';
+import { getContext, TeamsThemeContext, ThemeStyle } from 'msteams-ui-components-react';
 import * as React from 'react';
 import { render } from 'react-dom';
 import { HashRouter } from 'react-router-dom';
 import { AppLayout } from './app-layout';
 import { Content } from './content';
 import { Sidebar } from './sidebar';
+
+csstips.normalize();
 
 export interface IContentState {
   fontSize: number;
@@ -18,7 +22,7 @@ export class GHPages extends React.Component<{}, IContentState> {
     fontSize: 16,
   };
 
-  componentWillMount() {
+  componentDidMount() {
     this.updateTheme(this.getQueryVariable('theme'));
     this.setState({
       fontSize: this.pageFontSize(),
@@ -31,13 +35,16 @@ export class GHPages extends React.Component<{}, IContentState> {
   }
 
   render() {
+    const context = getContext({
+      baseFontSize: this.state.fontSize,
+      style: this.state.theme,
+    });
+
     return (
       <HashRouter>
-        <TeamsComponentContext
-          fontSize={this.state.fontSize}
-          theme={this.state.theme}>
+        <TeamsThemeContext.Provider value={context}>
           <AppLayout sidebar={Sidebar} main={Content} />
-        </TeamsComponentContext>
+        </TeamsThemeContext.Provider>
       </HashRouter>
     );
   }

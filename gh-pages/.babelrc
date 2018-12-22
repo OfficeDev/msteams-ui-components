@@ -1,5 +1,22 @@
 {
+  "sourceType": "script",
+  "plugins": [
+    "lodash",
+    "@babel/plugin-transform-runtime",
+    "transform-es2015-template-literals"
+  ],
   "presets": [
-    "env"
+    [
+      "@babel/preset-env", {
+        "useBuiltIns": "entry",
+        "targets": {
+          "browsers": [
+            "last 2 versions",
+            "ie >= 11"
+          ]
+        }
+      }
+    ],
+    "@babel/preset-react"
   ]
 }
