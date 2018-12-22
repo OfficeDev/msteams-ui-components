@@ -561,9 +561,9 @@
     regexpu-core "^4.1.3"
 
 "@babel/polyfill@^7.2.3":
-  version "7.2.3"
-  resolved "https://registry.yarnpkg.com/@babel/polyfill/-/polyfill-7.2.3.tgz#277fe900281d6874ab82332c90482621cbea2575"
-  integrity sha512-XG854errfwBkrnWV9dDmSSa8ueTciFUMcC47Mn9obkfLipRKaQL4o33YRsNk0IEep1WXMvr1hGz8DQbSQC2tPQ==
+  version "7.2.5"
+  resolved "https://registry.yarnpkg.com/@babel/polyfill/-/polyfill-7.2.5.tgz#6c54b964f71ad27edddc567d065e57e87ed7fa7d"
+  integrity sha512-8Y/t3MWThtMLYr0YNC/Q76tqN1w30+b0uQMeFUYauG2UGTR19zyUtFrAzT23zNtBxPp+LbE5E/nwV/q/r3y6ug==
   dependencies:
     core-js "^2.5.7"
     regenerator-runtime "^0.12.0"
@@ -1088,21 +1088,6 @@ babel-plugin-lodash@^3.3.4:
     glob "^7.1.1"
     lodash "^4.17.10"
     require-package-name "^2.0.1"
-
-babel-plugin-transform-es2015-template-literals@^6.22.0:
-  version "6.22.0"
-  resolved "https://registry.yarnpkg.com/babel-plugin-transform-es2015-template-literals/-/babel-plugin-transform-es2015-template-literals-6.22.0.tgz#a84b3450f7e9f8f1f6839d6d687da84bb1236d8d"
-  integrity sha1-qEs0UPfp+PH2g51taH2oS7EjbY0=
-  dependencies:
-    babel-runtime "^6.22.0"
-
-babel-runtime@^6.22.0:
-  version "6.26.0"
-  resolved "https://registry.yarnpkg.com/babel-runtime/-/babel-runtime-6.26.0.tgz#965c7058668e82b55d7bfe04ff2337bc8b5647fe"
-  integrity sha1-llxwWGaOgrVde/4E/yM3vItWR/4=
-  dependencies:
-    core-js "^2.4.0"
-    regenerator-runtime "^0.11.0"
 
 balanced-match@^1.0.0:
   version "1.0.0"
@@ -1654,7 +1639,7 @@ core-js@^1.0.0:
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-1.2.7.tgz#652294c14651db28fa93bd2d5ff2983a4f08c636"
   integrity sha1-ZSKUwUZR2yj6k70tX/KYOk8IxjY=
 
-core-js@^2.4.0, core-js@^2.4.1, core-js@^2.5.7:
+core-js@^2.4.1, core-js@^2.5.7:
   version "2.6.1"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.6.1.tgz#87416ae817de957a3f249b3b5ca475d4aaed6042"
   integrity sha512-L72mmmEayPJBejKIWe2pYtGis5r0tQ5NaJekdhyXgeMQTpJoBsH0NL4ElY2LfSoV15xeQWKQ+XTTOZdyero5Xg==
@@ -3480,9 +3465,9 @@ ms@^2.1.1:
   integrity sha512-tgp+dl5cGk28utYktBsrFqA7HKgrhgPsg6Z/EfhWI4gl1Hwq8B/GmY/0oXZ6nF8hDVesS/FpnYaD/kOWhYQvyg==
 
 msteams-ui-components-react@^0.8.0:
-  version "0.8.0"
-  resolved "https://registry.yarnpkg.com/msteams-ui-components-react/-/msteams-ui-components-react-0.8.0.tgz#1c9846c3e3dbf6283abf39dcf3d1d1696027b457"
-  integrity sha512-bT/UCZiSVV+6xbo1A7iQVNrnUemPFogNh29/bA3xUie/J5gGjZMr+6T+pMI9/mkpt5ZvI6C6z1a7RgxGRkxRQA==
+  version "0.8.1"
+  resolved "https://registry.yarnpkg.com/msteams-ui-components-react/-/msteams-ui-components-react-0.8.1.tgz#3a9143dba2d73f954ed19bedd1d2699f841f2e52"
+  integrity sha512-VcKQbXuUnSuERb6Lp201GnP4xb+/E7xV869UDdxzYFmJbAPKYSlIsNZZqdLUyMqH56ykLnZxOqPC2IwC/Ddo4A==
   dependencies:
     mousetrap "^1.6.2"
     msteams-ui-icons-react "^0.4.1"
@@ -4309,11 +4294,6 @@ regenerate@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/regenerate/-/regenerate-1.4.0.tgz#4a856ec4b56e4077c557589cae85e7a4c8869a11"
   integrity sha512-1G6jJVDWrt0rK99kBjvEtziZNCICAuvIPkSiUFIQxVP06RCVpq3dmDo2oi6ABpYaDYaTRr67BEhL8r1wgEZZKg==
-
-regenerator-runtime@^0.11.0:
-  version "0.11.1"
-  resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.11.1.tgz#be05ad7f9bf7d22e056f9726cee5017fbf19e2e9"
-  integrity sha512-MguG95oij0fC3QV3URf4V2SDYGJhJnJGqvIIgdECeODCT98wSWDAJ94SSuVpYQUoTcGUIL6L4yNB7j1DFFHSBg==
 
 regenerator-runtime@^0.12.0:
   version "0.12.1"

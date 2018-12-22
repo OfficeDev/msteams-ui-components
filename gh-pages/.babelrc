@@ -3,7 +3,8 @@
   "plugins": [
     "lodash",
     "@babel/plugin-transform-runtime",
-    "transform-es2015-template-literals"
+    "@babel/plugin-transform-template-literals",
+    "@babel/plugin-transform-arrow-functions"
   ],
   "presets": [
     [
