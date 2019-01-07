@@ -2,9 +2,7 @@
   "sourceType": "script",
   "plugins": [
     "lodash",
-    "@babel/plugin-transform-runtime",
-    "@babel/plugin-transform-template-literals",
-    "@babel/plugin-transform-arrow-functions"
+    "@babel/plugin-transform-runtime"
   ],
   "presets": [
     [

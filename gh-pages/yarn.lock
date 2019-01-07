@@ -3494,6 +3494,13 @@ msteams-ui-styles-core@^0.8.0:
   dependencies:
     msteams-ui-icons-core "^0.4.1"
 
+msteams-ui-styles-core@^0.8.1:
+  version "0.8.1"
+  resolved "https://registry.yarnpkg.com/msteams-ui-styles-core/-/msteams-ui-styles-core-0.8.1.tgz#b9657b7ef1224b4e7cd2cd985d4b1bd4c6381273"
+  integrity sha512-rODTrb1Yf3y9WFKXo+Hf835TuuugsOs9y5hJnC4y5uOlJeW5R3FvTftuz3HQ+6t+WsNoqvT8zo4Etp+k2wYXZQ==
+  dependencies:
+    msteams-ui-icons-core "^0.4.1"
+
 multicast-dns-service-types@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/multicast-dns-service-types/-/multicast-dns-service-types-1.1.0.tgz#899f11d9686e5e05cb91b35d5f0e63b773cfc901"
