@@ -18,6 +18,7 @@
     "csx": "^9.0.0",
     "msteams-ui-components-react": "^0.8.0",
     "msteams-ui-icons-react": "^0.4.1",
+    "msteams-ui-styles-core": "^0.8.1",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "react-live": "^1.12.0",
