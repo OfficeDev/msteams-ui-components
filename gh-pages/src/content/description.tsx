@@ -48,7 +48,7 @@ export const Description: React.FunctionComponent = () => {
             <li><Anchor
               target="_blank"
               href="https://www.npmjs.com/package/msteams-ui-icons-react">
-                msteams-ui-styles-react
+                msteams-ui-icons-react
               </Anchor> - The React binding library for the set of Teams icons.
               It depends on msteams-ui-icons-core and React.</li>
           </ul>
