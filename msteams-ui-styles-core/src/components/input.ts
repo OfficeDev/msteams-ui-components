@@ -1,7 +1,15 @@
-import { keyframes } from 'typestyle';
 import { chooseStyle, IContext } from '../context';
 import { errorLabel } from '../index';
 import { label } from './label';
+import { setStylesTarget , keyframes } from 'typestyle';
+
+const target = document.createElement('style');
+target.setAttribute('nonce', 'cmFuZG9tIG51bWJlcg=='); //This is a base64 encoded random number which can be added in the csp header as nonce value
+if(document.head) {
+    document.head.appendChild(target);
+}
+
+setStylesTarget(target);
 
 interface IInputColors {
   rest: {
