@@ -1,6 +1,6 @@
 import { style } from 'typestyle/lib';
 import { NestedCSSProperties } from 'typestyle/lib/types';
-import { ColorPalate, Colors } from './colors';
+import { ColorPalette, Colors } from './colors';
 import { IFontSizePalate } from './font-size-palate';
 import { FontSizes } from './font-sizes';
 import { IFontWeightPalate } from './font-weight-palate';
@@ -26,7 +26,7 @@ export interface IContext {
   rem: IRemFunction;
   css: ICSSFunction;
   style: ThemeStyle;
-  colors: ColorPalate;
+  colors: ColorPalette;
   spacing: ISpacingPalate;
   font: {
     weights: IFontWeightPalate;
