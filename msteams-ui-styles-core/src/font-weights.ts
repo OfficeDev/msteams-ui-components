@@ -1,7 +1,7 @@
 import { IRemFunction } from './context';
-import { IFontWeightPalate } from './font-weight-palate';
+import { IFontWeightPalette } from './font-weight-palette';
 
-export function FontWeights(rem: IRemFunction): IFontWeightPalate {
+export function FontWeights(rem: IRemFunction): IFontWeightPalette {
   return {
     semilight: {
       fontFamily: "'Segoe UI Light', 'Segoe UI', Tahoma, Helvetica, Sans-Serif",

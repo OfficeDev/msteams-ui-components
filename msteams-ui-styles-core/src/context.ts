@@ -1,12 +1,12 @@
 import { style } from 'typestyle/lib';
 import { NestedCSSProperties } from 'typestyle/lib/types';
-import { ColorPalate, Colors } from './colors';
-import { IFontSizePalate } from './font-size-palate';
+import { ColorPalette, Colors } from './colors';
+import { IFontSizePalette } from './font-size-palette';
 import { FontSizes } from './font-sizes';
-import { IFontWeightPalate } from './font-weight-palate';
+import { IFontWeightPalette } from './font-weight-palette';
 import { FontWeights } from './font-weights';
 import { Spacing } from './spacing';
-import { ISpacingPalate } from './spacing-palate';
+import { ISpacingPalette } from './spacing-palette';
 import { IThemeConfig } from './theme-config';
 import { ThemeStyle } from './theme-style';
 
@@ -26,11 +26,11 @@ export interface IContext {
   rem: IRemFunction;
   css: ICSSFunction;
   style: ThemeStyle;
-  colors: ColorPalate;
-  spacing: ISpacingPalate;
+  colors: ColorPalette;
+  spacing: ISpacingPalette;
   font: {
-    weights: IFontWeightPalate;
-    sizes: IFontSizePalate;
+    weights: IFontWeightPalette;
+    sizes: IFontSizePalette;
   };
 }
 

@@ -1,4 +1,4 @@
-export type ColorPalate = typeof Colors;
+export type ColorPalette = typeof Colors;
 
 export const Colors = {
   transparent: 'transparent',
