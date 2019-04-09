@@ -1,7 +1,7 @@
 import { IRemFunction } from './context';
-import { IFontSizePalate } from './font-size-palate';
+import { IFontSizePalette } from './font-size-palette';
 
-export function FontSizes(rem: IRemFunction): IFontSizePalate {
+export function FontSizes(rem: IRemFunction): IFontSizePalette {
   return {
     title: {
       fontSize: rem(2.4),

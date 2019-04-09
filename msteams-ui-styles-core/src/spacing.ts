@@ -1,7 +1,7 @@
 import { IRemFunction } from './context';
-import { ISpacingPalate } from './spacing-palate';
+import { ISpacingPalette } from './spacing-palette';
 
-export function Spacing(rem: IRemFunction): ISpacingPalate {
+export function Spacing(rem: IRemFunction): ISpacingPalette {
   return {
     xxxSmall: rem(0.2),
     xxSmall: rem(0.4),

@@ -1,5 +1,5 @@
 export * from './components';
-export * from './spacing-palate';
+export * from './spacing-palette';
 export * from './colors';
 export * from './context';
 export * from './theme-config';

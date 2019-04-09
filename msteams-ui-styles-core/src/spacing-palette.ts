@@ -1,4 +1,4 @@
-export interface ISpacingPalate {
+export interface ISpacingPalette {
   xxxSmall: string;
   xxSmall: string;
   xSmall: string;
