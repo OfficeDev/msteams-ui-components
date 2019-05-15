@@ -58,6 +58,7 @@ class ButtonExample extends React.Component {
           </PanelFooter>
         </Panel>;
       }}
+      
     </TeamsThemeContext.Consumer>
   }
 }
