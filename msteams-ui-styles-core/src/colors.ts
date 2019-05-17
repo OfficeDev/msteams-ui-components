@@ -26,7 +26,6 @@ export const Colors = {
     brand02: '#33344A', // new
     brand04: '#464775',
     brand06: '#6264A7',
-    brand07: '#33344A',
     brand08: '#8B8CC7', // new
     brand12: '#BDBDE6', // new
     brand14: '#E2E2F6', // new
