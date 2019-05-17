@@ -16,7 +16,7 @@ export const Colors = {
     gray12: '#f4f4f4',
     gray13: '#F8F8F9', // don't know
     gray14: '#F9F8F7',
-    gary15: '#EDEBE9',
+    gray15: '#EDEBE9',
     gray16: '#C8C6C4',
     gray17: '#E1DFDD',
     gray18: '#484644',
