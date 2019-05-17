@@ -12,14 +12,11 @@ export const Colors = {
     gray04: '#929191',
     gray06: '#bdbdbd',
     gray08: '#dfdede',
+    gray09: '#EDEBE9',
     gray10: '#F3F2F1',
     gray12: '#f4f4f4',
     gray13: '#F8F8F9', // don't know
     gray14: '#F9F8F7',
-    gray15: '#EDEBE9',
-    gray16: '#C8C6C4',
-    gray17: '#E1DFDD',
-    gray18: '#484644',
     brand00SemiTransparent: '#9496CA', // don't know
     brand00Dark: '#6264A7',
     brand00: '#6264A7',

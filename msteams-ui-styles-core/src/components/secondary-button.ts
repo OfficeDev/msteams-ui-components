@@ -92,18 +92,18 @@ function light(context: IContext) {
       border: colors.light.gray06,
     },
     hover: {
-      background: colors.light.gary15,
+      background: colors.light.gray09,
       text: colors.light.black,
-      border: colors.light.gray16,
+      border: colors.light.gray06,
     },
     down: {
-      background: colors.light.gray17,
+      background: colors.light.gray08,
       text: colors.light.black,
       border: colors.transparent,
     },
     disabled: {
-      background: colors.light.gary15,
-      text: colors.light.gray16,
+      background: colors.light.gray09,
+      text: colors.light.gray06,
       border: colors.light.gray12,
     },
     focus: {

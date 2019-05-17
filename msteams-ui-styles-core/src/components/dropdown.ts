@@ -176,7 +176,7 @@ function light(context: IContext) {
   const { colors } = context;
   return base(context, {
     mainButton: {
-      text: colors.light.gray18,
+      text: colors.light.gray02,
       icon: colors.light.gray02,
       background: colors.light.gray10,
       border: colors.transparent,
@@ -188,7 +188,7 @@ function light(context: IContext) {
         placeholder: colors.light.gray06,
       },
     },
-    item: colors.light.gray18,
+    item: colors.light.gray02,
     itemBg: colors.light.white,
     itemContainerBg: colors.light.gray12,
     itemHover: colors.light.white,

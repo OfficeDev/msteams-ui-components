@@ -103,8 +103,8 @@ function light(context: IContext) {
       border: colors.transparent,
     },
     disabled: {
-      background: colors.light.gary15,
-      text: colors.light.gray16,
+      background: colors.light.gray09,
+      text: colors.light.gray06,
       border: colors.transparent,
     },
     focus: {

@@ -187,7 +187,7 @@ function light(context: IContext) {
       background: colors.light.gray10,
       border: colors.transparent,
       underline: colors.transparent,
-      text: colors.light.gray18,
+      text: colors.light.gray02,
       placeholder: colors.light.gray02,
     },
     active: {

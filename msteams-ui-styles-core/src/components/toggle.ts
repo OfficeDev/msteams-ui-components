@@ -114,15 +114,15 @@ function light(context: IContext) {
   return base(context, {
     rest: {
       background: colors.light.gray10,
-      ball: colors.light.gray18,
+      ball: colors.light.gray02,
       border: colors.transparent,
     },
     focus: {
       border: colors.light.brand00,
     },
     disabled: {
-      background: colors.light.gary15,
-      ball: colors.light.gray16,
+      background: colors.light.gray09,
+      ball: colors.light.gray06,
       border: colors.transparent,
     },
     checked: {

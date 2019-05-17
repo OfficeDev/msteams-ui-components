@@ -135,7 +135,7 @@ function light(context: IContext) {
   const { colors } = context;
   return base(context, {
     rest: {
-      border: colors.light.gray18,
+      border: colors.light.gray02,
       background: colors.transparent,
       text: colors.light.gray02,
     },
@@ -145,7 +145,7 @@ function light(context: IContext) {
     },
     disabled: {
       border: colors.light.gray06,
-      background: colors.light.gray16,
+      background: colors.light.gray06,
       text: colors.light.gray06,
     },
     focus: {
