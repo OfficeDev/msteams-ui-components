@@ -212,7 +212,7 @@ function light(context: IContext) {
       text: colors.light.black,
     },
     errorIcon: colors.light.red,
-    successIcon: colors.light.green1,
+    successIcon: colors.light.green,
     spinner: colors.light.brand00,
   });
 }
