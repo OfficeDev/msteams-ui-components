@@ -52,7 +52,7 @@ function base(context: IContext, colors: IToggleColors) {
       width: rem(width),
       height: rem(height),
       backgroundColor: colors.rest.background,
-      borderRadius: rem(height),
+      borderRadius: rem(10.0),
       outline: 'none',
       boxShadow: `0 0 0 ${rem(0.1)} ${colors.rest.border}`,
       $nest: {
@@ -114,19 +114,19 @@ function light(context: IContext) {
   return base(context, {
     rest: {
       background: colors.light.gray10,
-      ball: colors.light.gray02,
+      ball: colors.light.gray18,
       border: colors.transparent,
     },
     focus: {
       border: colors.light.brand00,
     },
     disabled: {
-      background: colors.light.gray12,
-      ball: colors.light.gray06,
+      background: colors.light.gary15,
+      ball: colors.light.gray16,
       border: colors.transparent,
     },
     checked: {
-      background: colors.light.green,
+      background: colors.light.brand00,
       ball: colors.light.white,
     },
   });

@@ -16,12 +16,17 @@ export const Colors = {
     gray12: '#f4f4f4',
     gray13: '#F8F8F9', // don't know
     gray14: '#F9F8F7',
+    gary15: '#EDEBE9',
+    gray16: '#C8C6C4',
+    gray17: '#E1DFDD',
+    gray18: '#484644',
     brand00SemiTransparent: '#9496CA', // don't know
     brand00Dark: '#6264A7',
     brand00: '#6264A7',
     brand02: '#33344A', // new
     brand04: '#464775',
     brand06: '#6264A7',
+    brand07: '#33344A',
     brand08: '#8B8CC7', // new
     brand12: '#BDBDE6', // new
     brand14: '#E2E2F6', // new
@@ -37,6 +42,7 @@ export const Colors = {
     orange04: '#CC4A31', // new
     yellow: '#F8D22A',
     green: '#92C353',
+    green1: '#237B4B',
   },
   dark: {
     black: '#201F1F',

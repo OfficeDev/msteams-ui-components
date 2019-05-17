@@ -38,8 +38,8 @@ function base(context: IContext, colors: ISecondaryButtonColors) {
   return css(names.button, {
     height: rem(3.2),
     minWidth: rem(9.6),
-    border: rem(0.2) + ' solid',
-    borderRadius: rem(0.3),
+    border: rem(0.1) + ' solid',
+    borderRadius: rem(0.2),
     padding: rem(0.4),
     whiteSpace: 'nowrap',
     cursor: 'pointer',
@@ -53,6 +53,7 @@ function base(context: IContext, colors: ISecondaryButtonColors) {
         background: colors.hover.background,
         color: colors.hover.text,
         borderColor: colors.hover.border,
+        boxShadow: `0 ${rem(0.2)} ${rem(0.4)} 0 rgba(0,0,0,0.10)`,
       },
       '&:active:hover:enabled': {
         background: colors.down.background,
@@ -65,11 +66,12 @@ function base(context: IContext, colors: ISecondaryButtonColors) {
         borderColor: colors.down.border,
       },
       '&:focus:enabled': {
-        outline: `${rem(0.2)} solid ${colors.focus.outline}`,
-        outlineOffset: `-${rem(0.4)}`,
+        outline: `${rem(0.1)} solid ${colors.focus.outline}`,
+        outlineOffset: `-${rem(0.2)}`,
         color: colors.focus.text,
         borderColor: colors.focus.border,
         background: colors.focus.background,
+        boxShadow: `0 ${rem(0.2)} ${rem(0.4)} 0 rgba(0,0,0,0.10)`,
       },
       '&:disabled': {
         background: colors.disabled.background,
@@ -86,28 +88,28 @@ function light(context: IContext) {
   return base(context, {
     rest: {
       background: colors.light.white,
-      text: colors.light.gray02,
+      text: colors.light.black,
       border: colors.light.gray06,
     },
     hover: {
-      background: colors.light.gray06,
+      background: colors.light.gary15,
       text: colors.light.black,
-      border: colors.transparent,
+      border: colors.light.gray16,
     },
     down: {
-      background: colors.light.gray04,
+      background: colors.light.gray17,
       text: colors.light.black,
       border: colors.transparent,
     },
     disabled: {
-      background: colors.light.white,
-      text: colors.light.gray06,
+      background: colors.light.gary15,
+      text: colors.light.gray16,
       border: colors.light.gray12,
     },
     focus: {
       background: colors.light.gray06,
       text: colors.light.black,
-      border: colors.transparent,
+      border: colors.light.white,
       outline: colors.light.black,
     },
   });

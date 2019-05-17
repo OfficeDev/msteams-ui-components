@@ -14,6 +14,7 @@ interface IInputColors {
   active: {
     background: string;
     underline: string;
+    text: string;
   };
   disabled: {
     border: string;
@@ -29,6 +30,7 @@ interface IInputColors {
   focus: {
     background: string;
     underline: string;
+    text: string;
   };
   errorIcon: string;
   successIcon: string;
@@ -87,10 +89,12 @@ function base(context: IContext, colors: IInputColors) {
           '&:active:enabled': {
             background: colors.active.background,
             borderBottomColor: colors.active.underline,
+            color: colors.active.text
           },
           '&:hover:inactive:enabled': {
             background: colors.hover.background,
             borderBottomColor: colors.hover.underline,
+            color: colors.rest.text,
           },
           '&:disabled': {
             borderColor: colors.disabled.border,
@@ -122,6 +126,7 @@ function base(context: IContext, colors: IInputColors) {
           '&:focus': {
             borderBottomColor: colors.active.underline,
             background: colors.focus.background,
+            color: colors.focus.text,
           },
           '&::placeholder': {
             color: colors.rest.placeholder,
@@ -182,12 +187,13 @@ function light(context: IContext) {
       background: colors.light.gray10,
       border: colors.transparent,
       underline: colors.transparent,
-      text: colors.light.black,
+      text: colors.light.gray18,
       placeholder: colors.light.gray02,
     },
     active: {
       background: colors.light.gray10,
       underline: colors.light.brand00,
+      text: colors.light.black,
     },
     disabled: {
       border: colors.transparent,
@@ -203,9 +209,10 @@ function light(context: IContext) {
     focus: {
       background: colors.light.gray10,
       underline: colors.light.brand00,
+      text: colors.light.black,
     },
     errorIcon: colors.light.red,
-    successIcon: colors.light.green,
+    successIcon: colors.light.green1,
     spinner: colors.light.brand00,
   });
 }
@@ -223,6 +230,7 @@ function dark(context: IContext) {
     active: {
       background: colors.dark.black,
       underline: colors.dark.brand00,
+      text: colors.dark.white,
     },
     disabled: {
       border: colors.transparent,
@@ -238,6 +246,7 @@ function dark(context: IContext) {
     focus: {
       background: colors.dark.black,
       underline: colors.dark.brand00,
+      text: colors.dark.white,
     },
     errorIcon: colors.dark.red,
     successIcon: colors.dark.green,
@@ -258,6 +267,7 @@ function highContrast(context: IContext) {
     active: {
       background: colors.highContrast.black,
       underline: colors.highContrast.yellow,
+      text: colors.highContrast.white
     },
     disabled: {
       border: colors.highContrast.green,
@@ -273,6 +283,7 @@ function highContrast(context: IContext) {
     focus: {
       background: colors.highContrast.black,
       underline: colors.highContrast.yellow,
+      text: colors.highContrast.white,
     },
     errorIcon: colors.highContrast.yellow,
     successIcon: colors.highContrast.green,

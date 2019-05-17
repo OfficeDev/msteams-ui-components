@@ -96,10 +96,12 @@ function base(context: IContext, colors: IRadioButtonColors) {
           borderColor: colors.hover.border,
         },
         [`& input:checked:hover ~ .${radioClass}`]: {
+          border: `${rem(0.2)} solid`,
           borderColor: colors.selected.border,
           background: colors.selected.background,
         },
         [`& input:enabled:focus ~ .${radioClass}`]: {
+          background: colors.selected.background,
           boxShadow: `0 0 0 ${rem(0.2)} ${colors.focus.outline}`,
           outline: 'none',
         },
@@ -118,7 +120,7 @@ function light(context: IContext) {
   const { colors } = context;
   return base(context, {
     rest: {
-      border: colors.light.gray02,
+      border: colors.light.gray18,
       background: colors.transparent,
       text: colors.light.gray02,
     },
@@ -128,11 +130,11 @@ function light(context: IContext) {
     },
     disabled: {
       border: colors.light.gray06,
-      background: colors.light.gray10,
+      background: colors.light.gray16,
       text: colors.light.gray06,
     },
     focus: {
-      outline: colors.light.brand00Dark,
+      outline: colors.light.brand12,
     },
     selected: {
       background: colors.light.brand00,
