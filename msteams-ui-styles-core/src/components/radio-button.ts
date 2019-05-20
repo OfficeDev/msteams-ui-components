@@ -101,7 +101,6 @@ function base(context: IContext, colors: IRadioButtonColors) {
           background: colors.selected.background,
         },
         [`& input:enabled:focus ~ .${radioClass}`]: {
-          background: colors.selected.background,
           boxShadow: `0 0 0 ${rem(0.2)} ${colors.focus.outline}`,
           outline: 'none',
         },
