@@ -37,7 +37,7 @@ export const Colors = {
     orange: '#E97548',
     orange04: '#CC4A31', // new
     yellow: '#F8D22A',
-    green: '#92C353',
+    green: '#237B4B',
   },
   dark: {
     black: '#201F1F',
