@@ -112,7 +112,6 @@ function light(context: IContext) {
       text: colors.light.white,
       outline: colors.light.white,
       border: colors.transparent,
-     
     },
   });
 }
@@ -145,7 +144,6 @@ function dark(context: IContext) {
       text: colors.dark.black,
       outline: colors.dark.black,
       border: colors.transparent,
-    
     },
   });
 }
@@ -178,7 +176,6 @@ function highContrast(context: IContext) {
       text: colors.highContrast.black,
       outline: colors.transparent,
       border: colors.transparent,
-     
     },
   });
 }
