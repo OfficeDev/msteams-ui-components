@@ -145,16 +145,16 @@ function light(context: IContext) {
     },
     disabled: {
       border: colors.light.gray06,
-      background: colors.light.gray10,
+      background: colors.light.gray06,
       text: colors.light.gray06,
     },
     focus: {
-      outline: colors.light.brand00Dark,
+      outline: colors.light.brand12,
     },
     checked: {
       background: colors.light.brand00,
       border: colors.light.brand00,
-      text : colors.light.black,
+      text : colors.light.black
     },
     checkmark: colors.light.white,
     container: colors.transparent,

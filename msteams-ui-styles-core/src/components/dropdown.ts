@@ -133,6 +133,7 @@ function base(context: IContext, colors: IDropdownColors) {
         [`&.${itemContainerClass}`]: {
           right: 0,
           left: 'auto',
+          color:colors.item,
         },
       },
     }),
@@ -175,7 +176,7 @@ function light(context: IContext) {
   const { colors } = context;
   return base(context, {
     mainButton: {
-      text: colors.light.black,
+      text: colors.light.gray02,
       icon: colors.light.gray02,
       background: colors.light.gray10,
       border: colors.transparent,
@@ -187,7 +188,7 @@ function light(context: IContext) {
         placeholder: colors.light.gray06,
       },
     },
-    item: colors.light.black,
+    item: colors.light.gray02,
     itemBg: colors.light.white,
     itemContainerBg: colors.light.gray12,
     itemHover: colors.light.white,

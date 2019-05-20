@@ -26,6 +26,7 @@ interface IPrimaryButtonColors {
     text: string;
     outline: string;
     border: string;
+   
   };
 }
 
@@ -39,7 +40,7 @@ function base(context: IContext, colors: IPrimaryButtonColors) {
     height: rem(3.2),
     minWidth: rem(9.6),
     border: rem(0.2) + ' solid',
-    borderRadius: rem(0.3),
+    borderRadius: rem(0.2),
     padding: rem(0.4),
     whiteSpace: 'nowrap',
     cursor: 'pointer',
@@ -53,6 +54,7 @@ function base(context: IContext, colors: IPrimaryButtonColors) {
         background: colors.hover.background,
         color: colors.hover.text,
         borderColor: colors.hover.border,
+        boxShadow: `0 ${rem(0.2)} ${rem(0.4)} 0 rgba(0,0,0,0.25)`
       },
       '&:active:hover:enabled': {
         background: colors.down.background,
@@ -65,11 +67,12 @@ function base(context: IContext, colors: IPrimaryButtonColors) {
         borderColor: colors.down.border,
       },
       '&:focus:enabled': {
-        outline: `${rem(0.2)} solid ${colors.focus.outline}`,
-        outlineOffset: `${rem(-0.4)}`,
+        outline: `${rem(0.1)} solid ${colors.focus.outline}`,
+        outlineOffset: `${rem(-0.2)}`,
         color: colors.focus.text,
         borderColor: colors.focus.border,
         background: colors.focus.background,
+        boxShadow: `0 ${rem(0.2)} ${rem(0.4)} 0 rgba(0,0,0,0.25)`,
       },
       '&:disabled': {
         background: colors.disabled.background,
@@ -95,12 +98,12 @@ function light(context: IContext) {
       border: colors.transparent,
     },
     down: {
-      background: colors.light.brand06,
+      background: colors.light.brand02,
       text: colors.light.white,
       border: colors.transparent,
     },
     disabled: {
-      background: colors.light.gray12,
+      background: colors.light.gray09,
       text: colors.light.gray06,
       border: colors.transparent,
     },

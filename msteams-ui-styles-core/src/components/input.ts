@@ -2,6 +2,7 @@ import { keyframes } from 'typestyle';
 import { chooseStyle, IContext } from '../context';
 import { errorLabel } from '../index';
 import { label } from './label';
+import { Colors } from '../colors';
 
 interface IInputColors {
   rest: {
@@ -87,10 +88,12 @@ function base(context: IContext, colors: IInputColors) {
           '&:active:enabled': {
             background: colors.active.background,
             borderBottomColor: colors.active.underline,
+            color: Colors.light.black,
           },
           '&:hover:inactive:enabled': {
             background: colors.hover.background,
             borderBottomColor: colors.hover.underline,
+            color: colors.rest.text,
           },
           '&:disabled': {
             borderColor: colors.disabled.border,
@@ -122,6 +125,7 @@ function base(context: IContext, colors: IInputColors) {
           '&:focus': {
             borderBottomColor: colors.active.underline,
             background: colors.focus.background,
+            color: Colors.light.black,
           },
           '&::placeholder': {
             color: colors.rest.placeholder,
@@ -182,7 +186,7 @@ function light(context: IContext) {
       background: colors.light.gray10,
       border: colors.transparent,
       underline: colors.transparent,
-      text: colors.light.black,
+      text: colors.light.gray02,
       placeholder: colors.light.gray02,
     },
     active: {
