@@ -95,7 +95,7 @@ function base(context: IContext, colors: IToggleColors) {
           },
         },
         '&:focus:enabled': {
-          boxShadow: `0 0 0 ${rem(0.2)} ${colors.focus.border}`,
+          boxShadow: `0 0 0 ${rem(0.2)} ${colors.focus.border} !important`,
           outline: 'none',
         },
         '&:disabled': {
