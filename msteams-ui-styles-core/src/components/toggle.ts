@@ -36,6 +36,8 @@ function base(context: IContext, colors: IToggleColors) {
   const delta = width - ballDeltaX * 2 - ballSize;
 
   const inputClass = hiddenInput(context);
+  const contextStyle = context.style;
+  const boxShadowDetails = contextStyle === 2 ? "none" : `0 0 0 ${rem(0.1)} ${colors.rest.border}`;
 
   return {
     container: css(names.container, {
@@ -103,6 +105,7 @@ function base(context: IContext, colors: IToggleColors) {
         },
         [`.${inputClass}:checked + &:enabled`]: {
           backgroundColor: colors.checked.background,
+          boxShadow: boxShadowDetails
         },
       },
     }),
