@@ -1,5 +1,6 @@
 import { chooseStyle, IContext } from '../context';
 import { hiddenInput } from './hidden-input';
+import { ThemeStyle } from '../theme-style';
 
 interface IToggleColors {
   rest: {
@@ -36,8 +37,7 @@ function base(context: IContext, colors: IToggleColors) {
   const delta = width - ballDeltaX * 2 - ballSize;
 
   const inputClass = hiddenInput(context);
-  const contextStyle = context.style;
-  const boxShadowDetails = contextStyle === 2 ? "none" : `0 0 0 ${rem(0.1)} ${colors.rest.border}`;
+  const boxShadowDetails = context.style === ThemeStyle.HighContrast ? "none" : `0 0 0 ${rem(0.1)} ${colors.rest.border}`;
 
   return {
     container: css(names.container, {
@@ -140,20 +140,20 @@ function dark(context: IContext) {
   return base(context, {
     rest: {
       background: colors.dark.black,
-      ball: colors.dark.gray02,
+      ball: colors.dark.bar,
       border: colors.transparent,
     },
     focus: {
-      border: colors.dark.brand00,
+      border: colors.dark.brand06,
     },
     disabled: {
       background: colors.dark.gray12,
-      ball: colors.dark.gray06,
+      ball: colors.dark.bar,
       border: colors.transparent,
     },
     checked: {
       background: colors.dark.green,
-      ball: colors.dark.white,
+      ball: colors.dark.black,
     },
   });
 }

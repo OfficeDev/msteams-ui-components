@@ -120,7 +120,7 @@ function dark(context: IContext) {
   return base(context, {
     rest: {
       background: colors.dark.gray10,
-      text: colors.dark.gray02,
+      text: colors.dark.white,
       border: colors.dark.gray06,
     },
     hover: {
@@ -141,7 +141,7 @@ function dark(context: IContext) {
     focus: {
       background: colors.dark.gray06,
       text: colors.dark.white,
-      border: colors.transparent,
+      border: colors.dark.black,
       outline: colors.dark.white,
     },
   });

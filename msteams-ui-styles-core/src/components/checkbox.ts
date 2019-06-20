@@ -182,7 +182,7 @@ function dark(context: IContext) {
       outline: colors.dark.brand00Light,
     },
     checked: {
-      background: colors.dark.brand00,
+      background: colors.dark.brand06,
       border: colors.dark.brand00,
       text : colors.dark.white,
     },
