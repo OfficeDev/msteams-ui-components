@@ -4,8 +4,7 @@ class ButtonExample extends React.Component {
       {(context) => {
         const { rem, font } = context;
         const { sizes, weights } = font;
-        const themeStyle = context.style;
-        const fontWeight = themeStyle === 2 ? weights.regular : weights.semibold;
+        const fontWeight = context.style === ThemeStyle.HighContrast ? weights.regular : weights.semibold;
 
         const styles = {
           header: { ...sizes.title, ...weights.semibold },
