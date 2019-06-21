@@ -19,6 +19,10 @@ export class DropdownItem extends React.Component<IDropdownItemProps>
     return !!this.button && this.button === document.activeElement;
   }
 
+  text = (): string | undefined => {
+    return this.props.text;
+  }
+
   focus = () => {
     if (this.button) {
       this.button.focus();
