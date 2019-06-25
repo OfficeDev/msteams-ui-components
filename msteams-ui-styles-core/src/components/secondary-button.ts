@@ -38,8 +38,8 @@ function base(context: IContext, colors: ISecondaryButtonColors) {
   return css(names.button, {
     height: rem(3.2),
     minWidth: rem(9.6),
-    border: rem(0.1) + ' solid',
-    borderRadius: rem(0.2),
+    border: rem(0.2) + ' solid',
+    borderRadius: rem(0.3),
     padding: rem(0.4),
     whiteSpace: 'nowrap',
     cursor: 'pointer',
@@ -66,8 +66,8 @@ function base(context: IContext, colors: ISecondaryButtonColors) {
         borderColor: colors.down.border,
       },
       '&:focus:enabled': {
-        outline: `${rem(0.1)} solid ${colors.focus.outline}`,
-        outlineOffset: `-${rem(0.2)}`,
+        outline: `${rem(0.2)} solid ${colors.focus.outline}`,
+        outlineOffset: `-${rem(0.4)}`,
         color: colors.focus.text,
         borderColor: colors.focus.border,
         background: colors.focus.background,

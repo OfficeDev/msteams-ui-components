@@ -54,7 +54,7 @@ function base(context: IContext, colors: IToggleColors) {
       width: rem(width),
       height: rem(height),
       backgroundColor: colors.rest.background,
-      borderRadius: rem(10.0),
+      borderRadius: rem(height),
       outline: 'none',
       boxShadow: `0 0 0 ${rem(0.1)} ${colors.rest.border}`,
       $nest: {

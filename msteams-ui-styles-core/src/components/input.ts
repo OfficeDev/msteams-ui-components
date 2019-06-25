@@ -51,7 +51,6 @@ function base(context: IContext, colors: IInputColors) {
 
   const labelClass = label(context);
   const errorLabelClass = errorLabel(context);
-  const underlineRadius = context.style === ThemeStyle.HighContrast || context.style === ThemeStyle.Dark ? `0 0 ${rem(0.2)} ${rem(0.2)}` : "";
   const textColor = context.style === ThemeStyle.HighContrast || context.style === ThemeStyle.Dark ? colors.rest.text : Colors.light.black;
 
   const hideSuccessIconAnimationName = keyframes({
@@ -76,7 +75,7 @@ function base(context: IContext, colors: IInputColors) {
       height: rem(3.2),
       width: '100%',
       borderRadius: rem(0.3),
-      border: `${rem(0.1)} solid ${colors.rest.border}`,
+      border: `${rem(0.2)} solid ${colors.rest.border}`,
       background: colors.rest.background,
       padding: `${rem(0.8)} ${rem(1.2)}`,
       margin: 0,
@@ -128,7 +127,6 @@ function base(context: IContext, colors: IInputColors) {
           '&:focus': {
             borderBottomColor: colors.active.underline,
             background: colors.focus.background,
-            borderRadius : underlineRadius,
             color: textColor,
           },
           '&::placeholder': {

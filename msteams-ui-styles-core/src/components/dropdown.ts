@@ -85,7 +85,7 @@ function base(context: IContext, colors: IDropdownColors) {
         alignItems: 'center',
         color: colors.mainButton.text,
         backgroundColor: colors.mainButton.background,
-        border: colors.border,
+        border: `${rem(0.2)} solid`,
         borderColor: colors.mainButton.border,
         paddingLeft: rem(0.6),
         paddingRight: rem(0.6),
