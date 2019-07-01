@@ -13,6 +13,7 @@ export interface IDropdownProps
   mainButtonText?: string;
   label?: string;
   items: IDropdownItemProps[];
+  selected?: string;
 }
 
 export interface IDropdownItemProps {
@@ -66,6 +67,7 @@ class DropdownInternal extends React.Component<IDropdownProps & ITeamsThemeConte
       mainButtonText,
       style,
       items,
+      selected,
       // tslint:disable-next-line:trailing-comma
       ...rest
     } = this.props;
@@ -132,7 +134,15 @@ class DropdownInternal extends React.Component<IDropdownProps & ITeamsThemeConte
 
   private open = () => {
     if (this.mounted) {
-      this.setState({ show: true }, this.focusNext);
+      this.setState({ show: true }, () => {
+        if (!this.props.selected) {
+          return
+        }
+        const selected = this.itemButtons.findIndex((elm) => elm.text() === this.props.selected);
+        if (selected >= 0) {
+          return this.itemButtons[selected].focus();
+        }
+      });
       document.addEventListener('click', this.close);
     }
   }
