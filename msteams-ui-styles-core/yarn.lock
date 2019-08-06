@@ -2368,10 +2368,10 @@ ms@^2.1.1:
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.1.2.tgz#d09d1f357b443f493382a8eb3ccd183872ae6009"
   integrity sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==
 
-msteams-ui-icons-core@^0.4.1:
-  version "0.4.1"
-  resolved "https://registry.yarnpkg.com/msteams-ui-icons-core/-/msteams-ui-icons-core-0.4.1.tgz#5e06b29336c5900bccb41b51325ebd3896b6dabe"
-  integrity sha512-LeGVrn2jggok6kbtrh/QJhp9JgNP3daBZRLt+Ij58Tn29w2ZXfbEg6fKMn7I2pdJmDVd4fpH88jThVuqETsndA==
+msteams-ui-icons-core@^0.4.2:
+  version "0.4.2"
+  resolved "https://registry.yarnpkg.com/msteams-ui-icons-core/-/msteams-ui-icons-core-0.4.2.tgz#b81346a8c5c2d9f5df69c8e2c40a98c36172537f"
+  integrity sha512-jaHadyxAuSwvopQjcMSjlkVB1B2z4Ln5XE683d0unfDtrlL9jSczHRfCQoSVHE4khjtBG/4HU92zf+SbmUGzkQ==
   dependencies:
     lodash.memoize "^4.1.2"
 
