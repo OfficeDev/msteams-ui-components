@@ -1,5 +1,6 @@
 import { chooseStyle, IContext } from '../context';
 import { hiddenInput } from './hidden-input';
+import { ThemeStyle } from '../theme-style';
 
 interface IToggleColors {
   rest: {
@@ -36,6 +37,7 @@ function base(context: IContext, colors: IToggleColors) {
   const delta = width - ballDeltaX * 2 - ballSize;
 
   const inputClass = hiddenInput(context);
+  const boxShadowDetails = context.style === ThemeStyle.HighContrast ? "none" : `0 0 0 ${rem(0.1)} ${colors.rest.border}`;
 
   return {
     container: css(names.container, {
@@ -93,7 +95,7 @@ function base(context: IContext, colors: IToggleColors) {
           },
         },
         '&:focus:enabled': {
-          boxShadow: `0 0 0 ${rem(0.2)} ${colors.focus.border}`,
+          boxShadow: `0 0 0 ${rem(0.2)} ${colors.focus.border} !important`,
           outline: 'none',
         },
         '&:disabled': {
@@ -103,6 +105,7 @@ function base(context: IContext, colors: IToggleColors) {
         },
         [`.${inputClass}:checked + &:enabled`]: {
           backgroundColor: colors.checked.background,
+          boxShadow: boxShadowDetails
         },
       },
     }),
@@ -121,12 +124,12 @@ function light(context: IContext) {
       border: colors.light.brand00,
     },
     disabled: {
-      background: colors.light.gray12,
+      background: colors.light.gray09,
       ball: colors.light.gray06,
       border: colors.transparent,
     },
     checked: {
-      background: colors.light.green,
+      background: colors.light.brand00,
       ball: colors.light.white,
     },
   });
@@ -137,20 +140,20 @@ function dark(context: IContext) {
   return base(context, {
     rest: {
       background: colors.dark.black,
-      ball: colors.dark.gray02,
+      ball: colors.dark.bar,
       border: colors.transparent,
     },
     focus: {
-      border: colors.dark.brand00,
+      border: colors.dark.brand06,
     },
     disabled: {
       background: colors.dark.gray12,
-      ball: colors.dark.gray06,
+      ball: colors.dark.bar,
       border: colors.transparent,
     },
     checked: {
       background: colors.dark.green,
-      ball: colors.dark.white,
+      ball: colors.dark.black,
     },
   });
 }

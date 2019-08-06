@@ -189,7 +189,7 @@ function dark(context: IContext) {
     },
     active: {
       background: colors.dark.black,
-      underline: colors.dark.brand00,
+      underline: colors.dark.brand08,
     },
     disabled: {
       border: colors.transparent,
@@ -204,7 +204,7 @@ function dark(context: IContext) {
     },
     focus: {
       background: colors.dark.black,
-      underline: colors.dark.brand00,
+      underline: colors.dark.brand08,
     },
     label: colors.dark.white,
     errorIcon: colors.dark.red,

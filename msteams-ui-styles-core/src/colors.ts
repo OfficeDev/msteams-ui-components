@@ -3,15 +3,16 @@ export type ColorPalette = typeof Colors;
 export const Colors = {
   transparent: 'transparent',
   light: {
-    black: '#252424',
+    black: '#252423',
     white: '#FFFFFF',
     bar: '#33344A',
     gray01: '#4E586A', // don't know
-    gray02: '#5c5b5b',
-    gray03: '#717070',
-    gray04: '#929191',
-    gray06: '#bdbdbd',
-    gray08: '#dfdede',
+    gray02: '#484644',
+    gray03: '#605E5C',
+    gray04: '#979593',
+    gray06: '#C8C6C4',
+    gray08: '#EIDFDD',
+    gray09: '#EDEBE9',
     gray10: '#F3F2F1',
     gray12: '#f4f4f4',
     gray13: '#F8F8F9', // don't know
@@ -36,7 +37,7 @@ export const Colors = {
     orange: '#E97548',
     orange04: '#CC4A31', // new
     yellow: '#F8D22A',
-    green: '#92C353',
+    green: '#237B4B',
   },
   dark: {
     black: '#201F1F',

@@ -128,11 +128,11 @@ function light(context: IContext) {
     },
     disabled: {
       border: colors.light.gray06,
-      background: colors.light.gray10,
+      background: colors.light.gray06,
       text: colors.light.gray06,
     },
     focus: {
-      outline: colors.light.brand00Dark,
+      outline: colors.light.brand12,
     },
     selected: {
       background: colors.light.brand00,
@@ -164,7 +164,7 @@ function dark(context: IContext) {
       outline: colors.dark.brand00Light,
     },
     selected: {
-      background: colors.dark.brand00,
+      background: colors.dark.brand06,
       border: colors.dark.brand00,
       text : colors.dark.white,
     },

@@ -53,6 +53,7 @@ function base(context: IContext, colors: ISecondaryButtonColors) {
         background: colors.hover.background,
         color: colors.hover.text,
         borderColor: colors.hover.border,
+        boxShadow: `0 ${rem(0.2)} ${rem(0.4)} 0 rgba(0,0,0,0.10)`,
       },
       '&:active:hover:enabled': {
         background: colors.down.background,
@@ -70,6 +71,7 @@ function base(context: IContext, colors: ISecondaryButtonColors) {
         color: colors.focus.text,
         borderColor: colors.focus.border,
         background: colors.focus.background,
+        boxShadow: `0 ${rem(0.2)} ${rem(0.4)} 0 rgba(0,0,0,0.10)`,
       },
       '&:disabled': {
         background: colors.disabled.background,
@@ -86,28 +88,28 @@ function light(context: IContext) {
   return base(context, {
     rest: {
       background: colors.light.white,
-      text: colors.light.gray02,
+      text: colors.light.black,
       border: colors.light.gray06,
     },
     hover: {
-      background: colors.light.gray06,
+      background: colors.light.gray09,
       text: colors.light.black,
-      border: colors.transparent,
+      border: colors.light.gray06,
     },
     down: {
-      background: colors.light.gray04,
+      background: colors.light.gray08,
       text: colors.light.black,
       border: colors.transparent,
     },
     disabled: {
-      background: colors.light.white,
+      background: colors.light.gray09,
       text: colors.light.gray06,
       border: colors.light.gray12,
     },
     focus: {
       background: colors.light.gray06,
       text: colors.light.black,
-      border: colors.transparent,
+      border: colors.light.white,
       outline: colors.light.black,
     },
   });
@@ -118,7 +120,7 @@ function dark(context: IContext) {
   return base(context, {
     rest: {
       background: colors.dark.gray10,
-      text: colors.dark.gray02,
+      text: colors.dark.white,
       border: colors.dark.gray06,
     },
     hover: {
@@ -139,7 +141,7 @@ function dark(context: IContext) {
     focus: {
       background: colors.dark.gray06,
       text: colors.dark.white,
-      border: colors.transparent,
+      border: colors.dark.black,
       outline: colors.dark.white,
     },
   });

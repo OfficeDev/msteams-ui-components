@@ -8,7 +8,7 @@ class ButtonExample extends React.Component {
         const styles = {
           header: { ...sizes.title, ...weights.semibold },
           section: { ...sizes.title2, marginTop: rem(1.4), marginBottom: rem(1.4) },
-          button: {marginRight: rem(0.5) }
+          button: {marginRight: rem(0.5)}
         }
 
         return <Panel>
@@ -58,6 +58,7 @@ class ButtonExample extends React.Component {
           </PanelFooter>
         </Panel>;
       }}
+      
     </TeamsThemeContext.Consumer>
   }
 }
