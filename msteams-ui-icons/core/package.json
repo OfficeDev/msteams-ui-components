@@ -1,7 +1,7 @@
 {
   "name": "msteams-ui-icons-core",
   "description": "MSTeams UI Icon Library Core",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "repository": {
@@ -26,10 +26,10 @@
     "typestyle": "^2.0.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.2.3",
     "@types/lodash.memoize": "^4.1.4",
     "@types/node": "^10.12.18",
-    "@babel/core":"^7.2.2",
-    "@babel/preset-env": "^7.2.3",
     "del": "^3.0.0",
     "gulp": "^4.0.0",
     "gulp-babel": "^8.0.0",
