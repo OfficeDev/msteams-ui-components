@@ -82,22 +82,22 @@ function light(context: IContext) {
 function dark(context: IContext) {
   return base(context, {
     rest: {
-      text: context.colors.dark.brand00,
+      text: context.colors.dark.brand06,
     },
     hover: {
-      text: context.colors.dark.brand00,
+      text: context.colors.dark.brand06,
     },
     down: {
-      text: context.colors.dark.brand04,
+      text: context.colors.dark.brand06,
     },
     disabled: {
       text: context.colors.dark.gray06,
     },
     focus: {
-      text: context.colors.dark.brand00,
+      text: context.colors.dark.brand06,
     },
     visited: {
-      text: context.colors.dark.brand00,
+      text: context.colors.dark.brand06,
     },
   });
 }

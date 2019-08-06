@@ -3,6 +3,7 @@ import { chooseStyle, IContext } from '../context';
 import { errorLabel } from '../index';
 import { label } from './label';
 import { Colors } from '../colors';
+import { ThemeStyle } from '../theme-style';
 
 interface IInputColors {
   rest: {
@@ -50,6 +51,7 @@ function base(context: IContext, colors: IInputColors) {
 
   const labelClass = label(context);
   const errorLabelClass = errorLabel(context);
+  const textColor = context.style === ThemeStyle.HighContrast || context.style === ThemeStyle.Dark ? colors.rest.text : Colors.light.black;
 
   const hideSuccessIconAnimationName = keyframes({
     '0%': { opacity: 1 },
@@ -88,7 +90,7 @@ function base(context: IContext, colors: IInputColors) {
           '&:active:enabled': {
             background: colors.active.background,
             borderBottomColor: colors.active.underline,
-            color: Colors.light.black,
+            color: textColor,
           },
           '&:hover:inactive:enabled': {
             background: colors.hover.background,
@@ -125,7 +127,7 @@ function base(context: IContext, colors: IInputColors) {
           '&:focus': {
             borderBottomColor: colors.active.underline,
             background: colors.focus.background,
-            color: Colors.light.black,
+            color: textColor,
           },
           '&::placeholder': {
             color: colors.rest.placeholder,
@@ -226,7 +228,7 @@ function dark(context: IContext) {
     },
     active: {
       background: colors.dark.black,
-      underline: colors.dark.brand00,
+      underline: colors.dark.brand08,
     },
     disabled: {
       border: colors.transparent,
@@ -241,11 +243,11 @@ function dark(context: IContext) {
     },
     focus: {
       background: colors.dark.black,
-      underline: colors.dark.brand00,
+      underline: colors.dark.brand08,
     },
     errorIcon: colors.dark.red,
     successIcon: colors.dark.green,
-    spinner: colors.dark.brand00,
+    spinner: colors.dark.brand08,
   });
 }
 

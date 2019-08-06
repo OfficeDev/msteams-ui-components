@@ -120,18 +120,18 @@ function dark(context: IContext) {
   const { colors } = context;
   return base(context, {
     rest: {
-      background: colors.dark.brand00,
-      text: colors.dark.black,
+      background: colors.dark.brand12,
+      text: colors.dark.white,
       border: colors.transparent,
     },
     hover: {
-      background: colors.dark.brand04,
-      text: colors.dark.black,
+      background: colors.dark.brand08,
+      text: colors.dark.white,
       border: colors.transparent,
     },
     down: {
-      background: colors.dark.brand06,
-      text: colors.dark.black,
+      background: colors.dark.brand14,
+      text: colors.dark.white,
       border: colors.transparent,
     },
     disabled: {
@@ -140,10 +140,10 @@ function dark(context: IContext) {
       border: colors.transparent,
     },
     focus: {
-      background: colors.dark.brand00,
-      text: colors.dark.black,
+      background: colors.dark.brand14,
+      text: colors.dark.white,
       outline: colors.dark.black,
-      border: colors.transparent,
+      border: colors.dark.white,
     },
   });
 }

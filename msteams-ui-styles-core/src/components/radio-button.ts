@@ -96,7 +96,6 @@ function base(context: IContext, colors: IRadioButtonColors) {
           borderColor: colors.hover.border,
         },
         [`& input:checked:hover ~ .${radioClass}`]: {
-          border: `${rem(0.2)} solid`,
           borderColor: colors.selected.border,
           background: colors.selected.background,
         },
@@ -165,7 +164,7 @@ function dark(context: IContext) {
       outline: colors.dark.brand00Light,
     },
     selected: {
-      background: colors.dark.brand00,
+      background: colors.dark.brand06,
       border: colors.dark.brand00,
       text : colors.dark.white,
     },
