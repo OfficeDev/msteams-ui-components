@@ -1,4 +1,4 @@
-export interface IFontSizePalate {
+export interface IFontSizePalette {
   title: {
     fontSize: string;
     lineHeight: string;

@@ -2,8 +2,7 @@
   "sourceType": "script",
   "plugins": [
     "lodash",
-    "@babel/plugin-transform-runtime",
-    "transform-es2015-template-literals"
+    "@babel/plugin-transform-runtime"
   ],
   "presets": [
     [

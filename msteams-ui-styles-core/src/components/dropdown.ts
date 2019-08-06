@@ -248,7 +248,7 @@ function highContrast(context: IContext) {
     itemContainerBg: colors.highContrast.black,
     itemHover: colors.highContrast.black,
     itemHoverBg: colors.highContrast.yellow,
-    label: colors.highContrast.black,
+    label: colors.highContrast.white,
     underline: colors.highContrast.yellow,
     bgShadow: colors.transparent,
     border: `${rem(0.1)} solid ${colors.highContrast.white}`,
