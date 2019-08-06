@@ -1,9 +1,12 @@
 ---
-topic: sample
+page_type: sample
 products:
-- Office 365
+- office-365
+- office-teams
 languages:
-- TypeScript
+- typescript
+title: Microsoft Teams UI Components
+description: This sample showcases UI components that empower developers to build beautiful Microsoft Teams integrations
 extensions:
   contentType: samples
   createdDate: 9/13/2017 11:49:45 AM
