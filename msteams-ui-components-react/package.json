@@ -1,6 +1,6 @@
 {
   "name": "msteams-ui-components-react",
-  "version": "0.8.1",
+  "version": "0.8.3",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "repository": {
@@ -46,12 +46,12 @@
   "peerDependencies": {
     "@types/prop-types": "^15.5.8",
     "@types/react": "^16.7.17",
-    "react": "^16.7.0",
-    "prop-types": "^15.6.2"
+    "prop-types": "^15.6.2",
+    "react": "^16.7.0"
   },
   "dependencies": {
     "mousetrap": "^1.6.2",
-    "msteams-ui-styles-core": "^0.8.0",
-    "msteams-ui-icons-react": "^0.4.1"
+    "msteams-ui-icons-react": "^0.4.2",
+    "msteams-ui-styles-core": "^0.8.2"
   }
 }

@@ -5,7 +5,7 @@ import { IFocusable } from '../focusable';
 import { IContext } from '../index';
 
 export interface IDropdownItemProps
-  extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
+  extends React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
     context: IContext;
     text?: string;
     render?: () => string | JSX.Element;

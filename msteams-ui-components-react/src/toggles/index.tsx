@@ -5,9 +5,10 @@ import { connectTeamsComponent, ITeamsThemeContextProps } from '../teams-context
 import classes from '../utils/classes';
 
 export interface IToggleProps
-  extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
+  extends React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
   onRef?: (ref: React.Component & IFocusable | null) => void;
   checked: boolean;
+  required?: boolean;
   onToggle: (checked: boolean) => void;
 }
 

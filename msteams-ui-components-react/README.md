@@ -16,7 +16,7 @@ The React bindings get the context in which to render the components from a top 
 ```javascript
 const microsoftTeams = require('@microsoft/teams-js');
 const React = require('react')
-const { getContext, PrimaryButton, TeamsComponentContext, ThemeStyle } = require('msteams-ui-components-react')
+const { getContext, PrimaryButton, TeamsThemeContext, ThemeStyle } = require('msteams-ui-components-react')
 
 // Wherever you want to mount the React page in your HTML.
 var mountPoint = ...
@@ -117,7 +117,7 @@ render(
 
 You can also render your own custom components using the MS Teams context in two different ways.
 
-1. You can wrap them using the connectTeamsComponent function.
+1. You can wrap them using the `connectTeamsComponent` function.
 ```javascript
 const React = require('react')
 const { connectTeamsComponent, ThemeStyle, IITeamsThemeContextProps } = require('msteams-ui-components-react')
@@ -145,11 +145,11 @@ const CustomComponentInternal: React.FunctionComponent<ICustomComponentProps & I
 const CustomComponent = connectTeamsComponent(CustomComponentInternal);
 ```
 
-You can now render CustomComponent like any other normal React component as long as it is a child (direct or indirect) of the TeamsComponentContext.
+You can now render `CustomComponent` like any other normal React component as long as it is a child (direct or indirect) of the `TeamsThemeContext`.
 
 ```javascript
 class SimplePage extends React.Component {
-  
+
   ...
 
   render() {
@@ -170,7 +170,7 @@ class SimplePage extends React.Component {
 }
 ```
 
-You should see that the Hello text is colored in the brand00 MS Teams color. If you are testing this in MS Teams, you can change the theme in the settings to see this color get updated. If you are running this directly in a browser, you can just add the theme query variable (theme=dark) to see the color change to the dark variation of brand00.
+You should see that the Hello text is colored in the `brand00` MS Teams color. If you are testing this in MS Teams, you can change the theme in the settings to see this color get updated. If you are running this directly in a browser, you can just add the theme query variable (`theme=dark`) to see the color change to the dark variation of `brand00`.
 
 2. Using the render method of the connected component object.
 
@@ -178,7 +178,7 @@ You should see that the Hello text is colored in the brand00 MS Teams color. If 
 const { ConnectedComponent } = require('msteams-ui-components-react')
 
 class SimplePage extends React.Component {
-  
+
   ...
 
   render() {
