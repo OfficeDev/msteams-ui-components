@@ -112,7 +112,7 @@ class DropdownInternal extends React.Component<IDropdownProps & ITeamsThemeConte
           id={this.state.expandableRegionId}
           role="listbox"
           aria-hidden={!this.state.show}
-          style={{display: this.state.show ? undefined : 'none'}}
+          style={{ display: this.state.show ? undefined : 'none' }}
           className={itemContainerClass.join(' ')}>
           {items.map((item, idx) => (
             <DropdownItem
@@ -189,17 +189,11 @@ class DropdownInternal extends React.Component<IDropdownProps & ITeamsThemeConte
   }
 
   private onTabUpKey = (e: ExtendedKeyboardEvent) => {
-    if (this.state.show) {
-      e.preventDefault();
-      this.focusPrevious();
-    }
+    this.onEscKey(e);
   }
 
   private onTabDownKey = (e: ExtendedKeyboardEvent) => {
-    if (this.state.show) {
-      e.preventDefault();
-      this.focusNext();
-    }
+    this.onEscKey(e);
   }
 
   private onEscKey = (e: ExtendedKeyboardEvent) => {
