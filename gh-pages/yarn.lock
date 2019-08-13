@@ -3648,10 +3648,10 @@ ms@^2.1.1:
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.1.2.tgz#d09d1f357b443f493382a8eb3ccd183872ae6009"
   integrity sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==
 
-msteams-ui-components-react@^0.8.3:
-  version "0.8.3"
-  resolved "https://registry.yarnpkg.com/msteams-ui-components-react/-/msteams-ui-components-react-0.8.3.tgz#a7fdb4c0ccb2bf8c09858a39b4d7555fa5a029a2"
-  integrity sha512-vHXo1DHjGUKPGG57gLuMtv387XCxU2RdFCiTGTNNlDLZY5aFH+V3uwdhmcYYetc+BmqD2lDxyE1668rcffyjBA==
+msteams-ui-components-react@^0.8.4:
+  version "0.8.4"
+  resolved "https://registry.yarnpkg.com/msteams-ui-components-react/-/msteams-ui-components-react-0.8.4.tgz#14871ba751e6c419e40e738a7a70d41023e5f75f"
+  integrity sha512-FuvGNSqixFCTT5iyL/QnwRtPYDC4H2dE2NHS4SimE7/ZUOiye8LxkVTGMbKTU3gePEcGmLE1juauL9R+DTGq7w==
   dependencies:
     mousetrap "^1.6.2"
     msteams-ui-icons-react "^0.4.2"
